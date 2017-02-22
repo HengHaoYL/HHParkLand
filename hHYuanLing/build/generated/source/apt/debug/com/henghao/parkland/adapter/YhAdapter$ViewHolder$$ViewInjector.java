@@ -7,17 +7,17 @@ import butterknife.ButterKnife.Finder;
 public class YhAdapter$ViewHolder$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.adapter.YhAdapter.ViewHolder target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624356, "field 'tvId'");
+    view = finder.findRequiredView(source, 2131624366, "field 'tvId'");
     target.tvId = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624357, "field 'tvTreeid'");
+    view = finder.findRequiredView(source, 2131624367, "field 'tvTreeid'");
     target.tvTreeid = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624358, "field 'tvBehavior'");
+    view = finder.findRequiredView(source, 2131624368, "field 'tvBehavior'");
     target.tvBehavior = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624359, "field 'tvPlace'");
+    view = finder.findRequiredView(source, 2131624369, "field 'tvPlace'");
     target.tvPlace = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624360, "field 'tvTime'");
+    view = finder.findRequiredView(source, 2131624370, "field 'tvTime'");
     target.tvTime = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624361, "field 'btnWrite'");
+    view = finder.findRequiredView(source, 2131624371, "field 'btnWrite'");
     target.btnWrite = (android.widget.Button) view;
   }
 

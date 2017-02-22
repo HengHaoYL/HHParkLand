@@ -95,6 +95,7 @@
                 android:textSize="@dimen/gj_d" />
 
             <EditText
+                android:id="@+id/et_content"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

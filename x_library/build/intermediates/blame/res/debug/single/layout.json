@@ -92,12 +92,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\x_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "D:\\Workspaces\\HHYuanLing\\x_library\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "D:\\Workspaces\\HHYuanLing\\x_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\layout\\abc_action_bar_title_item.xml"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\x_library\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\x_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "D:\\Workspaces\\HHYuanLing\\x_library\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "D:\\Workspaces\\HHYuanLing\\x_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\x_library\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",

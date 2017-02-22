@@ -4,12 +4,12 @@
         "source": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ab_share_pack_holo_light.9.png"
     },
     {
-        "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_footer_pro_12.png",
-        "source": "D:\\Workspaces\\HHYuanLing\\b_library\\src\\main\\res\\drawable-xhdpi\\list_footer_pro_12.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_footer_pro_12.png",
+        "source": "D:\\Workspaces\\HHYuanLing\\b_library\\src\\main\\res\\drawable-xhdpi\\list_footer_pro_12.png"
     },
     {
         "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",

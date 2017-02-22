@@ -9,7 +9,7 @@ public class GuanhuActivity$$ViewInjector {
     View view;
     view = finder.findRequiredView(source, 2131624080, "field 'tvTreeId'");
     target.tvTreeId = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624334, "field 'tv_title'");
+    view = finder.findRequiredView(source, 2131624344, "field 'tv_title'");
     target.tv_title = (android.widget.TextView) view;
     view = finder.findRequiredView(source, 2131624081, "field 'tvYhSite'");
     target.tvYhSite = (android.widget.TextView) view;
@@ -19,9 +19,9 @@ public class GuanhuActivity$$ViewInjector {
     target.etYhWorkder = (android.widget.EditText) view;
     view = finder.findRequiredView(source, 2131624085, "field 'etYhDetails'");
     target.etYhDetails = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624090, "field 'etComment'");
+    view = finder.findRequiredView(source, 2131624100, "field 'etComment'");
     target.etComment = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624091, "field 'btnSubmit' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624101, "field 'btnSubmit' and method 'onClick'");
     target.btnSubmit = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -31,7 +31,7 @@ public class GuanhuActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624092, "field 'btnCancel' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624102, "field 'btnCancel' and method 'onClick'");
     target.btnCancel = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -41,9 +41,9 @@ public class GuanhuActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624088, "field 'rgClean'");
+    view = finder.findRequiredView(source, 2131624092, "field 'rgClean'");
     target.rgClean = (android.widget.RadioGroup) view;
-    view = finder.findRequiredView(source, 2131624089, "field 'rgTreegrowup'");
+    view = finder.findRequiredView(source, 2131624096, "field 'rgTreegrowup'");
     target.rgTreegrowup = (android.widget.RadioGroup) view;
     view = finder.findRequiredView(source, 2131624086, "field 'rgQuestion'");
     target.rgQuestion = (com.henghao.parkland.views.FlowRadioGroup) view;

@@ -8,12 +8,12 @@
         "source": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\btn_back.png"
     },
     {
-        "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\text_indicator.png",
-        "source": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\text_indicator.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\asv.png",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\asv.png"
+    },
+    {
+        "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\text_indicator.png",
+        "source": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\text_indicator.png"
     },
     {
         "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\asy.png",

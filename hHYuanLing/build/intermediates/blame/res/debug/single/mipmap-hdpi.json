@@ -1,9 +1,5 @@
 [
     {
-        "merged": "D:\\Workspaces\\HHYuanLing\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\scan_light.png",
-        "source": "D:\\Workspaces\\HHYuanLing\\hHYuanLing\\src\\main\\res\\mipmap-hdpi\\scan_light.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\btn_back_press.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\mipmap-hdpi\\btn_back_press.png"
     },
@@ -14,13 +10,5 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\scan_light.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\mipmap-hdpi\\scan_light.png"
-    },
-    {
-        "merged": "D:\\Workspaces\\HHYuanLing\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\btn_back_normal.png",
-        "source": "D:\\Workspaces\\HHYuanLing\\hHYuanLing\\src\\main\\res\\mipmap-hdpi\\btn_back_normal.png"
-    },
-    {
-        "merged": "D:\\Workspaces\\HHYuanLing\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\btn_back_press.png",
-        "source": "D:\\Workspaces\\HHYuanLing\\hHYuanLing\\src\\main\\res\\mipmap-hdpi\\btn_back_press.png"
     }
 ]

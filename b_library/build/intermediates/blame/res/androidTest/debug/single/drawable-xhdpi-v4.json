@@ -12,12 +12,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\capture_pic.png"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_pressed_holo.9.png",
-        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_unselected_pressed_holo.9.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_pressed_holo.9.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_unselected_pressed_holo.9.png"
     },
     {
         "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_focused_holo.9.png",
@@ -48,12 +48,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_mian.png"
     },
     {
-        "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\list_footer_pro_21.png",
-        "source": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\list_footer_pro_21.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\list_header_pro_12.png",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\list_header_pro_12.png"
+    },
+    {
+        "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\list_footer_pro_21.png",
+        "source": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\list_footer_pro_21.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_bg.png",

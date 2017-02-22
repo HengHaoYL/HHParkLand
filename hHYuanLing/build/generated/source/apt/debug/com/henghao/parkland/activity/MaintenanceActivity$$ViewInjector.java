@@ -7,15 +7,15 @@ import butterknife.ButterKnife.Finder;
 public class MaintenanceActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.MaintenanceActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624121, "field 'tvTreeid'");
+    view = finder.findRequiredView(source, 2131624131, "field 'tvTreeid'");
     target.tvTreeid = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624122, "field 'tvState'");
+    view = finder.findRequiredView(source, 2131624132, "field 'tvState'");
     target.tvState = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624123, "field 'tvTime'");
+    view = finder.findRequiredView(source, 2131624133, "field 'tvTime'");
     target.tvTime = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624124, "field 'tvPlace'");
+    view = finder.findRequiredView(source, 2131624134, "field 'tvPlace'");
     target.tvPlace = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624125, "field 'btnConfirm' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624135, "field 'btnConfirm' and method 'onClick'");
     target.btnConfirm = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -25,7 +25,7 @@ public class MaintenanceActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624126, "field 'btnCancel' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624136, "field 'btnCancel' and method 'onClick'");
     target.btnCancel = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {

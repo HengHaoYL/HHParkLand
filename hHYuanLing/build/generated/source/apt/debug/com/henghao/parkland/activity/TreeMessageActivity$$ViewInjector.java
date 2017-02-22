@@ -7,19 +7,19 @@ import butterknife.ButterKnife.Finder;
 public class TreeMessageActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.TreeMessageActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624201, "field 'tvTreeId'");
+    view = finder.findRequiredView(source, 2131624211, "field 'tvTreeId'");
     target.tvTreeId = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624202, "field 'etTreeName'");
+    view = finder.findRequiredView(source, 2131624212, "field 'etTreeName'");
     target.etTreeName = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624203, "field 'etTreeUse'");
+    view = finder.findRequiredView(source, 2131624213, "field 'etTreeUse'");
     target.etTreeUse = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624204, "field 'etTreeSpecification'");
+    view = finder.findRequiredView(source, 2131624214, "field 'etTreeSpecification'");
     target.etTreeSpecification = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624205, "field 'tvTreeSite'");
+    view = finder.findRequiredView(source, 2131624215, "field 'tvTreeSite'");
     target.tvTreeSite = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624206, "field 'tvTreeTime'");
+    view = finder.findRequiredView(source, 2131624216, "field 'tvTreeTime'");
     target.tvTreeTime = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624207, "field 'btnSubmit' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624217, "field 'btnSubmit' and method 'onClick'");
     target.btnSubmit = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -29,7 +29,7 @@ public class TreeMessageActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624208, "field 'btnCancel' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624218, "field 'btnCancel' and method 'onClick'");
     target.btnCancel = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {

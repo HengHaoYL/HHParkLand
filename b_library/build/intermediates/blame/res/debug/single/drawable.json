@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable\\background_tab.xml",
-        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\drawable\\background_tab.xml"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable\\indicator_bg_top.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\drawable\\indicator_bg_top.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable\\background_tab.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\drawable\\background_tab.xml"
     },
     {
         "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable\\toast_bg.xml",
