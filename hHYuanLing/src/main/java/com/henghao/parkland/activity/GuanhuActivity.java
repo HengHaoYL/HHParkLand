@@ -114,19 +114,19 @@ public class GuanhuActivity extends ActivityFragmentSupport {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
-                    case 1://无
+                    case R.id.rb_question_one://无
                         yhQuestion = "无";
                         break;
-                    case 2://有病虫害
+                    case R.id.rb_question_two://有病虫害
                         yhQuestion = "有病虫害";
                         break;
-                    case 3://有病虫害
+                    case R.id.rb_question_three://有病虫害
                         yhQuestion = "施肥";
                         break;
-                    case 4://有病虫害
+                    case R.id.rb_question_four://有病虫害
                         yhQuestion = "破坏";
                         break;
-                    case 5://有病虫害
+                    case R.id.rb_question_five://有病虫害
                         yhQuestion = "须冲洗";
                         break;
                 }
@@ -136,13 +136,13 @@ public class GuanhuActivity extends ActivityFragmentSupport {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
-                    case 1:
+                    case R.id.rb_clean_one:
                         yhClean = "好";
                         break;
-                    case 2:
+                    case R.id.rb_clean_two:
                         yhClean = "良好";
                         break;
-                    case 3:
+                    case R.id.rb_clean_three:
                         yhClean = "差";
                         break;
                 }
@@ -152,13 +152,13 @@ public class GuanhuActivity extends ActivityFragmentSupport {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
-                    case 1:
+                    case R.id.rb_treegroup_one:
                         treeGrowup = "好";
                         break;
-                    case 2:
+                    case R.id.rb_treegroup_two:
                         treeGrowup = "良好";
                         break;
-                    case 3:
+                    case R.id.rb_treegroup_three:
                         treeGrowup = "差";
                         break;
                 }
