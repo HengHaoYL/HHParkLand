@@ -2,5 +2,9 @@
     {
         "merged": "D:\\Workspaces\\HHYuanLing\\b_library\\build\\intermediates\\res\\merged\\debug\\raw\\beep.ogg",
         "source": "D:\\Workspaces\\HHYuanLing\\b_library\\src\\main\\res\\raw\\beep.ogg"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\raw\\beep.ogg",
+        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\raw\\beep.ogg"
     }
 ]
