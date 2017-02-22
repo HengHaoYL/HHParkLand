@@ -51,7 +51,6 @@
         </LinearLayout>
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -158,30 +157,34 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/rb_question_one"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="无" />
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/rb_question_two"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_normal"
                     android:text="有病虫害" />
 
                 <RadioButton
+                    android:id="@+id/rb_question_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_normal"
                     android:text="施肥" />
 
                 <RadioButton
+                    android:id="@+id/rb_question_four"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_normal"
                     android:text="破坏" />
 
                 <RadioButton
+                    android:id="@+id/rb_question_five"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_normal"
@@ -217,11 +220,13 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/rb_clean_one"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="好" />
 
                 <RadioButton
+                    android:id="@+id/rb_clean_two"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dip"
@@ -229,6 +234,7 @@
                     android:text="良好" />
 
                 <RadioButton
+                    android:id="@+id/rb_clean_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="差" />
@@ -262,11 +268,13 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/rb_treegroup_one"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="好" />
 
                 <RadioButton
+                    android:id="@+id/rb_treegroup_two"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_normal"
@@ -274,6 +282,7 @@
                     android:text="良好" />
 
                 <RadioButton
+                    android:id="@+id/rb_treegroup_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="差" />
