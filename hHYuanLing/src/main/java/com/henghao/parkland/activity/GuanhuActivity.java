@@ -174,11 +174,11 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                 yhDetails = etYhDetails.getText().toString().trim();
                 yhComment = etComment.getText().toString().trim();
                 if (yhWorker.equals("") || yhWorker == null) {
-                    msg("请输入养护人员");
+                    msg("请输入养护人员！");
                     return;
                 }
                 if (yhDetails.equals("") || yhDetails == null) {
-                    msg("请输入养护内容");
+                    msg("请输入养护内容！");
                     return;
                 }
                 if (yhComment.equals("") || yhComment == null) {
