@@ -8,24 +8,24 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\common_textview.xml"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\common_view_bar_left.xml",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\common_view_bar_left.xml"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\activity_log_forget.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\activity_log_forget.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\common_view_bar_left.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\common_view_bar_left.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_action_tombstone.xml"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\common_flipping_loading_diloag.xml",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\HHParkLand\\b_library\\unspecified\\res\\layout\\common_flipping_loading_diloag.xml"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\item_workimage.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\item_workimage.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\common_flipping_loading_diloag.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\HHParkLand\\b_library\\unspecified\\res\\layout\\common_flipping_loading_diloag.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\activity_qiandao_submit.xml",
@@ -40,10 +40,6 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\common_view_bar_center.xml"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\activity_project_sg.xml",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\activity_project_sg.xml"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\common_imageview.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\common_imageview.xml"
     },
@@ -52,12 +48,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\activity_viewtest.xml",
@@ -268,6 +264,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\fragment_my.xml"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\activity_project_sgbw.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\activity_project_sgbw.xml"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\widget_vertical_stepsview.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\widget_vertical_stepsview.xml"
     },
@@ -464,6 +464,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_big_media.xml"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\activity_project_sgadd.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\activity_project_sgadd.xml"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\activity_empty.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\activity_empty.xml"
     },
@@ -522,6 +526,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_date_choose.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\dialog_date_choose.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_sgbw.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\layout\\list_item_sgbw.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",

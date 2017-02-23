@@ -9,7 +9,7 @@ public class GuanhuActivity$$ViewInjector {
     View view;
     view = finder.findRequiredView(source, 2131624080, "field 'tvTreeId'");
     target.tvTreeId = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624344, "field 'tv_title'");
+    view = finder.findRequiredView(source, 2131624346, "field 'tv_title'");
     target.tv_title = (android.widget.TextView) view;
     view = finder.findRequiredView(source, 2131624081, "field 'tvYhSite'");
     target.tvYhSite = (android.widget.TextView) view;

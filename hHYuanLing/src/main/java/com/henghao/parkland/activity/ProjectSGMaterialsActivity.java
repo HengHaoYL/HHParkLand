@@ -16,6 +16,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.utils.http.OkhttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 /**
  * 施工资料
  */
-public class ProjectSGMaterialsActivity extends ActivityFragmentSupport {
+public class ProjectSGMaterialsActivity extends ActivityFragmentSupport implements OkhttpUtils.HttpCallBack {
 
     private static final int REQUEST_IMAGE = 0x00;
     @ViewInject(R.id.tv_title)
@@ -73,6 +74,8 @@ public class ProjectSGMaterialsActivity extends ActivityFragmentSupport {
     private ArrayList<File> mFileList;
 
     private static final String TAG = "ProjectSGMaterialsActiv";
+
+    private String result_str;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +160,16 @@ public class ProjectSGMaterialsActivity extends ActivityFragmentSupport {
                             }
                         }
                     });
+                    /*OkhttpUtils utils = new OkhttpUtils();
+                    String url = "http://172.16.13.101:8080/YL_BigData/" + "saveBiuldDataMsg";
+                    String content = et_content.getText().toString().trim();
+                    SharedPreferences preferences = getLoginUserSharedPre();
+                    String UID = preferences.getString(Constant.USERID, null);
+                    Map<String, String> map = new HashMap<>();
+                    map.put("content", content);
+                    map.put("uid", UID);
+                    utils.upload(url, map, mFileList);
+                    Log.e(TAG, "viewOnClick: " + result_str);*/
                 }
                 break;
             case R.id.tv_cancel:
@@ -227,5 +240,15 @@ public class ProjectSGMaterialsActivity extends ActivityFragmentSupport {
 
     private String getImageName(String url) {
         return url.substring(url.lastIndexOf("/") + 1);
+    }
+
+    @Override
+    public void result_str(String str) {
+        result_str = str;
+    }
+
+    @Override
+    public void result_btyes(byte[] bytes) {
+
     }
 }

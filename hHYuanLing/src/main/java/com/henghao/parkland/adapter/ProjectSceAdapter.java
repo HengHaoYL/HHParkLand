@@ -13,7 +13,7 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.ProjectLogActivity;
 import com.henghao.parkland.activity.ProjectMoneyActivity;
-import com.henghao.parkland.activity.ProjectSGActivity;
+import com.henghao.parkland.activity.ProjectSGBWActivity;
 import com.henghao.parkland.activity.ProjectSGMaterialsActivity;
 import com.henghao.parkland.activity.ProjectWorkActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
@@ -96,7 +96,7 @@ public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
                         break;
                     case 1:
                         //施工备忘
-                        intent.setClass(mActivityFragmentSupport, ProjectSGActivity.class);
+                        intent.setClass(mActivityFragmentSupport, ProjectSGBWActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 2:

@@ -7,9 +7,9 @@ import butterknife.ButterKnife.Finder;
 public class YanghuMainActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.YanghuMainActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624222, "field 'sp_State'");
+    view = finder.findRequiredView(source, 2131624224, "field 'sp_State'");
     target.sp_State = (android.widget.Spinner) view;
-    view = finder.findRequiredView(source, 2131624225, "field 'btnYhmanage' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624227, "field 'btnYhmanage' and method 'onClick'");
     target.btnYhmanage = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -19,7 +19,7 @@ public class YanghuMainActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624224, "field 'btnTreeYh' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624226, "field 'btnTreeYh' and method 'onClick'");
     target.btnTreeYh = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -29,7 +29,7 @@ public class YanghuMainActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624223, "field 'btnTreemessage' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624225, "field 'btnTreemessage' and method 'onClick'");
     target.btnTreemessage = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {

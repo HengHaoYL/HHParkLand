@@ -21,9 +21,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import org.json.JSONException;
 
 /**
- * 施工备忘
+ * 施工备忘添加
  */
-public class ProjectSGActivity extends ActivityFragmentSupport {
+public class ProjectSGBWAddActivity extends ActivityFragmentSupport {
 
     @ViewInject(R.id.tv_title)
     private TextView tv_title;
@@ -44,7 +44,7 @@ public class ProjectSGActivity extends ActivityFragmentSupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_project_sg);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_sgadd);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
