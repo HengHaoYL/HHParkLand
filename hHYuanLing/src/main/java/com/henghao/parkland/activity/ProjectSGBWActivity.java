@@ -14,6 +14,7 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.SGBWAdapter;
 import com.henghao.parkland.model.entity.SGBWEntity;
+import com.henghao.parkland.model.protocol.HttpPublic;
 import com.lidroid.xutils.ViewUtils;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -107,11 +108,10 @@ public class ProjectSGBWActivity extends ActivityFragmentSupport {
         Request.Builder builder = new Request.Builder();
         SharedPreferences preferences = getSharedPreferences(Constant.SHARED_SET, 0);
         String UID = preferences.getString(Constant.USERID, null);
-        String url = "http://172.16.13.101:8080/YL_BigData/querySgmemoMsg";
         FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
         requestBodyBuilder.add("uid", UID);
         RequestBody requestBody = requestBodyBuilder.build();
-        Request request = builder.url(url).post(requestBody).build();
+        Request request = builder.url(HttpPublic.QUERYSGMEMOMSG).post(requestBody).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -131,7 +131,12 @@ public class ProjectSGBWActivity extends ActivityFragmentSupport {
                     JSONObject jsonObject = new JSONObject(result_str);
                     int error = jsonObject.getInt("error");
                     if (error == 1) {
-                        tvState.setVisibility(View.GONE);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvState.setVisibility(View.GONE);
+                            }
+                        });
                         JSONArray dataArray = jsonObject.getJSONArray("data");
                         for (int i = 0; i < dataArray.length(); i++) {
                             SGBWEntity entity = new SGBWEntity();

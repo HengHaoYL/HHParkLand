@@ -107,7 +107,7 @@ public class ProjectSGBWAddActivity extends ActivityFragmentSupport {
             if (jo instanceof BaseEntity) {
                 BaseEntity base = (BaseEntity) jo;
                 msg(base.getMsg());
-                finish();
+                onBackPressed();
                 return;
             }
         }

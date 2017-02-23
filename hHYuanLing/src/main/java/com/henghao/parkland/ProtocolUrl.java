@@ -107,32 +107,32 @@ public class ProtocolUrl {
     /**
      * 日志备忘
      */
-    public static final String PROJECT_RZBEIWANG = "http://172.16.13.101:8080/YL_BigData/saveJournalMemoMsg";
+    public static final String PROJECT_RZBEIWANG = "http://172.16.13.101:8080/YL_BigData/projectManage/saveJournalMemoMsg";
 
     /**
      * 施工钱包查询
      */
-    public static final String PROJECT_SGWALLET = "queryWalletMsg";
+    public static final String PROJECT_SGWALLET = "projectManage/queryWalletMsg";
 
     /**
      * 查询施工信息
      */
-    public static final String PROJECT_SGMSG= "queryProjectMsg";
+    public static final String PROJECT_SGMSG= "projectManage/queryProjectMsg";
 
     /**
      * 施工备忘提交
      */
-    public static final String PROJECT_SGBEIWANG = "saveSgmemoMsg";
+    public static final String PROJECT_SGBEIWANG = "projectManage/saveSgmemoMsg";
 
     /**
      * 工作备忘提交
      */
-    public static final String PROJECT_WORKBEIWANG = "saveWorkMemoMsg";
+    public static final String PROJECT_WORKBEIWANG = "projectManage/saveWorkMemoMsg";
 
     /**
      * 施工资料提交
      */
-    public static final String PROJECT_SGINFO = "http://172.16.13.101:8080/YL_BigData/" + "saveBiuldDataMsg";
+    public static final String PROJECT_SGINFO = "http://172.16.13.101:8080/YL_BigData/" + "projectManage/saveBiuldDataMsg";
 
     /************************ 项目管理 end **************************/
 
