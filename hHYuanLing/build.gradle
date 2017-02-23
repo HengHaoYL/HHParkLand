@@ -21,12 +21,13 @@ android {
 
 dependencies {
     compile project(':b_library')
-    compile 'com.android.support:appcompat-v7:25.0.1'
     compile files('libs/baidumapapi_base_v4_1_1.jar')
     compile files('libs/baidumapapi_map_v4_1_1.jar')
     compile files('libs/jxl.jar')
     compile files('libs/locSDK_6.13.jar')
     compile files('libs/pushservice-4.5.3.48.jar')
+    compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.squareup.okhttp:okhttp:2.6.0'
     compile 'com.jakewharton:butterknife:5.1.1'
+    compile 'com.android.support:design:25.1.1'
 }

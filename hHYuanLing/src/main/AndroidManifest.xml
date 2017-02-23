@@ -203,13 +203,13 @@
             android:name=".activity.LogForgetActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工钱包 -->
         <activity
             android:name=".activity.ProjectMoneyActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 工作日志 -->
         <activity
             android:name=".activity.ProjectLogActivity"
@@ -257,7 +257,10 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="Gr4Rq0Yl84nFIXH9lfNa5VkSKOKpEb1L" />
 
-
+        <activity
+            android:name=".activity.ProjectManagerActivity"
+            android:label="@string/title_activity_project_manager"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

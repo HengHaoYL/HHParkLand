@@ -49,9 +49,9 @@ public class ProtocolUrl {
     /**
      * 用户登录172.16.13.101:8080/login/az?username=?&password=?
      */
-    public static String APP_LOGIN = "login/az";
+    public static String APP_LOGIN = "login";
 
-    public static String APP_GET_NFCBYID = "login/az";
+    public static String APP_GET_NFCBYID = "login";
     /**
      * 用户注册
      */

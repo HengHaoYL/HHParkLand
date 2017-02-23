@@ -106,7 +106,6 @@ public class RegActivity extends ActivityFragmentSupport {
             msg("两次输入密码不相同");
             return false;
         }
-
         return true;
     }
 

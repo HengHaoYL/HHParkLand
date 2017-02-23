@@ -59,7 +59,7 @@ public class LoginActivity extends ActivityFragmentSupport {
         mCenterTextView.setText("登录");
     }
 
-    @OnClick({R.id.login_pass_quick, R.id.btn_layout})
+    @OnClick({R.id.login_pass_quick, R.id.tv_login})
     public void viewClick(View v) {
         Intent intent = new Intent();
         switch (v.getId()) {
@@ -68,7 +68,7 @@ public class LoginActivity extends ActivityFragmentSupport {
                 intent.setClass(LoginActivity.this, RegActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.btn_layout:
+            case R.id.tv_login:
                 //登录
                 if (checkData()) {
                     LoginProtocol mLoginProtocol = new LoginProtocol(this);

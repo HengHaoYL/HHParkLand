@@ -100,6 +100,7 @@ public class LoginProtocol extends BaseModel {
                 }
                 if(mBaseEntity.getData()==null || mBaseEntity.getData()=="null"){
                     LoginProtocol.this.OnMessageResponse(url, mBaseEntity, status);
+                    return;
                 }
                 String data = ToolsJson.toJson(mBaseEntity.getData());
                 if (ToolsKit.isEmpty(data)) {
