@@ -108,7 +108,7 @@ public class MaintenanceActivity extends ActivityFragmentSupport {
                         .add("yhStatustime", yhStatustime)//
                         .add("yhStatussite", yhStatussite)
                         .build();
-                Request request = builder.post(requestBody).url(HttpPublic.SAVESTATUS).build();
+                Request request = builder.post(requestBody).url(HttpPublic.SAVESTATUSMSG).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override

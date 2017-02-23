@@ -48,7 +48,7 @@ public class YHDataProtocol extends BaseModel {
      */
     public void getYHData(int yid, String treeId) {
         try {
-            String url = ProtocolUrl.APP_YANGHUQUERY;
+            String url = ProtocolUrl.APP_GHMANAGEMSGBYID;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("yid", yid);
             params.put("treeId", treeId);
@@ -80,7 +80,7 @@ public class YHDataProtocol extends BaseModel {
                     return;
                 }
                 /**** end ****/
-                if (url.endsWith(ProtocolUrl.APP_YANGHUQUERY)) {
+                if (url.endsWith(ProtocolUrl.APP_GHMANAGEMSGBYID)) {
                     YHDataEntity dataYH = ToolsJson.parseObjecta(data, YHDataEntity.class);
                     YHDataProtocol.this.OnMessageResponse(url, dataYH, status);
                 }

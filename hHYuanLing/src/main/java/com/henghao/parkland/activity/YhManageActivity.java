@@ -106,10 +106,10 @@ public class YhManageActivity extends ActivityFragmentSupport {
         locationClient.registerLocationListener(this.myListener); // 注册监听函数
         setLocationOption(); // 设置定位参数
         locationClient.start(); // 开始定位
+
         okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
-        request = builder.url(HttpPublic.YHMSG).get().build();
-
+        request = builder.url(HttpPublic.QUERYYGSTATUSMSG).get().build();
         /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -154,13 +154,13 @@ public class YhManageActivity extends ActivityFragmentSupport {
                         Collections.reverse(dataList);
                         mActivityFragmentView.viewLoading(View.GONE);
                         if (dataList.size() == 0) {
-                            listView.setVisibility(View.GONE);
                             tvState.setVisibility(View.VISIBLE);
                             tvState.setText("你今天还没有对植物进行养护哦！");
                         } else {
                             tvState.setVisibility(View.GONE);
                             adapter = new YhAdapter(dataList, YhManageActivity.this);
                             listView.setAdapter(adapter);
+
                         }
                     }
                 });
@@ -367,7 +367,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
                 /**
                  * 查询二维码ID
                  */
-                Request request = builder.url(HttpPublic.QUERYBYID + "?chip=" + content).get().build();
+                Request request = builder.url(HttpPublic.QUERYTREEMSGBYID + "?treeId=" + content).get().build();
                 /**
                  * 把request封装
                  */
@@ -416,7 +416,12 @@ public class YhManageActivity extends ActivityFragmentSupport {
                                 startActivity(intent);
                             }
                         } catch (JSONException e) {
-                            Toast.makeText(YhManageActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(YhManageActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             e.printStackTrace();
                         }
                     }

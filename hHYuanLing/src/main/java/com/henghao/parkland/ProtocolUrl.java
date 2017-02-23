@@ -47,7 +47,7 @@ public class ProtocolUrl {
     public static final String USER = "user/";
 
     /**
-     * 用户登录172.16.13.101:8080/login/az?username=?&password=?
+     * 用户登录172.16.13.101:8080/YL_BigData/login?username=?&password=?
      */
     public static String APP_LOGIN = "login";
 
@@ -95,9 +95,9 @@ public class ProtocolUrl {
     public static final String APP_YANGHU = "queryGhManagemsg";
 
     /**
-     * 查询单个
+     * 通过植物编号查询管护信息访问接口
      */
-    public static final String APP_YANGHUQUERY = "queryGhmsgByid";
+    public static final String APP_GHMANAGEMSGBYID = "/YhManage/queryGhManageMsgByid";
 
     /************************ 养护管理 end **************************/
     /************************

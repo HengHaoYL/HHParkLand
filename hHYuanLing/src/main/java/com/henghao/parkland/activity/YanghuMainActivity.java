@@ -215,7 +215,7 @@ public class YanghuMainActivity extends ActivityFragmentSupport {
                 /**
                  * 查询二维码ID
                  */
-                Request request = builder.url(HttpPublic.QUERYBYID + "?chip=" + content).get().build();
+                Request request = builder.url(HttpPublic.QUERYTREEMSGBYID + "?chip=" + content).get().build();
                 /**
                  * 把request封装
                  */

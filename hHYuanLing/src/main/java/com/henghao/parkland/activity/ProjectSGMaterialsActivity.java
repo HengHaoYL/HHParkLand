@@ -16,7 +16,6 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.utils.http.OkhttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -39,7 +38,7 @@ import java.util.ArrayList;
 /**
  * 施工资料
  */
-public class ProjectSGMaterialsActivity extends ActivityFragmentSupport implements OkhttpUtils.HttpCallBack {
+public class ProjectSGMaterialsActivity extends ActivityFragmentSupport {
 
     private static final int REQUEST_IMAGE = 0x00;
     @ViewInject(R.id.tv_title)
@@ -242,13 +241,4 @@ public class ProjectSGMaterialsActivity extends ActivityFragmentSupport implemen
         return url.substring(url.lastIndexOf("/") + 1);
     }
 
-    @Override
-    public void result_str(String str) {
-        result_str = str;
-    }
-
-    @Override
-    public void result_btyes(byte[] bytes) {
-
-    }
 }

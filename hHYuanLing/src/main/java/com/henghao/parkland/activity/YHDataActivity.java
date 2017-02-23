@@ -90,7 +90,7 @@ public class YHDataActivity extends ActivityFragmentSupport {
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.APP_YANGHUQUERY)) {
+        if (url.endsWith(ProtocolUrl.APP_GHMANAGEMSGBYID)) {
             if (jo instanceof BaseEntity) {
                 return;
             }

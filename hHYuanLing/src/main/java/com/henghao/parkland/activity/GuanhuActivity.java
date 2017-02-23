@@ -204,7 +204,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                 requestBodyBuilder.add("treeGrowup", treeGrowup);
                 requestBodyBuilder.add("yhComment", yhComment);
                 RequestBody requestBody = requestBodyBuilder.build();
-                Request request = builder.post(requestBody).url(HttpPublic.SAVEGHMSG).build();
+                Request request = builder.post(requestBody).url(HttpPublic.SAVEGHMANAGEMSG).build();
                 /**
                  * 封装request
                  */

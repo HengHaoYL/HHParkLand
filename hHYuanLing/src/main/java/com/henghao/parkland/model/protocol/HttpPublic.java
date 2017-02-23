@@ -6,10 +6,10 @@ package com.henghao.parkland.model.protocol;
  */
 
 public class HttpPublic {
-    public static final String SAVETREE = "http://172.16.13.101:8080/YL_BigData/saveTree/az";//录入植物信息接口
-    public static final String QUERYBYID = "http://172.16.13.101:8080/YL_BigData/queryById/az";//查询二维码信息接口
-    public static final String SAVESTATUS = "http://172.16.13.101:8080/YL_BigData/saveStatus/az";//保存养护状态接口
-    public static final String YHMSG = "http://172.16.13.101:8080/YL_BigData/yhmsg/az";//查询养护管理信息接口
-    public static final String SAVEGHMSG = "http://172.16.13.101:8080/YL_BigData/saveghmsg/az";//保存管护信息接口
+    public static final String SAVETREE = "http://172.16.13.101:8080/YL_BigData/YhManage/saveTreeMsg";//植物信息录入接口
+    public static final String QUERYTREEMSGBYID = "http://172.16.13.101:8080/YL_BigData/YhManage/queryTreeMsgById";//通过植物编号查询树木信息访问接口
+    public static final String SAVESTATUSMSG = "http://172.16.13.101:8080/YL_BigData/YhManage/saveStatusMsg";//养护状态信息数据保存接口
+    public static final String QUERYYGSTATUSMSG = "http://172.16.13.101:8080/YL_BigData/YhManage/queryYhStatusMsg";//查询当天养护状态信息数据访问接口
+    public static final String SAVEGHMANAGEMSG = "http://172.16.13.101:8080/YL_BigData/YhManage/saveGhManageMsg";//管护信息数据保存接口
     public static final String QIANDAO = "http://172.16.13.101:8080/YL_BigData/report";//签到
 }
