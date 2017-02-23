@@ -22,10 +22,18 @@ public class ProjectManagerActivity extends ActivityFragmentSupport {
         this.mActivityFragmentView.getNavitionBarView().setVisibility(View.VISIBLE);
         ViewUtils.inject(this, this.mActivityFragmentView);
         setContentView(this.mActivityFragmentView);
-
         initWidget();
         initData();
 
     }
 
+    @Override
+    public void initWidget() {
+        super.initWidget();
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+    }
 }
