@@ -115,6 +115,11 @@ public class ProtocolUrl {
     public static final String PROJECT_SGWALLET = "queryWalletMsg";
 
     /**
+     * 查询施工信息
+     */
+    public static final String PROJECT_SGMSG= "queryProjectMsg";
+
+    /**
      * 施工备忘提交
      */
     public static final String PROJECT_SGBEIWANG = "saveSgmemoMsg";

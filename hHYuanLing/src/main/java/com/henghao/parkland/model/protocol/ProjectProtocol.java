@@ -103,6 +103,22 @@ public class ProjectProtocol extends BaseModel {
         }
     }
 
+    /**
+     * 查询用户项目信息
+     * @param uid
+     */
+    public void queryXMMsg(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_SGMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private final BeeCallback<String> mBeeCallback = new BeeCallback<String>() {
 
