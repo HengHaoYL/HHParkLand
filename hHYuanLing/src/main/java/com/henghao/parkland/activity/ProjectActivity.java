@@ -118,7 +118,7 @@ public class ProjectActivity extends ActivityFragmentSupport implements XListVie
                         break;
                     case 2:
                         //施工资料
-                        intent.setClass(ProjectActivity.this, ProjectSGMaterialsActivity.class);
+                        intent.setClass(ProjectActivity.this, ProjectSGMaterialAddActivity.class);
                         startActivity(intent);
                         break;
                 }

@@ -130,6 +130,11 @@ public class ProtocolUrl {
     public static final String PROJECT_WORKBEIWANG = "projectManage/saveWorkMemoMsg";
 
     /**
+     * 施工资料
+     */
+    public static final String PROJECT_QUARYSGZL  = "projectManage/queryBuildDateMsg";
+
+    /**
      * 施工资料提交
      */
     public static final String PROJECT_SGINFO = "http://172.16.13.101:8080/YL_BigData/" + "projectManage/saveBiuldDataMsg";

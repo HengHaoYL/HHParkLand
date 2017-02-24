@@ -38,7 +38,7 @@ import java.util.ArrayList;
 /**
  * 施工资料
  */
-public class ProjectSGMaterialsActivity extends ActivityFragmentSupport {
+public class ProjectSGMaterialAddActivity extends ActivityFragmentSupport {
 
     private static final int REQUEST_IMAGE = 0x00;
     @ViewInject(R.id.tv_title)
@@ -79,7 +79,7 @@ public class ProjectSGMaterialsActivity extends ActivityFragmentSupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_project_sgm);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_sgmaterialadd);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -150,7 +150,7 @@ public class ProjectSGMaterialsActivity extends ActivityFragmentSupport {
                                     @Override
                                     public void run() {
                                         mActivityFragmentView.viewLoading(View.GONE);
-                                        Toast.makeText(ProjectSGMaterialsActivity.this, result, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ProjectSGMaterialAddActivity.this, result, Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 finish();

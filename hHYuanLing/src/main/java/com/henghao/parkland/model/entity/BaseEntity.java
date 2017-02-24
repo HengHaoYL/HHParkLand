@@ -34,6 +34,9 @@ public class BaseEntity implements Serializable {
     @Expose
     @SerializedName("error")
     private int error;
+    @Expose
+    @SerializedName("path")
+    private String path;
 
     @Expose
     @SerializedName("data")
@@ -61,5 +64,13 @@ public class BaseEntity implements Serializable {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

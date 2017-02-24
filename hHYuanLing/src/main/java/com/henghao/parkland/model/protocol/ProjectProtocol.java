@@ -20,6 +20,7 @@ import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.model.ascyn.BaseModel;
 import com.henghao.parkland.model.ascyn.BeeCallback;
 import com.henghao.parkland.model.entity.BaseEntity;
+import com.henghao.parkland.model.entity.SGMaterialEntity;
 import com.henghao.parkland.model.entity.SGWalletEntity;
 
 import java.lang.reflect.Type;
@@ -118,6 +119,21 @@ public class ProjectProtocol extends BaseModel {
             e.printStackTrace();
         }
     }
+    /**
+     * 查询施工资料
+     * @param uid
+     */
+    public void querySGZL(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUARYSGZL;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     private final BeeCallback<String> mBeeCallback = new BeeCallback<String>() {
@@ -146,6 +162,13 @@ public class ProjectProtocol extends BaseModel {
                     }.getType();
                     List<SGWalletEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectProtocol.this.OnMessageResponse(url, homeData, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUARYSGZL)) {
+                    // 查询施工资料
+                    Type type = new TypeToken<List<SGMaterialEntity>>() {
+                    }.getType();
+                    List<SGMaterialEntity> homeData = ToolsJson.parseObjecta(data, type);
+                    ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

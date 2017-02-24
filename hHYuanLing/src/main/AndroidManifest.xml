@@ -193,9 +193,15 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 施工资料添加 -->
+        <activity
+            android:name=".activity.ProjectSGMaterialAddActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工材料 -->
         <activity
-            android:name=".activity.ProjectSGMaterialsActivity"
+            android:name=".activity.ProjectSGMaterialActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
