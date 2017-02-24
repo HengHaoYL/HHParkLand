@@ -229,6 +229,18 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
+        <!--项目信息-->
+        <activity
+            android:name=".activity.ProjectManagerActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".activity.ProjectManagerSubmitActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+
         <!-- webView通用 -->
         <activity
             android:name=".activity.CommonWebActivity"
@@ -254,7 +266,6 @@
         <service android:name=".service.ReConnectService" />
         <!-- 推送 -->
         <service android:name=".service.PushParseJsonService" />
-        <!-- 检查app和更新信息 -->
         <!-- <service android:name="com.henghao.parkland.service.AppInfoService" > -->
         <!-- </service> -->
 
@@ -269,10 +280,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="Gr4Rq0Yl84nFIXH9lfNa5VkSKOKpEb1L" />
 
-        <activity
-            android:name=".activity.ProjectManagerActivity"
-            android:label="@string/title_activity_project_manager"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>

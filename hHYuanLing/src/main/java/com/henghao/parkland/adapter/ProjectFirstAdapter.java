@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.ProjectManagerActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -78,9 +79,10 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                 Intent intent = new Intent();
                 switch (position) {
                     case 0:
+                        intent.setClass(mActivityFragmentSupport, ProjectManagerActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 1:
-
                         break;
                 }
             }
