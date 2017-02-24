@@ -5,10 +5,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.benefit.buy.library.views.xlistview.XListView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
@@ -37,6 +37,7 @@ import butterknife.InjectView;
 
 /**
  * Created by 晏琦云 on 2017/2/22.
+ * 施工备忘展示界面
  */
 
 public class ProjectSGBWActivity extends ActivityFragmentSupport {
@@ -45,7 +46,7 @@ public class ProjectSGBWActivity extends ActivityFragmentSupport {
     @InjectView(R.id.tv_state_sgbw)
     TextView tvState;
     @InjectView(R.id.lv_sgbw)
-    ListView listView;
+    XListView listView;
     @InjectView(R.id.tv_title)
     TextView tv_title;
 
@@ -86,17 +87,15 @@ public class ProjectSGBWActivity extends ActivityFragmentSupport {
     public void initData() {
         initWithBar();
         mLeftTextView.setVisibility(View.VISIBLE);
-        mLeftTextView.setText("工作备忘");
-        tv_title.setText("工作备忘");
+        mLeftTextView.setText("施工备忘");
+        tv_title.setText("施工备忘");
         data = new ArrayList<>();
         adapter = new SGBWAdapter(this, data);
-        listView.setAdapter(adapter);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        data.clear();
         httpRequest();
     }
 
@@ -113,12 +112,14 @@ public class ProjectSGBWActivity extends ActivityFragmentSupport {
         RequestBody requestBody = requestBodyBuilder.build();
         Request request = builder.url(HttpPublic.QUERYSGMEMOMSG).post(requestBody).build();
         Call call = okHttpClient.newCall(request);
+        mActivityFragmentView.viewLoading(View.VISIBLE);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        mActivityFragmentView.viewLoading(View.GONE);
                         Toast.makeText(ProjectSGBWActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -137,6 +138,7 @@ public class ProjectSGBWActivity extends ActivityFragmentSupport {
                                 tvState.setVisibility(View.GONE);
                             }
                         });
+                        data.clear();
                         JSONArray dataArray = jsonObject.getJSONArray("data");
                         for (int i = 0; i < dataArray.length(); i++) {
                             SGBWEntity entity = new SGBWEntity();
@@ -151,6 +153,8 @@ public class ProjectSGBWActivity extends ActivityFragmentSupport {
                             @Override
                             public void run() {
                                 adapter.notifyDataSetChanged();
+                                listView.setAdapter(adapter);
+                                mActivityFragmentView.viewLoading(View.GONE);
                             }
                         });
                     } else if (error == 0) {

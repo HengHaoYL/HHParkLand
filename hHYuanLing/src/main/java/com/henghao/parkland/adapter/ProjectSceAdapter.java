@@ -15,7 +15,7 @@ import com.henghao.parkland.activity.ProjectLogActivity;
 import com.henghao.parkland.activity.ProjectMoneyActivity;
 import com.henghao.parkland.activity.ProjectSGBWActivity;
 import com.henghao.parkland.activity.ProjectSGMaterialsActivity;
-import com.henghao.parkland.activity.ProjectWorkActivity;
+import com.henghao.parkland.activity.ProjectWorkBWActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -91,7 +91,7 @@ public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
                 switch (position) {
                     case 0:
                         //工作备忘
-                        intent.setClass(mActivityFragmentSupport, ProjectWorkActivity.class);
+                        intent.setClass(mActivityFragmentSupport, ProjectWorkBWActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 1:

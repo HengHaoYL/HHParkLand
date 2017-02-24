@@ -108,12 +108,12 @@ public class ProjectActivity extends ActivityFragmentSupport implements XListVie
                 switch (arg2) {
                     case 0:
                         //工作备忘
-                        intent.setClass(ProjectActivity.this, ProjectWorkActivity.class);
+                        intent.setClass(ProjectActivity.this, ProjectWorkBWAddActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
                         //施工备忘
-                        intent.setClass(ProjectActivity.this, ProjectWorkActivity.class);
+                        intent.setClass(ProjectActivity.this, ProjectWorkBWAddActivity.class);
                         startActivity(intent);
                         break;
                     case 2:

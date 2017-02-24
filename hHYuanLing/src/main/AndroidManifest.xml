@@ -169,9 +169,15 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 工作备忘添加 -->
+        <activity
+            android:name=".activity.ProjectWorkBWAddActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 工作备忘 -->
         <activity
-            android:name=".activity.ProjectWorkActivity"
+            android:name=".activity.ProjectWorkBWActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />

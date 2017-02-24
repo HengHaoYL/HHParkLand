@@ -16,10 +16,15 @@
         android:textSize="20sp"
         android:visibility="gone" />
 
-    <ListView
+    <com.benefit.buy.library.views.xlistview.XListView
         android:id="@+id/lv_sgbw"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/head" />
+        android:layout_below="@id/head"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/transparent"
+        android:fadingEdge="none"
+        android:listSelector="@drawable/list_selector_transition"
+        android:splitMotionEvents="false" />
 
 </RelativeLayout>
