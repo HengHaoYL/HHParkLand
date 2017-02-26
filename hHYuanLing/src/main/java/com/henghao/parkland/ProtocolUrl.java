@@ -117,7 +117,7 @@ public class ProtocolUrl {
     /**
      * 查询施工信息
      */
-    public static final String PROJECT_SGMSG= "projectManage/queryProjectMsg";
+    public static final String PROJECT_SGMSG = "projectManage/queryProjectMsg";
 
     /**
      * 施工备忘提交
@@ -130,9 +130,9 @@ public class ProtocolUrl {
     public static final String PROJECT_WORKBEIWANG = "projectManage/saveWorkMemoMsg";
 
     /**
-     * 施工资料
+     * 施工资料查询
      */
-    public static final String PROJECT_QUARYSGZL  = "projectManage/queryBuildDateMsg";
+    public static final String PROJECT_QUARYSGZL = "projectManage/queryBuildDateMsg";
 
     /**
      * 施工资料提交

@@ -222,7 +222,13 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!-- 工作日志 -->
+        <!-- 施工日志添加 -->
+        <activity
+            android:name=".activity.ProjectLogAddActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 施工日志 -->
         <activity
             android:name=".activity.ProjectLogActivity"
             android:configChanges="orientation|keyboardHidden"

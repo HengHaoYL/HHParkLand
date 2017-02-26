@@ -149,6 +149,7 @@ public class ProjectProtocol extends BaseModel {
                 }
                 if (mBaseEntity.getData() == null || mBaseEntity.getData() == "null") {
                     ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
+                    return;
                 }
                 String data = ToolsJson.toJson(mBaseEntity.getData());
                 if (ToolsKit.isEmpty(data)) {

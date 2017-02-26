@@ -13,7 +13,6 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.ProjectLogActivity;
 import com.henghao.parkland.activity.ProjectMoneyActivity;
-import com.henghao.parkland.activity.ProjectSGBWActivity;
 import com.henghao.parkland.activity.ProjectSGMaterialActivity;
 import com.henghao.parkland.activity.ProjectWorkBWActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
@@ -94,22 +93,22 @@ public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
                         intent.setClass(mActivityFragmentSupport, ProjectWorkBWActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
+//                    case 1:
+//                        //施工备忘
+//                        intent.setClass(mActivityFragmentSupport, ProjectSGBWActivity.class);
+//                        mActivityFragmentSupport.startActivity(intent);
+//                        break;
                     case 1:
-                        //施工备忘
-                        intent.setClass(mActivityFragmentSupport, ProjectSGBWActivity.class);
-                        mActivityFragmentSupport.startActivity(intent);
-                        break;
-                    case 2:
                         //施工资料
                         intent.setClass(mActivityFragmentSupport, ProjectSGMaterialActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 3:
-                        //日志备忘
+                    case 2:
+                        //施工日志
                         intent.setClass(mActivityFragmentSupport, ProjectLogActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 4:
+                    case 3:
                         //施工钱包
                         intent.setClass(mActivityFragmentSupport, ProjectMoneyActivity.class);
                         mActivityFragmentSupport.startActivity(intent);

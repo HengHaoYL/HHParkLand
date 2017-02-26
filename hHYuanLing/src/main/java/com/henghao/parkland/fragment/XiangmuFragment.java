@@ -111,26 +111,26 @@ public class XiangmuFragment extends FragmentSupport {
         mEntity.setImageId(R.drawable.icon_projectsgbw);
         mEntity.setName("工作备忘");
         mList.add(mEntity);
+//        //第二个
+//        AppGridEntity mEntity2 = new AppGridEntity();
+//        mEntity2.setImageId(R.drawable.icon_projectsgjh);
+//        mEntity2.setName("施工备忘");
+//        mList.add(mEntity2);
         //第二个
         AppGridEntity mEntity2 = new AppGridEntity();
-        mEntity2.setImageId(R.drawable.icon_projectsgjh);
-        mEntity2.setName("施工备忘");
+        mEntity2.setImageId(R.drawable.icon_projecsgzl);
+        mEntity2.setName("施工资料");
         mList.add(mEntity2);
         //第三个
         AppGridEntity mEntity3 = new AppGridEntity();
-        mEntity3.setImageId(R.drawable.icon_projecsgzl);
-        mEntity3.setName("施工资料");
+        mEntity3.setImageId(R.drawable.icon_projectrzbw);
+        mEntity3.setName("施工日志");
         mList.add(mEntity3);
         //第四个
         AppGridEntity mEntity4 = new AppGridEntity();
-        mEntity4.setImageId(R.drawable.icon_projectrzbw);
-        mEntity4.setName("日志备忘");
+        mEntity4.setImageId(R.drawable.icon_projectsgzj);
+        mEntity4.setName("施工钱包");
         mList.add(mEntity4);
-        //第五个
-        AppGridEntity mEntity5 = new AppGridEntity();
-        mEntity5.setImageId(R.drawable.icon_projectsgzj);
-        mEntity5.setName("施工钱包");
-        mList.add(mEntity5);
         mMyAdapter = new ProjectSceAdapter(this.mActivity, mList);
     }
 
