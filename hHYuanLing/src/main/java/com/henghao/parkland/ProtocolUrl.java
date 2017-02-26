@@ -145,7 +145,7 @@ public class ProtocolUrl {
     /**
      * 施工资料查询
      */
-    public static final String PROJECT_QUERYSGZL = "projectManage/querySgmemoMsg";
+    public static final String PROJECT_QUERYSGZL = "projectManage/queryBuildDateMsg";
 
     /**
      * 施工资料提交
