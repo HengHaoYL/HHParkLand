@@ -21,10 +21,11 @@
                 android:layout_width="100dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
-                android:text="项目信息"
+                android:text="项目名称"
                 android:textSize="@dimen/gj_d" />
 
             <EditText
+                android:id="@+id/et_xmName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -54,6 +55,7 @@
                 android:textSize="@dimen/gj_d" />
 
             <EditText
+                android:id="@+id/et_xmPerson"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -83,6 +85,7 @@
                 android:textSize="@dimen/gj_d" />
 
             <EditText
+                android:id="@+id/et_xmContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -112,6 +115,7 @@
                 android:textSize="@dimen/gj_d" />
 
             <EditText
+                android:id="@+id/et_xmPersonNum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -137,10 +141,11 @@
                 android:layout_width="100dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
-                android:text="项目地点"
+                android:text="项目地址"
                 android:textSize="@dimen/gj_d" />
 
             <EditText
+                android:id="@+id/et_xmAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -158,6 +163,7 @@
             android:background="@color/line" />
 
         <TextView
+            android:id="@+id/btn_submit_projectinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_big"

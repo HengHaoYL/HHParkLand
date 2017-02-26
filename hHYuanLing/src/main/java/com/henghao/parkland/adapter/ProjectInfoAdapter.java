@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
-import com.henghao.parkland.model.entity.ProjectTzEntity;
+import com.henghao.parkland.model.entity.ProjectInfoEntity;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class ProjectTZAdapter extends ArrayAdapter<ProjectTzEntity> {
+public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
 
     private final LayoutInflater inflater;
 
@@ -30,7 +30,7 @@ public class ProjectTZAdapter extends ArrayAdapter<ProjectTzEntity> {
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    public ProjectTZAdapter(ActivityFragmentSupport activityFragment, List<ProjectTzEntity> mList) {
+    public ProjectInfoAdapter(ActivityFragmentSupport activityFragment, List<ProjectInfoEntity> mList) {
         super(activityFragment, R.layout.item_projectmanager, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
@@ -51,8 +51,8 @@ public class ProjectTZAdapter extends ArrayAdapter<ProjectTzEntity> {
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
-        mHodlerView.tv_title.setText(getItem(position).getTzName());
-        mHodlerView.tv_time.setText(getItem(position).getTzAdd());
+        mHodlerView.tv_time.setText(getItem(position).getXmAdd());
+        mHodlerView.tv_title.setText(getItem(position).getXmName());
         return convertView;
     }
 

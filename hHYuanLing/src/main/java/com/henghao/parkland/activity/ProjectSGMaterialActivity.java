@@ -102,7 +102,7 @@ public class ProjectSGMaterialActivity extends ActivityFragmentSupport {
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.PROJECT_QUARYSGZL)) {
+        if (url.endsWith(ProtocolUrl.PROJECT_QUERYSGZL)) {
             BaseEntity mData = (BaseEntity) jo;
             if (mData.getError() == 0) {
                 msg(mData.getMsg());

@@ -74,8 +74,6 @@ public class ProjectSGMaterialAddActivity extends ActivityFragmentSupport {
 
     private static final String TAG = "ProjectSGMaterialsActiv";
 
-    private String result_str;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,16 +157,6 @@ public class ProjectSGMaterialAddActivity extends ActivityFragmentSupport {
                             }
                         }
                     });
-                    /*OkhttpUtils utils = new OkhttpUtils();
-                    String url = "http://172.16.13.101:8080/YL_BigData/" + "saveBiuldDataMsg";
-                    String content = et_content.getText().toString().trim();
-                    SharedPreferences preferences = getLoginUserSharedPre();
-                    String UID = preferences.getString(Constant.USERID, null);
-                    Map<String, String> map = new HashMap<>();
-                    map.put("content", content);
-                    map.put("uid", UID);
-                    utils.upload(url, map, mFileList);
-                    Log.e(TAG, "viewOnClick: " + result_str);*/
                 }
                 break;
             case R.id.tv_cancel:

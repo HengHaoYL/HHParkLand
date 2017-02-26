@@ -132,7 +132,22 @@ public class ProtocolUrl {
     /**
      * 施工资料查询
      */
-    public static final String PROJECT_QUARYSGZL = "projectManage/queryBuildDateMsg";
+    public static final String PROJECT_QUERYSGZL = "projectManage/queryBuildDateMsg";
+
+    /**
+     * 项目信息查询
+     */
+    public static final String PROJECT_QUERYPROJECTMSG = "projectManage/queryProjectMsg";
+
+    /**
+     * 项目图纸查询
+     */
+    public static final String PROJECT_QUERYBLUEPRINTMSG = "projectManage/queryBluePrintMsg";
+
+    /**
+     * 项目信息提交
+     */
+    public static final String PROJECT_SAVEPROJECTMSG = "projectManage/saveProjectMsg";
 
     /**
      * 施工资料提交

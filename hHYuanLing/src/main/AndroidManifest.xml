@@ -237,12 +237,12 @@
 
         <!--项目信息-->
         <activity
-            android:name=".activity.ProjectManagerActivity"
+            android:name=".activity.ProjectInfoActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
-            android:name=".activity.ProjectManagerSubmitActivity"
+            android:name=".activity.ProjectInfoSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
