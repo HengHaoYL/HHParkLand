@@ -14,14 +14,14 @@ import com.lidroid.xutils.BitmapUtils;
 import java.util.List;
 
 /**
- * 项目管理-我的〈一句话功能简述〉 〈功能详细描述〉
+ * 项目图纸〈一句话功能简述〉 〈功能详细描述〉
  *
  * @author zhangxianwen
  * @version HDMNV100R001, 2015年12月21日
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class ProjectManagerAdapter extends ArrayAdapter<String> {
+public class ProjectTZAdapter extends ArrayAdapter<String> {
 
     private final LayoutInflater inflater;
 
@@ -29,12 +29,9 @@ public class ProjectManagerAdapter extends ArrayAdapter<String> {
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    private final List<String> mList;
-
-    public ProjectManagerAdapter(ActivityFragmentSupport activityFragment, List<String> list) {
-        super(activityFragment, R.layout.item_projectmanager, list);
+    public ProjectTZAdapter(ActivityFragmentSupport activityFragment, List<String> mList) {
+        super(activityFragment, R.layout.item_projectmanager, mList);
         this.mActivityFragmentSupport = activityFragment;
-        this.mList = list;
         this.inflater = LayoutInflater.from(activityFragment);
         this.mBitmapUtils = new BitmapUtils(activityFragment, Constant.CACHE_DIR_PATH);
         this.mBitmapUtils.configDefaultLoadFailedImage(R.drawable.img_loading_fail_big);
@@ -53,7 +50,6 @@ public class ProjectManagerAdapter extends ArrayAdapter<String> {
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
-
         return convertView;
     }
 
@@ -62,10 +58,5 @@ public class ProjectManagerAdapter extends ArrayAdapter<String> {
         TextView tv_title;
 
         TextView tv_time;
-    }
-
-    @Override
-    public int getCount() {
-        return (this.mList.size());
     }
 }

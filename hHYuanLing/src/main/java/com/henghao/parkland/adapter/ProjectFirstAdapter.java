@@ -11,7 +11,9 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.ProjectGHFActivity;
 import com.henghao.parkland.activity.ProjectManagerActivity;
+import com.henghao.parkland.activity.ProjectTZActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -83,6 +85,12 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 1:
+                      intent.setClass(mActivityFragmentSupport, ProjectTZActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
+                        break;
+                    case 2:
+                   intent.setClass(mActivityFragmentSupport, ProjectGHFActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
                         break;
                 }
             }

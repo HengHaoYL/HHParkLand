@@ -8,14 +8,14 @@ import com.henghao.parkland.R;
 import com.lidroid.xutils.ViewUtils;
 
 /**
- * 项目管理 -- 项目信提交
+ * 项目管理 -- 项目图纸提交
  */
-public class ProjectManagerSubmitActivity extends ActivityFragmentSupport {
+public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_projectmanagersubmit);
+        this.mActivityFragmentView.viewMain(R.layout.activity_projecttzsubmit);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -30,7 +30,7 @@ public class ProjectManagerSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("项目信息");
+        mLeftTextView.setText("项目图纸");
         mLeftTextView.setVisibility(View.VISIBLE);
     }
 

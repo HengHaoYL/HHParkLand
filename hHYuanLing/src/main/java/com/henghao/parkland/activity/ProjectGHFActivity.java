@@ -7,7 +7,7 @@ import android.view.View;
 import com.benefit.buy.library.views.xlistview.XListView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.R;
-import com.henghao.parkland.adapter.ProjectManagerAdapter;
+import com.henghao.parkland.adapter.ProjectGHFAdapter;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 项目管理 -- 项目信息
+ * 项目管理 -- 供货方
  */
-public class ProjectManagerActivity extends ActivityFragmentSupport {
+public class ProjectGHFActivity extends ActivityFragmentSupport {
 
     @ViewInject(R.id.listview)
     private XListView mXlistView;
@@ -41,7 +41,7 @@ public class ProjectManagerActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("项目信息");
+        mLeftTextView.setText("供货方信息");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);
@@ -50,7 +50,7 @@ public class ProjectManagerActivity extends ActivityFragmentSupport {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(ProjectManagerActivity.this, ProjectManagerSubmitActivity.class);
+                intent.setClass(ProjectGHFActivity.this, ProjectGHFSubmitActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,7 +63,7 @@ public class ProjectManagerActivity extends ActivityFragmentSupport {
         for (int i = 0; i < 10; i++) {
             mList.add("测试");
         }
-        ProjectManagerAdapter mAdapter = new ProjectManagerAdapter(this, mList);
+        ProjectGHFAdapter mAdapter = new ProjectGHFAdapter(this, mList);
         mXlistView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
