@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.model.entity.ProjectXcKcEntity;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class ProjectXckcAdapter extends ArrayAdapter<String> {
+public class ProjectXckcAdapter extends ArrayAdapter<ProjectXcKcEntity> {
 
     private final LayoutInflater inflater;
 
@@ -29,7 +30,7 @@ public class ProjectXckcAdapter extends ArrayAdapter<String> {
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    public ProjectXckcAdapter(ActivityFragmentSupport activityFragment, List<String> mList) {
+    public ProjectXckcAdapter(ActivityFragmentSupport activityFragment, List<ProjectXcKcEntity> mList) {
         super(activityFragment, R.layout.item_projectmanager, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
@@ -50,6 +51,8 @@ public class ProjectXckcAdapter extends ArrayAdapter<String> {
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
+        mHodlerView.tv_title.setText(getItem(position).getXcPerson());
+        mHodlerView.tv_time.setText(getItem(position).getXcTime());
         return convertView;
     }
 

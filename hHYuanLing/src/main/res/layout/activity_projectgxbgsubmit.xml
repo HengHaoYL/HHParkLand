@@ -18,7 +18,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView2"
+
                 android:layout_width="100dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
@@ -26,6 +26,7 @@
                 android:textSize="@dimen/gj_d" />
 
             <EditText
+                android:id="@+id/tv_proname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -56,6 +57,7 @@
                 android:textSize="@dimen/gj_d" />
 
             <EditText
+                android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -85,6 +87,7 @@
                 android:textSize="@dimen/gj_d" />
 
             <EditText
+                android:id="@+id/tv_whatname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -115,6 +118,7 @@
                 android:textSize="@dimen/gj_d" />
 
             <TextView
+                android:id="@+id/tv_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -132,6 +136,7 @@
             android:background="@color/line" />
 
         <TextView
+            android:id="@+id/tv_sgt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/icon_photo"
@@ -144,6 +149,7 @@
             android:background="@color/line" />
 
         <TextView
+            android:id="@+id/tv_gxysd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/icon_photo"
