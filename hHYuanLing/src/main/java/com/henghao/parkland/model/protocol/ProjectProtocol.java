@@ -21,6 +21,7 @@ import com.henghao.parkland.model.ascyn.BaseModel;
 import com.henghao.parkland.model.ascyn.BeeCallback;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectInfoEntity;
+import com.henghao.parkland.model.entity.ProjectKGBGEntity;
 import com.henghao.parkland.model.entity.ProjectTzEntity;
 import com.henghao.parkland.model.entity.SGMaterialEntity;
 import com.henghao.parkland.model.entity.SGWalletEntity;
@@ -176,6 +177,23 @@ public class ProjectProtocol extends BaseModel {
     }
 
     /**
+     * 查询开工报告
+     *
+     * @param uid
+     */
+    public void queryKgReportMsg(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUERYKGREPORTMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 项目信息提交
      *
      * @param uid
@@ -249,6 +267,13 @@ public class ProjectProtocol extends BaseModel {
                     Type type = new TypeToken<List<ProjectTzEntity>>() {
                     }.getType();
                     List<ProjectTzEntity> homeData = ToolsJson.parseObjecta(data, type);
+                    ProjectProtocol.this.OnMessageResponse(url, homeData, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYKGREPORTMSG)) {
+                    // 查询开工报告
+                    Type type = new TypeToken<List<ProjectKGBGEntity>>() {
+                    }.getType();
+                    List<ProjectKGBGEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectProtocol.this.OnMessageResponse(url, homeData, status);
                 }
             } catch (Exception e) {

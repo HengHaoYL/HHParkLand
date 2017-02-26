@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.model.entity.ProjectKGBGEntity;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class ProjectKGBGAdapter extends ArrayAdapter<String> {
+public class ProjectKGBGAdapter extends ArrayAdapter<ProjectKGBGEntity> {
 
     private final LayoutInflater inflater;
 
@@ -29,7 +30,7 @@ public class ProjectKGBGAdapter extends ArrayAdapter<String> {
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    public ProjectKGBGAdapter(ActivityFragmentSupport activityFragment, List<String> mList) {
+    public ProjectKGBGAdapter(ActivityFragmentSupport activityFragment, List<ProjectKGBGEntity> mList) {
         super(activityFragment, R.layout.item_projectmanager, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
@@ -50,6 +51,8 @@ public class ProjectKGBGAdapter extends ArrayAdapter<String> {
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
+        mHodlerView.tv_title.setText(getItem(position).getKgDocument());
+        mHodlerView.tv_time.setText(getItem(position).getKgTime());
         return convertView;
     }
 

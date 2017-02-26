@@ -59,6 +59,7 @@ public class ProjectInfoActivity extends ActivityFragmentSupport {
         super.initWidget();
         initWithBar();
         mLeftTextView.setText("项目信息");
+        tv_title.setText("项目信息");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithRightBar();
         mRightTextView.setText("添加");
@@ -73,6 +74,15 @@ public class ProjectInfoActivity extends ActivityFragmentSupport {
     }
 
     @Override
+    public void initData() {
+        super.initData();
+        data = new ArrayList<>();
+        mAdapter = new ProjectInfoAdapter(this, data);
+        listView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         /**
@@ -82,15 +92,6 @@ public class ProjectInfoActivity extends ActivityFragmentSupport {
         mProtocol.addResponseListener(this);
         mProtocol.queryProjectMsg(getLoginUid());
         mActivityFragmentView.viewLoading(View.VISIBLE);
-    }
-
-    @Override
-    public void initData() {
-        super.initData();
-        data = new ArrayList<>();
-        mAdapter = new ProjectInfoAdapter(this, data);
-        listView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
     }
 
     @Override

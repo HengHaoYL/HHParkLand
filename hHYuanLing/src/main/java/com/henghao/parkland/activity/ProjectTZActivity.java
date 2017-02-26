@@ -57,6 +57,7 @@ public class ProjectTZActivity extends ActivityFragmentSupport {
         super.initWidget();
         initWithBar();
         mLeftTextView.setText("项目图纸");
+        tv_title.setText("项目图纸");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);

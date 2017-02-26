@@ -158,9 +158,19 @@ public class ProtocolUrl {
     public static final String PROJECT_QUERYPROJECTMSG = "projectManage/queryProjectMsg";
 
     /**
+     * 开工报告查询
+     */
+    public static final String PROJECT_QUERYKGREPORTMSG = "projectManage/queryKgReportMsg";
+
+    /**
      * 项目信息提交
      */
     public static final String PROJECT_SAVEPROJECTMSG = "projectManage/saveProjectMsg";
+
+    /**
+     * 项目图纸查询
+     */
+    public static final String PROJECT_QUERYBLUEPRINTMSG = "projectManage/queryBluePrintMsg";
 
     /************************ 项目管理 end **************************/
 
