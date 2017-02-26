@@ -143,9 +143,24 @@ public class ProtocolUrl {
     public static final String PROJECT_QUERYXCKC = "projectManage/queryProspectMsg";
 
     /**
+     * 施工资料查询
+     */
+    public static final String PROJECT_QUERYSGZL = "projectManage/querySgmemoMsg";
+
+    /**
      * 施工资料提交
      */
     public static final String PROJECT_SGINFO = "http://172.16.13.101:8080/YL_BigData/" + "projectManage/saveBiuldDataMsg";
+
+    /**
+     * 项目信息查询
+     */
+    public static final String PROJECT_QUERYPROJECTMSG = "projectManage/queryProjectMsg";
+
+    /**
+     * 项目信息提交
+     */
+    public static final String PROJECT_SAVEPROJECTMSG = "projectManage/saveProjectMsg";
 
     /************************ 项目管理 end **************************/
 

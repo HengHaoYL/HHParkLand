@@ -13,8 +13,8 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.ProjectGHFActivity;
 import com.henghao.parkland.activity.ProjectGXBGActivity;
+import com.henghao.parkland.activity.ProjectInfoActivity;
 import com.henghao.parkland.activity.ProjectKGBGActivity;
-import com.henghao.parkland.activity.ProjectManagerActivity;
 import com.henghao.parkland.activity.ProjectSBdataActivity;
 import com.henghao.parkland.activity.ProjectTZActivity;
 import com.henghao.parkland.activity.ProjectTeamActivity;
@@ -85,15 +85,15 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 switch (position) {
-                    case 0:
-                        intent.setClass(mActivityFragmentSupport, ProjectManagerActivity.class);
+                    case 0://项目信息
+                        intent.setClass(mActivityFragmentSupport, ProjectInfoActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 1:
+                    case 1://项目图纸
                         intent.setClass(mActivityFragmentSupport, ProjectTZActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 2:
+                    case 2://供货方信息
                         intent.setClass(mActivityFragmentSupport, ProjectGHFActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
