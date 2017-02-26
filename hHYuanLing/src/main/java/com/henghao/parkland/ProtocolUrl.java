@@ -133,6 +133,14 @@ public class ProtocolUrl {
      * 施工资料查询
      */
     public static final String PROJECT_QUARYSGZL = "projectManage/queryBuildDateMsg";
+    /**
+     * 现场勘查
+     */
+    public static final String PROJECT_SAVEXCKC = "projectManage/saveProspectMsg";
+    /**
+     * 现场勘查查询
+     */
+    public static final String PROJECT_QUERYXCKC = "projectManage/queryProspectMsg";
 
     /**
      * 施工资料提交
