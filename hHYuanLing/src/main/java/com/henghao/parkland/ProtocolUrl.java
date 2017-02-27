@@ -138,6 +138,10 @@ public class ProtocolUrl {
      */
     public static final String PROJECT_SAVEXCKC = "projectManage/saveProspectMsg";
     /**
+     * 开工报告
+     */
+    public static final String PROJECT_SAVEKGBG = "projectManage/saveKgReportMsg";
+    /**
      * 现场勘查查询
      */
     public static final String PROJECT_QUERYXCKC = "projectManage/queryProspectMsg";

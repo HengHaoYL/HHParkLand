@@ -14,11 +14,13 @@ import com.henghao.parkland.R;
 import com.henghao.parkland.activity.ProjectGHFActivity;
 import com.henghao.parkland.activity.ProjectGXBGActivity;
 import com.henghao.parkland.activity.ProjectInfoActivity;
+import com.henghao.parkland.activity.ProjectJunGongActivity;
 import com.henghao.parkland.activity.ProjectKGBGActivity;
 import com.henghao.parkland.activity.ProjectSBdataActivity;
 import com.henghao.parkland.activity.ProjectTZActivity;
 import com.henghao.parkland.activity.ProjectTeamActivity;
 import com.henghao.parkland.activity.ProjectXckcActivity;
+import com.henghao.parkland.activity.ProjectZiZhiActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -85,15 +87,15 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 switch (position) {
-                    case 0://项目信息
+                    case 0:
                         intent.setClass(mActivityFragmentSupport, ProjectInfoActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 1://项目图纸
+                    case 1:
                         intent.setClass(mActivityFragmentSupport, ProjectTZActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 2://供货方信息
+                    case 2:
                         intent.setClass(mActivityFragmentSupport, ProjectGHFActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
@@ -120,6 +122,16 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                     case 7:
                         //现场勘测
                         intent.setClass(mActivityFragmentSupport, ProjectXckcActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
+                        break;
+                    case 8:
+                        //变更
+                        intent.setClass(mActivityFragmentSupport, ProjectZiZhiActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
+                        break;
+                    case 9:
+                        //
+                        intent.setClass(mActivityFragmentSupport, ProjectJunGongActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                 }

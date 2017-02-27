@@ -96,6 +96,16 @@ public class XiangmuFragment extends FragmentSupport {
         mEntity8.setImageId(R.drawable.icon_eight);
         mEntity8.setName("现场勘查");
         mList2.add(mEntity8);
+        //第九个个
+        AppGridEntity mEntity9 = new AppGridEntity();
+        mEntity9.setImageId(R.drawable.icon_zibiange);
+        mEntity9.setName("资质变更");
+        mList2.add(mEntity9);
+        //第十个
+        AppGridEntity mEntity10 = new AppGridEntity();
+        mEntity10.setImageId(R.drawable.icon_jungong);
+        mEntity10.setName("竣工");
+        mList2.add(mEntity10);
         mProAdapter = new ProjectFirstAdapter(this.mActivity, mList2);
         this.gridview.setAdapter(mProAdapter);
         mProAdapter.notifyDataSetChanged();
