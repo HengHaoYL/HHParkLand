@@ -203,7 +203,7 @@ public class ProjectProtocol extends BaseModel {
      * @param xmPerson
      * @param xmPersonNum
      */
-    public void saveProjectMsg(String uid, String xmAdd, String xmContact, String xmName, String xmPerson, String xmPersonNum) {
+    public void saveProjectMsg(String uid, String xmAdd, String xmContact, String xmName, String xmPerson, int xmPersonNum) {
         try {
             String url = ProtocolUrl.PROJECT_SAVEPROJECTMSG;
             Map<String, Object> params = new HashMap<String, Object>();

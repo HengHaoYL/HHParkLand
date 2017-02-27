@@ -24,7 +24,7 @@ public class ProjectInfoEntity extends IdEntity {
     @Expose
     private String xmPerson;
     @Expose
-    private String xmPersonNum;
+    private int xmPersonNum;
 
     public String getXmAdd() {
         return xmAdd;
@@ -58,11 +58,11 @@ public class ProjectInfoEntity extends IdEntity {
         this.xmPerson = xmPerson;
     }
 
-    public String getXmPersonNum() {
+    public int getXmPersonNum() {
         return xmPersonNum;
     }
 
-    public void setXmPersonNum(String xmPersonNum) {
+    public void setXmPersonNum(int xmPersonNum) {
         this.xmPersonNum = xmPersonNum;
     }
 }
