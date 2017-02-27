@@ -51,9 +51,6 @@ public class ProjectXckcActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         mData = new ArrayList<>();
-        ProjectSecProtocol mProtocol = new ProjectSecProtocol(this);
-        mProtocol.addResponseListener(this);
-        mProtocol.queryXCKC(getLoginUid());
         mActivityFragmentView.viewLoading(View.VISIBLE);
         initWithBar();
         mLeftTextView.setText("现场勘查");
@@ -69,6 +66,14 @@ public class ProjectXckcActivity extends ActivityFragmentSupport {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ProjectSecProtocol mProtocol = new ProjectSecProtocol(this);
+        mProtocol.addResponseListener(this);
+        mProtocol.queryXCKC(getLoginUid());
     }
 
     @Override

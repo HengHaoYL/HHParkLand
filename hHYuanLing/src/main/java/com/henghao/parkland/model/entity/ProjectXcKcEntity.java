@@ -1,7 +1,10 @@
 package com.henghao.parkland.model.entity;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.henghao.parkland.model.IdEntity;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/2/26 0026.
@@ -9,13 +12,20 @@ import com.henghao.parkland.model.IdEntity;
 
 public class ProjectXcKcEntity extends IdEntity {
 
-   /* isNo:0,                               数据状态信息，默认为0/1(忽略)
-    pid:2,                                表id，主键
-    uid:6,                                用户编号
-    xcAdd:"xx",                           现场勘探地址
-    xcPerson:"xx",                        现场勘探人员姓名
-    xcSituation:xx,                       现场勘探图片路径编号
-    xcTime:"xx"                           现场勘探时间*/
+   /* "pid":5,
+            "xcTime":"2017-2-27 9:59",
+            "xcAdd":"hh",
+            "xcPerson":"hj",
+            "xcSituation":"ee85839c04ca486eab2b903befe3a625",
+            "uid":25,
+            "isNo":0,
+            "url":[
+            "/Prospect/Img/IMG_20170221_094513.jpg"
+            ]*/
+
+    @Expose
+    @SerializedName("url")
+    private List<String> url;
 
     @Expose
     private String pid;
