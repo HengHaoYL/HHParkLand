@@ -72,7 +72,7 @@ public class ProjectInfoSubmitActivity extends ActivityFragmentSupport {
         String xmAdd = etXmAdd.getText().toString().trim();
         String xmContact = etXmContact.getText().toString().trim();
         String xmPerson = etXmPerson.getText().toString().trim();
-        String xmPersonNum = etXmPersonNum.getText().toString().trim();
+        int xmPersonNum = new Integer(etXmPersonNum.getText().toString().trim()).intValue();
         if (checkData()) {
             /**
              * 访问网络
