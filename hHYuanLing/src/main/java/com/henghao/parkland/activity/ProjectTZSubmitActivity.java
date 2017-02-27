@@ -30,6 +30,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -101,8 +102,8 @@ public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
                     Request.Builder builder = new Request.Builder();
                     String tzAdd = etTzAdd.getText().toString().trim();
                     String tzHead = etTzHead.getText().toString().trim();
-                    String tzName = etTzTel.getText().toString().trim();
-                    String tzTel = etTzName.getText().toString().trim();
+                    String tzName = etTzName.getText().toString().trim();
+                    String tzTel = etTzTel.getText().toString().trim();
                     MultipartBuilder multipartBuilder = new MultipartBuilder();
                     multipartBuilder.type(MultipartBuilder.FORM)//
                             .addFormDataPart("uid", getLoginUid())//用户ID
@@ -208,14 +209,14 @@ public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
                 if ((resultCode == Activity.RESULT_OK) || (resultCode == Activity.RESULT_CANCELED)) {
                     this.mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
                     if (!ToolsKit.isEmpty(this.mSelectPath)) {
-                        StringBuilder sb = new StringBuilder();
+                        List<String> imgNames = new ArrayList<>();
                         for (String filePath : mSelectPath) {
                             String imageName = getImageName(filePath);
-                            sb.append(imageName + "\n");
+                            imgNames.add(imageName);
                             File file = new File(filePath);
                             mFileList.add(file);
                         }
-                        tvTzImg.setText(sb.toString());
+                        tvTzImg.setText("图片名：" + imgNames.toString());
                     }
                 }
             }

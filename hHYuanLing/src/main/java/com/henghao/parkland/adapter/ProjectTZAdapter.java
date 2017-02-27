@@ -52,7 +52,7 @@ public class ProjectTZAdapter extends ArrayAdapter<ProjectTzEntity> {
             mHodlerView = (HodlerView) convertView.getTag();
         }
         mHodlerView.tv_title.setText(getItem(position).getTzName());
-        mHodlerView.tv_time.setText(getItem(position).getTzAdd());
+        mHodlerView.tv_time.setText(getItem(position).getTzHead());
         return convertView;
     }
 
