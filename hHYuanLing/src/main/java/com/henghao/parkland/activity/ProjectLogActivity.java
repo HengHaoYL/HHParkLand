@@ -135,6 +135,7 @@ public class ProjectLogActivity extends ActivityFragmentSupport {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                mActivityFragmentView.viewLoading(View.GONE);
                                 tvState.setVisibility(View.GONE);
                             }
                         });
@@ -168,7 +169,6 @@ public class ProjectLogActivity extends ActivityFragmentSupport {
                             public void run() {
                                 adapter.notifyDataSetChanged();
                                 listView.setAdapter(adapter);
-                                mActivityFragmentView.viewLoading(View.GONE);
                             }
                         });
                     } else if (error == 0) {
@@ -176,6 +176,7 @@ public class ProjectLogActivity extends ActivityFragmentSupport {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                mActivityFragmentView.viewLoading(View.GONE);
                                 Toast.makeText(ProjectLogActivity.this, result, Toast.LENGTH_SHORT).show();
                                 tvState.setVisibility(View.VISIBLE);
                                 tvState.setText(result);
