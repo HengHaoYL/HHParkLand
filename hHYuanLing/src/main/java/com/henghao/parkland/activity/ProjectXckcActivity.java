@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
+import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.views.xlistview.XListView;
+import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
@@ -18,6 +20,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 
 import org.json.JSONException;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,12 +92,22 @@ public class ProjectXckcActivity extends ActivityFragmentSupport {
         super.OnMessageResponse(url, jo, status);
         if (url.endsWith(ProtocolUrl.PROJECT_QUERYXCKC)) {
             if (jo instanceof BaseEntity) {
+                BaseEntity mEntity = (BaseEntity) jo;
+                if (mEntity.getData() == null) {
+                    return;
+                }
+                String data = ToolsJson.toJson(mEntity.getData());
+                Type type = new TypeToken<List<ProjectXcKcEntity>>() {
+                }.getType();
+                List<ProjectXcKcEntity> homeData = ToolsJson.parseObjecta(data, type);
+                mAdapter.setPath(mEntity.getPath());
+                mData.clear();
+                mData.addAll(homeData);
+                mAdapter.notifyDataSetChanged();
                 return;
             }
-            List<ProjectXcKcEntity> homeData = (List<ProjectXcKcEntity>) jo;
-            mData.clear();
-            mData.addAll(homeData);
-            mAdapter.notifyDataSetChanged();
+
+
         }
     }
 }

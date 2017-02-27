@@ -1,5 +1,7 @@
 package com.henghao.parkland.adapter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.ProjectInfoDesActivity;
 import com.henghao.parkland.model.entity.ProjectInfoEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -53,7 +56,23 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
         }
         mHodlerView.tv_time.setText(getItem(position).getXmAdd());
         mHodlerView.tv_title.setText(getItem(position).getXmName());
+        viewClick(mHodlerView,convertView,position);
         return convertView;
+    }
+
+    private void viewClick(HodlerView mHodlerView, View convertView, final int position) {
+       final ProjectInfoEntity mentity= getItem(position);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(mActivityFragmentSupport, ProjectInfoDesActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constant.INTNET_DATA, mentity);
+                intent.putExtra("bundle",bundle);
+                mActivityFragmentSupport.startActivity(intent);
+            }
+        });
     }
 
     private class HodlerView {

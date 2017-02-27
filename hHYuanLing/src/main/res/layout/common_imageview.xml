@@ -8,8 +8,9 @@
 
     <ImageView
         android:id="@+id/imghorzen"
-        android:layout_width="@dimen/fitment_mark"
-        android:layout_height="@dimen/fitment_mark" >
+        android:layout_width="@dimen/main_leftmark"
+        android:scaleType="centerCrop"
+        android:layout_height="@dimen/main_leftmark" >
     </ImageView>
 
 </LinearLayout>

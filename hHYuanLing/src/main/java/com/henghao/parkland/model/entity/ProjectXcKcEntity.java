@@ -81,4 +81,12 @@ public class ProjectXcKcEntity extends IdEntity {
     public void setXcTime(String xcTime) {
         this.xcTime = xcTime;
     }
+
+    public List<String> getUrl() {
+        return url;
+    }
+
+    public void setUrl(List<String> url) {
+        this.url = url;
+    }
 }
