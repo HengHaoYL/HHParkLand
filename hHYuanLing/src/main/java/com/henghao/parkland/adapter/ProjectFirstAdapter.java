@@ -88,19 +88,22 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                 Intent intent = new Intent();
                 switch (position) {
                     case 0:
+                        //项目信息
                         intent.setClass(mActivityFragmentSupport, ProjectInfoActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 1:
+                        //项目图纸
                         intent.setClass(mActivityFragmentSupport, ProjectTZActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 2:
+                        //供货方信息
                         intent.setClass(mActivityFragmentSupport, ProjectGHFActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 3:
-                        //施工人员
+                        //施工团队
                         intent.setClass(mActivityFragmentSupport, ProjectTeamActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
@@ -120,17 +123,17 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 7:
-                        //现场勘测
+                        //现场勘察
                         intent.setClass(mActivityFragmentSupport, ProjectXckcActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 8:
-                        //变更
+                        //资质变更
                         intent.setClass(mActivityFragmentSupport, ProjectZiZhiActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 9:
-                        //
+                        //竣工
                         intent.setClass(mActivityFragmentSupport, ProjectJunGongActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
