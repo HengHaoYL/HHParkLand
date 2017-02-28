@@ -166,6 +166,7 @@ public class ProjectWorkBWActivity extends ActivityFragmentSupport {
                             public void run() {
                                 Toast.makeText(ProjectWorkBWActivity.this, result, Toast.LENGTH_SHORT).show();
                                 tvState.setVisibility(View.VISIBLE);
+                                mActivityFragmentView.viewLoading(View.GONE);
                                 tvState.setText(result);
                             }
                         });

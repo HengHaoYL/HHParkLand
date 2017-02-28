@@ -22,6 +22,7 @@ import com.henghao.parkland.model.ascyn.BeeCallback;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectInfoEntity;
 import com.henghao.parkland.model.entity.ProjectKGBGEntity;
+import com.henghao.parkland.model.entity.ProjectTeamEntity;
 import com.henghao.parkland.model.entity.ProjectTzEntity;
 import com.henghao.parkland.model.entity.SGMaterialEntity;
 import com.henghao.parkland.model.entity.SGWalletEntity;
@@ -177,6 +178,23 @@ public class ProjectProtocol extends BaseModel {
     }
 
     /**
+     * 查询施工人员
+     *
+     * @param uid
+     */
+    public void querySgPersonnelMsg(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUERYSGPERSONNELMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 查询开工报告
      *
      * @param uid
@@ -213,6 +231,21 @@ public class ProjectProtocol extends BaseModel {
             params.put("xmName", xmName);
             params.put("xmPerson", xmPerson);
             params.put("xmPersonNum", xmPersonNum);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveSgPersonnelMsg(String psIdcard, String psName, String psTel, String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_SAVESGPERSONNELMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            params.put("psIdcard", psIdcard);
+            params.put("psName", psName);
+            params.put("psTel", psTel);
             this.mBeeCallback.url(url).type(String.class).params(params);
             this.aq.ajax(this.mBeeCallback);
         } catch (Exception e) {
@@ -274,6 +307,13 @@ public class ProjectProtocol extends BaseModel {
                     Type type = new TypeToken<List<ProjectKGBGEntity>>() {
                     }.getType();
                     List<ProjectKGBGEntity> homeData = ToolsJson.parseObjecta(data, type);
+                    ProjectProtocol.this.OnMessageResponse(url, homeData, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYSGPERSONNELMSG)) {
+                    // 查询施工人员
+                    Type type = new TypeToken<List<ProjectTeamEntity>>() {
+                    }.getType();
+                    List<ProjectTeamEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectProtocol.this.OnMessageResponse(url, homeData, status);
                 }
             } catch (Exception e) {

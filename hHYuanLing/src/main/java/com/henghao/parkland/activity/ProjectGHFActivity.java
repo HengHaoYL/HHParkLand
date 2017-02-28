@@ -3,6 +3,7 @@ package com.henghao.parkland.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.benefit.buy.library.views.xlistview.XListView;
 import com.henghao.parkland.ActivityFragmentSupport;
@@ -15,12 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 项目管理 -- 供货方
+ * 项目管理 -- 供货方信息
  */
 public class ProjectGHFActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.listview)
+    @ViewInject(R.id.lv_projectghf)
     private XListView mXlistView;
+    @ViewInject(R.id.tv_title)
+    private TextView tv_title;
+    @ViewInject(R.id.tv_state_projectghf)
+    private TextView tvState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -172,9 +172,19 @@ public class ProtocolUrl {
     public static final String PROJECT_SAVEPROJECTMSG = "projectManage/saveProjectMsg";
 
     /**
+     * 施工人员提交
+     */
+    public static final String PROJECT_SAVESGPERSONNELMSG = "projectManage/saveSgPersonnelMsg";
+
+    /**
      * 项目图纸查询
      */
     public static final String PROJECT_QUERYBLUEPRINTMSG = "projectManage/queryBluePrintMsg";
+
+    /**
+     * 施工人员查询
+     */
+    public static final String PROJECT_QUERYSGPERSONNELMSG = "projectManage/querySgPersonnelMsg";
 
     /************************ 项目管理 end **************************/
 

@@ -8,7 +8,7 @@ import com.henghao.parkland.R;
 import com.lidroid.xutils.ViewUtils;
 
 /**
- * 项目管理 -- 项目图纸提交
+ * 项目管理 -- 供货方信息提交
  */
 public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
 
