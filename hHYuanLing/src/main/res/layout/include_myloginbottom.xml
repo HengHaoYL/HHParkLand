@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/arrow_right"
+        android:padding="@dimen/padding_big"
+        android:textColor="@color/text_color_b"
+        android:background="@color/white"
+        android:textSize="@dimen/gj_d"
+        android:drawableLeft="@drawable/icon_mymoneycase"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/padding_small"
+        android:text="我的钱包" />
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dip"
+        android:background="@color/line" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/arrow_right"
+        android:padding="@dimen/padding_big"
+        android:textColor="@color/text_color_b"
+        android:background="@drawable/selector_listback"
+        android:textSize="@dimen/gj_d"
+        android:layout_marginTop="@dimen/padding_big"
+        android:drawableLeft="@drawable/icon_myproject"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/padding_small"
+        android:text="我的项目" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/arrow_right"
+        android:padding="@dimen/padding_big"
+        android:textColor="@color/text_color_b"
+        android:background="@color/white"
+        android:layout_marginTop="1dip"
+        android:textSize="@dimen/gj_d"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/icon_mywork"
+        android:drawablePadding="@dimen/padding_small"
+        android:text="我的工作" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dip"
+        android:background="@color/line" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/arrow_right"
+        android:padding="@dimen/padding_big"
+        android:textColor="@color/text_color_b"
+        android:background="@color/white"
+        android:textSize="@dimen/gj_d"
+        android:layout_marginTop="@dimen/padding_big"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/icon_myriji"
+        android:drawablePadding="@dimen/padding_small"
+        android:text="我的备忘" />
+
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.lidroid.xutils.ViewUtils;
 
@@ -38,9 +39,27 @@ public class MsgFragment extends FragmentSupport {
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
+    /**
+     * 标题操作 〈一句话功能简述〉 〈功能详细描述〉
+     * @see [类、类#方法、类#成员]
+     * @since [产品/模块版本]
+     */
     private void initwithContent() {
         // TODO Auto-generated method stub
-        this.mActivityFragmentView.getNavitionBarView().setVisibility(View.GONE);
+        initWithCenterBar();
+        this.mCenterTextView.setVisibility(View.VISIBLE);
+        this.mCenterTextView.setText(getResources().getString(R.string.app_name));
+        initWithBar();
+        this.mLeftImageView.setVisibility(View.VISIBLE);
+        this.mLeftImageView.setImageResource(R.drawable.home_liebiao);
+        this.mLeftLinearLayout.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                mActivity.getLoginUserSharedPre().edit().putString(Constant.USERID, null).putString(Constant.USERNAME, null).putString(Constant.USERPHONE, null).commit();
+            }
+        });
     }
 
     public void initWidget() {
