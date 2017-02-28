@@ -22,15 +22,17 @@ public class ProjectGHFActivity extends ActivityFragmentSupport {
 
     @ViewInject(R.id.lv_projectghf)
     private XListView mXlistView;
+
     @ViewInject(R.id.tv_title)
     private TextView tv_title;
+
     @ViewInject(R.id.tv_state_projectghf)
     private TextView tvState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.common_xlistview);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_ghf);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);

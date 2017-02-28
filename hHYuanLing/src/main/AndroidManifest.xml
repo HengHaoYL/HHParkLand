@@ -345,6 +345,12 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <!--图片信息-->
+        <activity
+            android:name=".activity.SiftImagesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
 
         <!-- webView通用 -->
         <activity

@@ -30,8 +30,8 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:drawableLeft="@drawable/icon_datatime"
-                android:hint="请选择时间"
                 android:drawablePadding="@dimen/padding_big"
+                android:hint="请选择时间"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
@@ -83,6 +83,11 @@
             android:text="现场验收情况"
             android:textSize="@dimen/gj_d" />
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,6 +95,11 @@
             android:padding="@dimen/padding_big"
             android:text="竣工图"
             android:textSize="@dimen/gj_d" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
 
         <TextView
             android:layout_width="match_parent"

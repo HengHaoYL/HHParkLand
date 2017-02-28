@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/case_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical" >
+
+    <com.benefit.buy.library.photoview.PhotoView
+        android:id="@+id/case_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/item_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#88000000"
+        android:gravity="center"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_textbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/item_bottom"
+        android:background="@color/text_color_t"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_big"
+        android:paddingTop="@dimen/padding_big" >
+
+        <TextView
+            android:id="@+id/case_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="left|center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingLeft="@dimen/padding_normal"
+            android:singleLine="true"
+            android:textColor="@color/text_color_b"
+            android:textSize="@dimen/gj_f" />
+
+        <TextView
+            android:id="@+id/case_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_normal"
+            android:ellipsize="end"
+            android:gravity="left|center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingLeft="@dimen/padding_normal"
+            android:singleLine="true"
+            android:textColor="@color/text_color_a"
+            android:textSize="@dimen/gj_d" />
+    </LinearLayout>
+
+</LinearLayout>

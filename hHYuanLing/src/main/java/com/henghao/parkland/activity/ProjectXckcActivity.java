@@ -106,8 +106,6 @@ public class ProjectXckcActivity extends ActivityFragmentSupport {
                 mAdapter.notifyDataSetChanged();
                 return;
             }
-
-
         }
     }
 }
