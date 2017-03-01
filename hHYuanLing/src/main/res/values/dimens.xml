@@ -29,6 +29,7 @@
     <dimen name="view_popwindow">200dip</dimen>
     <dimen name="view_high">260dip</dimen>
     <dimen name="viewheader_hieght">55dip</dimen>
+    <dimen name="view_edit">66dip</dimen>
     <!-- 界面高度 -->
     <dimen name="view_height_">24dip</dimen>
     <dimen name="view_height_a">28dip</dimen>

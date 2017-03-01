@@ -16,6 +16,7 @@ import com.benefit.buy.library.views.ToastView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.adapter.FragmentTabAdapter;
 import com.henghao.parkland.fragment.AppFragment;
 import com.henghao.parkland.fragment.FragmentSupport;
@@ -69,9 +70,9 @@ public class MainActivity extends ActivityFragmentSupport {
         this.mActivityFragmentView.viewLoading(View.GONE);
         this.mActivityFragmentView.clipToPadding(true);
         setContentView(this.mActivityFragmentView);
-        if (getLoginUser() == null) {
+        if (getLoginUid() == null) {
             Intent intent = new Intent();
-            intent.setClass(this, LoginActivity.class);
+            intent.setClass(this, LoginAndRegActivity.class);
             startActivity(intent);
             finish();
         }

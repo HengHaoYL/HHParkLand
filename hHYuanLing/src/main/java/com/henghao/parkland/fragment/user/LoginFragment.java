@@ -1,17 +1,21 @@
-package com.henghao.parkland.activity;
+package com.henghao.parkland.fragment.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsKit;
-import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.MainActivity;
+import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.UserLoginEntity;
 import com.henghao.parkland.model.protocol.LoginProtocol;
@@ -21,8 +25,15 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import org.json.JSONException;
 
-
-public class LoginActivity extends ActivityFragmentSupport {
+/**
+ * 我的登录〈一句话功能简述〉 〈功能详细描述〉
+ *
+ * @author zhangxianwen
+ * @version HDMNV100R001, 2016年8月15日
+ * @see [相关类/方法]
+ * @since [产品/模块版本]
+ */
+public class LoginFragment extends FragmentSupport {
 
     @ViewInject(R.id.login_pass_quick)
     private TextView login_pass_quick;
@@ -33,45 +44,47 @@ public class LoginActivity extends ActivityFragmentSupport {
     @ViewInject(R.id.login_pass)
     private EditText login_pass;
 
+    public static FragmentSupport newInstance(Object obj) {
+        LoginFragment fragment = new LoginFragment();
+        if (fragment.object == null) {
+            fragment.object = obj;
+        }
+        return fragment;
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         this.mActivityFragmentView.viewMain(R.layout.activity_login);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
-        this.mActivityFragmentView.getNavitionBarView().setVisibility(View.VISIBLE);
+        mActivityFragmentView.getNavitionBarView().setVisibility(View.GONE);
         ViewUtils.inject(this, this.mActivityFragmentView);
-        setContentView(this.mActivityFragmentView);
         initWidget();
         initData();
+        return this.mActivityFragmentView;
     }
 
-    @Override
+    private void initData() {
+        mLeftImageView = (ImageView) getActivity().findViewById(R.id.bar_left_img);
+        mLeftTextView = (TextView) getActivity().findViewById(R.id.bar_left_title);
+        mLeftTextView.setText("登录");
+        mLeftImageView.setImageDrawable(getResources().getDrawable(R.drawable.btn_blackback));
+    }
+
     public void initWidget() {
-        super.initWidget();
     }
 
-    @Override
-    public void initData() {
-        initWithCenterBar();
-        mCenterTextView.setVisibility(View.VISIBLE);
-        mCenterTextView.setText("登录");
-    }
 
-    @OnClick({R.id.login_pass_quick, R.id.tv_login})
+    @OnClick({R.id.tv_login})
     public void viewClick(View v) {
         Intent intent = new Intent();
         switch (v.getId()) {
-            case R.id.login_pass_quick:
-                //注册
-                intent.setClass(LoginActivity.this, RegActivity.class);
-                startActivity(intent);
-                break;
             case R.id.tv_login:
                 //登录
                 if (checkData()) {
-                    LoginProtocol mLoginProtocol = new LoginProtocol(this);
+                    LoginProtocol mLoginProtocol = new LoginProtocol(mActivity);
                     mLoginProtocol.addResponseListener(this);
                     mLoginProtocol.login(login_user.getText().toString().trim(), login_pass.getText().toString().trim());
                     mActivityFragmentView.viewLoading(View.VISIBLE);
@@ -82,11 +95,11 @@ public class LoginActivity extends ActivityFragmentSupport {
 
     private boolean checkData() {
         if (ToolsKit.isEmpty(login_user.getText().toString().trim())) {
-            msg("用户名不能为空");
+            mActivity.msg("用户名不能为空");
             return false;
         }
         if (ToolsKit.isEmpty(login_pass.getText().toString().trim())) {
-            msg("密码不能为空");
+            mActivity.msg("密码不能为空");
             return false;
         }
         return true;
@@ -98,15 +111,16 @@ public class LoginActivity extends ActivityFragmentSupport {
         if (url.endsWith(ProtocolUrl.APP_LOGIN)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity base = (BaseEntity) jo;
-                msg(base.getMsg());
+                mActivity.msg(base.getMsg());
                 return;
             }
             UserLoginEntity userLogin = (UserLoginEntity) jo;
-            getLoginUserSharedPre().edit().putString(Constant.USERID, userLogin.getUid()).putString(Constant.USERNAME, userLogin.getUsername()).putString(Constant.USERPHONE, userLogin.getTel()).commit();
+            mActivity.getLoginUserSharedPre().edit().putString(Constant.USERID, userLogin.getUid()).putString(Constant.USERNAME, userLogin.getUsername()).putString(Constant.USERPHONE, userLogin.getTel()).commit();
             Intent intent = new Intent();
-            intent.setClass(LoginActivity.this, MainActivity.class);
+            intent.setClass(mActivity, MainActivity.class);
             startActivity(intent);
-            finish();
+            mActivity.onBackPressed();
         }
     }
+
 }

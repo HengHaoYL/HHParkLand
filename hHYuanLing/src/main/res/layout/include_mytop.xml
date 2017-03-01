@@ -66,11 +66,10 @@
         android:id="@+id/login_root_linear"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/view_mytop"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
 
         <ImageView
             android:id="@+id/image_camera"

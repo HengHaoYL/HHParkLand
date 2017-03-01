@@ -1,14 +1,26 @@
 package com.henghao.parkland.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.benefit.buy.library.utils.tools.ToolsKit;
+import com.benefit.buy.library.views.CircularImageView;
+import com.benefit.buy.library.views.dialog.BaseDialog;
+import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.LoginActivity;
+import com.henghao.parkland.activity.user.LoginAndRegActivity;
+import com.henghao.parkland.activity.user.SettingActivity;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
@@ -21,6 +33,37 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  */
 public class MyLoginFragment extends FragmentSupport {
 
+    /**
+     * 用户头像
+     */
+    @ViewInject(R.id.user_header)
+    private CircularImageView user_header;
+    /**
+     * 用户名称
+     */
+    @ViewInject(R.id.tv_userName)
+    private TextView tv_userName;
+    /**
+     * 用户电话
+     */
+    @ViewInject(R.id.tv_userPhone)
+    private TextView tv_userPhone;
+    /**
+     * 用户电话
+     */
+    @ViewInject(R.id.ll_updatename)
+    private LinearLayout ll_updatename;
+
+    /**
+     * 登录
+     */
+    @ViewInject(R.id.tv_login)
+    private TextView tv_login;
+    /**
+     * 设置
+     */
+    @ViewInject(R.id.image_setting)
+    private ImageView image_setting;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +80,7 @@ public class MyLoginFragment extends FragmentSupport {
     }
 
     private void initData() {
+
     }
 
 
@@ -44,14 +88,87 @@ public class MyLoginFragment extends FragmentSupport {
     }
 
 
-    @OnClick({R.id.tv_login})
-    private void viewClick(View v){
-        switch (v.getId()){
+    public void onResume() {
+        super.onResume();
+        String Uid = mActivity.getLoginUid();
+        if (ToolsKit.isEmpty(Uid)) {
+            //未登录
+            tv_userName.setText("点击登录更精彩");
+            tv_userPhone.setText("暂未登录");
+            tv_login.setText("登录");
+        } else {
+            //已登录
+            tv_userName.setText(mActivity.getLoginUser());
+            tv_userPhone.setText(mActivity.getLoginUserPhone());
+            tv_login.setText("退出");
+        }
+    }
+
+    @OnClick({R.id.tv_login, R.id.ll_updatename,R.id.image_setting})
+    private void viewClick(View v) {
+        Intent intent = new Intent();
+        switch (v.getId()) {
             case R.id.tv_login:
-                Intent intent = new Intent();
-                intent.setClass(mActivity, LoginActivity.class);
+                if (isLogin()) {
+                    Resources mResources = getResources();
+                    String title = mResources.getString(R.string.account_cancel_hint);
+                    String ok = mResources.getString(R.string.ok);
+                    String cancel = mResources.getString(R.string.cancel);
+                    String message = mResources.getString(R.string.account_cancel_affirm);
+                    BaseDialog.getDialog(mActivity, title, message, cancel, cancelListener, ok, exitListener).show();
+                }
+                break;
+            case R.id.ll_updatename:
+                intent.setClass(mActivity, LoginAndRegActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.image_setting:
+                intent.setClass(mActivity, SettingActivity.class);
                 startActivity(intent);
                 break;
         }
     }
+
+
+    private boolean isLogin() {
+        if (!ToolsKit.isEmpty(mActivity.getLoginUid())) {
+            return true;
+        } else {
+            Intent intent = new Intent();
+            intent.setClass(mActivity, LoginAndRegActivity.class);
+            startActivity(intent);
+        }
+        return false;
+    }
+
+    // 注销对话框监听器
+    DialogInterface.OnClickListener exitListener = new DialogInterface.OnClickListener() {
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            SharedPreferences.Editor editor = mActivity.getLoginUserSharedPre().edit();
+            // 退出清空用户信息
+            mActivity.getLoginUserSharedPre().edit().remove(Constant.USERNAME).remove(Constant.USERID)
+                    .remove(Constant.USERIMG).remove(Constant.USERPHONE);
+            editor.putString(Constant.USERID, null);
+            editor.putString(Constant.USERNAME, null);
+            editor.putString(Constant.USERPHONE, null);
+            editor.putString(Constant.USERIMG, null);
+            editor.commit();
+            dialog.dismiss();
+
+            Intent intent = new Intent();
+            intent.setClass(mActivity, LoginAndRegActivity.class);
+            startActivity(intent);
+            mActivity.finish();
+        }
+    };
+
+    DialogInterface.OnClickListener cancelListener = new DialogInterface.OnClickListener() {
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    };
 }

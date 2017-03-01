@@ -7,7 +7,7 @@
     <string name="home_exit">再按一次退出^_^</string>
     <string name="more">更多</string>
     <string name="account_cancel_hint">提示</string>
-    <string name="account_cancel_affirm">是否确定注销？</string>
+    <string name="account_cancel_affirm">是否确定退出？</string>
     <string name="call_affirm">点击「确定」后将自动为您拨打客服热线  </string>
     <string name="call_affirm_last">，为您解答疑问  </string>
     <string name="cancel">取消</string>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/tabs_rg"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/view_edit"
+        android:background="@drawable/common_tabbg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding_normal" >
+
+        <RadioButton
+            android:id="@+id/tg_login"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/selectorgreen_malldetails"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/login"
+            android:textColor="@drawable/tabblue_selector"
+            android:textSize="@dimen/gj_d" />
+
+        <RadioButton
+            android:id="@+id/rg_reg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/selectorgreen_malldetails"
+            android:button="@null"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="注册"
+            android:textColor="@drawable/tabblue_selector"
+            android:textSize="@dimen/gj_d" />
+    </RadioGroup>
+
+</LinearLayout>
