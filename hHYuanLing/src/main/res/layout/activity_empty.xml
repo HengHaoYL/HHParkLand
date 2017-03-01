@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/padding_big"
-        android:src="@drawable/app_not_accesswifi" />
+        android:src="@drawable/app_notview" />
 
     <TextView
         android:id="@+id/empty_title"
@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/padding_vertical"
         android:gravity="center"
-        android:text="@string/app_notaccesswifi"
+        android:text="暂无数据"
         android:textColor="@color/text_color_a"
         android:textSize="@dimen/gj_d" />
 
