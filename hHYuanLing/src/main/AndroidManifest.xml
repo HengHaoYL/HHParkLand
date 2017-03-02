@@ -63,15 +63,16 @@
         android:name=".FMApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icon_logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon, android:theme">
 
         <!-- 启动页 -->
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,7 +85,7 @@
             android:name=".activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
 
@@ -114,145 +115,124 @@
             android:name=".activity.QiandaoSubmitActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
-        <!-- 登录注册 -->
+        <!-- 登录 -->
         <activity
-            android:name=".activity.user.LoginAndRegActivity"
+            android:name=".activity.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme.Login"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!-- 设置 -->
         <activity
-            android:name=".activity.user.SettingActivity"
+            android:name=".activity.RegActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme.Login"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <!-- 测试View -->
         <activity
             android:name=".activity.ViewTestActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 植物养护信息界面 -->
         <activity
             android:name=".activity.MaintenanceActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 养护主页面 -->
         <activity
             android:name=".activity.YanghuMainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 养护管理界面 -->
         <activity
             android:name=".activity.YhManageActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 管护信息填写界面 -->
         <activity
             android:name=".activity.GuanhuActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 植物信息录入界面 -->
         <activity
             android:name=".activity.TreeMessageActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 项目管理界面 -->
         <activity
             android:name=".activity.ProjectActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 工作备忘添加 -->
         <activity
             android:name=".activity.ProjectWorkBWAddActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 工作备忘 -->
         <activity
             android:name=".activity.ProjectWorkBWActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工备忘添加 -->
         <activity
             android:name=".activity.ProjectSGBWAddActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工备忘 -->
         <activity
             android:name=".activity.ProjectSGBWActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工资料添加 -->
         <activity
             android:name=".activity.ProjectSGMaterialAddActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工材料 -->
         <activity
             android:name=".activity.ProjectSGMaterialActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.YHDataActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 日志备忘 -->
         <activity
             android:name=".activity.LogForgetActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工钱包 -->
         <activity
             android:name=".activity.ProjectMoneyActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工日志添加 -->
         <activity
             android:name=".activity.ProjectLogAddActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工日志 -->
         <activity
             android:name=".activity.ProjectLogActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <!--项目信息-->
@@ -260,145 +240,147 @@
             android:name=".activity.ProjectInfoActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.ProjectInfoSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--项目图纸-->
         <activity
-            android:name=".activity.ProjectTZActivity"
+            android:name=".activity.ProjectHSResultActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activity.ProjectTZSubmitActivity"
+            android:name=".activity.ProjectHSResultSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--供货方-->
         <activity
             android:name=".activity.ProjectGHFActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.ProjectGHFSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--施工人员-->
         <activity
             android:name=".activity.ProjectTeamActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.ProjectTeamSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.ProjectTeamDesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--开工报告-->
         <activity
             android:name=".activity.ProjectKGBGActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.ProjectKGBGSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--设备信息-->
         <activity
-            android:name=".activity.ProjectSBdataActivity"
+            android:name=".activity.ProjectSBDataActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.ProjectSBDataSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <!--工序报告-->
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activity.ProjectGXBGActivity"
+            android:name=".activity.ProjectSBDataDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--工序报验-->
         <activity
-            android:name=".activity.ProjectGXBGSubmitActivity"
+            android:name=".activity.ProjectGXBYActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <!--工序报告-->
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--工序报验提交-->
+        <activity
+            android:name=".activity.ProjectGXBYSubmitActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--工序报验详细信息-->
+        <activity
+            android:name=".activity.ProjectGXBYDesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity
             android:name=".activity.ProjectXckcActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.ProjectXckcSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--变更管理-->
         <activity
-            android:name=".activity.ProjectZiZhiActivity"
+            android:name=".activity.ProjectBGManageActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--变更管理提交-->
+        <activity
+            android:name=".activity.ProjectBGManageSubmitActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.ProjectJunGongActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--现场勘查详细-->
         <activity
             android:name=".activity.ProjectXckcDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--项目信息详细-->
         <activity
             android:name=".activity.ProjectInfoDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--图片信息-->
         <activity
             android:name=".activity.SiftImagesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <!-- webView通用 -->
         <activity
             android:name=".activity.CommonWebActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <!-- activity 启动本地图片和相机 -->

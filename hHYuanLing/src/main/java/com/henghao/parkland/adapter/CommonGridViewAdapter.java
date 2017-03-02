@@ -9,8 +9,10 @@ import android.widget.ImageView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.utils.ScanImageUtils;
 import com.lidroid.xutils.BitmapUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,7 +44,7 @@ public class CommonGridViewAdapter extends ArrayAdapter<String> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         HodlerView mHodlerView = null;
         if (convertView == null) {
             mHodlerView = new HodlerView();
@@ -53,6 +55,14 @@ public class CommonGridViewAdapter extends ArrayAdapter<String> {
             mHodlerView = (HodlerView) convertView.getTag();
         }
         mBitmapUtils.display(mHodlerView.imghorzen, urlPath + getItem(position));
+        final ArrayList<String> imgUrls = new ArrayList<>();
+        imgUrls.add(urlPath + getItem(position));
+        mHodlerView.imghorzen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ScanImageUtils.ScanImage(mActivityFragmentSupport, imgUrls, position);
+            }
+        });
         return convertView;
     }
 

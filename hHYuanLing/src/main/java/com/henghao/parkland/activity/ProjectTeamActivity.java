@@ -1,7 +1,10 @@
 package com.henghao.parkland.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,13 +32,13 @@ public class ProjectTeamActivity extends ActivityFragmentSupport {
 
     @ViewInject(R.id.lv_projectteam)
     private XListView mXlistView;
-    @ViewInject(R.id.tv_title)
-    private TextView tv_title;
     @ViewInject(R.id.tv_state_projectteam)
     private TextView tvState;
 
     private List<ProjectTeamEntity> data;
     private ProjectTeamAdapter mAdapter;
+    private String[] select_array = {"管理人员", "施工人员", "技工人员"};//人员类型选项
+    private String personnelType = "管理人员";//默认选中
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,6 @@ public class ProjectTeamActivity extends ActivityFragmentSupport {
         super.initWidget();
         initWithBar();
         mLeftTextView.setText("施工人员");
-        tv_title.setText("施工人员");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);
@@ -65,9 +67,32 @@ public class ProjectTeamActivity extends ActivityFragmentSupport {
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(ProjectTeamActivity.this, ProjectTeamSubmitActivity.class);
-                startActivity(intent);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setIcon(R.drawable.icon_select);
+                builder.setTitle("请选择要添加人员的类型！");
+                builder.setSingleChoiceItems(select_array, 0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        personnelType = select_array[which];
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent();
+                        intent.putExtra("personnelType", personnelType);
+                        intent.setClass(ProjectTeamActivity.this, ProjectTeamSubmitActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }
@@ -75,6 +100,10 @@ public class ProjectTeamActivity extends ActivityFragmentSupport {
     @Override
     public void initData() {
         super.initData();
+        View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
+        TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
+        tv_title.setText("施工人员");
+        mXlistView.addHeaderView(HeaderView);
         data = new ArrayList<>();
         mAdapter = new ProjectTeamAdapter(this, data);
         mXlistView.setAdapter(mAdapter);

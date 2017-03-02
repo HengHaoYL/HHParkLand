@@ -137,6 +137,11 @@ public class ProtocolUrl {
      * 现场勘查
      */
     public static final String PROJECT_SAVEXCKC = "projectManage/saveProspectMsg";
+
+    /**
+     * 工序报验提交
+     */
+    public static final String PROJECT_SAVECHECKOUTMSG = "projectManage/saveCheckoutMsg";
     /**
      * 开工报告
      */
@@ -162,6 +167,11 @@ public class ProtocolUrl {
     public static final String PROJECT_QUERYPROJECTMSG = "projectManage/queryProjectMsg";
 
     /**
+     * 设备信息查询
+     */
+    public static final String PROJECT_QUERYEQUIPMENTMSG = "projectManage/queryEquipmentMsg";
+
+    /**
      * 开工报告查询
      */
     public static final String PROJECT_QUERYKGREPORTMSG = "projectManage/queryKgReportMsg";
@@ -177,9 +187,19 @@ public class ProtocolUrl {
     public static final String PROJECT_SAVESGPERSONNELMSG = "projectManage/saveSgPersonnelMsg";
 
     /**
-     * 项目图纸查询
+     * 设备信息提交
      */
-    public static final String PROJECT_QUERYBLUEPRINTMSG = "projectManage/queryBluePrintMsg";
+    public static final String PROJECT_SAVEEQUIPMENTMSG = "projectManage/saveEquipmentMsg";
+
+    /**
+     * 会审结果查询
+     */
+    public static final String PROJECT_QUERYHSRESULTMSG = "projectManage/queryHsResultMsg";
+
+    /**
+     * 工序报验查询
+     */
+    public static final String PROJECT_QUERYCHECKOUTMSG = "projectManage/queryCheckoutMsg";
 
     /**
      * 施工人员查询

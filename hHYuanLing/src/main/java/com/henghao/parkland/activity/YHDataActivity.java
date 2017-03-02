@@ -18,6 +18,13 @@ import org.json.JSONException;
 
 public class YHDataActivity extends ActivityFragmentSupport {
 
+
+    /**
+     * 标题
+     */
+    @ViewInject(R.id.tv_title)
+    private TextView tv_title;
+
     /**
      * 植物编号
      */
@@ -40,17 +47,22 @@ public class YHDataActivity extends ActivityFragmentSupport {
     @ViewInject(R.id.tv_worker)
     private TextView tv_worker;
     /**
-     * 问题
+     * 问题发现
      */
     @ViewInject(R.id.tv_question)
     private TextView tv_question;
+    /**
+     * 植物长势
+     */
+    @ViewInject(R.id.tv_growup)
+    private TextView tv_growup;
     /**
      * 备注
      */
     @ViewInject(R.id.tv_data)
     private TextView tv_data;
     /**
-     * 备注
+     * 保洁情况
      */
     @ViewInject(R.id.tv_clen)
     private TextView tv_clen;
@@ -85,6 +97,7 @@ public class YHDataActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setVisibility(View.VISIBLE);
         mLeftTextView.setText("管护信息");
+        tv_title.setText("管护信息");
     }
 
     @Override
@@ -105,7 +118,8 @@ public class YHDataActivity extends ActivityFragmentSupport {
         tv_address.setText(mdata.getYhSite());
         tv_time.setText(mdata.getYhTime());
         tv_worker.setText(mdata.getYhWorker());
-        tv_question.setText(mdata.getTreeGrowup());
+        tv_question.setText(mdata.getYhQuestion());
+        tv_growup.setText(mdata.getTreeGrowup());
         tv_data.setText(mdata.getYhComment());
         tv_clen.setText(mdata.getYhClean());
     }

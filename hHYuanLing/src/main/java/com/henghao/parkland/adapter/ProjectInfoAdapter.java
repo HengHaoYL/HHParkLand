@@ -18,7 +18,7 @@ import com.lidroid.xutils.BitmapUtils;
 import java.util.List;
 
 /**
- * 项目图纸〈一句话功能简述〉 〈功能详细描述〉
+ * 项目信息〈一句话功能简述〉 〈功能详细描述〉
  *
  * @author zhangxianwen
  * @version HDMNV100R001, 2015年12月21日
@@ -56,20 +56,20 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
         }
         mHodlerView.tv_time.setText(getItem(position).getXmAdd());
         mHodlerView.tv_title.setText(getItem(position).getXmName());
-        viewClick(mHodlerView,convertView,position);
+        viewClick(mHodlerView, convertView, position);
         return convertView;
     }
 
     private void viewClick(HodlerView mHodlerView, View convertView, final int position) {
-       final ProjectInfoEntity mentity= getItem(position);
+        final ProjectInfoEntity mentity = getItem(position);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent();
+                Intent intent = new Intent();
                 intent.setClass(mActivityFragmentSupport, ProjectInfoDesActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(Constant.INTNET_DATA, mentity);
-                intent.putExtra("bundle",bundle);
+                intent.putExtra("bundle", bundle);
                 mActivityFragmentSupport.startActivity(intent);
             }
         });

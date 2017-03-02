@@ -15,7 +15,7 @@ public class ProjectJunGongActivity extends ActivityFragmentSupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_projectjungsubmit);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_jungsubmit);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);

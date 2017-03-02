@@ -15,5 +15,5 @@ public class HttpPublic {
     public static final String QUERYSGMEMOMSG = "http://172.16.13.101:8080/YL_BigData/projectManage/querySgmemoMsg";//查询用户施工备忘信息数据访问接口
     public static final String QUERYWORKMEMOMSG = "http://172.16.13.101:8080/YL_BigData/projectManage/queryWorkMemoMsg";//查询用户工作备忘信息数据访问接口
     public static final String QUERYJOURNALMEMOMSG = "http://172.16.13.101:8080/YL_BigData/projectManage/queryJournalMemoMsg";//查询用户日志备忘信息数据访问接口
-    public static final String SAVEBLUEPRINTMSG = "http://172.16.13.101:8080/YL_BigData/projectManage/saveBluePrintMsg";//提交用户项目图纸信息数据访问接口
+    public static final String SAVEHSRESULTMSG = "http://172.16.13.101:8080/YL_BigData/projectManage/saveHsResultMsg";//提交用户会审结果信息数据访问接口
 }

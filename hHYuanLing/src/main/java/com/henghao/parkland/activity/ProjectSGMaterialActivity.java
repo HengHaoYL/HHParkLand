@@ -103,35 +103,37 @@ public class ProjectSGMaterialActivity extends ActivityFragmentSupport {
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
         if (url.endsWith(ProtocolUrl.PROJECT_QUERYSGZL)) {
-            BaseEntity mData = (BaseEntity) jo;
-            if (mData.getError() == 0) {
-                msg(mData.getMsg());
-                tvState.setVisibility(View.VISIBLE);
-                tvState.setText(mData.getMsg());
-                return;
-            } else {
-                tvState.setVisibility(View.GONE);
-                String jsonStr = ToolsJson.toJson(mData.getData());
-                Type type = new TypeToken<List<SGMaterialEntity>>() {
-                }.getType();
-                data.clear();
-                List<SGMaterialEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
-                String topPath = mData.getPath();//图片URL头部地址
-                for (SGMaterialEntity entity : homeData) {
-                    String work_content = entity.getContent();
-                    List<String> urls = entity.getUrl();
-                    String work_img_url = topPath + urls.get(0);
-                    entity.setContent(work_content);
-                    entity.setWorkImg(work_img_url);
-                    data.add(entity);
-                }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter.notifyDataSetChanged();
-                        listView.setAdapter(adapter);
+            if (jo instanceof BaseEntity) {
+                BaseEntity mData = (BaseEntity) jo;
+                if (mData.getError() == 0) {
+                    msg(mData.getMsg());
+                    tvState.setVisibility(View.VISIBLE);
+                    tvState.setText(mData.getMsg());
+                    return;
+                } else {
+                    tvState.setVisibility(View.GONE);
+                    String jsonStr = ToolsJson.toJson(mData.getData());
+                    Type type = new TypeToken<List<SGMaterialEntity>>() {
+                    }.getType();
+                    data.clear();
+                    List<SGMaterialEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
+                    String topPath = mData.getPath();//图片URL头部地址
+                    for (SGMaterialEntity entity : homeData) {
+                        String work_content = entity.getContent();
+                        List<String> urls = entity.getUrl();
+                        String work_img_url = topPath + urls.get(0);
+                        entity.setContent(work_content);
+                        entity.setWorkImg(work_img_url);
+                        data.add(entity);
                     }
-                });
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.notifyDataSetChanged();
+                            listView.setAdapter(adapter);
+                        }
+                    });
+                }
             }
         }
     }

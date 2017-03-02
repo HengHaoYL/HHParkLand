@@ -21,48 +21,16 @@
                 android:layout_width="100dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
-                android:text="设计单位"
+                android:text="项目名称"
                 android:textSize="@dimen/gj_d" />
-
-            <EditText
-                android:id="@+id/et_tzName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入文字"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
-                android:textSize="@dimen/gj_d" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="单位地址"
-                android:textSize="@dimen/gj_d" />
-
-            <EditText
-                android:id="@+id/et_tzAdd"
+                android:id="@+id/et_xmName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -84,15 +52,13 @@
                 android:text="负责人"
                 android:textSize="@dimen/gj_d" />
 
-            <EditText
-                android:id="@+id/et_tzHead"
+            <TextView
+                android:id="@+id/et_xmPerson"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -114,15 +80,13 @@
                 android:text="联系方式"
                 android:textSize="@dimen/gj_d" />
 
-            <EditText
-                android:id="@+id/et_tzTel"
+            <TextView
+                android:id="@+id/et_xmContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -138,12 +102,19 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_tzImg"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="项目人数"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/et_xmPersonNum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableRight="@drawable/icon_photo"
+                android:background="@null"
                 android:padding="@dimen/padding_big"
-                android:text="设计图纸"
+                android:textColor="@color/text_color_c"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -153,17 +124,33 @@
             android:layout_height="1dip"
             android:background="@color/line" />
 
-        <TextView
-            android:id="@+id/tv_submit"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_big"
-            android:background="@drawable/btn_bluecircleframe"
-            android:gravity="center"
-            android:padding="@dimen/padding_big"
-            android:text="完成"
-            android:textColor="@color/white"
-            android:textSize="@dimen/gj_d" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="项目地址"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/et_xmAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
 
     </LinearLayout>
 

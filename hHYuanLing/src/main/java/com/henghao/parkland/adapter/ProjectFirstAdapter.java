@@ -12,15 +12,15 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.ProjectGHFActivity;
-import com.henghao.parkland.activity.ProjectGXBGActivity;
+import com.henghao.parkland.activity.ProjectGXBYActivity;
 import com.henghao.parkland.activity.ProjectInfoActivity;
 import com.henghao.parkland.activity.ProjectJunGongActivity;
 import com.henghao.parkland.activity.ProjectKGBGActivity;
-import com.henghao.parkland.activity.ProjectSBdataActivity;
-import com.henghao.parkland.activity.ProjectTZActivity;
+import com.henghao.parkland.activity.ProjectSBDataActivity;
+import com.henghao.parkland.activity.ProjectHSResultActivity;
 import com.henghao.parkland.activity.ProjectTeamActivity;
 import com.henghao.parkland.activity.ProjectXckcActivity;
-import com.henghao.parkland.activity.ProjectZiZhiActivity;
+import com.henghao.parkland.activity.ProjectBGManageActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -93,46 +93,51 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 1:
-                        //项目图纸
-                        intent.setClass(mActivityFragmentSupport, ProjectTZActivity.class);
+                        //项目结算
+                        intent.setClass(mActivityFragmentSupport, ProjectInfoActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 2:
+                        //会审结果
+                        intent.setClass(mActivityFragmentSupport, ProjectHSResultActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
+                        break;
+                    case 3:
                         //供货方信息
                         intent.setClass(mActivityFragmentSupport, ProjectGHFActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 3:
+                    case 4:
                         //施工团队
                         intent.setClass(mActivityFragmentSupport, ProjectTeamActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 4:
+                    case 5:
                         //开工报告
                         intent.setClass(mActivityFragmentSupport, ProjectKGBGActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 5:
-                        //设备信息
-                        intent.setClass(mActivityFragmentSupport, ProjectSBdataActivity.class);
-                        mActivityFragmentSupport.startActivity(intent);
-                        break;
                     case 6:
-                        //工序报告
-                        intent.setClass(mActivityFragmentSupport, ProjectGXBGActivity.class);
+                        //设备信息
+                        intent.setClass(mActivityFragmentSupport, ProjectSBDataActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 7:
+                        //工序报验
+                        intent.setClass(mActivityFragmentSupport, ProjectGXBYActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
+                        break;
+                    case 8:
                         //现场勘察
                         intent.setClass(mActivityFragmentSupport, ProjectXckcActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 8:
-                        //资质变更
-                        intent.setClass(mActivityFragmentSupport, ProjectZiZhiActivity.class);
+                    case 9:
+                        //变更管理
+                        intent.setClass(mActivityFragmentSupport, ProjectBGManageActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 9:
+                    case 10:
                         //竣工
                         intent.setClass(mActivityFragmentSupport, ProjectJunGongActivity.class);
                         mActivityFragmentSupport.startActivity(intent);

@@ -7,11 +7,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="@dimen/padding_big">
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_hsDepartment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -19,20 +20,16 @@
             android:textColor="@color/text_color_b"
             android:textSize="@dimen/gj_d" />
 
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="2016.02.13"
-            android:textColor="@color/text_color_b"
-            android:textSize="@dimen/gj_d" />
+        <ImageView
+            android:id="@+id/iv_hsImg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/logo" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dip"
         android:background="@color/line" />
-
-
 </LinearLayout>

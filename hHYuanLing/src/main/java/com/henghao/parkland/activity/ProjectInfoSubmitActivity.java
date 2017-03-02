@@ -41,7 +41,7 @@ public class ProjectInfoSubmitActivity extends ActivityFragmentSupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_projectinfosubmit);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_infosubmit);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);

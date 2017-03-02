@@ -14,7 +14,6 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.R;
 import com.henghao.parkland.model.protocol.HttpPublic;
-import com.lidroid.xutils.ViewUtils;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.MediaType;
@@ -37,36 +36,31 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * 项目管理 -- 项目图纸提交
+ * 项目管理 -- 会审结果提交
  */
-public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
+public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
 
     private static final int REQUEST_IMAGE = 0x00;
-    private ArrayList<String> mSelectPath;
-    private ArrayList<File> mFileList;
-    @InjectView(R.id.et_tzName)
-    EditText etTzName;
-    @InjectView(R.id.et_tzAdd)
-    EditText etTzAdd;
-    @InjectView(R.id.et_tzHead)
-    EditText etTzHead;
-    @InjectView(R.id.et_tzTel)
-    EditText etTzTel;
-    @InjectView(R.id.tv_tzImg)
-    TextView tvTzImg;
+    private ArrayList<String> mSelectPath;//图片地址
+    private List<File> mFileList;//图片文件
+
+    @InjectView(R.id.et_hsDeparment)
+    EditText etHsDeparment;
+    @InjectView(R.id.tv_hsImg)
+    TextView tvHsImg;
     @InjectView(R.id.tv_submit)
     TextView tvSubmit;
-    private static final String TAG = "ProjectTZSubmitActivity";
+
+    private static final String TAG = "HSResultSubmit";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_projecttzsubmit);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_hsresultsubmit);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
         this.mActivityFragmentView.getNavitionBarView().setVisibility(View.VISIBLE);
-        ViewUtils.inject(this, this.mActivityFragmentView);
         setContentView(this.mActivityFragmentView);
         ButterKnife.inject(this);
         initWidget();
@@ -77,7 +71,7 @@ public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("项目图纸");
+        mLeftTextView.setText("会审结果");
         mLeftTextView.setVisibility(View.VISIBLE);
         mFileList = new ArrayList<>();
     }
@@ -87,10 +81,10 @@ public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
         super.initData();
     }
 
-    @OnClick({R.id.tv_tzImg, R.id.tv_submit})
+    @OnClick({R.id.tv_hsImg, R.id.tv_submit})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_tzImg:
+            case R.id.tv_hsImg:
                 addPic();
                 break;
             case R.id.tv_submit:
@@ -100,22 +94,16 @@ public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
                      */
                     OkHttpClient okHttpClient = new OkHttpClient();
                     Request.Builder builder = new Request.Builder();
-                    String tzAdd = etTzAdd.getText().toString().trim();
-                    String tzHead = etTzHead.getText().toString().trim();
-                    String tzName = etTzName.getText().toString().trim();
-                    String tzTel = etTzTel.getText().toString().trim();
+                    String hsDeparment = etHsDeparment.getText().toString().trim();
                     MultipartBuilder multipartBuilder = new MultipartBuilder();
                     multipartBuilder.type(MultipartBuilder.FORM)//
                             .addFormDataPart("uid", getLoginUid())//用户ID
-                            .addFormDataPart("tzAdd", tzAdd)//设计单位地址
-                            .addFormDataPart("tzHead", tzHead)//设计负责人
-                            .addFormDataPart("tzName", tzName)//设计单位
-                            .addFormDataPart("tzTel", tzTel);//联系方式
+                            .addFormDataPart("hsDeparment", hsDeparment);//会审单位
                     for (File file : mFileList) {
-                        multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//设计图纸
+                        multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//会审图片
                     }
                     RequestBody requestBody = multipartBuilder.build();
-                    Request request = builder.post(requestBody).url(HttpPublic.SAVEBLUEPRINTMSG).build();
+                    Request request = builder.post(requestBody).url(HttpPublic.SAVEHSRESULTMSG).build();
                     mActivityFragmentView.viewLoading(View.VISIBLE);
                     Call call = okHttpClient.newCall(request);
                     call.enqueue(new Callback() {
@@ -136,7 +124,7 @@ public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
                                     @Override
                                     public void run() {
                                         mActivityFragmentView.viewLoading(View.GONE);
-                                        Toast.makeText(ProjectTZSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ProjectHSResultSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 finish();
@@ -151,27 +139,12 @@ public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
     }
 
     private boolean checkData() {
-        if (ToolsKit.isEmpty(etTzName.getText().toString().trim())) {
-            msg("设计单位不能为空！");
-            etTzName.requestFocus();
+        if (ToolsKit.isEmpty(etHsDeparment.getText().toString().trim())) {
+            msg("会审单位不能为空！");
+            etHsDeparment.requestFocus();
             return false;
         }
-        if (ToolsKit.isEmpty(etTzAdd.getText().toString().trim())) {
-            msg("单位地址不能为空！");
-            etTzAdd.requestFocus();
-            return false;
-        }
-        if (ToolsKit.isEmpty(etTzHead.getText().toString().trim())) {
-            msg("负责人不能为空！");
-            etTzHead.requestFocus();
-            return false;
-        }
-        if (ToolsKit.isEmpty(etTzTel.getText().toString().trim())) {
-            msg("联系方式不能为空！");
-            etTzTel.requestFocus();
-            return false;
-        }
-        if (tvTzImg.getText().equals("设计图纸")) {
+        if (tvHsImg.getText().equals("设计图纸")) {
             msg("请选择设计图纸！");
             return false;
         }
@@ -183,9 +156,9 @@ public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
      */
     private void addPic() {
         // 查看session是否过期
-        // int selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
+//        int selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
         int selectedMode = MultiImageSelectorActivity.MODE_MULTI;
-        int maxNum = 9;
+        int maxNum = 1;
         Intent picIntent = new Intent(this, MultiImageSelectorActivity.class);
         // 是否显示拍摄图片
         picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
@@ -216,7 +189,7 @@ public class ProjectTZSubmitActivity extends ActivityFragmentSupport {
                             File file = new File(filePath);
                             mFileList.add(file);
                         }
-                        tvTzImg.setText("图片名：" + imgNames.toString());
+                        tvHsImg.setText("图片名：" + imgNames.toString());
                     }
                 }
             }

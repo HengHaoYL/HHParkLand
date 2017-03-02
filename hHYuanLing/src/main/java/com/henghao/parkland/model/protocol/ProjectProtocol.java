@@ -22,9 +22,8 @@ import com.henghao.parkland.model.ascyn.BeeCallback;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectInfoEntity;
 import com.henghao.parkland.model.entity.ProjectKGBGEntity;
+import com.henghao.parkland.model.entity.ProjectSBDataEntity;
 import com.henghao.parkland.model.entity.ProjectTeamEntity;
-import com.henghao.parkland.model.entity.ProjectTzEntity;
-import com.henghao.parkland.model.entity.SGMaterialEntity;
 import com.henghao.parkland.model.entity.SGWalletEntity;
 
 import java.lang.reflect.Type;
@@ -161,13 +160,47 @@ public class ProjectProtocol extends BaseModel {
     }
 
     /**
-     * 查询项目图纸
+     * 查询设备信息
      *
      * @param uid
      */
-    public void queryBluePrintMsg(String uid) {
+    public void queryEquipmentMsg(String uid) {
         try {
-            String url = ProtocolUrl.PROJECT_QUERYBLUEPRINTMSG;
+            String url = ProtocolUrl.PROJECT_QUERYEQUIPMENTMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 查询会审结果
+     *
+     * @param uid
+     */
+    public void queryHsResultMsg(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUERYHSRESULTMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 查询工序报验
+     *
+     * @param uid
+     */
+    public void queryCheckoutMsg(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUERYCHECKOUTMSG;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
             this.mBeeCallback.url(url).type(String.class).params(params);
@@ -238,11 +271,23 @@ public class ProjectProtocol extends BaseModel {
         }
     }
 
-    public void saveSgPersonnelMsg(String psIdcard, String psName, String psTel, String uid) {
+    /**
+     * 施工人员提交
+     *
+     * @param personnelType
+     * @param workPost
+     * @param psIdcard
+     * @param psName
+     * @param psTel
+     * @param uid
+     */
+    public void saveSgPersonnelMsg(String personnelType, String workPost, String psIdcard, String psName, String psTel, String uid) {
         try {
             String url = ProtocolUrl.PROJECT_SAVESGPERSONNELMSG;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
+            params.put("personnelType", personnelType);
+            params.put("workPost", workPost);
             params.put("psIdcard", psIdcard);
             params.put("psName", psName);
             params.put("psTel", psTel);
@@ -253,6 +298,32 @@ public class ProjectProtocol extends BaseModel {
         }
     }
 
+    /**
+     * 设备信息提交
+     *
+     * @param sbName
+     * @param sbSpec
+     * @param sbNum
+     * @param sbPurpose
+     * @param sbSource
+     * @param uid
+     */
+    public void saveEquipmentMsg(String sbName, String sbSpec, int sbNum, String sbPurpose, String sbSource, String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_SAVEEQUIPMENTMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            params.put("sbName", sbName);
+            params.put("sbSpec", sbSpec);
+            params.put("sbNum", sbNum);
+            params.put("sbPurpose", sbPurpose);
+            params.put("sbSource", sbSource);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private final BeeCallback<String> mBeeCallback = new BeeCallback<String>() {
 
@@ -284,8 +355,6 @@ public class ProjectProtocol extends BaseModel {
                 }
                 if (url.endsWith(ProtocolUrl.PROJECT_QUERYSGZL)) {
                     // 查询施工资料
-                    Type type = new TypeToken<List<SGMaterialEntity>>() {
-                    }.getType();
                     ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
                 if (url.endsWith(ProtocolUrl.PROJECT_QUERYPROJECTMSG)) {
@@ -295,12 +364,9 @@ public class ProjectProtocol extends BaseModel {
                     List<ProjectInfoEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectProtocol.this.OnMessageResponse(url, homeData, status);
                 }
-                if (url.endsWith(ProtocolUrl.PROJECT_QUERYBLUEPRINTMSG)) {
-                    // 查询项目图纸
-                    Type type = new TypeToken<List<ProjectTzEntity>>() {
-                    }.getType();
-                    List<ProjectTzEntity> homeData = ToolsJson.parseObjecta(data, type);
-                    ProjectProtocol.this.OnMessageResponse(url, homeData, status);
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYHSRESULTMSG)) {
+                    // 查询会审结果
+                    ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
                 if (url.endsWith(ProtocolUrl.PROJECT_QUERYKGREPORTMSG)) {
                     // 查询开工报告
@@ -315,6 +381,17 @@ public class ProjectProtocol extends BaseModel {
                     }.getType();
                     List<ProjectTeamEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectProtocol.this.OnMessageResponse(url, homeData, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYEQUIPMENTMSG)) {
+                    // 查询设备信息
+                    Type type = new TypeToken<List<ProjectSBDataEntity>>() {
+                    }.getType();
+                    List<ProjectSBDataEntity> homeData = ToolsJson.parseObjecta(data, type);
+                    ProjectProtocol.this.OnMessageResponse(url, homeData, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYCHECKOUTMSG)) {
+                    // 查询工序报验
+                    ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
