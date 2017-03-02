@@ -7,39 +7,42 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
+import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.views.xlistview.XListView;
+import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.adapter.ProjectSBDataAdapter;
+import com.henghao.parkland.adapter.ProjectHsResultAdapter;
 import com.henghao.parkland.model.entity.BaseEntity;
-import com.henghao.parkland.model.entity.ProjectSBDataEntity;
+import com.henghao.parkland.model.entity.ProjectHSResultEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import org.json.JSONException;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 项目管理 -- 设备信息
+ * 项目管理 -- 会审结果
  */
-public class ProjectSBDataActivity extends ActivityFragmentSupport {
+public class ProjectHSResultActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.lv_projectsbdata)
+    @ViewInject(R.id.lv_projecthsresult)
     private XListView mXlistView;
-    @ViewInject(R.id.tv_state_projectsbdata)
+    @ViewInject(R.id.tv_state_projechsresult)
     private TextView tvState;
 
-    private List<ProjectSBDataEntity> data;
-    private ProjectSBDataAdapter mAdapter;
+    private List<ProjectHSResultEntity> data;
+    private ProjectHsResultAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_project_sbdata);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_hsresult);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -55,7 +58,7 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("设备信息");
+        mLeftTextView.setText("会审结果");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);
@@ -64,7 +67,7 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(ProjectSBDataActivity.this, ProjectSBDataSubmitActivity.class);
+                intent.setClass(ProjectHSResultActivity.this, ProjectHSResultSubmitActivity.class);
                 startActivity(intent);
             }
         });
@@ -75,10 +78,10 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
         super.initData();
         View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
         TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
-        tv_title.setText("设备信息");
+        tv_title.setText("会审结果");
         mXlistView.addHeaderView(HeaderView);
         data = new ArrayList<>();
-        mAdapter = new ProjectSBDataAdapter(this, data);
+        mAdapter = new ProjectHsResultAdapter(this, data);
         mXlistView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
@@ -91,26 +94,44 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
          */
         ProjectProtocol mProtocol = new ProjectProtocol(this);
         mProtocol.addResponseListener(this);
-        mProtocol.queryEquipmentMsg(getLoginUid());
+        mProtocol.queryHsResultMsg(getLoginUid());
         mActivityFragmentView.viewLoading(View.VISIBLE);
     }
 
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.PROJECT_QUERYEQUIPMENTMSG)) {
+        if (url.endsWith(ProtocolUrl.PROJECT_QUERYHSRESULTMSG)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mData = (BaseEntity) jo;
-                msg(mData.getMsg());
-                tvState.setVisibility(View.VISIBLE);
-                tvState.setText(mData.getMsg());
-                return;
+                if (mData.getError() == 0) {
+                    msg(mData.getMsg());
+                    tvState.setVisibility(View.VISIBLE);
+                    tvState.setText(mData.getMsg());
+                    return;
+                } else {
+                    tvState.setVisibility(View.GONE);
+                    String jsonStr = ToolsJson.toJson(mData.getData());
+                    Type type = new TypeToken<List<ProjectHSResultEntity>>() {
+                    }.getType();
+                    data.clear();
+                    List<ProjectHSResultEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
+                    String topPath = mData.getPath();//图片URL头部地址
+                    for (ProjectHSResultEntity entity : homeData) {
+                        List<String> urls = entity.getUrl();
+                        String hsImg_url = topPath + urls.get(0);
+                        entity.setHsImgId(hsImg_url);
+                        data.add(entity);
+                    }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter.notifyDataSetChanged();
+                            mXlistView.setAdapter(mAdapter);
+                        }
+                    });
+                }
             }
-            tvState.setVisibility(View.GONE);
-            List<ProjectSBDataEntity> homedata = (List<ProjectSBDataEntity>) jo;
-            data.clear();
-            data.addAll(homedata);
-            mAdapter.notifyDataSetChanged();
         }
     }
 }

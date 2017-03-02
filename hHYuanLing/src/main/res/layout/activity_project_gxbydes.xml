@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="工程名称"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_gxName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="工序名称"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_gxProcedure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="交接者"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_personnelType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="工作岗位"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_workPost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="施工日期"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_gxTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/icon_photo"
+            android:padding="@dimen/padding_big"
+            android:text="影像资料图"
+            android:textSize="@dimen/gj_d" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-1px"
+            android:layout_marginRight="-1px"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="4"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth" />
+
+    </LinearLayout>
+
+</ScrollView>

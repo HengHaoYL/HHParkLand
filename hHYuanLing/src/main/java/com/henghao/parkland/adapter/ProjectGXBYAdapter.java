@@ -1,5 +1,7 @@
 package com.henghao.parkland.adapter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,20 +11,21 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
-import com.henghao.parkland.model.entity.ProjectTzEntity;
+import com.henghao.parkland.activity.ProjectGXBYDesActivity;
+import com.henghao.parkland.model.entity.ProjectGXBYEntity;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
 
 /**
- * 项目图纸〈一句话功能简述〉 〈功能详细描述〉
+ * 工序报验〈一句话功能简述〉 〈功能详细描述〉
  *
  * @author zhangxianwen
  * @version HDMNV100R001, 2015年12月21日
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class ProjectTZAdapter extends ArrayAdapter<ProjectTzEntity> {
+public class ProjectGXBYAdapter extends ArrayAdapter<ProjectGXBYEntity> {
 
     private final LayoutInflater inflater;
 
@@ -30,7 +33,7 @@ public class ProjectTZAdapter extends ArrayAdapter<ProjectTzEntity> {
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    public ProjectTZAdapter(ActivityFragmentSupport activityFragment, List<ProjectTzEntity> mList) {
+    public ProjectGXBYAdapter(ActivityFragmentSupport activityFragment, List<ProjectGXBYEntity> mList) {
         super(activityFragment, R.layout.item_projectmanager, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
@@ -51,9 +54,25 @@ public class ProjectTZAdapter extends ArrayAdapter<ProjectTzEntity> {
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
-        mHodlerView.tv_title.setText(getItem(position).getTzName());
-        mHodlerView.tv_time.setText(getItem(position).getTzHead());
+        mHodlerView.tv_title.setText(getItem(position).getGxName());
+        mHodlerView.tv_time.setText(getItem(position).getGxTime());
+        viewClick(mHodlerView, convertView, position);
         return convertView;
+    }
+
+    private void viewClick(ProjectGXBYAdapter.HodlerView mHodlerView, View convertView, final int position) {
+        final ProjectGXBYEntity mentity = getItem(position);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(mActivityFragmentSupport, ProjectGXBYDesActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constant.INTNET_DATA, mentity);
+                intent.putExtra("bundle", bundle);
+                mActivityFragmentSupport.startActivity(intent);
+            }
+        });
     }
 
     private class HodlerView {

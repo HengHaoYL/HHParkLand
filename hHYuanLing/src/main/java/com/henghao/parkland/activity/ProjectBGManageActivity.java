@@ -11,60 +11,61 @@ import com.benefit.buy.library.views.xlistview.XListView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.adapter.ProjectSBDataAdapter;
+import com.henghao.parkland.adapter.ProjectInfoAdapter;
 import com.henghao.parkland.model.entity.BaseEntity;
-import com.henghao.parkland.model.entity.ProjectSBDataEntity;
+import com.henghao.parkland.model.entity.ProjectInfoEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
 import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
- * 项目管理 -- 设备信息
+ * 项目管理 -- 变更管理
  */
-public class ProjectSBDataActivity extends ActivityFragmentSupport {
+public class ProjectBGManageActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.lv_projectsbdata)
-    private XListView mXlistView;
-    @ViewInject(R.id.tv_state_projectsbdata)
-    private TextView tvState;
+    @InjectView(R.id.tv_state_projectinfo)
+    TextView tvState;
+    @InjectView(R.id.lv_projectinfo)
+    XListView listView;
+    private ProjectInfoAdapter mAdapter;
 
-    private List<ProjectSBDataEntity> data;
-    private ProjectSBDataAdapter mAdapter;
+    private List<ProjectInfoEntity> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_project_sbdata);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_info);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
         this.mActivityFragmentView.getNavitionBarView().setVisibility(View.VISIBLE);
-        ViewUtils.inject(this, this.mActivityFragmentView);
         setContentView(this.mActivityFragmentView);
+        ViewUtils.inject(this, this.mActivityFragmentView);
+        ButterKnife.inject(this);
         initWidget();
         initData();
-
     }
 
     @Override
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("设备信息");
+        mLeftTextView.setText("项目信息");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithRightBar();
-        mRightTextView.setVisibility(View.VISIBLE);
         mRightTextView.setText("添加");
+        mRightTextView.setVisibility(View.VISIBLE);
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(ProjectSBDataActivity.this, ProjectSBDataSubmitActivity.class);
+                Intent intent = new Intent(ProjectBGManageActivity.this, ProjectBGManageSubmitActivity.class);
                 startActivity(intent);
             }
         });
@@ -75,11 +76,11 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
         super.initData();
         View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
         TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
-        tv_title.setText("设备信息");
-        mXlistView.addHeaderView(HeaderView);
+        tv_title.setText("项目信息");
+        listView.addHeaderView(HeaderView);
         data = new ArrayList<>();
-        mAdapter = new ProjectSBDataAdapter(this, data);
-        mXlistView.setAdapter(mAdapter);
+        mAdapter = new ProjectInfoAdapter(this, data);
+        listView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -91,14 +92,14 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
          */
         ProjectProtocol mProtocol = new ProjectProtocol(this);
         mProtocol.addResponseListener(this);
-        mProtocol.queryEquipmentMsg(getLoginUid());
+        mProtocol.queryProjectMsg(getLoginUid());
         mActivityFragmentView.viewLoading(View.VISIBLE);
     }
 
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.PROJECT_QUERYEQUIPMENTMSG)) {
+        if (url.endsWith(ProtocolUrl.PROJECT_QUERYPROJECTMSG)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mData = (BaseEntity) jo;
                 msg(mData.getMsg());
@@ -107,7 +108,7 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
                 return;
             }
             tvState.setVisibility(View.GONE);
-            List<ProjectSBDataEntity> homedata = (List<ProjectSBDataEntity>) jo;
+            List<ProjectInfoEntity> homedata = (List<ProjectInfoEntity>) jo;
             data.clear();
             data.addAll(homedata);
             mAdapter.notifyDataSetChanged();

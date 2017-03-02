@@ -2,6 +2,7 @@ package com.henghao.parkland.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -31,8 +32,6 @@ public class ProjectKGBGActivity extends ActivityFragmentSupport {
     private XListView mXlistView;
     @ViewInject(R.id.tv_state_projectkgbg)
     private TextView tvState;
-    @ViewInject(R.id.tv_title)
-    private TextView tv_title;
     private ProjectKGBGAdapter mAdapter;
 
     private List<ProjectKGBGEntity> data;
@@ -56,7 +55,6 @@ public class ProjectKGBGActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        tv_title.setText("开工报告");
         mLeftTextView.setText("开工报告");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithRightBar();
@@ -75,6 +73,10 @@ public class ProjectKGBGActivity extends ActivityFragmentSupport {
     @Override
     public void initData() {
         super.initData();
+        View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
+        TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
+        tv_title.setText("开工报告");
+        mXlistView.addHeaderView(HeaderView);
         data = new ArrayList<>();
         mAdapter = new ProjectKGBGAdapter(this, data);
         mXlistView.setAdapter(mAdapter);

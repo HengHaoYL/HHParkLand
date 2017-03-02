@@ -59,7 +59,7 @@ public class ProjectKGBGSubmitActivity extends ActivityFragmentSupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_projectkgbgsubmit);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_kgbgsubmit);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);

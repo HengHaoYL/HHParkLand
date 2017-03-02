@@ -1,5 +1,7 @@
 package com.henghao.parkland.adapter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.ProjectSBDataDesActivity;
+import com.henghao.parkland.model.entity.ProjectSBDataEntity;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
@@ -21,7 +25,7 @@ import java.util.List;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class ProjectSBDataAdapter extends ArrayAdapter<String> {
+public class ProjectSBDataAdapter extends ArrayAdapter<ProjectSBDataEntity> {
 
     private final LayoutInflater inflater;
 
@@ -29,7 +33,7 @@ public class ProjectSBDataAdapter extends ArrayAdapter<String> {
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    public ProjectSBDataAdapter(ActivityFragmentSupport activityFragment, List<String> mList) {
+    public ProjectSBDataAdapter(ActivityFragmentSupport activityFragment, List<ProjectSBDataEntity> mList) {
         super(activityFragment, R.layout.item_projectmanager, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
@@ -50,7 +54,25 @@ public class ProjectSBDataAdapter extends ArrayAdapter<String> {
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
+        mHodlerView.tv_title.setText(getItem(position).getSbName());
+        mHodlerView.tv_time.setText(getItem(position).getSbSpec());
+        viewClick(mHodlerView, convertView, position);
         return convertView;
+    }
+
+    private void viewClick(ProjectSBDataAdapter.HodlerView mHodlerView, View convertView, final int position) {
+        final ProjectSBDataEntity mentity = getItem(position);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(mActivityFragmentSupport, ProjectSBDataDesActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constant.INTNET_DATA, mentity);
+                intent.putExtra("bundle", bundle);
+                mActivityFragmentSupport.startActivity(intent);
+            }
+        });
     }
 
     private class HodlerView {

@@ -2,6 +2,7 @@ package com.henghao.parkland.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -33,8 +34,6 @@ public class ProjectInfoActivity extends ActivityFragmentSupport {
     TextView tvState;
     @InjectView(R.id.lv_projectinfo)
     XListView listView;
-    @InjectView(R.id.tv_title)
-    TextView tv_title;
     private ProjectInfoAdapter mAdapter;
 
     private List<ProjectInfoEntity> data;
@@ -59,7 +58,6 @@ public class ProjectInfoActivity extends ActivityFragmentSupport {
         super.initWidget();
         initWithBar();
         mLeftTextView.setText("项目信息");
-        tv_title.setText("项目信息");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithRightBar();
         mRightTextView.setText("添加");
@@ -76,6 +74,10 @@ public class ProjectInfoActivity extends ActivityFragmentSupport {
     @Override
     public void initData() {
         super.initData();
+        View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
+        TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
+        tv_title.setText("项目信息");
+        listView.addHeaderView(HeaderView);
         data = new ArrayList<>();
         mAdapter = new ProjectInfoAdapter(this, data);
         listView.setAdapter(mAdapter);

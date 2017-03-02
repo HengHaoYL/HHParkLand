@@ -1,5 +1,7 @@
 package com.henghao.parkland.adapter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.ProjectTeamDesActivity;
 import com.henghao.parkland.model.entity.ProjectTeamEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -51,9 +54,25 @@ public class ProjectTeamAdapter extends ArrayAdapter<ProjectTeamEntity> {
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
-        mHodlerView.tv_title.setText(getItem(position).getPsName());
-        mHodlerView.tv_time.setText(getItem(position).getPsTel());
+        mHodlerView.tv_title.setText(getItem(position).getPersonnelType());
+        mHodlerView.tv_time.setText(getItem(position).getPsName());
+        viewClick(mHodlerView, convertView, position);
         return convertView;
+    }
+
+    private void viewClick(ProjectTeamAdapter.HodlerView mHodlerView, View convertView, final int position) {
+        final ProjectTeamEntity mentity = getItem(position);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(mActivityFragmentSupport, ProjectTeamDesActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constant.INTNET_DATA, mentity);
+                intent.putExtra("bundle", bundle);
+                mActivityFragmentSupport.startActivity(intent);
+            }
+        });
     }
 
     private class HodlerView {
