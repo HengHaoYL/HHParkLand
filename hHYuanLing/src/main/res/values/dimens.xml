@@ -28,6 +28,8 @@
     <dimen name="view_listview">160dip</dimen>
     <dimen name="view_popwindow">200dip</dimen>
     <dimen name="view_high">260dip</dimen>
+    <dimen name="viewheader_hieght">55dip</dimen>
+    <dimen name="view_edit">66dip</dimen>
     <!-- 界面高度 -->
     <dimen name="view_height_">24dip</dimen>
     <dimen name="view_height_a">28dip</dimen>
@@ -57,5 +59,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="view_mytop">248dip</dimen>
 
 </resources>

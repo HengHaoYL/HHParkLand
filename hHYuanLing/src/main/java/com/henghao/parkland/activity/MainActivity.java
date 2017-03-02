@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.RadioGroup;
 
@@ -17,12 +16,13 @@ import com.benefit.buy.library.views.ToastView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.adapter.FragmentTabAdapter;
 import com.henghao.parkland.fragment.AppFragment;
 import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.fragment.HomeFragment;
 import com.henghao.parkland.fragment.MsgFragment;
-import com.henghao.parkland.fragment.MyFragment;
+import com.henghao.parkland.fragment.MyLoginFragment;
 import com.henghao.parkland.fragment.WorkFragment;
 import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.HCMenuEntity;
@@ -33,6 +33,7 @@ import java.util.List;
 
 /**
  * 主页
+ *
  * @author zhangxianwen
  */
 @SuppressLint("NewApi")
@@ -69,9 +70,9 @@ public class MainActivity extends ActivityFragmentSupport {
         this.mActivityFragmentView.viewLoading(View.GONE);
         this.mActivityFragmentView.clipToPadding(true);
         setContentView(this.mActivityFragmentView);
-        if(getLoginUser()==null){
-            Intent intent=new Intent();
-            intent.setClass(this,LoginActivity.class);
+        if (getLoginUid() == null) {
+            Intent intent = new Intent();
+            intent.setClass(this, LoginAndRegActivity.class);
             startActivity(intent);
             finish();
         }
@@ -90,8 +91,7 @@ public class MainActivity extends ActivityFragmentSupport {
                     this.fragments.add(fragmentSuper);
                 }
             }
-        }
-        catch (Exception e1) {
+        } catch (Exception e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
@@ -115,26 +115,11 @@ public class MainActivity extends ActivityFragmentSupport {
     public void initData() {
         // TODO Auto-generated method stub
         // 导航栏
-        initwithContent();
-        initWithBar();
-        this.mLeftImageView.setVisibility(View.VISIBLE);
-        this.mLeftImageView.setImageResource(R.drawable.home_liebiao);
-        this.mLeftLinearLayout.setOnClickListener(new OnClickListener() {
+        mActivityFragmentView.getNavitionBarView().setVisibility(View.GONE);
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                getLoginUserSharedPre().edit().putString(Constant.USERID, null).putString(Constant.USERNAME, null).putString(Constant.USERPHONE, null).commit();
-            }
-        });
+
     }
 
-    private void initwithContent() {
-        // TODO Auto-generated method stub
-        initWithCenterBar();
-        this.mCenterTextView.setVisibility(View.VISIBLE);
-        this.mCenterTextView.setText(getResources().getString(R.string.app_name));
-    }
 
     /**
      * 牵扯到的tab items
@@ -157,7 +142,7 @@ public class MainActivity extends ActivityFragmentSupport {
                 R.drawable.selector_xiangmuguanli, XiangmuFragment.class.getName(), -1);// 项目管理
         this.menuLists.add(mXiangmuguanl);
         HCMenuEntity mMenuMore = new HCMenuEntity(6, getResources().getString(R.string.hc_my), R.drawable.selector_my,
-                MyFragment.class.getName(), -1);// 我的
+                MyLoginFragment.class.getName(), -1);// 我的
         this.menuLists.add(mMenuMore);
     }
 
@@ -177,8 +162,7 @@ public class MainActivity extends ActivityFragmentSupport {
                     }
                 }, 3000);
                 return true;
-            }
-            else {
+            } else {
                 this.mToastView.cancel();
                 this.mApplication.exit();
                 return false;

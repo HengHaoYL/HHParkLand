@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_guanyuwe"
+        android:drawablePadding="@dimen/padding_normal"
+        android:drawableRight="@drawable/arrow_right"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/gj_d"
+        android:textColor="@color/text_color_b"
+        android:padding="@dimen/padding_big"
+        android:text="关于我们" />
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dip"
+        android:background="@color/line" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_falvfagui"
+        android:drawablePadding="@dimen/padding_normal"
+        android:drawableRight="@drawable/arrow_right"
+        android:textSize="@dimen/gj_d"
+        android:textColor="@color/text_color_b"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_big"
+        android:text="法律法规" />
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dip"
+        android:background="@color/line" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_yijian"
+        android:drawablePadding="@dimen/padding_normal"
+        android:drawableRight="@drawable/arrow_right"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_big"
+        android:textSize="@dimen/gj_d"
+        android:textColor="@color/text_color_b"
+        android:text="意见反馈" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dip"
+        android:background="@color/line" />
+
+</LinearLayout>

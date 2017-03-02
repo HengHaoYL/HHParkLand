@@ -14,7 +14,7 @@ import java.io.File;
 public class ImageUpLoad {
 	public static String uploadUserHeader(ActivityFragmentSupport mActivity,File imageFile) {
 		RequestParams params = new RequestParams(); // 默认编码UTF-8
-		params.addBodyParameter("userId", mActivity.getLoginUser());
+		params.addBodyParameter("userId", mActivity.getLoginUid());
 		HttpUtils http = new HttpUtils();
 		http.send(HttpRequest.HttpMethod.POST, "地址", params, new RequestCallBack<String>() {
 

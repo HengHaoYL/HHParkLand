@@ -1,8 +1,5 @@
 package com.henghao.parkland.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.benefit.buy.library.viewpagerindicator.CirclePageIndicator;
 import com.benefit.buy.library.views.NoScrollListView;
+import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.WorkListShowAdapter;
 import com.henghao.parkland.adapter.WorkShowAdapter;
@@ -17,6 +15,9 @@ import com.henghao.parkland.utils.CommonAutoViewpager;
 import com.henghao.parkland.views.viewpage.AutoScrollViewPager;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 工作台 〈一句话功能简述〉 〈功能详细描述〉
@@ -81,9 +82,27 @@ public class WorkFragment extends FragmentSupport {
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
+    /**
+     * 标题操作 〈一句话功能简述〉 〈功能详细描述〉
+     * @see [类、类#方法、类#成员]
+     * @since [产品/模块版本]
+     */
     private void initwithContent() {
         // TODO Auto-generated method stub
-        this.mActivityFragmentView.getNavitionBarView().setVisibility(View.GONE);
+        initWithCenterBar();
+        this.mCenterTextView.setVisibility(View.VISIBLE);
+        this.mCenterTextView.setText(getResources().getString(R.string.app_name));
+        initWithBar();
+        this.mLeftImageView.setVisibility(View.VISIBLE);
+        this.mLeftImageView.setImageResource(R.drawable.home_liebiao);
+        this.mLeftLinearLayout.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                mActivity.getLoginUserSharedPre().edit().putString(Constant.USERID, null).putString(Constant.USERNAME, null).putString(Constant.USERPHONE, null).commit();
+            }
+        });
     }
 
     public void initWidget() {

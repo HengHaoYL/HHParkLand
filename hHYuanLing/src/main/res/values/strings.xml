@@ -7,7 +7,7 @@
     <string name="home_exit">再按一次退出^_^</string>
     <string name="more">更多</string>
     <string name="account_cancel_hint">提示</string>
-    <string name="account_cancel_affirm">是否确定注销？</string>
+    <string name="account_cancel_affirm">是否确定退出？</string>
     <string name="call_affirm">点击「确定」后将自动为您拨打客服热线  </string>
     <string name="call_affirm_last">，为您解答疑问  </string>
     <string name="cancel">取消</string>
@@ -60,6 +60,10 @@
     <string name="register_surplus_code">还有</string>
     <string name="register_surplus_code_end">秒</string>
     <string name="login_toservice">登录享受更贴心的定制服务</string>
+    <string name="my_logintitle">点击登录更精彩</string>
+    <string name="my_loginnicheng">点击修改昵称</string>
+    <string name="my_loginnotitle">暂未登录</string>
+    <string name="my_updateusernametitle">修改昵称</string>
     <!-- 更新 -->
     <string name="about_version">当前版本：</string>
     <string name="about_update">检查更新</string>

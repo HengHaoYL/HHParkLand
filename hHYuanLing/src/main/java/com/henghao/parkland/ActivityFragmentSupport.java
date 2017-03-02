@@ -478,7 +478,7 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
 
 	@Override
 	public String getLoginUser() {
-		return this.mSharedPreferences.getString(Constant.USERID, null);
+		return this.mSharedPreferences.getString(Constant.USERNAME, null);
 	}
 
 	@Override
@@ -488,12 +488,12 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
 
 	@Override
 	public String getLoginUid() {
-		return this.mSharedPreferences.getString(Constant.USERID, "0");
+		return this.mSharedPreferences.getString(Constant.USERID, null);
 	}
 
 	@Override
 	public String getLoginUserPhone() {
-		return this.mSharedPreferences.getString(Constant.USERNAME, null);
+		return this.mSharedPreferences.getString(Constant.USERPHONE, null);
 	}
 
 	@Override
