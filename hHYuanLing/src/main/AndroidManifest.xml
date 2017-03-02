@@ -97,6 +97,16 @@
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
 
+        <!-- activity 登录注册 -->
+        <activity
+            android:name=".activity.user.LoginAndRegActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme" />
+        <!-- activity 设置 -->
+        <activity
+            android:name=".activity.user.SettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme" />
         <!-- activity 巡检界面 -->
         <activity
             android:name=".activity.ISOActivity"
@@ -115,18 +125,7 @@
             android:name=".activity.QiandaoSubmitActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
-        <!-- 登录 -->
-        <activity
-            android:name=".activity.LoginActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:theme="@style/Activity.Theme.Login"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name=".activity.RegActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <!-- 测试View -->
         <activity
             android:name=".activity.ViewTestActivity"

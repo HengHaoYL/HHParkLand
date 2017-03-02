@@ -30,6 +30,7 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
 
     @ViewInject(R.id.lv_projectsbdata)
     private XListView mXlistView;
+
     @ViewInject(R.id.tv_state_projectsbdata)
     private TextView tvState;
 
