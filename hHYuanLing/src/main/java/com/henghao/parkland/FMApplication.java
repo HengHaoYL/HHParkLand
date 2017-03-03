@@ -1,10 +1,7 @@
 /**
- * 
+ *
  */
 package com.henghao.parkland;
-
-import java.util.LinkedList;
-import java.util.List;
 
 import android.app.Activity;
 import android.app.Application;
@@ -17,20 +14,25 @@ import com.benefit.buy.library.utils.tools.ToolsFile;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.exception.CustomExceptionHandler;
 import com.henghao.parkland.service.ReConnectService;
-import com.henghao.parkland.utils.LocationUtils;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author zhangxianwen
  */
 public class FMApplication extends Application {
 
-    /** 对外提供整个应用生命周期的Context **/
+    /**
+     * 对外提供整个应用生命周期的Context
+     **/
     private static Context instance;
 
     private final List<Activity> activityList = new LinkedList<Activity>();
 
     /**
      * 对外提供Application Context
+     *
      * @return
      */
     public static Context gainContext() {
@@ -43,12 +45,12 @@ public class FMApplication extends Application {
         instance = this;
         // 注意该方法要再setContentView方法之前实现
         SDKInitializer.initialize(this);
-        LocationUtils.Location(this);
         appException();
     }
 
     /**
      * 异常处理类
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
@@ -70,6 +72,7 @@ public class FMApplication extends Application {
 
     /**
      * 添加Activity到容器中
+     *
      * @param activity
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -81,6 +84,7 @@ public class FMApplication extends Application {
 
     /**
      * 删除对应的activity 〈一句话功能简述〉 〈功能详细描述〉
+     *
      * @param activity
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -105,17 +109,17 @@ public class FMApplication extends Application {
 
     /**
      * 遍历所有Activity并finish
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
     public void exit() {
         try {
-            for (Activity activity: this.activityList) {
+            for (Activity activity : this.activityList) {
                 Log.e("@@@", "exit:" + activity);
                 activity.finish();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.exit(1);
         }
     }

@@ -137,6 +137,10 @@ public class ProtocolUrl {
      * 现场勘查
      */
     public static final String PROJECT_SAVEXCKC = "projectManage/saveProspectMsg";
+    /**
+     * 技术交底添加
+     */
+    public static final String PROJECT_SAVEJSJD= "projectManage/saveTechnologyMsg";
 
     /**
      * 工序报验提交
@@ -215,6 +219,11 @@ public class ProtocolUrl {
      * 施工人员查询
      */
     public static final String PROJECT_QUERYSGPERSONNELMSG = "projectManage/querySgPersonnelMsg";
+
+    /**
+     * 查询技术交底
+     */
+    public static final String PROJECT_QUERYDECLARATIONMSG= "projectManage/queryTechnologyMsg";
 
     /**
      * 添加我的轨迹

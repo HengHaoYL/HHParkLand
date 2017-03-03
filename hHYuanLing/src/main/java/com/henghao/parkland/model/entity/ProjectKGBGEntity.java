@@ -16,8 +16,7 @@ wgTime:"xxx"竣工时间
     private String kgDocument;//开工确认文件存放路径编号
     @Expose
     private String kgTime;//开工时间
-    @Expose
-    private String wgTime;//竣工时间
+
 
     public String getKgDocument() {
         return kgDocument;
@@ -33,13 +32,5 @@ wgTime:"xxx"竣工时间
 
     public void setKgTime(String kgTime) {
         this.kgTime = kgTime;
-    }
-
-    public String getWgTime() {
-        return wgTime;
-    }
-
-    public void setWgTime(String wgTime) {
-        this.wgTime = wgTime;
     }
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.henghao.parkland.ActivityFragmentSupport;
@@ -60,11 +61,11 @@ public class MyWorkerListAdapter extends ArrayAdapter<MyWorkerEntity> {
         mHodlerView.tv_time.setText(mEntity.getDates());
         mHodlerView.tv_data.setText(mEntity.getDetails());
         mHodlerView.tv_userName.setText(mEntity.getPersonnel());
-       if( mHodlerView.tv_data.getLineCount()<=2){
-           mHodlerView.tv_data.setCompoundDrawables(null,null,null,null);
+       /*if( mHodlerView.tv_data.getLineCount()<=2){
+           mHodlerView.image_arraw.setVisibility(View.INVISIBLE);
        }else {
-           mHodlerView.tv_data.setCompoundDrawables(null,null,mActivityFragmentSupport.getResources().getDrawable(R.drawable.arrow_down_),null);
-       }
+           mHodlerView.image_arraw.setVisibility(View.VISIBLE);
+       }*/
        viewOnClick(mHodlerView,convertView,position);
         return convertView;
     }
@@ -93,5 +94,7 @@ public class MyWorkerListAdapter extends ArrayAdapter<MyWorkerEntity> {
         TextView tv_userName;
 
         ExpandableTextView tv_data;
+
+        ImageView image_arraw;
     }
 }

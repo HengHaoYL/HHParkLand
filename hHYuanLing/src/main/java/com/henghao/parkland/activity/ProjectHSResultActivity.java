@@ -105,7 +105,7 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport {
             if (jo instanceof BaseEntity) {
                 BaseEntity mData = (BaseEntity) jo;
                 if (mData.getError() == 0) {
-                    msg(mData.getMsg());
+                    //msg(mData.getMsg());
                     tvState.setVisibility(View.VISIBLE);
                     tvState.setText(mData.getMsg());
                     return;

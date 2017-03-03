@@ -53,8 +53,8 @@
                 android:id="@+id/tv_userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
                 android:layout_marginLeft="@dimen/padding_normal"
+                android:gravity="right"
                 android:text="名称"
                 android:textColor="@color/text_color_b"
                 android:textSize="@dimen/gj_d" />
@@ -64,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_normal"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
@@ -75,16 +76,15 @@
 
             <com.henghao.parkland.views.ExpandableTextView
                 android:id="@+id/expandableTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
-                android:drawablePadding="@dimen/padding_normal"
-                android:drawableRight="@drawable/arrow_down_"
-                android:ellipsize="end"
                 android:text="名称"
+                android:ellipsize="end"
                 android:textColor="@color/text_color_c"
                 android:textSize="@dimen/gj_d" />
+
         </LinearLayout>
     </LinearLayout>
 

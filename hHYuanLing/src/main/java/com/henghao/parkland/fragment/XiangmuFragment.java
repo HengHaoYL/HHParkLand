@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectFirstAdapter;
 import com.henghao.parkland.adapter.ProjectSceAdapter;
@@ -180,14 +179,7 @@ public class XiangmuFragment extends FragmentSupport {
         initWithBar();
         this.mLeftImageView.setVisibility(View.VISIBLE);
         this.mLeftImageView.setImageResource(R.drawable.home_liebiao);
-        this.mLeftLinearLayout.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                mActivity.getLoginUserSharedPre().edit().putString(Constant.USERID, null).putString(Constant.USERNAME, null).putString(Constant.USERPHONE, null).commit();
-            }
-        });
     }
 
     public void initWidget() {

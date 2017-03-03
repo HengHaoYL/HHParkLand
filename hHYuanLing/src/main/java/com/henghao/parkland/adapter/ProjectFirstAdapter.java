@@ -11,16 +11,17 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.ProjectBGManageActivity;
 import com.henghao.parkland.activity.ProjectGHFActivity;
 import com.henghao.parkland.activity.ProjectGXBYActivity;
+import com.henghao.parkland.activity.ProjectHSResultActivity;
 import com.henghao.parkland.activity.ProjectInfoActivity;
 import com.henghao.parkland.activity.ProjectJunGongActivity;
 import com.henghao.parkland.activity.ProjectKGBGActivity;
 import com.henghao.parkland.activity.ProjectSBDataActivity;
-import com.henghao.parkland.activity.ProjectHSResultActivity;
 import com.henghao.parkland.activity.ProjectTeamActivity;
+import com.henghao.parkland.activity.ProjectTechnologActivity;
 import com.henghao.parkland.activity.ProjectXckcActivity;
-import com.henghao.parkland.activity.ProjectBGManageActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -140,6 +141,11 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                     case 10:
                         //竣工
                         intent.setClass(mActivityFragmentSupport, ProjectJunGongActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
+                        break;
+                    case 12:
+                        //竣工
+                        intent.setClass(mActivityFragmentSupport, ProjectTechnologActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                 }

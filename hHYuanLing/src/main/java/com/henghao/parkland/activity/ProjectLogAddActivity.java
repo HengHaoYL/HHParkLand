@@ -141,8 +141,8 @@ public class ProjectLogAddActivity extends ActivityFragmentSupport {
         super.initData();
         initWithBar();
         mLeftTextView.setVisibility(View.VISIBLE);
-        mLeftTextView.setText("日志备忘");
-        tv_title.setText("日志备忘");
+        mLeftTextView.setText("施工日志");
+        tv_title.setText("施工日志");
     }
 
     @OnClick({R.id.tv_yujitime, R.id.tv_time, R.id.tv_selectfile, R.id.tv_selectphoto, R.id.btn_sub})

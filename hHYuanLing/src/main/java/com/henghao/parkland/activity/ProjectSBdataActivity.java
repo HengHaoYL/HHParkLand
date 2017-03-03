@@ -102,7 +102,7 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
         if (url.endsWith(ProtocolUrl.PROJECT_QUERYEQUIPMENTMSG)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mData = (BaseEntity) jo;
-                msg(mData.getMsg());
+                //msg(mData.getMsg());
                 tvState.setVisibility(View.VISIBLE);
                 tvState.setText(mData.getMsg());
                 return;

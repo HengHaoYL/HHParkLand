@@ -245,6 +245,23 @@ public class ProjectProtocol extends BaseModel {
     }
 
     /**
+     * 查询技术交底
+     *
+     * @param uid
+     */
+    public void queryTechnologyMsg(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUERYDECLARATIONMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 查询开工报告
      *
      * @param uid
@@ -398,6 +415,10 @@ public class ProjectProtocol extends BaseModel {
                     }.getType();
                     List<ProjectTeamEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectProtocol.this.OnMessageResponse(url, homeData, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYDECLARATIONMSG)) {
+                    // 查询技术交底
+                    ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
                 if (url.endsWith(ProtocolUrl.PROJECT_QUERYEQUIPMENTMSG)) {
                     // 查询设备信息

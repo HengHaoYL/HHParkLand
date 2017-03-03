@@ -45,8 +45,10 @@ public class ProjectSGBWActivity extends ActivityFragmentSupport {
 
     @InjectView(R.id.tv_state_log)
     TextView tvState;
+
     @InjectView(R.id.lv_sgbw)
     XListView listView;
+
     @InjectView(R.id.tv_title)
     TextView tv_title;
 

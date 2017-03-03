@@ -144,7 +144,6 @@ public class ProjectKGBGSubmitActivity extends ActivityFragmentSupport {
         MultipartBuilder multipartBuilder = new MultipartBuilder();
         multipartBuilder.type(MultipartBuilder.FORM)//
                 .addFormDataPart("kgTime", mData)
-                .addFormDataPart("wgTime", mTIme)
                 .addFormDataPart("uid", UID);//用户ID
         multipartBuilder.addFormDataPart(douFile.getName(), douFile.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), douFile));//图片
         RequestBody requestBody = multipartBuilder.build();

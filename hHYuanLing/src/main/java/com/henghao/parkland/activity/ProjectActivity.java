@@ -135,7 +135,7 @@ public class ProjectActivity extends ActivityFragmentSupport implements XListVie
         if (url.endsWith(ProtocolUrl.APP_LOGIN)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity base = (BaseEntity) jo;
-                msg(base.getMsg());
+                //msg(base.getMsg());
                 return;
             }
 

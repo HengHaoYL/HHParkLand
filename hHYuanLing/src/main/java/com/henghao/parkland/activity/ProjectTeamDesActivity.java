@@ -56,6 +56,7 @@ public class ProjectTeamDesActivity extends ActivityFragmentSupport {
         super.initData();
         Bundle bundle = getIntent().getBundleExtra("bundle");
         ProjectTeamEntity mEntity = (ProjectTeamEntity) bundle.getSerializable(Constant.INTNET_DATA);
+
         tvPersonnelType.setText(mEntity.getPersonnelType());
         tvWorkPost.setText(mEntity.getWorkPost());
         tvPsIdcard.setText(mEntity.getPsIdcard());

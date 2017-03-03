@@ -102,7 +102,7 @@ public class ProjectInfoActivity extends ActivityFragmentSupport {
         if (url.endsWith(ProtocolUrl.PROJECT_QUERYPROJECTMSG)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mData = (BaseEntity) jo;
-                msg(mData.getMsg());
+               // msg(mData.getMsg());
                 tvState.setVisibility(View.VISIBLE);
                 tvState.setText(mData.getMsg());
                 return;

@@ -89,14 +89,7 @@ public class HomeFragment extends FragmentSupport {
         initWithBar();
         this.mLeftImageView.setVisibility(View.VISIBLE);
         this.mLeftImageView.setImageResource(R.drawable.home_liebiao);
-        this.mLeftLinearLayout.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                mActivity.getLoginUserSharedPre().edit().putString(Constant.USERID, null).putString(Constant.USERNAME, null).putString(Constant.USERPHONE, null).commit();
-            }
-        });
     }
 
     public void initWidget() {
