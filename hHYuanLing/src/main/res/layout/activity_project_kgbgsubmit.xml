@@ -60,15 +60,15 @@
                 android:textSize="@dimen/gj_d" />
 
             <TextView
-                android:id="@+id/tv_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请选择日期"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
-                android:textSize="@dimen/gj_d" />
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请选择日期"
+            android:padding="@dimen/padding_big"
+            android:textColor="@color/text_color_c"
+            android:textColorHint="@color/line"
+            android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 

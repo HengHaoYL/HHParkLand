@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.ProjectHSResultDesActivity;
-import com.henghao.parkland.model.entity.ProjectHSResultEntity;
+import com.henghao.parkland.activity.ProjectSettlementDesActivity;
+import com.henghao.parkland.model.entity.ProjectSettlementEntity;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
@@ -22,14 +22,14 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * 会审结果〈一句话功能简述〉 〈功能详细描述〉
+ * 项目结算〈一句话功能简述〉 〈功能详细描述〉
  *
  * @author zhangxianwen
  * @version HDMNV100R001, 2015年12月21日
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> {
+public class ProjectSettlementAdapter extends ArrayAdapter<ProjectSettlementEntity> {
 
     private final LayoutInflater inflater;
 
@@ -37,7 +37,7 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    public ProjectHSResultAdapter(ActivityFragmentSupport activityFragment, List<ProjectHSResultEntity> mList) {
+    public ProjectSettlementAdapter(ActivityFragmentSupport activityFragment, List<ProjectSettlementEntity> mList) {
         super(activityFragment, R.layout.list_item_hsresult, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
@@ -48,27 +48,27 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+        ViewHolder mHodlerView = null;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.list_item_hsresult, null);
-            holder = new ViewHolder(convertView);
-            convertView.setTag(holder);
+            convertView = this.inflater.inflate(R.layout.list_item_hsresult, null);
+            mHodlerView = new ViewHolder(convertView);
+            convertView.setTag(mHodlerView);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            mHodlerView = (ViewHolder) convertView.getTag();
         }
-        holder.tvHsDepartment.setText(getItem(position).getHsDeparment());
-        mBitmapUtils.display(holder.ivHsImg, getItem(position).getHsImgId() + getItem(position).getUrl().get(0));
-        viewClick(holder, convertView, position);
+        mHodlerView.tvDates.setText(getItem(position).getDates());
+        mBitmapUtils.display(mHodlerView.ivImage, getItem(position).getSettlementBookId() + getItem(position).getUrl().get(0));
+        viewClick(mHodlerView, convertView, position);
         return convertView;
     }
 
-    private void viewClick(ProjectHSResultAdapter.ViewHolder mHodlerView, View convertView, final int position) {
-        final ProjectHSResultEntity mentity = getItem(position);
+    private void viewClick(ProjectSettlementAdapter.ViewHolder mHodlerView, View convertView, final int position) {
+        final ProjectSettlementEntity mentity = getItem(position);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(mActivityFragmentSupport, ProjectHSResultDesActivity.class);
+                intent.setClass(mActivityFragmentSupport, ProjectSettlementDesActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(Constant.INTNET_DATA, mentity);
                 intent.putExtra("bundle", bundle);
@@ -79,9 +79,9 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
 
     static class ViewHolder {
         @InjectView(R.id.tv_hsDepartment)
-        TextView tvHsDepartment;
+        TextView tvDates;
         @InjectView(R.id.iv_hsImg)
-        ImageView ivHsImg;
+        ImageView ivImage;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

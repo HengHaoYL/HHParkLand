@@ -99,7 +99,7 @@ public class XiangmuFragment extends FragmentSupport {
         //第九个
         AppGridEntity mEntity9 = new AppGridEntity();
         mEntity9.setImageId(R.drawable.icon_eight);
-        mEntity9.setName("现场勘查");
+        mEntity9.setName("现场检验");
         mList2.add(mEntity9);
         //第十个
         AppGridEntity mEntity10 = new AppGridEntity();
