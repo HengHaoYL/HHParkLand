@@ -6,30 +6,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.ProjectHSResultDesActivity;
-import com.henghao.parkland.model.entity.ProjectHSResultEntity;
+import com.henghao.parkland.activity.ProjectBGManageDesActivity;
+import com.henghao.parkland.model.entity.ProjectBGManageEntity;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 /**
- * 项目图纸〈一句话功能简述〉 〈功能详细描述〉
+ * 项目信息〈一句话功能简述〉 〈功能详细描述〉
  *
  * @author zhangxianwen
  * @version HDMNV100R001, 2015年12月21日
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> {
+public class ProjectBGManageAdapter extends ArrayAdapter<ProjectBGManageEntity> {
 
     private final LayoutInflater inflater;
 
@@ -37,8 +33,8 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    public ProjectHSResultAdapter(ActivityFragmentSupport activityFragment, List<ProjectHSResultEntity> mList) {
-        super(activityFragment, R.layout.list_item_hsresult, mList);
+    public ProjectBGManageAdapter(ActivityFragmentSupport activityFragment, List<ProjectBGManageEntity> mList) {
+        super(activityFragment, R.layout.item_projectmanager, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
         this.mBitmapUtils = new BitmapUtils(activityFragment, Constant.CACHE_DIR_PATH);
@@ -48,27 +44,29 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+        HodlerView mHodlerView = null;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.list_item_hsresult, null);
-            holder = new ViewHolder(convertView);
-            convertView.setTag(holder);
+            mHodlerView = new HodlerView();
+            convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
+            mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+            mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+            convertView.setTag(mHodlerView);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            mHodlerView = (HodlerView) convertView.getTag();
         }
-        holder.tvHsDepartment.setText(getItem(position).getHsDeparment());
-        mBitmapUtils.display(holder.ivHsImg, getItem(position).getHsImgId() + getItem(position).getUrl().get(0));
-        viewClick(holder, convertView, position);
+        mHodlerView.tv_time.setText(getItem(position).getTimes());
+        mHodlerView.tv_title.setText(getItem(position).getConfirmingParty());
+        viewClick(mHodlerView, convertView, position);
         return convertView;
     }
 
-    private void viewClick(ProjectHSResultAdapter.ViewHolder mHodlerView, View convertView, final int position) {
-        final ProjectHSResultEntity mentity = getItem(position);
+    private void viewClick(HodlerView mHodlerView, View convertView, final int position) {
+        final ProjectBGManageEntity mentity = getItem(position);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(mActivityFragmentSupport, ProjectHSResultDesActivity.class);
+                intent.setClass(mActivityFragmentSupport, ProjectBGManageDesActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(Constant.INTNET_DATA, mentity);
                 intent.putExtra("bundle", bundle);
@@ -77,14 +75,10 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
         });
     }
 
-    static class ViewHolder {
-        @InjectView(R.id.tv_hsDepartment)
-        TextView tvHsDepartment;
-        @InjectView(R.id.iv_hsImg)
-        ImageView ivHsImg;
+    private class HodlerView {
 
-        ViewHolder(View view) {
-            ButterKnife.inject(this, view);
-        }
+        TextView tv_title;
+
+        TextView tv_time;
     }
 }

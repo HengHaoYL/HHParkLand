@@ -64,7 +64,7 @@ public class ProjectXckcDesActivity extends ActivityFragmentSupport {
         tv_time.setText(mEntity.getXcTime());
         tv_address.setText(mEntity.getXcAdd());
         tv_person.setText(mEntity.getXcPerson());
-        CommonGridViewAdapter mAdapter = new CommonGridViewAdapter(this, mEntity.getUrl(), path);
+        CommonGridViewAdapter mAdapter = new CommonGridViewAdapter(this, mEntity.getUrl());
         gridview.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
         //处理图片地址

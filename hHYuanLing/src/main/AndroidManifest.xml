@@ -255,14 +255,21 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--项目图纸-->
+        <!--会审结果-->
         <activity
             android:name=".activity.ProjectHSResultActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--会审结果提交-->
         <activity
             android:name=".activity.ProjectHSResultSubmitActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--会审结果详细信息-->
+        <activity
+            android:name=".activity.ProjectHSResultDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -358,6 +365,12 @@
         <!--变更管理提交-->
         <activity
             android:name=".activity.ProjectBGManageSubmitActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--变更管理详细信息-->
+        <activity
+            android:name=".activity.ProjectBGManageDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />

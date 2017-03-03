@@ -13,7 +13,7 @@ import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.adapter.ProjectHsResultAdapter;
+import com.henghao.parkland.adapter.ProjectHSResultAdapter;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectHSResultEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
@@ -37,7 +37,7 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport {
     private TextView tvState;
 
     private List<ProjectHSResultEntity> data;
-    private ProjectHsResultAdapter mAdapter;
+    private ProjectHSResultAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,7 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport {
         tv_title.setText("会审结果");
         mXlistView.addHeaderView(HeaderView);
         data = new ArrayList<>();
-        mAdapter = new ProjectHsResultAdapter(this, data);
+        mAdapter = new ProjectHSResultAdapter(this, data);
         mXlistView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
@@ -118,9 +118,7 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport {
                     List<ProjectHSResultEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
                     String topPath = mData.getPath();//图片URL头部地址
                     for (ProjectHSResultEntity entity : homeData) {
-                        List<String> urls = entity.getUrl();
-                        String hsImg_url = topPath + urls.get(0);
-                        entity.setHsImgId(hsImg_url);
+                        entity.setHsImgId(topPath);
                         data.add(entity);
                     }
                     runOnUiThread(new Runnable() {

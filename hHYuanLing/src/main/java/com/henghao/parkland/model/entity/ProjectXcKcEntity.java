@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.henghao.parkland.model.IdEntity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2017/2/26 0026.
@@ -25,7 +25,7 @@ public class ProjectXcKcEntity extends IdEntity {
 
     @Expose
     @SerializedName("url")
-    private List<String> url;
+    private ArrayList<String> url;
 
     @Expose
     private String pid;
@@ -82,11 +82,11 @@ public class ProjectXcKcEntity extends IdEntity {
         this.xcTime = xcTime;
     }
 
-    public List<String> getUrl() {
+    public ArrayList<String> getUrl() {
         return url;
     }
 
-    public void setUrl(List<String> url) {
+    public void setUrl(ArrayList<String> url) {
         this.url = url;
     }
 }

@@ -7,18 +7,21 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
+import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.views.xlistview.XListView;
+import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.adapter.ProjectInfoAdapter;
+import com.henghao.parkland.adapter.ProjectBGManageAdapter;
 import com.henghao.parkland.model.entity.BaseEntity;
-import com.henghao.parkland.model.entity.ProjectInfoEntity;
+import com.henghao.parkland.model.entity.ProjectBGManageEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
 import com.lidroid.xutils.ViewUtils;
 
 import org.json.JSONException;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,18 +33,18 @@ import butterknife.InjectView;
  */
 public class ProjectBGManageActivity extends ActivityFragmentSupport {
 
-    @InjectView(R.id.tv_state_projectinfo)
+    @InjectView(R.id.tv_state_projectbgmanage)
     TextView tvState;
-    @InjectView(R.id.lv_projectinfo)
+    @InjectView(R.id.lv_projectbgmanage)
     XListView listView;
-    private ProjectInfoAdapter mAdapter;
+    private ProjectBGManageAdapter mAdapter;
 
-    private List<ProjectInfoEntity> data;
+    private List<ProjectBGManageEntity> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_project_info);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_bgmanage);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -57,7 +60,7 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("项目信息");
+        mLeftTextView.setText("变更管理");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithRightBar();
         mRightTextView.setText("添加");
@@ -76,10 +79,10 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport {
         super.initData();
         View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
         TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
-        tv_title.setText("项目信息");
+        tv_title.setText("变更管理");
         listView.addHeaderView(HeaderView);
         data = new ArrayList<>();
-        mAdapter = new ProjectInfoAdapter(this, data);
+        mAdapter = new ProjectBGManageAdapter(this, data);
         listView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
@@ -92,26 +95,42 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport {
          */
         ProjectProtocol mProtocol = new ProjectProtocol(this);
         mProtocol.addResponseListener(this);
-        mProtocol.queryProjectMsg(getLoginUid());
+        mProtocol.queryAlterationMsg(getLoginUid());
         mActivityFragmentView.viewLoading(View.VISIBLE);
     }
 
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.PROJECT_QUERYPROJECTMSG)) {
+        if (url.endsWith(ProtocolUrl.PROJECT_QUERYALTERATIONMSG)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mData = (BaseEntity) jo;
-                msg(mData.getMsg());
-                tvState.setVisibility(View.VISIBLE);
-                tvState.setText(mData.getMsg());
-                return;
+                if (mData.getError() == 0) {
+                    msg(mData.getMsg());
+                    tvState.setVisibility(View.VISIBLE);
+                    tvState.setText(mData.getMsg());
+                    return;
+                } else {
+                    tvState.setVisibility(View.GONE);
+                    String jsonStr = ToolsJson.toJson(mData.getData());
+                    Type type = new TypeToken<List<ProjectBGManageEntity>>() {
+                    }.getType();
+                    data.clear();
+                    List<ProjectBGManageEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
+                    String topPath = mData.getPath();//图片URL头部地址
+                    for (ProjectBGManageEntity entity : homeData) {
+                        entity.setFile(topPath);
+                        data.add(entity);
+                    }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter.notifyDataSetChanged();
+                            listView.setAdapter(mAdapter);
+                        }
+                    });
+                }
             }
-            tvState.setVisibility(View.GONE);
-            List<ProjectInfoEntity> homedata = (List<ProjectInfoEntity>) jo;
-            data.clear();
-            data.addAll(homedata);
-            mAdapter.notifyDataSetChanged();
         }
     }
 }

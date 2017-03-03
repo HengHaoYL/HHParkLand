@@ -3,7 +3,7 @@ package com.henghao.parkland.model.entity;
 import com.google.gson.annotations.Expose;
 import com.henghao.parkland.model.IdEntity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by 晏琦云 on 2017/3/1.
@@ -30,7 +30,7 @@ public class ProjectGXBYEntity extends IdEntity {
     @Expose
     private String gxImgId;
     @Expose
-    private List<String> url;
+    private ArrayList<String> url;
 
     public String getGxName() {
         return gxName;
@@ -80,11 +80,11 @@ public class ProjectGXBYEntity extends IdEntity {
         this.gxImgId = gxImgId;
     }
 
-    public List<String> getUrl() {
+    public ArrayList<String> getUrl() {
         return url;
     }
 
-    public void setUrl(List<String> url) {
+    public void setUrl(ArrayList<String> url) {
         this.url = url;
     }
 }

@@ -165,16 +165,16 @@
             android:layout_height="1dip"
             android:background="@color/line" />
 
-        <GridView
+        <com.benefit.buy.library.views.NoScrollGridView
             android:id="@+id/gridView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="-1px"
-            android:layout_marginRight="-1px"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:listSelector="@android:color/transparent"
-            android:numColumns="4"
+            android:numColumns="3"
             android:scrollbars="none"
-            android:stretchMode="columnWidth" />
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/activity_horizontal_margin" />
 
     </LinearLayout>
 

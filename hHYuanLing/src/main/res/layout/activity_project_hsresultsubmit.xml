@@ -45,7 +45,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="图片上传"
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_hsImg"
@@ -53,17 +60,17 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/icon_photo"
                 android:padding="@dimen/padding_big"
-                android:text="图片上传"
                 android:textSize="@dimen/gj_d" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="请上传会审人员签字的图片"
-                android:textColor="@color/red" />
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="请上传会审人员签字的图片"
+            android:textColor="@color/red" />
 
         <View
             android:layout_width="wrap_content"

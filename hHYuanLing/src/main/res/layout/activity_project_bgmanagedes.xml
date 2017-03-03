@@ -25,11 +25,14 @@
                 android:textSize="@dimen/gj_d" />
 
 
-            <Spinner
-                android:id="@+id/sp_confirmingParty"
+            <TextView
+                android:id="@+id/tv_confirmingParty"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/padding_big" />
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 
@@ -55,9 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:drawablePadding="@dimen/padding_normal"
-                android:drawableRight="@drawable/icon_calendar"
                 android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -73,18 +75,11 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="变更依据"
-                android:textSize="@dimen/gj_d" />
-
-            <TextView
-                android:id="@+id/tv_files"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/icon_photo"
                 android:padding="@dimen/padding_big"
+                android:text="变更依据"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -94,18 +89,16 @@
             android:layout_height="1dip"
             android:background="@color/line" />
 
-        <TextView
-            android:id="@+id/tv_submit"
+        <com.benefit.buy.library.views.NoScrollGridView
+            android:id="@+id/gridView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_big"
-            android:background="@drawable/btn_bluecircleframe"
-            android:gravity="center"
-            android:padding="@dimen/padding_big"
-            android:text="完成"
-            android:textColor="@color/white"
-            android:textSize="@dimen/gj_d" />
-
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/activity_horizontal_margin" />
     </LinearLayout>
 
 </ScrollView>

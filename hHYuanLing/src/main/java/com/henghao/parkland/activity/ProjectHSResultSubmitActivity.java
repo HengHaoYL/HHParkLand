@@ -158,7 +158,7 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
         // 查看session是否过期
 //        int selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
         int selectedMode = MultiImageSelectorActivity.MODE_MULTI;
-        int maxNum = 1;
+        int maxNum = 9;
         Intent picIntent = new Intent(this, MultiImageSelectorActivity.class);
         // 是否显示拍摄图片
         picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, true);

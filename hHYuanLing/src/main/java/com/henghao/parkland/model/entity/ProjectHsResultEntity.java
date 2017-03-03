@@ -1,14 +1,15 @@
 package com.henghao.parkland.model.entity;
 
 import com.google.gson.annotations.Expose;
+import com.henghao.parkland.model.IdEntity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by 晏琦云 on 2017/2/26.
  */
 
-public class ProjectHSResultEntity {
+public class ProjectHSResultEntity extends IdEntity {
     /*
     hsDeparment:"xx",会审单位
     hsImgId:null,会审图片路径
@@ -21,7 +22,7 @@ public class ProjectHSResultEntity {
     @Expose
     private String hsImgId;//会审图片路径
     @Expose
-    private List<String> url;
+    private ArrayList<String> url;
 
     public String getHsDeparment() {
         return hsDeparment;
@@ -39,11 +40,11 @@ public class ProjectHSResultEntity {
         this.hsImgId = hsImgId;
     }
 
-    public List<String> getUrl() {
+    public ArrayList<String> getUrl() {
         return url;
     }
 
-    public void setUrl(List<String> url) {
+    public void setUrl(ArrayList<String> url) {
         this.url = url;
     }
 }
