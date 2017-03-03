@@ -70,7 +70,7 @@ public class ProjectSettlementSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("变更管理");
+        mLeftTextView.setText("项目结算");
         mLeftTextView.setVisibility(View.VISIBLE);
     }
 

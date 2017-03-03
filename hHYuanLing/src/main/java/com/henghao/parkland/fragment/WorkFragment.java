@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import com.benefit.buy.library.viewpagerindicator.CirclePageIndicator;
 import com.benefit.buy.library.views.NoScrollListView;
-import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.WorkListShowAdapter;
 import com.henghao.parkland.adapter.WorkShowAdapter;
@@ -68,7 +67,7 @@ public class WorkFragment extends FragmentSupport {
         NoScrollListView mNoScrollListView = (NoScrollListView) headerView.findViewById(R.id.listview_noscroll);
         //信息展示数据
         List<String> mList = new ArrayList<String>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
             mList.add("8");
         }
         WorkListShowAdapter mShowAdapter = new WorkListShowAdapter(this.mActivity, mList);

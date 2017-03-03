@@ -11,8 +11,10 @@
         android:padding="@dimen/padding_normal" >
 
         <ImageView
+            android:id="@+id/imageview"
             android:layout_width="@dimen/fitment_mark"
             android:layout_height="@dimen/fitment_mark"
+            android:scaleType="centerCrop"
             android:src="@drawable/icon_logo" />
 
         <LinearLayout
@@ -26,11 +28,13 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="江苏约93万招投标信息"
                 android:textColor="@color/text_color_b"
                 android:textSize="@dimen/gj_d" />
 
             <TextView
+                android:id="@+id/tv_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/padding_normal"
@@ -40,6 +44,7 @@
                 android:textSize="@dimen/gj_d" />
 
             <TextView
+                android:id="@+id/tv_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="江苏约93万招投标信息"
