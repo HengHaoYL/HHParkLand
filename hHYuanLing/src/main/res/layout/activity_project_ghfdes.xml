@@ -27,18 +27,13 @@
                 android:text="企业名称"
                 android:textSize="@dimen/gj_d" />
 
-            <EditText
-                android:id="@+id/et_epName"
+            <TextView
+                android:id="@+id/tv_epName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -63,18 +58,13 @@
                 android:text="企业地址"
                 android:textSize="@dimen/gj_d" />
 
-            <EditText
-                android:id="@+id/et_epAdd"
+            <TextView
+                android:id="@+id/tv_epAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -104,12 +94,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:drawablePadding="@dimen/padding_normal"
-                android:drawableRight="@drawable/icon_calendar"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -134,18 +120,13 @@
                 android:text="联系方式"
                 android:textSize="@dimen/gj_d" />
 
-            <EditText
-                android:id="@+id/et_epTel"
+            <TextView
+                android:id="@+id/tv_epTel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -161,17 +142,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
-                android:text="供货合同"
-                android:textSize="@dimen/gj_d" />
-
-            <TextView
-                android:id="@+id/tv_hehong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/icon_photo"
@@ -179,39 +149,7 @@
                 android:paddingLeft="@dimen/padding_normal"
                 android:paddingRight="@dimen/padding_normal"
                 android:paddingTop="@dimen/padding_big"
-                android:textSize="@dimen/gj_d" />
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
-                android:text="检验检疫证"
-                android:textSize="@dimen/gj_d" />
-
-            <TextView
-                android:id="@+id/tv_jianyan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/icon_photo"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:text="相关资料"
                 android:textSize="@dimen/gj_d" />
         </LinearLayout>
 
@@ -220,18 +158,16 @@
             android:layout_height="1dip"
             android:background="@color/line" />
 
-        <TextView
-            android:id="@+id/tv_submit"
+        <com.benefit.buy.library.views.NoScrollGridView
+            android:id="@+id/gridView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_big"
-            android:background="@drawable/btn_bluecircleframe"
-            android:gravity="center"
-            android:padding="@dimen/padding_big"
-            android:text="完成"
-            android:textColor="@color/white"
-            android:textSize="@dimen/gj_d" />
-
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/activity_horizontal_margin" />
     </LinearLayout>
 
 </ScrollView>

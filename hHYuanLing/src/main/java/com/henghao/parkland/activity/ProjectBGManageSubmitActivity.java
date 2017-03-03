@@ -135,7 +135,12 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
                         public void onFailure(Request request, IOException e) {
                             Log.e(TAG, "onFailure: " + e.getMessage());
                             e.printStackTrace();
-                            msg("网络请求错误！");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    msg("网络请求错误！");
+                                }
+                            });
                         }
 
                         @Override

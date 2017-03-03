@@ -172,6 +172,11 @@ public class ProtocolUrl {
     public static final String PROJECT_QUERYALTERATIONMSG = "projectManage/queryAlterationMsg";
 
     /**
+     * 供货方信息查询
+     */
+    public static final String PROJECT_QUERYSUPPLIERMSG = "projectManage/querySupplierMsg";
+
+    /**
      * 设备信息查询
      */
     public static final String PROJECT_QUERYEQUIPMENTMSG = "projectManage/queryEquipmentMsg";
@@ -200,6 +205,11 @@ public class ProtocolUrl {
      * 变更管理提交
      */
     public static final String PROJECT_SAVEALTERATIONMSG = "projectManage/saveAlterationMsg";
+
+    /**
+     * 供货方信息提交
+     */
+    public static final String PROJECT_SAVESUPPLIERMSG = "projectManage/saveSupplierMsg";
 
     /**
      * 会审结果查询
