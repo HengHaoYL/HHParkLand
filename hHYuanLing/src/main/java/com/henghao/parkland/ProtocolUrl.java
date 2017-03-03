@@ -140,7 +140,7 @@ public class ProtocolUrl {
     /**
      * 技术交底添加
      */
-    public static final String PROJECT_SAVEJSJD= "projectManage/saveTechnologyMsg";
+    public static final String PROJECT_SAVEJSJD = "projectManage/saveTechnologyMsg";
 
     /**
      * 工序报验提交
@@ -174,6 +174,11 @@ public class ProtocolUrl {
      * 变更管理查询
      */
     public static final String PROJECT_QUERYALTERATIONMSG = "projectManage/queryAlterationMsg";
+
+    /**
+     * 变更管理查询
+     */
+    public static final String PROJECT_QUERYSETTLEMENTMSG = "projectManage/querySettlementMsg";
 
     /**
      * 供货方信息查询
@@ -216,6 +221,11 @@ public class ProtocolUrl {
     public static final String PROJECT_SAVESUPPLIERMSG = "projectManage/saveSupplierMsg";
 
     /**
+     * 项目结算提交
+     */
+    public static final String PROJECT_SAVESETTLEMENT = "projectManage/saveSettlementMsg";
+
+    /**
      * 会审结果查询
      */
     public static final String PROJECT_QUERYHSRESULTMSG = "projectManage/queryHsResultMsg";
@@ -233,7 +243,7 @@ public class ProtocolUrl {
     /**
      * 查询技术交底
      */
-    public static final String PROJECT_QUERYDECLARATIONMSG= "projectManage/queryTechnologyMsg";
+    public static final String PROJECT_QUERYDECLARATIONMSG = "projectManage/queryTechnologyMsg";
 
     /**
      * 添加我的轨迹

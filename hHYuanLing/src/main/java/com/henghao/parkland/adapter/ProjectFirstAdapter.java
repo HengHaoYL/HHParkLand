@@ -19,6 +19,7 @@ import com.henghao.parkland.activity.ProjectInfoActivity;
 import com.henghao.parkland.activity.ProjectJunGongActivity;
 import com.henghao.parkland.activity.ProjectKGBGActivity;
 import com.henghao.parkland.activity.ProjectSBDataActivity;
+import com.henghao.parkland.activity.ProjectSettlementActivity;
 import com.henghao.parkland.activity.ProjectTeamActivity;
 import com.henghao.parkland.activity.ProjectTechnologActivity;
 import com.henghao.parkland.activity.ProjectXckcActivity;
@@ -95,7 +96,7 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                         break;
                     case 1:
                         //项目结算
-                        intent.setClass(mActivityFragmentSupport, ProjectInfoActivity.class);
+                        intent.setClass(mActivityFragmentSupport, ProjectSettlementActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 2:

@@ -177,6 +177,23 @@ public class ProjectProtocol extends BaseModel {
     }
 
     /**
+     * 查询项目结算
+     *
+     * @param uid
+     */
+    public void querySettlementMsg(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUERYSETTLEMENTMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 查询供货方信息
      *
      * @param uid
@@ -454,6 +471,10 @@ public class ProjectProtocol extends BaseModel {
                 }
                 if (url.endsWith(ProtocolUrl.PROJECT_QUERYSUPPLIERMSG)) {
                     // 查询供货方信息
+                    ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYSETTLEMENTMSG)) {
+                    // 查询项目结算
                     ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
             } catch (Exception e) {
