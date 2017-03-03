@@ -81,7 +81,6 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="名称"
-                android:ellipsize="end"
                 android:textColor="@color/text_color_c"
                 android:textSize="@dimen/gj_d" />
 

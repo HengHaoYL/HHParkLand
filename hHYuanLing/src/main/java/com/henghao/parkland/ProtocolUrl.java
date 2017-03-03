@@ -141,6 +141,10 @@ public class ProtocolUrl {
      * 技术交底添加
      */
     public static final String PROJECT_SAVEJSJD= "projectManage/saveTechnologyMsg";
+    /**
+     * 进度申报提交
+     */
+    public static final String PROJECT_SAVEJDSB= "projectManage/saveDeclarationMsg";
 
     /**
      * 工序报验提交
@@ -234,6 +238,11 @@ public class ProtocolUrl {
      * 查询技术交底
      */
     public static final String PROJECT_QUERYDECLARATIONMSG= "projectManage/queryTechnologyMsg";
+
+    /**
+     * 查询进度申报
+     */
+    public static final String PROJECT_QUERYJDSB= "projectManage/queryDeclarationMsg";
 
     /**
      * 添加我的轨迹

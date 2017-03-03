@@ -12,6 +12,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.ProjectBGManageActivity;
+import com.henghao.parkland.activity.ProjectDeclareActivity;
 import com.henghao.parkland.activity.ProjectGHFActivity;
 import com.henghao.parkland.activity.ProjectGXBYActivity;
 import com.henghao.parkland.activity.ProjectHSResultActivity;
@@ -143,8 +144,13 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                         intent.setClass(mActivityFragmentSupport, ProjectJunGongActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
+                    case 11:
+                        //进度申报
+                        intent.setClass(mActivityFragmentSupport, ProjectDeclareActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
+                        break;
                     case 12:
-                        //竣工
+                        //技术交底
                         intent.setClass(mActivityFragmentSupport, ProjectTechnologActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;

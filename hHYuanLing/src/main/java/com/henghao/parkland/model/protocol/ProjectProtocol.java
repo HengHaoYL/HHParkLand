@@ -277,6 +277,22 @@ public class ProjectProtocol extends BaseModel {
             e.printStackTrace();
         }
     }
+    /**
+     * 查询进度申报
+     *
+     * @param uid
+     */
+    public void queryJDSB(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUERYJDSB;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 查询开工报告
@@ -435,6 +451,10 @@ public class ProjectProtocol extends BaseModel {
                 }
                 if (url.endsWith(ProtocolUrl.PROJECT_QUERYDECLARATIONMSG)) {
                     // 查询技术交底
+                    ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYJDSB)) {
+                    // 进度申报
                     ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
                 if (url.endsWith(ProtocolUrl.PROJECT_QUERYEQUIPMENTMSG)) {
