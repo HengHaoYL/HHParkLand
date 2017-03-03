@@ -6,7 +6,7 @@
 
 
     <TextView
-        android:id="@+id/tv_state_projecthsresult"
+        android:id="@+id/tv_state_projectxckc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -14,7 +14,7 @@
         android:visibility="gone" />
 
     <com.benefit.buy.library.views.xlistview.XListView
-        android:id="@+id/lv_projecthsresult"
+        android:id="@+id/lv_projectxckc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cacheColorHint="@color/transparent"

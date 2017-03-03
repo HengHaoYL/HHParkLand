@@ -96,27 +96,30 @@
             android:layout_height="1dip"
             android:background="@color/line" />
 
-        <LinearLayout
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/icon_photo"
+            android:padding="@dimen/padding_big"
+            android:text="现场情况"
+            android:textSize="@dimen/gj_d" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <com.benefit.buy.library.views.NoScrollGridView
+            android:id="@+id/gridView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="现场情况"
-                android:textSize="@dimen/gj_d" />
-
-            <GridView
-                android:id="@+id/gridview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/padding_normal"
-                android:numColumns="2"></GridView>
-
-        </LinearLayout>
-
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/activity_horizontal_margin" />
 
     </LinearLayout>
 

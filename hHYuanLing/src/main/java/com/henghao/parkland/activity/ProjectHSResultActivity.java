@@ -33,7 +33,7 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport {
 
     @ViewInject(R.id.lv_projecthsresult)
     private XListView mXlistView;
-    @ViewInject(R.id.tv_state_projechsresult)
+    @ViewInject(R.id.tv_state_projecthsresult)
     private TextView tvState;
 
     private List<ProjectHSResultEntity> data;
