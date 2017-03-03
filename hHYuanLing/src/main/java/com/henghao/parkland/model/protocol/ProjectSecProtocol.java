@@ -53,6 +53,40 @@ public class ProjectSecProtocol extends BaseModel {
             e.printStackTrace();
         }
     }
+    /**
+     * 提交 我的轨迹
+     * @param uid
+     */
+    public void saveMylocusMsg(String uid,String personnel,String details,String dates,String workType) {
+        try {
+            String url = ProtocolUrl.PROJECT_SAVE_MYLOCUSMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            params.put("personnel", personnel);
+            params.put("details", details);
+            params.put("dates", dates);
+            params.put("workType", workType);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * 查询 我的轨迹
+     * @param uid
+     */
+    public void queryMylocusMsg(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUERY_MYLOCUSMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     private final BeeCallback<String> mBeeCallback = new BeeCallback<String>() {
@@ -76,7 +110,7 @@ public class ProjectSecProtocol extends BaseModel {
                     return;
                 }
                 /**** end ****/
-                if (url.endsWith(ProtocolUrl.PROJECT_QUERYXCKC)) {
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYXCKC) || url.endsWith(ProtocolUrl.PROJECT_QUERY_MYLOCUSMSG)) {
                     // 现场勘查
                    /* Type type = new TypeToken<List<ProjectXcKcEntity>>() {
                     }.getType();

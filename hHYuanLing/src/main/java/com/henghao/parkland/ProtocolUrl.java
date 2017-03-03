@@ -206,6 +206,16 @@ public class ProtocolUrl {
      */
     public static final String PROJECT_QUERYSGPERSONNELMSG = "projectManage/querySgPersonnelMsg";
 
+    /**
+     * 添加我的轨迹
+     */
+    public static final String PROJECT_SAVE_MYLOCUSMSG = "projectManage/saveMylocusMsg";
+
+    /**
+     * 查询我的轨迹
+     */
+    public static final String PROJECT_QUERY_MYLOCUSMSG = "projectManage/queryMylocusMsg";
+
     /************************ 项目管理 end **************************/
 
     /**

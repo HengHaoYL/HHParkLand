@@ -17,7 +17,9 @@ import com.benefit.buy.library.views.CircularImageView;
 import com.benefit.buy.library.views.dialog.BaseDialog;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.QiandaoActivity;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
+import com.henghao.parkland.activity.user.MyWorkerListActivity;
 import com.henghao.parkland.activity.user.SettingActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -64,6 +66,11 @@ public class MyLoginFragment extends FragmentSupport {
      */
     @ViewInject(R.id.image_setting)
     private ImageView image_setting;
+    /**
+     * 我的工作
+     */
+    @ViewInject(R.id.tv_myworker)
+    private TextView tv_myworker;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -90,7 +97,7 @@ public class MyLoginFragment extends FragmentSupport {
 
     public void onResume() {
         super.onResume();
-        String Uid = mActivity.getLoginUid();
+        String Uid = mActivity.getLoginUser();
         if (ToolsKit.isEmpty(Uid)) {
             //未登录
             tv_userName.setText("点击登录更精彩");
@@ -104,7 +111,7 @@ public class MyLoginFragment extends FragmentSupport {
         }
     }
 
-    @OnClick({R.id.tv_login, R.id.ll_updatename,R.id.image_setting})
+    @OnClick({R.id.tv_login, R.id.ll_updatename, R.id.image_setting, R.id.tv_myworker, R.id.tv_qiandao})
     private void viewClick(View v) {
         Intent intent = new Intent();
         switch (v.getId()) {
@@ -123,7 +130,18 @@ public class MyLoginFragment extends FragmentSupport {
                 startActivity(intent);
                 break;
             case R.id.image_setting:
+                //设置
                 intent.setClass(mActivity, SettingActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_myworker:
+                //我的轨迹
+                intent.setClass(mActivity, MyWorkerListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_qiandao:
+                //签到
+                intent.setClass(mActivity, QiandaoActivity.class);
                 startActivity(intent);
                 break;
         }

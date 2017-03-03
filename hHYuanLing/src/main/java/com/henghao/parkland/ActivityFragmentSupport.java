@@ -488,7 +488,7 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
 
 	@Override
 	public String getLoginUid() {
-		return this.mSharedPreferences.getString(Constant.USERID, null);
+		return this.mSharedPreferences.getString(Constant.USERID, "0");
 	}
 
 	@Override

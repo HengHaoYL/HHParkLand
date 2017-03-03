@@ -107,6 +107,16 @@
             android:name=".activity.user.SettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
+        <!-- activity 我的工作轨迹 -->
+        <activity
+            android:name=".activity.user.MyWorkerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme" />
+        <!-- activity 我的工作轨迹列表 -->
+        <activity
+            android:name=".activity.user.MyWorkerListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme" />
         <!-- activity 巡检界面 -->
         <activity
             android:name=".activity.ISOActivity"
