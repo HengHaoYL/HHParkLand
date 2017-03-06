@@ -6,9 +6,10 @@ import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
-import com.benefit.buy.library.utils.tools.ToolsDate;
+import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.benefit.buy.library.views.xlistview.XListView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
@@ -17,14 +18,25 @@ import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectMoneyAdapter;
 import com.henghao.parkland.model.entity.SGWalletEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
-import com.henghao.parkland.utils.ExcelUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -74,33 +86,63 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         mXlistview.setXListViewListener(this);
         initView();
         mMoneyAdapter = new ProjectMoneyAdapter(this);
-
+        /**
+         * 下载文件
+         */
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        File file = new File(getSDPath() + "/ParKLand");
-                        makeDir(file);
-                        ExcelUtils.initExcel(file.toString() + ToolsDate.crunttime(), title);
-                        final ArrayList<ArrayList<String>> mArray = new ArrayList<ArrayList<String>>();
-                        ArrayList<String> dataList = new ArrayList<String>();
-                        for (int i=0;i<mList.size();i++){
-                            dataList.add(mList.get(i).getTransactionTime());
-                            dataList.add(mList.get(i).getExpend()+"");
-                            dataList.add(mList.get(i).getMoney()+"");
-                            mArray.add(dataList);
+                String sdPath = getSDPath();
+                if (!ToolsKit.isEmpty(sdPath)) {
+                    final File parentfile = new File(sdPath + "/ParKLand");
+                    makeDir(parentfile);
+                    /**
+                     * 访问网络
+                     */
+                    OkHttpClient okHttpClient = new OkHttpClient();
+                    Request.Builder builder = new Request.Builder();
+                    FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
+                    requestBodyBuilder.add("uid", getLoginUid());
+                    RequestBody requestBody = requestBodyBuilder.build();
+                    Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DOWNLOAD_WALLETEXCEL).build();
+                    Call call = okHttpClient.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Request request, IOException e) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(ProjectMoneyActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ExcelUtils.writeObjListToExcel(mArray, getSDPath()
-                                        + "/ParKLand/bill.xls", ProjectMoneyActivity.this);
+
+                        @Override
+                        public void onResponse(Response response) throws IOException {
+                            InputStream inputStream = response.body().byteStream();
+                            Date date = new Date();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+                            String fileName = dateFormat.format(date);
+                            File file = new File(parentfile, fileName + ".xlsx");
+                            file.createNewFile();
+                            file.setWritable(Boolean.TRUE);
+                            FileOutputStream fos = new FileOutputStream(file);
+                            int len;
+                            byte[] buffer = new byte[1024];
+                            while ((len = inputStream.read(buffer)) != -1) {
+                                fos.write(buffer, 0, len);
                             }
-                        });
-                    }
-                }).start();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(context, "文件下载成功！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    Toast.makeText(context, "您当前没有SD卡，请插入SD卡后进行操作！", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -163,14 +205,12 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
 
     public String getSDPath() {
         File sdDir = null;
-        boolean sdCardExist = Environment.getExternalStorageState().equals(
-                android.os.Environment.MEDIA_MOUNTED);
+        boolean sdCardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
         if (sdCardExist) {
             sdDir = Environment.getExternalStorageDirectory();
         }
         String dir = sdDir.toString();
         return dir;
-
     }
 
 
