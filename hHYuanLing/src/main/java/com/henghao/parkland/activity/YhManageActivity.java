@@ -385,16 +385,17 @@ public class YhManageActivity extends ActivityFragmentSupport {
 
                     @Override
                     public void onResponse(Response response) throws IOException {
-                        String result = response.body().string();
-                        Log.i(TAG, "onResponse: " + result);
+                        String result_str = response.body().string();
+                        Log.i(TAG, "onResponse: " + result_str);
                         try {
-                            JSONObject jsonObject = new JSONObject(result);
+                            JSONObject jsonObject = new JSONObject(result_str);
                             int error = jsonObject.getInt("error");
                             if (error == 0) {
+                                final String result = jsonObject.getString("result");
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(YhManageActivity.this, "该二维码不存在数据！请先录入植物信息！", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(YhManageActivity.this, result, Toast.LENGTH_SHORT).show();
                                         return;
                                     }
                                 });
