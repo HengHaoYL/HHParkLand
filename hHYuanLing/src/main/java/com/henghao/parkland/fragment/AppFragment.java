@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.AppGridAdapter;
 import com.henghao.parkland.model.entity.AppGridEntity;
@@ -18,6 +17,7 @@ import java.util.List;
 
 /**
  * 应用〈一句话功能简述〉 〈功能详细描述〉
+ *
  * @author zhangxianwen
  * @version HDMNV100R001, 2016年8月15日
  * @see [相关类/方法]
@@ -68,16 +68,36 @@ public class AppFragment extends FragmentSupport {
         mEntity5.setImageId(R.drawable.app_five);
         mEntity5.setName("资质申请");
         mList.add(mEntity5);
+//        //第六个
+//        AppGridEntity mEntity6 = new AppGridEntity();
+//        mEntity6.setImageId(R.drawable.app_six);
+//        mEntity6.setName("备用金申请");
+//        mList.add(mEntity6);
         //第六个
         AppGridEntity mEntity6 = new AppGridEntity();
         mEntity6.setImageId(R.drawable.app_six);
-        mEntity6.setName("备用金申请");
+        mEntity6.setName("社区");
         mList.add(mEntity6);
         //第七个
         AppGridEntity mEntity7 = new AppGridEntity();
         mEntity7.setImageId(R.drawable.app_seven);
         mEntity7.setName("园林资讯");
         mList.add(mEntity7);
+        //第八个
+        AppGridEntity mEntity8 = new AppGridEntity();
+        mEntity8.setImageId(R.drawable.app_eight);
+        mEntity8.setName("微博");
+        mList.add(mEntity8);
+        //第九个
+        AppGridEntity mEntity9 = new AppGridEntity();
+        mEntity9.setImageId(R.drawable.app_nine);
+        mEntity9.setName("信息查询");
+        mList.add(mEntity9);
+        //第十个
+        AppGridEntity mEntity10 = new AppGridEntity();
+        mEntity10.setImageId(R.drawable.app_ten);
+        mEntity10.setName("数字城市");
+        mList.add(mEntity10);
         AppGridAdapter maAdapter = new AppGridAdapter(this.mActivity, mList);
         this.gridview.setAdapter(maAdapter);
         maAdapter.notifyDataSetChanged();
@@ -90,6 +110,7 @@ public class AppFragment extends FragmentSupport {
      */
     /**
      * 标题操作 〈一句话功能简述〉 〈功能详细描述〉
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */

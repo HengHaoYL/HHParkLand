@@ -2,7 +2,9 @@ package com.henghao.parkland.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsJson;
@@ -29,16 +31,18 @@ import java.util.List;
  */
 public class ProjectXckcActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.listview)
+    @ViewInject(R.id.lv_projectxckc)
     private XListView mXlistView;
+    @ViewInject(R.id.tv_state_projectxckc)
+    private TextView tvState;
 
-    private List<ProjectXcKcEntity> mData;
+    private List<ProjectXcKcEntity> data;
     private ProjectXckcAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.common_xlistview);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_xckc);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -53,7 +57,7 @@ public class ProjectXckcActivity extends ActivityFragmentSupport {
     @Override
     public void initWidget() {
         super.initWidget();
-        mData = new ArrayList<>();
+        data = new ArrayList<>();
         mActivityFragmentView.viewLoading(View.VISIBLE);
         initWithBar();
         mLeftTextView.setText("现场勘查");
@@ -82,7 +86,11 @@ public class ProjectXckcActivity extends ActivityFragmentSupport {
     @Override
     public void initData() {
         super.initData();
-        mAdapter = new ProjectXckcAdapter(this, mData);
+        View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
+        TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
+        tv_title.setText("现场勘察");
+        mXlistView.addHeaderView(HeaderView);
+        mAdapter = new ProjectXckcAdapter(this, data);
         mXlistView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
@@ -92,19 +100,32 @@ public class ProjectXckcActivity extends ActivityFragmentSupport {
         super.OnMessageResponse(url, jo, status);
         if (url.endsWith(ProtocolUrl.PROJECT_QUERYXCKC)) {
             if (jo instanceof BaseEntity) {
-                BaseEntity mEntity = (BaseEntity) jo;
-                if (mEntity.getData() == null) {
+                BaseEntity mData = (BaseEntity) jo;
+                if (mData.getError() == 0) {
+                    //msg(mData.getMsg());
+                    tvState.setVisibility(View.VISIBLE);
+                    tvState.setText(mData.getMsg());
                     return;
+                } else {
+                    tvState.setVisibility(View.GONE);
+                    String jsonStr = ToolsJson.toJson(mData.getData());
+                    Type type = new TypeToken<List<ProjectXcKcEntity>>() {
+                    }.getType();
+                    data.clear();
+                    List<ProjectXcKcEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
+                    String topPath = mData.getPath();//图片URL头部地址
+                    for (ProjectXcKcEntity entity : homeData) {
+                        entity.setXcSituation(topPath);
+                        data.add(entity);
+                    }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter.notifyDataSetChanged();
+                            mXlistView.setAdapter(mAdapter);
+                        }
+                    });
                 }
-                String data = ToolsJson.toJson(mEntity.getData());
-                Type type = new TypeToken<List<ProjectXcKcEntity>>() {
-                }.getType();
-                List<ProjectXcKcEntity> homeData = ToolsJson.parseObjecta(data, type);
-                mAdapter.setPath(mEntity.getPath());
-                mData.clear();
-                mData.addAll(homeData);
-                mAdapter.notifyDataSetChanged();
-                return;
             }
         }
     }

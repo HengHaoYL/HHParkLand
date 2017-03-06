@@ -56,26 +56,26 @@ public class ProjectXckcAdapter extends ArrayAdapter<ProjectXcKcEntity> {
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
-        final ProjectXcKcEntity mEntity = getItem(position);
+        ProjectXcKcEntity mEntity = getItem(position);
         mHodlerView.tv_title.setText(mEntity.getXcPerson());
         mHodlerView.tv_time.setText(mEntity.getXcTime());
+        viewClick(mHodlerView, convertView, position);
+        return convertView;
+    }
+
+    private void viewClick(ProjectXckcAdapter.HodlerView mHodlerView, View convertView, final int position) {
+        final ProjectXcKcEntity mentity = getItem(position);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(mActivityFragmentSupport, ProjectXckcDesActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(Constant.INTNET_DATA, mEntity);
-                bundle.putString(Constant.INTNET_URL, urlPath);
+                bundle.putSerializable(Constant.INTNET_DATA, mentity);
                 intent.putExtra("bundle", bundle);
                 mActivityFragmentSupport.startActivity(intent);
             }
         });
-        return convertView;
-    }
-
-    public void setPath(String url) {
-        urlPath = url;
     }
 
     private class HodlerView {
