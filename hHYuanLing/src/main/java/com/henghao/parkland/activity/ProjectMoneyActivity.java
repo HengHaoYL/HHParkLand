@@ -109,6 +109,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
                     call.enqueue(new Callback() {
                         @Override
                         public void onFailure(Request request, IOException e) {
+                            e.printStackTrace();
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -121,9 +122,9 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
                         public void onResponse(Response response) throws IOException {
                             InputStream inputStream = response.body().byteStream();
                             Date date = new Date();
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
                             String fileName = dateFormat.format(date);
-                            File file = new File(parentfile, fileName + ".xlsx");
+                            final File file = new File(parentfile, fileName + ".xls");
                             file.createNewFile();
                             file.setWritable(Boolean.TRUE);
                             FileOutputStream fos = new FileOutputStream(file);
@@ -135,7 +136,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(context, "文件下载成功！", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "文件下载成功！" + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
                                 }
                             });
                         }
