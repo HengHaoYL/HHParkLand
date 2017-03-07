@@ -1,6 +1,8 @@
 package com.henghao.parkland.adapter;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +13,8 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.ProjectLogActivity;
 import com.henghao.parkland.activity.ProjectMoneyActivity;
+import com.henghao.parkland.activity.ProjectSGLogActivity;
 import com.henghao.parkland.activity.ProjectWorkBWActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
 import com.lidroid.xutils.BitmapUtils;
@@ -36,6 +38,8 @@ public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
     private final List<AppGridEntity> mList;
+
+    private int select_log;//选择的日志类型
 
     public ProjectSceAdapter(ActivityFragmentSupport activityFragment, List<AppGridEntity> list) {
         super(activityFragment, R.layout.item_gridview_textimage, list);
@@ -85,7 +89,7 @@ public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                final Intent intent = new Intent();
                 switch (position) {
                     case 0:
                         //工作备忘
@@ -104,8 +108,40 @@ public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
 //                        break;
                     case 1:
                         //施工日志
-                        intent.setClass(mActivityFragmentSupport, ProjectLogActivity.class);
-                        mActivityFragmentSupport.startActivity(intent);
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(mActivityFragmentSupport);
+                        builder.setIcon(R.drawable.icon_select);
+                        builder.setTitle("请选择日志类型");
+                        String[] data = {"施工日志", "施工安全日志"};
+                        builder.setSingleChoiceItems(data, select_log, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                select_log = which;
+                            }
+                        });
+                        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent myIntent = new Intent();
+                                switch (select_log) {
+                                    case 0://施工日志
+                                        myIntent.setClass(mActivityFragmentSupport, ProjectSGLogActivity.class);
+                                        mActivityFragmentSupport.startActivity(myIntent);
+                                        break;
+                                    case 1://施工安全日志
+                                        break;
+                                }
+                            }
+                        });
+                        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+//                        intent.setClass(mActivityFragmentSupport, ProjectSGLogActivity.class);
+//                        mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 2:
                         //施工钱包

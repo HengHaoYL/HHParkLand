@@ -23,6 +23,7 @@ import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectInfoEntity;
 import com.henghao.parkland.model.entity.ProjectKGBGEntity;
 import com.henghao.parkland.model.entity.ProjectSBDataEntity;
+import com.henghao.parkland.model.entity.ProjectSGLogEntity;
 import com.henghao.parkland.model.entity.ProjectTeamEntity;
 import com.henghao.parkland.model.entity.SGWalletEntity;
 
@@ -150,6 +151,23 @@ public class ProjectProtocol extends BaseModel {
     public void queryProjectMsg(String uid) {
         try {
             String url = ProtocolUrl.PROJECT_QUERYPROJECTMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 查询施工日志
+     *
+     * @param uid
+     */
+    public void queryBuildersdiaryMsg(String uid) {
+        try {
+            String url = ProtocolUrl.PROJECT_QUERYBUILDERSDIARYMSG;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
             this.mBeeCallback.url(url).type(String.class).params(params);
@@ -294,6 +312,7 @@ public class ProjectProtocol extends BaseModel {
             e.printStackTrace();
         }
     }
+
     /**
      * 查询进度申报
      *
@@ -348,6 +367,35 @@ public class ProjectProtocol extends BaseModel {
             params.put("xmName", xmName);
             params.put("xmPerson", xmPerson);
             params.put("xmPersonNum", xmPersonNum);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 施工日志提交
+     *
+     * @param uid
+     * @param dates
+     * @param proactContent
+     * @param technicalIndex
+     * @param builder
+     * @param principal
+     * @param workingCondition
+     */
+    public void saveBuildersdiaryMsg(String uid, String dates, String proactContent, String technicalIndex, String builder, String principal, String workingCondition) {
+        try {
+            String url = ProtocolUrl.PROJECT_SAVEBUILDERSDIARYMSG;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            params.put("dates", dates);
+            params.put("proactContent", proactContent);
+            params.put("technicalIndex", technicalIndex);
+            params.put("builder", builder);
+            params.put("principal", principal);
+            params.put("workingCondition", workingCondition);
             this.mBeeCallback.url(url).type(String.class).params(params);
             this.aq.ajax(this.mBeeCallback);
         } catch (Exception e) {
@@ -479,6 +527,13 @@ public class ProjectProtocol extends BaseModel {
                     Type type = new TypeToken<List<ProjectSBDataEntity>>() {
                     }.getType();
                     List<ProjectSBDataEntity> homeData = ToolsJson.parseObjecta(data, type);
+                    ProjectProtocol.this.OnMessageResponse(url, homeData, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYBUILDERSDIARYMSG)) {
+                    // 查询施工日志
+                    Type type = new TypeToken<List<ProjectSGLogEntity>>() {
+                    }.getType();
+                    List<ProjectSGLogEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectProtocol.this.OnMessageResponse(url, homeData, status);
                 }
                 if (url.endsWith(ProtocolUrl.PROJECT_QUERYCHECKOUTMSG)) {

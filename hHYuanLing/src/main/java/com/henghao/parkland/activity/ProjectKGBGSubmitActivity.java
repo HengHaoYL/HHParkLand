@@ -100,10 +100,6 @@ public class ProjectKGBGSubmitActivity extends ActivityFragmentSupport {
                     msg("请输入开工日期");
                     return;
                 }
-                if (ToolsKit.isEmpty(mTIme)) {
-                    msg("请输入完工日期");
-                    return;
-                }
                 if (douFile == null) {
                     msg("请选择文件");
                     return;

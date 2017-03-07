@@ -84,7 +84,7 @@ public class MyGridAdapter extends ArrayAdapter<AppGridEntity> {
                         break;
                     /*case 3:
                         //日志
-                        intent.setClass(mActivityFragmentSupport, ProjectLogAddActivity.class);
+                        intent.setClass(mActivityFragmentSupport, ProjectSGLogSubmitActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;*/
                    /* case 5:

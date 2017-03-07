@@ -233,17 +233,22 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工日志添加 -->
         <activity
-            android:name=".activity.ProjectLogAddActivity"
+            android:name=".activity.ProjectSGLogSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工日志 -->
         <activity
-            android:name=".activity.ProjectLogActivity"
+            android:name=".activity.ProjectSGLogActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
+        <!-- 施工日志详细信息 -->
+        <activity
+            android:name=".activity.ProjectSGLogDesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--项目信息-->
         <activity
             android:name=".activity.ProjectInfoActivity"

@@ -199,7 +199,6 @@ public class XiangmuFragment extends FragmentSupport {
                 this.gridview.setAdapter(mMyAdapter);
                 mMyAdapter.notifyDataSetChanged();
                 break;
-
         }
     }
 }
