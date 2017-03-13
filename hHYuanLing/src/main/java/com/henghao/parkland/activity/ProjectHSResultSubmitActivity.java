@@ -13,6 +13,7 @@ import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.protocol.HttpPublic;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -74,6 +75,8 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("会审结果");
         mLeftTextView.setVisibility(View.VISIBLE);
         mFileList = new ArrayList<>();
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
     }
 
     @Override
@@ -95,9 +98,11 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
                     OkHttpClient okHttpClient = new OkHttpClient();
                     Request.Builder builder = new Request.Builder();
                     String hsDeparment = etHsDeparment.getText().toString().trim();
+                    int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
                     MultipartBuilder multipartBuilder = new MultipartBuilder();
                     multipartBuilder.type(MultipartBuilder.FORM)//
                             .addFormDataPart("uid", getLoginUid())//用户ID
+                            .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
                             .addFormDataPart("hsDeparment", hsDeparment);//会审单位
                     for (File file : mFileList) {
                         multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//会审图片
@@ -144,8 +149,8 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
             etHsDeparment.requestFocus();
             return false;
         }
-        if (tvHsImg.getText().equals("设计图纸")) {
-            msg("请选择设计图纸！");
+        if (ToolsKit.isEmpty(tvHsImg.getText().toString().trim())) {
+            msg("请选择图片！");
             return false;
         }
         return true;

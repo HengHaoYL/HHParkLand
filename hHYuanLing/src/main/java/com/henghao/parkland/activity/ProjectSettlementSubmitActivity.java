@@ -13,6 +13,7 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -72,6 +73,8 @@ public class ProjectSettlementSubmitActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("项目结算");
         mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
     }
 
     @Override
@@ -96,8 +99,10 @@ public class ProjectSettlementSubmitActivity extends ActivityFragmentSupport {
                     OkHttpClient okHttpClient = new OkHttpClient();
                     Request.Builder builder = new Request.Builder();
                     MultipartBuilder multipartBuilder = new MultipartBuilder();
+                    int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息IDx
                     String dates = tvDates.getText().toString().trim();//结算日期
                     multipartBuilder.type(MultipartBuilder.FORM)//
+                            .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
                             .addFormDataPart("uid", getLoginUid())//用户ID
                             .addFormDataPart("dates", dates);//结算日期
                     for (File file : mFileList) {

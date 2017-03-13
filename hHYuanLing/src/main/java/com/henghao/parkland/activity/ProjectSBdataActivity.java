@@ -12,6 +12,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectSBDataAdapter;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectSBDataEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
@@ -64,6 +65,10 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport {
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (XiangmuFragment.mInfoEntity == null) {
+                    msg("请先添加项目信息！");
+                    return;
+                }
                 Intent intent = new Intent();
                 intent.setClass(ProjectSBDataActivity.this, ProjectSBDataSubmitActivity.class);
                 startActivity(intent);

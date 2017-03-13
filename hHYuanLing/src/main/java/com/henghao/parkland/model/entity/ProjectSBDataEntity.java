@@ -9,6 +9,9 @@ import com.henghao.parkland.model.IdEntity;
  */
 
 public class ProjectSBDataEntity extends IdEntity {
+    // 项目名称
+    @Expose
+    private String name;
     // 设备名称
     @Expose
     private String sbName;
@@ -24,6 +27,14 @@ public class ProjectSBDataEntity extends IdEntity {
     // 设备来源
     @Expose
     private String sbSource;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getSbName() {
         return sbName;

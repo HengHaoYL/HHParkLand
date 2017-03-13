@@ -15,7 +15,8 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.ProjectMoneyActivity;
 import com.henghao.parkland.activity.ProjectSGLogActivity;
-import com.henghao.parkland.activity.ProjectWorkBWActivity;
+import com.henghao.parkland.activity.ProjectSGSafeLogActivity;
+import com.henghao.parkland.activity.ProjectSpvLogActivity;
 import com.henghao.parkland.model.entity.AppGridEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -29,7 +30,7 @@ import java.util.List;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
+public class ProjectSecondAdapter extends ArrayAdapter<AppGridEntity> {
 
     private final LayoutInflater inflater;
 
@@ -39,9 +40,7 @@ public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
 
     private final List<AppGridEntity> mList;
 
-    private int select_log;//选择的日志类型
-
-    public ProjectSceAdapter(ActivityFragmentSupport activityFragment, List<AppGridEntity> list) {
+    public ProjectSecondAdapter(ActivityFragmentSupport activityFragment, List<AppGridEntity> list) {
         super(activityFragment, R.layout.item_gridview_textimage, list);
         this.mActivityFragmentSupport = activityFragment;
         this.mList = list;
@@ -92,8 +91,8 @@ public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
                 final Intent intent = new Intent();
                 switch (position) {
                     case 0:
-                        //工作备忘
-                        intent.setClass(mActivityFragmentSupport, ProjectWorkBWActivity.class);
+                        //监理日志
+                        intent.setClass(mActivityFragmentSupport, ProjectSpvLogActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
 //                    case 1:
@@ -112,36 +111,24 @@ public class ProjectSceAdapter extends ArrayAdapter<AppGridEntity> {
                         builder.setIcon(R.drawable.icon_select);
                         builder.setTitle("请选择日志类型");
                         String[] data = {"施工日志", "施工安全日志"};
-                        builder.setSingleChoiceItems(data, select_log, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                select_log = which;
-                            }
-                        });
-                        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        builder.setItems(data, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent myIntent = new Intent();
-                                switch (select_log) {
+                                switch (which) {
                                     case 0://施工日志
                                         myIntent.setClass(mActivityFragmentSupport, ProjectSGLogActivity.class);
                                         mActivityFragmentSupport.startActivity(myIntent);
                                         break;
                                     case 1://施工安全日志
+                                        myIntent.setClass(mActivityFragmentSupport, ProjectSGSafeLogActivity.class);
+                                        mActivityFragmentSupport.startActivity(myIntent);
                                         break;
                                 }
                             }
                         });
-                        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
                         AlertDialog dialog = builder.create();
                         dialog.show();
-//                        intent.setClass(mActivityFragmentSupport, ProjectSGLogActivity.class);
-//                        mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 2:
                         //施工钱包

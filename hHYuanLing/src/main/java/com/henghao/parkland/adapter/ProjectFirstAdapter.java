@@ -141,7 +141,7 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 10:
-                        //竣工
+                        //竣工验收
                         intent.setClass(mActivityFragmentSupport, ProjectJunGongActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;

@@ -16,6 +16,7 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -43,8 +44,8 @@ import butterknife.OnClick;
  */
 public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
 
-    @InjectView(R.id.et_gxName)
-    EditText etGxName;
+    @InjectView(R.id.tv_gxName)
+    TextView tvGxName;
     @InjectView(R.id.et_gxProcedure)
     EditText etGxProcedure;
     @InjectView(R.id.sp_personnelType)
@@ -84,6 +85,9 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("工序报验");
         mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        tvGxName.setText(XiangmuFragment.mInfoEntity.getXmName());
         /**
          * 初始化下拉列表框内容
          */
@@ -127,11 +131,6 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
     }
 
     private boolean checkData() {
-        if (ToolsKit.isEmpty(etGxName.getText().toString().trim())) {
-            msg("工程名称不能为空！");
-            etGxName.requestFocus();
-            return false;
-        }
         if (ToolsKit.isEmpty(etGxProcedure.getText().toString().trim())) {
             msg("工序名称不能为空！");
             etGxProcedure.requestFocus();
@@ -170,16 +169,18 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
      * 访问网络
      */
     private void requestData() {
-        String gxName = etGxName.getText().toString().trim();//工程名称
+        String gxName = tvGxName.getText().toString().trim();//工程名称
         String gxProcedure = etGxProcedure.getText().toString().trim();//工序名称
         String workPost = etWorkPost.getText().toString().trim();//工作岗位
         String gxTime = tvGxTime.getText().toString().trim();//施工日期
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         String UID = getLoginUid();
+        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
         MultipartBuilder multipartBuilder = new MultipartBuilder();
         multipartBuilder.type(MultipartBuilder.FORM)//
                 .addFormDataPart("uid", UID)//用户ID
+                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
                 .addFormDataPart("gxName", gxName)
                 .addFormDataPart("gxProcedure", gxProcedure)
                 .addFormDataPart("personnelType", personnelType)

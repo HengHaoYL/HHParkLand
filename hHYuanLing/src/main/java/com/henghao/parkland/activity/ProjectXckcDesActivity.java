@@ -22,6 +22,10 @@ import static com.henghao.parkland.R.id.gridView;
  */
 public class ProjectXckcDesActivity extends ActivityFragmentSupport {
 
+    @ViewInject(R.id.tv_title)
+    TextView tv_title;
+    @ViewInject(R.id.tv_name)
+    TextView tv_name;
     @ViewInject(R.id.tv_time)
     TextView tv_time;
     @ViewInject(R.id.tv_address)
@@ -53,6 +57,7 @@ public class ProjectXckcDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("现场勘察");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tv_title.setText("现场勘察");
     }
 
     @Override
@@ -70,6 +75,7 @@ public class ProjectXckcDesActivity extends ActivityFragmentSupport {
         }
         mAdapter = new CommonGridViewAdapter(this, data);
         gridview.setAdapter(mAdapter);
+        tv_name.setText(mEntity.getName());
         tv_time.setText(mEntity.getXcTime());
         tv_address.setText(mEntity.getXcAdd());
         tv_person.setText(mEntity.getXcPerson());

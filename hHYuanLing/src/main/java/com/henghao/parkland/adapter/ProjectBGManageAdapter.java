@@ -49,12 +49,14 @@ public class ProjectBGManageAdapter extends ArrayAdapter<ProjectBGManageEntity> 
             mHodlerView = new HodlerView();
             convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
             mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+            mHodlerView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
             mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
             convertView.setTag(mHodlerView);
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
         mHodlerView.tv_time.setText(getItem(position).getTimes());
+        mHodlerView.tv_name.setText(getItem(position).getName());
         mHodlerView.tv_title.setText(getItem(position).getConfirmingParty());
         viewClick(mHodlerView, convertView, position);
         return convertView;
@@ -78,6 +80,8 @@ public class ProjectBGManageAdapter extends ArrayAdapter<ProjectBGManageEntity> 
     private class HodlerView {
 
         TextView tv_title;
+
+        TextView tv_name;
 
         TextView tv_time;
     }

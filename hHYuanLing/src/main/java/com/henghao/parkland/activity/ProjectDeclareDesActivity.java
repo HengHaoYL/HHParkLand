@@ -22,17 +22,20 @@ import java.util.ArrayList;
  */
 public class ProjectDeclareDesActivity extends ActivityFragmentSupport {
 
+    @ViewInject(R.id.tv_title)
+    TextView tv_title;
+    @ViewInject(R.id.tv_name)
+    TextView tv_name;
     @ViewInject(R.id.tv_time)
     TextView tv_time;
-
-    @ViewInject(R.id.gridview)
+    @ViewInject(R.id.gridView)
     GridView gridview;
     private ArrayList<String> mUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_decaler_submit);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_declaredes);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -49,6 +52,7 @@ public class ProjectDeclareDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("进度申报");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tv_title.setText("进度申报");
     }
 
     @Override
@@ -58,6 +62,7 @@ public class ProjectDeclareDesActivity extends ActivityFragmentSupport {
         ProjectDeclareEntity mEntity = (ProjectDeclareEntity) bundle.getSerializable(Constant.INTNET_DATA);
         final String path = bundle.getString(Constant.INTNET_URL);
         tv_time.setText(mEntity.getDates());
+        tv_name.setText(mEntity.getName());
         //处理图片地址
         mUrl = new ArrayList<>();
         for (String url : mEntity.getUrl()) {
@@ -66,7 +71,6 @@ public class ProjectDeclareDesActivity extends ActivityFragmentSupport {
         CommonGridViewAdapter mAdapter = new CommonGridViewAdapter(this, mUrl);
         gridview.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
-
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

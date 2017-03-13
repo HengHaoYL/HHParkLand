@@ -14,6 +14,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectTeamAdapter;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectTeamEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
@@ -52,7 +53,6 @@ public class ProjectTeamActivity extends ActivityFragmentSupport {
         setContentView(this.mActivityFragmentView);
         initWidget();
         initData();
-
     }
 
     @Override
@@ -67,24 +67,17 @@ public class ProjectTeamActivity extends ActivityFragmentSupport {
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (XiangmuFragment.mInfoEntity == null) {
+                    msg("请先添加项目信息！");
+                    return;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setIcon(R.drawable.icon_select);
                 builder.setTitle("请选择要添加人员的类型！");
-                builder.setSingleChoiceItems(select_array, 0, new DialogInterface.OnClickListener() {
+                builder.setItems(select_array, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         personnelType = select_array[which];
-                    }
-                });
-                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
                         intent.putExtra("personnelType", personnelType);
                         intent.setClass(ProjectTeamActivity.this, ProjectTeamSubmitActivity.class);

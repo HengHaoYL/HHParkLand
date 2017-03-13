@@ -9,12 +9,14 @@ import com.henghao.parkland.model.IdEntity;
 
 public class MyWorkerEntity extends IdEntity {
 
-    /*用户编号：int uid
-    人员：String personnel
-    工作内容：String details
-    时间：String dates
-    工作类型：String workType	POST	uid：用户编号
-            时间精确到分钟*/
+    /**
+     * 用户编号：int uid
+     * 人员：String personnel
+     * 工作内容：String details
+     * 时间：String dates
+     * 工作类型：String workType	POST	uid：用户编号
+     * 时间精确到分钟
+     */
 
     @Expose
     private String personnel;

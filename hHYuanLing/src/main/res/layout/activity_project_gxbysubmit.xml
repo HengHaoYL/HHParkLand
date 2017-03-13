@@ -24,15 +24,13 @@
                 android:text="工程名称"
                 android:textSize="@dimen/gj_d" />
 
-            <EditText
-                android:id="@+id/et_gxName"
+            <TextView
+                android:id="@+id/tv_gxName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>

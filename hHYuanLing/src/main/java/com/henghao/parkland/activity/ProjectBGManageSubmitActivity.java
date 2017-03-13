@@ -16,6 +16,7 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -79,6 +80,8 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("变更管理");
         mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
         ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spConfirmingParty.setAdapter(mAdapter);
@@ -119,8 +122,10 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
                     Request.Builder builder = new Request.Builder();
                     MultipartBuilder multipartBuilder = new MultipartBuilder();
                     String times = tvTimes.getText().toString().trim();//变更时间
+                    int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
                     multipartBuilder.type(MultipartBuilder.FORM)//
                             .addFormDataPart("uid", getLoginUid())//用户ID
+                            .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
                             .addFormDataPart("confirmingParty", confirmingParty)//
                             .addFormDataPart("times", times);//
                     for (File file : mFileList) {

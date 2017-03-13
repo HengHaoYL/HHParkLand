@@ -184,9 +184,21 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!-- 工作备忘 -->
+        <!-- 监理日志 -->
         <activity
-            android:name=".activity.ProjectWorkBWActivity"
+            android:name=".activity.ProjectSpvLogActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 监理日志提交 -->
+        <activity
+            android:name=".activity.ProjectSpvLogSubmitActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 监理日志详细信息 -->
+        <activity
+            android:name=".activity.ProjectSpvLogDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -246,6 +258,24 @@
         <!-- 施工日志详细信息 -->
         <activity
             android:name=".activity.ProjectSGLogDesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 施工安全日志添加 -->
+        <activity
+            android:name=".activity.ProjectSGSafeLogSubmitActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 施工安全日志 -->
+        <activity
+            android:name=".activity.ProjectSGSafeLogActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 施工安全日志详细信息 -->
+        <activity
+            android:name=".activity.ProjectSGSafeLogDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -406,8 +436,21 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--竣工验收-->
         <activity
             android:name=".activity.ProjectJunGongActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--竣工验收提交-->
+        <activity
+            android:name=".activity.ProjectJunGongSubmitActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--竣工验收详细信息-->
+        <activity
+            android:name=".activity.ProjectJunGongDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />

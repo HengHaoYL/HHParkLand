@@ -20,6 +20,8 @@ public class ProjectSGLogDesActivity extends ActivityFragmentSupport {
 
     @InjectView(R.id.tv_title)
     TextView tvTitle;
+    @InjectView(R.id.tv_name)
+    TextView tvName;
     @InjectView(R.id.tv_dates)
     TextView tvDates;
     @InjectView(R.id.tv_proactContent)
@@ -61,6 +63,7 @@ public class ProjectSGLogDesActivity extends ActivityFragmentSupport {
         super.initData();
         Bundle bundle = getIntent().getBundleExtra("bundle");
         ProjectSGLogEntity mEntity = (ProjectSGLogEntity) bundle.getSerializable(Constant.INTNET_DATA);
+        tvName.setText(mEntity.getName());
         tvDates.setText(mEntity.getDates());
         tvBuilder.setText(mEntity.getBuilder());
         tvPrincipal.setText(mEntity.getPrincipal());

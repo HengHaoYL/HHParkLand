@@ -18,12 +18,9 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
                 android:text="企业名称"
                 android:textSize="@dimen/gj_d" />
 
@@ -33,10 +30,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="请输入文字"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
@@ -54,12 +48,9 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
                 android:text="企业地址"
                 android:textSize="@dimen/gj_d" />
 
@@ -69,10 +60,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="请输入文字"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
@@ -90,12 +78,9 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
                 android:text="供货日期"
                 android:textSize="@dimen/gj_d" />
 
@@ -106,44 +91,8 @@
                 android:background="@null"
                 android:drawablePadding="@dimen/padding_normal"
                 android:drawableRight="@drawable/icon_calendar"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
-                android:textSize="@dimen/gj_d" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
-                android:text="联系方式"
-                android:textSize="@dimen/gj_d" />
-
-            <EditText
-                android:id="@+id/et_epTel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入文字"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:hint="请选择日期"
+                android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
@@ -161,12 +110,40 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
+                android:text="联系方式"
+                android:textSize="@dimen/gj_d" />
+
+            <EditText
+                android:id="@+id/et_epTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
                 android:text="供货合同"
                 android:textSize="@dimen/gj_d" />
 
@@ -175,10 +152,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/icon_photo"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:hint="请选择图片"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
         </LinearLayout>
 
@@ -194,12 +171,9 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:padding="@dimen/padding_big"
                 android:text="检验检疫证"
                 android:textSize="@dimen/gj_d" />
 
@@ -208,10 +182,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/icon_photo"
-                android:paddingBottom="@dimen/padding_big"
-                android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_big"
+                android:hint="请选择图片"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
         </LinearLayout>
 

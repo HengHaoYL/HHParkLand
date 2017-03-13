@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.benefit.buy.library.utils.tools.ToolsKit;
@@ -50,12 +49,6 @@ public class MyLoginFragment extends FragmentSupport {
      */
     @ViewInject(R.id.tv_userPhone)
     private TextView tv_userPhone;
-    /**
-     * 用户电话
-     */
-    @ViewInject(R.id.ll_updatename)
-    private LinearLayout ll_updatename;
-
     /**
      * 登录
      */
@@ -107,7 +100,7 @@ public class MyLoginFragment extends FragmentSupport {
             //已登录
             tv_userName.setText(mActivity.getLoginUser());
             tv_userPhone.setText(mActivity.getLoginUserPhone());
-            tv_login.setText("退出");
+            tv_login.setText("注销");
         }
     }
 
@@ -149,7 +142,7 @@ public class MyLoginFragment extends FragmentSupport {
 
 
     private boolean isLogin() {
-        if (!ToolsKit.isEmpty(mActivity.getLoginUid())) {
+        if (!ToolsKit.isEmpty(mActivity.getLoginUser())) {
             return true;
         } else {
             Intent intent = new Intent();
@@ -166,7 +159,7 @@ public class MyLoginFragment extends FragmentSupport {
         public void onClick(DialogInterface dialog, int which) {
             SharedPreferences.Editor editor = mActivity.getLoginUserSharedPre().edit();
             // 退出清空用户信息
-            mActivity.getLoginUserSharedPre().edit().remove(Constant.USERNAME).remove(Constant.USERID)
+            editor.remove(Constant.USERNAME).remove(Constant.USERID)
                     .remove(Constant.USERIMG).remove(Constant.USERPHONE);
             editor.putString(Constant.USERID, null);
             editor.putString(Constant.USERNAME, null);
@@ -178,7 +171,6 @@ public class MyLoginFragment extends FragmentSupport {
             Intent intent = new Intent();
             intent.setClass(mActivity, LoginAndRegActivity.class);
             startActivity(intent);
-            mActivity.finish();
         }
     };
 

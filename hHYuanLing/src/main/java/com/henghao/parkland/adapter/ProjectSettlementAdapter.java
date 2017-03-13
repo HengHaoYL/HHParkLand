@@ -56,6 +56,7 @@ public class ProjectSettlementAdapter extends ArrayAdapter<ProjectSettlementEnti
         } else {
             mHodlerView = (ViewHolder) convertView.getTag();
         }
+        mHodlerView.tvName.setText(getItem(position).getName());
         mHodlerView.tvDates.setText(getItem(position).getDates());
         mBitmapUtils.display(mHodlerView.ivImage, getItem(position).getSettlementBookId() + getItem(position).getUrl().get(0));
         viewClick(mHodlerView, convertView, position);
@@ -78,9 +79,11 @@ public class ProjectSettlementAdapter extends ArrayAdapter<ProjectSettlementEnti
     }
 
     static class ViewHolder {
-        @InjectView(R.id.tv_hsDepartment)
+        @InjectView(R.id.tv_name)
+        TextView tvName;
+        @InjectView(R.id.tv_dates)
         TextView tvDates;
-        @InjectView(R.id.iv_hsImg)
+        @InjectView(R.id.iv_Img)
         ImageView ivImage;
 
         ViewHolder(View view) {

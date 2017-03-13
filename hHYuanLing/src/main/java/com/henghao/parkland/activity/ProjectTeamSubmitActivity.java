@@ -12,6 +12,7 @@ import com.benefit.buy.library.utils.tools.ToolsRegex;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
 
@@ -59,6 +60,8 @@ public class ProjectTeamSubmitActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("施工人员");
         mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
         /**
          * 获取人员类型
          */
@@ -80,12 +83,13 @@ public class ProjectTeamSubmitActivity extends ActivityFragmentSupport {
             String psTel = etPsTel.getText().toString().trim();
             String workPost = etWorkPost.getText().toString().trim();
             String personnelType = tvPersonnelType.getText().toString();
+            int PID = XiangmuFragment.mInfoEntity.getPid();
             /**
              * 访问网络
              */
             ProjectProtocol mProtocol = new ProjectProtocol(this);
             mProtocol.addResponseListener(this);
-            mProtocol.saveSgPersonnelMsg(personnelType, workPost, psIdcard, psName, psTel, getLoginUid());
+            mProtocol.saveSgPersonnelMsg(PID, personnelType, workPost, psIdcard, psName, psTel, getLoginUid());
             mActivityFragmentView.viewLoading(View.VISIBLE);
         }
     }
@@ -119,6 +123,9 @@ public class ProjectTeamSubmitActivity extends ActivityFragmentSupport {
             etPsIdcard.requestFocus();
             return false;
         }
+        /**
+         * 验证联系电话格式是否正确
+         */
         if (!ToolsRegex.isMobileNumber(etPsTel.getText().toString().trim())) {
             msg("联系电话格式不正确");
             etPsTel.requestFocus();
@@ -132,6 +139,7 @@ public class ProjectTeamSubmitActivity extends ActivityFragmentSupport {
         super.OnMessageResponse(url, jo, status);
         if (url.endsWith(ProtocolUrl.PROJECT_SAVESGPERSONNELMSG)) {
             if (jo instanceof BaseEntity) {
+
                 BaseEntity base = (BaseEntity) jo;
                 msg(base.getMsg());
                 onBackPressed();

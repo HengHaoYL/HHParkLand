@@ -8,15 +8,27 @@ import com.henghao.parkland.model.IdEntity;
  */
 
 public class ProjectInfoEntity extends IdEntity {
-    /*
-    xmAdd:"xx",项目地址
-    xmContact:"xx",联系方式
-    xmName:"xx",项目名称
-    xmPerson:"xx",项目负责人
-    xmPersonNum:10 项目人数
+    /**
+     * xmAdd:"xx",项目地址
+     * constructionUnit:"xx",施工单位
+     * startTime:"xx",开工时间
+     * completionTime:"xx",竣工时间
+     * xmContact:"xx",联系方式
+     * xmName:"xx",项目名称
+     * xmPerson:"xx",项目负责人
+     * xmPersonNum:10 项目人数
+     * pid:xx 项目信息ID
      */
     @Expose
     private String xmAdd;
+    @Expose
+    private String constructionUnit;
+    @Expose
+    private String startTime;
+    @Expose
+    private String completionTime;
+    @Expose
+    private int pid;
     @Expose
     private String xmContact;
     @Expose
@@ -25,6 +37,30 @@ public class ProjectInfoEntity extends IdEntity {
     private String xmPerson;
     @Expose
     private int xmPersonNum;
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getCompletionTime() {
+        return completionTime;
+    }
+
+    public void setCompletionTime(String completionTime) {
+        this.completionTime = completionTime;
+    }
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
 
     public String getXmAdd() {
         return xmAdd;
@@ -44,6 +80,14 @@ public class ProjectInfoEntity extends IdEntity {
 
     public String getXmName() {
         return xmName;
+    }
+
+    public String getConstructionUnit() {
+        return constructionUnit;
+    }
+
+    public void setConstructionUnit(String constructionUnit) {
+        this.constructionUnit = constructionUnit;
     }
 
     public void setXmName(String xmName) {

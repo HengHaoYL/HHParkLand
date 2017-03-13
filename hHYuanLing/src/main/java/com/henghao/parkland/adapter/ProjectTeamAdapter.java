@@ -17,6 +17,8 @@ import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
 
+import static com.henghao.parkland.R.id.tv_name;
+
 /**
  * 施工人员〈一句话功能简述〉 〈功能详细描述〉
  *
@@ -50,12 +52,14 @@ public class ProjectTeamAdapter extends ArrayAdapter<ProjectTeamEntity> {
             convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
             mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
             mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+            mHodlerView.tv_name = (TextView) convertView.findViewById(tv_name);
             convertView.setTag(mHodlerView);
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
         mHodlerView.tv_title.setText(getItem(position).getPersonnelType());
         mHodlerView.tv_time.setText(getItem(position).getPsName());
+        mHodlerView.tv_name.setText(getItem(position).getName());
         viewClick(mHodlerView, convertView, position);
         return convertView;
     }
@@ -80,5 +84,7 @@ public class ProjectTeamAdapter extends ArrayAdapter<ProjectTeamEntity> {
         TextView tv_title;
 
         TextView tv_time;
+
+        TextView tv_name;
     }
 }

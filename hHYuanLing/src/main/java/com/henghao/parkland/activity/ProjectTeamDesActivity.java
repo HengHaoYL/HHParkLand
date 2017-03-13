@@ -18,6 +18,10 @@ import butterknife.InjectView;
 public class ProjectTeamDesActivity extends ActivityFragmentSupport {
 
 
+    @InjectView(R.id.tv_title)
+    TextView tv_title;
+    @InjectView(R.id.tv_name)
+    TextView tv_name;
     @InjectView(R.id.tv_personnelType)
     TextView tvPersonnelType;
     @InjectView(R.id.tv_workPost)
@@ -47,8 +51,9 @@ public class ProjectTeamDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("项目信息");
+        mLeftTextView.setText("施工人员");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tv_title.setText("施工人员");
     }
 
     @Override
@@ -56,7 +61,7 @@ public class ProjectTeamDesActivity extends ActivityFragmentSupport {
         super.initData();
         Bundle bundle = getIntent().getBundleExtra("bundle");
         ProjectTeamEntity mEntity = (ProjectTeamEntity) bundle.getSerializable(Constant.INTNET_DATA);
-
+        tv_name.setText(mEntity.getName());
         tvPersonnelType.setText(mEntity.getPersonnelType());
         tvWorkPost.setText(mEntity.getWorkPost());
         tvPsIdcard.setText(mEntity.getPsIdcard());

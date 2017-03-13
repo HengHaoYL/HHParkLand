@@ -22,6 +22,10 @@ import butterknife.InjectView;
 public class ProjectGHFDesActivity extends ActivityFragmentSupport {
 
 
+    @InjectView(R.id.tv_title)
+    TextView tvTitle;
+    @InjectView(R.id.tv_name)
+    TextView tvName;
     @InjectView(R.id.tv_epName)
     TextView tvEpName;
     @InjectView(R.id.tv_epAdd)
@@ -55,6 +59,7 @@ public class ProjectGHFDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("供货方信息");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tvTitle.setText("供货方信息");
     }
 
     @Override
@@ -72,6 +77,7 @@ public class ProjectGHFDesActivity extends ActivityFragmentSupport {
         }
         mAdapter = new CommonGridViewAdapter(this, data);
         gridView.setAdapter(mAdapter);
+        tvName.setText(mEntity.getName());
         tvEpAdd.setText(mEntity.getEpAdd());
         tvEpDate.setText(mEntity.getEpDate());
         tvEpName.setText(mEntity.getEpName());

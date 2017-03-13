@@ -56,8 +56,9 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tvHsDepartment.setText(getItem(position).getHsDeparment());
-        mBitmapUtils.display(holder.ivHsImg, getItem(position).getHsImgId() + getItem(position).getUrl().get(0));
+        holder.tvDates.setText(getItem(position).getHsDeparment());
+        holder.tvName.setText(getItem(position).getName());
+        mBitmapUtils.display(holder.imageView, getItem(position).getHsImgId() + getItem(position).getUrl().get(0));
         viewClick(holder, convertView, position);
         return convertView;
     }
@@ -78,10 +79,12 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
     }
 
     static class ViewHolder {
-        @InjectView(R.id.tv_hsDepartment)
-        TextView tvHsDepartment;
-        @InjectView(R.id.iv_hsImg)
-        ImageView ivHsImg;
+        @InjectView(R.id.tv_dates)
+        TextView tvDates;
+        @InjectView(R.id.tv_name)
+        TextView tvName;
+        @InjectView(R.id.iv_Img)
+        ImageView imageView;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

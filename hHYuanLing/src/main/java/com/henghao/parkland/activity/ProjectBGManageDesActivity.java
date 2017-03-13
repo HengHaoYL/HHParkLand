@@ -22,6 +22,10 @@ import butterknife.InjectView;
 public class ProjectBGManageDesActivity extends ActivityFragmentSupport {
 
 
+    @InjectView(R.id.tv_title)
+    TextView tvTitle;
+    @InjectView(R.id.tv_name)
+    TextView tvName;
     @InjectView(R.id.tv_confirmingParty)
     TextView tvConfirmingParty;
     @InjectView(R.id.tv_times)
@@ -51,6 +55,7 @@ public class ProjectBGManageDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("变更管理");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tvTitle.setText("变更管理");
     }
 
     @Override
@@ -64,10 +69,11 @@ public class ProjectBGManageDesActivity extends ActivityFragmentSupport {
         ArrayList<String> data = new ArrayList<>();
         ArrayList<String> urls = mEntity.getUrl();
         for (String url : urls) {
-            data.add(mEntity.getFile() + url);
+            data.add(mEntity.getFiles() + url);
         }
         mAdapter = new CommonGridViewAdapter(this, data);
         gridView.setAdapter(mAdapter);
+        tvName.setText(mEntity.getName());
         tvConfirmingParty.setText(mEntity.getConfirmingParty());
         tvTimes.setText(mEntity.getTimes());
     }

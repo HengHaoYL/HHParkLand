@@ -10,6 +10,9 @@ import com.henghao.parkland.model.IdEntity;
  */
 public class ProjectSGLogEntity extends IdEntity {
 
+    // 项目名称
+    @Expose
+    private String name;
     // 施工日期
     @Expose
     private String dates;
@@ -28,6 +31,14 @@ public class ProjectSGLogEntity extends IdEntity {
     // 完成工作情况
     @Expose
     private String workingCondition;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getDates() {
         return dates;

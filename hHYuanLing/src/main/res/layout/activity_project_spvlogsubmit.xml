@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_projecttop" />
+
+        <TextView
+            android:id="@+id/tv_dates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/editext_shape"
+            android:drawableLeft="@drawable/icon_datatime"
+            android:drawablePadding="@dimen/padding_normal"
+            android:hint="日期"
+            android:padding="@dimen/padding_big"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/text_color_c"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/editext_shape"
+            android:hint="请输入监理工作情况"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="项目名称"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/blue"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <EditText
+            android:id="@+id/et_supervisionPosition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/editext_shape"
+            android:hint="请输入监理部位"
+            android:paddingBottom="@dimen/padding_big"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_big"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/text_color_c"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <EditText
+            android:id="@+id/et_progressSituation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/editext_shape"
+            android:hint="请输入工程施工进度情况"
+            android:paddingBottom="@dimen/padding_big"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_big"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/text_color_c"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <EditText
+            android:id="@+id/et_workingSitustion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/editext_shape"
+            android:hint="请输入监理工作情况"
+            android:paddingBottom="@dimen/padding_big"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_big"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/text_color_c"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <EditText
+            android:id="@+id/et_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/editext_shape"
+            android:hint="请输入存在的问题及处理情况"
+            android:paddingBottom="@dimen/padding_big"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_big"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/text_color_c"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <EditText
+            android:id="@+id/et_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/editext_shape"
+            android:hint="请输入其他有关事项"
+            android:paddingBottom="@dimen/padding_big"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_big"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/text_color_c"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <EditText
+            android:id="@+id/et_noteTaker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/editext_shape"
+            android:hint="请输入记录人"
+            android:paddingBottom="@dimen/padding_big"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_big"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/text_color_c"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <EditText
+            android:id="@+id/et_engineer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/editext_shape"
+            android:hint="请输入总监理工工程师"
+            android:paddingBottom="@dimen/padding_big"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_big"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/text_color_c"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <Button
+            android:id="@+id/btn_sub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/btn_greencircleframe"
+            android:padding="@dimen/padding_big"
+            android:text="提交"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+</ScrollView>

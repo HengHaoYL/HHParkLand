@@ -25,6 +25,10 @@ public class ProjectHSResultDesActivity extends ActivityFragmentSupport {
     CommonGridViewAdapter mAdapter;
     @InjectView(R.id.tv_hsDeparment)
     TextView tvHsDeparment;
+    @InjectView(R.id.tv_name)
+    TextView tvName;
+    @InjectView(R.id.tv_title)
+    TextView tvTitle;
     @InjectView(R.id.gridView)
     NoScrollGridView gridView;
 
@@ -48,6 +52,7 @@ public class ProjectHSResultDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("会审结果");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tvTitle.setText("会审结果");
     }
 
     @Override
@@ -65,6 +70,7 @@ public class ProjectHSResultDesActivity extends ActivityFragmentSupport {
         }
         mAdapter = new CommonGridViewAdapter(this, data);
         gridView.setAdapter(mAdapter);
+        tvName.setText(mEntity.getName());
         tvHsDeparment.setText(mEntity.getHsDeparment());
     }
 }

@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,7 +15,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.utils.LocationUtils;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -37,6 +35,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 项目管理 -- 技术交底
@@ -44,17 +43,17 @@ import java.util.ArrayList;
 public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
 
 
-    @ViewInject(R.id.et_time)
-    private TextView et_time;
+    @ViewInject(R.id.tv_dates)
+    private TextView tv_dates;
+
+    @ViewInject(R.id.et_sites)
+    private EditText et_sites;
 
     @ViewInject(R.id.tv_photo)
     private TextView tv_photo;
 
-    @ViewInject(R.id.et_address)
-    private TextView et_address;
-
-    @ViewInject(R.id.et_username)
-    private EditText et_username;
+    @ViewInject(R.id.et_content)
+    private EditText et_content;
 
 
     private ArrayList<String> mSelectPath;
@@ -63,24 +62,16 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
 
     private static final int REQUEST_IMAGE = 0x00;
 
-    private String mData;
-    private String name;
-    private String address;
-    private String data;
-    private Handler mHandler;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_technolog_submit);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_technologysubmit);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
         this.mActivityFragmentView.getNavitionBarView().setVisibility(View.VISIBLE);
         setContentView(this.mActivityFragmentView);
         ViewUtils.inject(this, this.mActivityFragmentView);
-        LocationUtils.Location(this);
         initWidget();
         initData();
     }
@@ -91,23 +82,11 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("技术交底");
         mLeftTextView.setVisibility(View.VISIBLE);
-        address = LocationUtils.getAddress();
-        et_address.setText(address);
-        mHandler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                if(ToolsKit.isEmpty(address)){
-                    address = LocationUtils.getAddress();
-                    mHandler.sendEmptyMessage(1);
-                }else {
-                    et_address.setText(address);
-                }
-            }
-        };
-        mHandler.sendEmptyMessage(1);
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
     }
 
-    @OnClick({R.id.tv_submit, R.id.et_time, R.id.tv_photo})
+    @OnClick({R.id.tv_submit, R.id.tv_dates, R.id.tv_photo})
     private void viewOnclick(View v) {
         switch (v.getId()) {
             case R.id.tv_submit:
@@ -115,7 +94,7 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
                     requestData();
                 }
                 break;
-            case R.id.et_time:
+            case R.id.tv_dates:
                 getDialogTime("请选择日期");
                 break;
             case R.id.tv_photo:
@@ -125,21 +104,24 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
     }
 
     private boolean checkData() {
-        name = et_username.getText().toString().trim();
-
-        if (ToolsKit.isEmpty(mData)) {
-            msg("请选择时间");
+        if (ToolsKit.isEmpty(tv_dates.getText().toString().trim())) {
+            msg("请选择时间！");
             return false;
         }
-        if (ToolsKit.isEmpty(name)) {
-            msg("请输入人员");
+        if (ToolsKit.isEmpty(et_sites.getText().toString().trim())) {
+            msg("地点不能为空！");
+            et_sites.requestFocus();
+            return false;
+        }
+        if (ToolsKit.isEmpty(et_content.getText().toString().trim())) {
+            msg("内容不能为空！");
+            et_content.requestFocus();
             return false;
         }
         if (ToolsKit.isEmpty(mFileList)) {
-            msg("请选择图片");
+            msg("请选择图片！");
             return false;
         }
-
         return true;
     }
 
@@ -147,8 +129,7 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
         DateChooseWheelViewDialog startDateChooseDialog = new DateChooseWheelViewDialog(this, new DateChooseWheelViewDialog.DateChooseInterface() {
             @Override
             public void getDateTime(String time, boolean longTimeChecked) {
-                mData = time;
-                et_time.setText(time);
+                tv_dates.setText(time);
             }
         });
         startDateChooseDialog.setDateDialogTitle(title);
@@ -161,13 +142,18 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         SharedPreferences preferences = getLoginUserSharedPre();
-        String UID = preferences.getString(Constant.USERID, "0");
+        String UID = preferences.getString(Constant.USERID, "0");//用户ID
+        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        String dates = tv_dates.getText().toString().trim();//日期
+        String sites = et_sites.getText().toString().trim();//地点
+        String content = et_content.getText().toString().trim();//内容
         MultipartBuilder multipartBuilder = new MultipartBuilder();
         multipartBuilder.type(MultipartBuilder.FORM)//
-                .addFormDataPart("dates", mData)
-                .addFormDataPart("sites", address)
-                .addFormDataPart("content", name)
-                .addFormDataPart("uid", UID);//用户ID
+                .addFormDataPart("dates", dates)//日期
+                .addFormDataPart("sites", sites)//地点
+                .addFormDataPart("content", content)//内容
+                .addFormDataPart("uid", UID)//用户ID
+                .addFormDataPart("pid", String.valueOf(PID));//项目信息ID
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//图片
         }
@@ -235,16 +221,14 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
                 if ((resultCode == Activity.RESULT_OK) || (resultCode == Activity.RESULT_CANCELED)) {
                     this.mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
                     if (!ToolsKit.isEmpty(this.mSelectPath)) {
-                        StringBuilder sb = new StringBuilder();
-                        mFileList.clear();
+                        List<String> imgNames = new ArrayList<>();
                         for (String filePath : mSelectPath) {
                             String imageName = getImageName(filePath);
-                            sb.append(imageName + "\n");
+                            imgNames.add(imageName);
                             File file = new File(filePath);
                             mFileList.add(file);
                         }
-                        tv_photo.setText(sb.toString());
-                        //                        this.mBitmapUtils.display(this.mUserHeaderImageView, headerImg);
+                        tv_photo.setText("图片名：" + imgNames.toString());
                     }
                 }
             }

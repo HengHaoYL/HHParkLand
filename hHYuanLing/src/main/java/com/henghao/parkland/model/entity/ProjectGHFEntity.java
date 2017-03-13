@@ -16,12 +16,15 @@ public class ProjectGHFEntity extends IdEntity {
      * epDate:"xx",                          供货日期
      * epName: "xx"                          企业名称
      * epTel: "xx",                          联系方式
+     * name:"xx",                            项目名称
      * url:-[                                返回图片路径集合（返回json为string）
      * 0:"/checkout/Img/1IMG_20170301_164119.jpg"         供货商图片文件存放路径
      * ],
      */
     @Expose
     private String epAdd;//企业地址
+    @Expose
+    private String name;//项目名称
     @Expose
     private String epCompactId;//供货合同图片编号
     @Expose
@@ -79,5 +82,13 @@ public class ProjectGHFEntity extends IdEntity {
 
     public void setUrl(ArrayList<String> url) {
         this.url = url;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

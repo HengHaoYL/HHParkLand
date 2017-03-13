@@ -2,7 +2,6 @@ package com.henghao.parkland.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -11,10 +10,9 @@ import android.widget.Toast;
 import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
-import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.utils.LocationUtils;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -34,6 +32,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 项目管理 -- 进度申报
@@ -60,14 +59,13 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_project_declera);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_declaresubmit);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
         this.mActivityFragmentView.getNavitionBarView().setVisibility(View.VISIBLE);
         setContentView(this.mActivityFragmentView);
         ViewUtils.inject(this, this.mActivityFragmentView);
-        LocationUtils.Location(this);
         initWidget();
         initData();
     }
@@ -78,7 +76,8 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("进度申报");
         mLeftTextView.setVisibility(View.VISIBLE);
-
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
     }
 
     @OnClick({R.id.tv_submit, R.id.et_time, R.id.tv_photo})
@@ -128,12 +127,12 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
     private void requestData() {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
-        SharedPreferences preferences = getLoginUserSharedPre();
-        String UID = preferences.getString(Constant.USERID, "0");
+        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
         MultipartBuilder multipartBuilder = new MultipartBuilder();
         multipartBuilder.type(MultipartBuilder.FORM)//
                 .addFormDataPart("dates", mData)
-                .addFormDataPart("uid", UID);//用户ID
+                .addFormDataPart("uid", getLoginUid())//用户ID
+                .addFormDataPart("pid", String.valueOf(PID));//项目信息ID
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//图片
         }
@@ -201,16 +200,14 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
                 if ((resultCode == Activity.RESULT_OK) || (resultCode == Activity.RESULT_CANCELED)) {
                     this.mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
                     if (!ToolsKit.isEmpty(this.mSelectPath)) {
-                        StringBuilder sb = new StringBuilder();
-                        mFileList.clear();
+                        List<String> imgNames = new ArrayList<>();
                         for (String filePath : mSelectPath) {
                             String imageName = getImageName(filePath);
-                            sb.append(imageName + "\n");
+                            imgNames.add(imageName);
                             File file = new File(filePath);
                             mFileList.add(file);
                         }
-                        tv_photo.setText(sb.toString());
-                        //                        this.mBitmapUtils.display(this.mUserHeaderImageView, headerImg);
+                        tv_photo.setText("图片名：" + imgNames.toString());
                     }
                 }
             }

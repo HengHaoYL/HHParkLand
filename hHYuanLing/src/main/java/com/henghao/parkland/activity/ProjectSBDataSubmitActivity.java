@@ -12,6 +12,7 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
 import com.lidroid.xutils.ViewUtils;
@@ -63,6 +64,8 @@ public class ProjectSBDataSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("设备信息");
         mLeftTextView.setVisibility(View.VISIBLE);
         ((RadioButton) rgSbSource.getChildAt(0)).setChecked(true);
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
     }
 
     @Override
@@ -90,12 +93,13 @@ public class ProjectSBDataSubmitActivity extends ActivityFragmentSupport {
             String sbSpec = etSbSpec.getText().toString().trim();
             int sbNum = new Integer(etSbNum.getText().toString().trim()).intValue();
             String sbPurpose = etSbPurpose.getText().toString().trim();
+            int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
             /**
              * 访问网络
              */
             ProjectProtocol mProtocol = new ProjectProtocol(this);
             mProtocol.addResponseListener(this);
-            mProtocol.saveEquipmentMsg(sbName, sbSpec, sbNum, sbPurpose, sbSource, getLoginUid());
+            mProtocol.saveEquipmentMsg(sbName, sbSpec, sbNum, sbPurpose, sbSource, getLoginUid(), PID);
             mActivityFragmentView.viewLoading(View.VISIBLE);
         }
     }

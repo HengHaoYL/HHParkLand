@@ -48,14 +48,16 @@ public class ProjectSGLogAdapter extends ArrayAdapter<ProjectSGLogEntity> {
         if (convertView == null) {
             mHodlerView = new HodlerView();
             convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
+            mHodlerView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
             mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
             mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
             convertView.setTag(mHodlerView);
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
+        mHodlerView.tv_name.setText(getItem(position).getName());
         mHodlerView.tv_time.setText(getItem(position).getDates());
-        mHodlerView.tv_title.setText(getItem(position).getProactContent());
+        mHodlerView.tv_title.setText(getItem(position).getBuilder());
         viewClick(mHodlerView, convertView, position);
         return convertView;
     }
@@ -76,6 +78,8 @@ public class ProjectSGLogAdapter extends ArrayAdapter<ProjectSGLogEntity> {
     }
 
     private class HodlerView {
+
+        TextView tv_name;
 
         TextView tv_title;
 

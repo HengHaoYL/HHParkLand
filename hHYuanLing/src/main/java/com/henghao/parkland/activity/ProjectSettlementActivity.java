@@ -14,6 +14,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectSettlementAdapter;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectSettlementEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
@@ -69,6 +70,10 @@ public class ProjectSettlementActivity extends ActivityFragmentSupport {
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (XiangmuFragment.mInfoEntity == null) {
+                    msg("请先添加项目信息！");
+                    return;
+                }
                 Intent intent = new Intent(ProjectSettlementActivity.this, ProjectSettlementSubmitActivity.class);
                 startActivity(intent);
             }
@@ -120,7 +125,7 @@ public class ProjectSettlementActivity extends ActivityFragmentSupport {
                     List<ProjectSettlementEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
                     String topPath = mData.getPath();//图片URL头部地址
                     for (ProjectSettlementEntity entity : homeData) {
-                        entity.setSettlementBookId(topPath);
+                        entity.setSettlementBookId(topPath);//将图片根地址赋值给BookId，方便做URL的拼接
                         data.add(entity);
                     }
                     runOnUiThread(new Runnable() {

@@ -49,6 +49,7 @@ public class ProjectSBDataAdapter extends ArrayAdapter<ProjectSBDataEntity> {
             mHodlerView = new HodlerView();
             convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
             mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+            mHodlerView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
             mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
             convertView.setTag(mHodlerView);
         } else {
@@ -56,6 +57,7 @@ public class ProjectSBDataAdapter extends ArrayAdapter<ProjectSBDataEntity> {
         }
         mHodlerView.tv_title.setText(getItem(position).getSbName());
         mHodlerView.tv_time.setText(getItem(position).getSbSpec());
+        mHodlerView.tv_name.setText(getItem(position).getName());
         viewClick(mHodlerView, convertView, position);
         return convertView;
     }
@@ -78,6 +80,8 @@ public class ProjectSBDataAdapter extends ArrayAdapter<ProjectSBDataEntity> {
     private class HodlerView {
 
         TextView tv_title;
+
+        TextView tv_name;
 
         TextView tv_time;
     }

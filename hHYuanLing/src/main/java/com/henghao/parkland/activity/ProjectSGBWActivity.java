@@ -43,7 +43,7 @@ import butterknife.InjectView;
 public class ProjectSGBWActivity extends ActivityFragmentSupport {
 
 
-    @InjectView(R.id.tv_state_log)
+    @InjectView(R.id.tv_state_projectsglog)
     TextView tvState;
 
     @InjectView(R.id.lv_sgbw)

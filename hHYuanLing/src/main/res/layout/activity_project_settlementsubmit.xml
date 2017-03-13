@@ -58,7 +58,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/icon_photo"
+                android:hint="请选择图片"
                 android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>

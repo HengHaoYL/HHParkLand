@@ -180,9 +180,24 @@ public class ProtocolUrl {
     public static final String PROJECT_QUERYPROJECTMSG = "projectManage/queryProjectMsg";
 
     /**
-     * 项目施工日志
+     * 施工日志查询
      */
-    public static final String PROJECT_QUERYBUILDERSDIARYMSG = "projectManage/queryBuildersdiaryMsg";
+    public static final String PROJECT_QUERYCONSTRUCTIONLOGMSG = "projectManage/queryConstructionLogMsg";
+
+    /**
+     * 施工安全日志查询
+     */
+    public static final String PROJECT_QUERYSUMMARYLOGMSG = "projectManage/querySummaryLogMsg";
+
+    /**
+     * 监理日志查询
+     */
+    public static final String PROJECT_QUERYSUPERVISIONLOGMSG = "projectManage/querySupervisionlogMsg";
+
+    /**
+     * 竣工验收查询
+     */
+    public static final String PROJECT_QUERYFINALACCEPTANCEMSG = "projectManage/queryFinalacceptanceMsg";
 
     /**
      * 变更管理查询
@@ -190,7 +205,7 @@ public class ProtocolUrl {
     public static final String PROJECT_QUERYALTERATIONMSG = "projectManage/queryAlterationMsg";
 
     /**
-     * 变更管理查询
+     * 项目结算查询
      */
     public static final String PROJECT_QUERYSETTLEMENTMSG = "projectManage/querySettlementMsg";
 
@@ -217,7 +232,17 @@ public class ProtocolUrl {
     /**
      * 施工日志提交
      */
-    public static final String PROJECT_SAVEBUILDERSDIARYMSG = "projectManage/saveBuildersdiaryMsg";
+    public static final String PROJECT_SAVECONSTRUCTIONLOGMSG = "projectManage/saveConstructionLogMsg";
+
+    /**
+     * 施工安全日志提交
+     */
+    public static final String PROJECT_SAVESUMMARYLOGMSG = "projectManage/saveSummaryLogMsg";
+
+    /**
+     * 监理日志提交
+     */
+    public static final String PROJECT_SAVESUPERVISIONLOGMSG = "projectManage/saveSupervisionlogMsg";
 
     /**
      * 施工人员提交
@@ -238,6 +263,11 @@ public class ProtocolUrl {
      * 供货方信息提交
      */
     public static final String PROJECT_SAVESUPPLIERMSG = "projectManage/saveSupplierMsg";
+
+    /**
+     * 竣工验收提交
+     */
+    public static final String PROJECT_SAVEFINALACCEPTANCEMSG = "projectManage/saveFinalacceptanceMsg";
 
     /**
      * 项目结算提交

@@ -18,7 +18,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
                 android:text="项目名称"
@@ -48,7 +48,102 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="施工单位"
+                android:textSize="@dimen/gj_d" />
+
+            <EditText
+                android:id="@+id/et_constructionUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入文字"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="开工时间"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_startTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawablePadding="@dimen/padding_normal"
+                android:drawableRight="@drawable/icon_datatime"
+                android:hint="请选择时间"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="合同竣工时间"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_completionTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawablePadding="@dimen/padding_normal"
+                android:drawableRight="@drawable/icon_datatime"
+                android:hint="请选择时间"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
                 android:text="负责人"
@@ -78,7 +173,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
                 android:text="联系方式"
@@ -89,7 +184,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
+                android:hint="请输入手机号"
+                android:inputType="number"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
@@ -108,7 +204,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
                 android:text="项目人数"
@@ -120,8 +216,8 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="请输入数字"
-                android:padding="@dimen/padding_big"
                 android:inputType="number"
+                android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
@@ -139,7 +235,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dip"
+                android:layout_width="120dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
                 android:text="项目地址"

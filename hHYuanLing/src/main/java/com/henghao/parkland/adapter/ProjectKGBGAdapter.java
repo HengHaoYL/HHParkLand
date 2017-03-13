@@ -47,18 +47,22 @@ public class ProjectKGBGAdapter extends ArrayAdapter<ProjectKGBGEntity> {
             convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
             mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
             mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+            mHodlerView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
             convertView.setTag(mHodlerView);
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
-        mHodlerView.tv_title.setText(getItem(position).getKgDocument());
+        mHodlerView.tv_title.setVisibility(View.GONE);
         mHodlerView.tv_time.setText(getItem(position).getKgTime());
+        mHodlerView.tv_name.setText(getItem(position).getName());
         return convertView;
     }
 
     private class HodlerView {
 
         TextView tv_title;
+
+        TextView tv_name;
 
         TextView tv_time;
     }

@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
-import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.lidroid.xutils.ViewUtils;
@@ -76,6 +76,8 @@ public class ProjectKGBGSubmitActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("开工报告");
         mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
     }
 
     @Override
@@ -136,11 +138,12 @@ public class ProjectKGBGSubmitActivity extends ActivityFragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         SharedPreferences preferences = getLoginUserSharedPre();
-        String UID = preferences.getString(Constant.USERID, null);
+        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
         MultipartBuilder multipartBuilder = new MultipartBuilder();
         multipartBuilder.type(MultipartBuilder.FORM)//
                 .addFormDataPart("kgTime", mData)
-                .addFormDataPart("uid", UID);//用户ID
+                .addFormDataPart("uid", getLoginUid())//用户ID
+                .addFormDataPart("pid", String.valueOf(PID));//用户ID
         multipartBuilder.addFormDataPart(douFile.getName(), douFile.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), douFile));//图片
         RequestBody requestBody = multipartBuilder.build();
         Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_SAVEKGBG).build();

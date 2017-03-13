@@ -17,6 +17,7 @@ public class ProjectXcKcEntity extends IdEntity {
      * xcPerson:"xx",                        现场勘探人员姓名
      * xcSituation:xx,                       现场勘探图片路径编号
      * xcTime:"xx"                           现场勘探时间
+     * name:"xx"                             项目名称
      * "url":[
      * "/Prospect/Img/IMG_20170221_094513.jpg"
      * ]
@@ -25,6 +26,9 @@ public class ProjectXcKcEntity extends IdEntity {
     @Expose
     @SerializedName("url")
     private ArrayList<String> url;
+
+    @Expose
+    private String name;
 
     @Expose
     private String xcAdd;
@@ -37,6 +41,14 @@ public class ProjectXcKcEntity extends IdEntity {
 
     @Expose
     private String xcTime;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getXcAdd() {
         return xcAdd;

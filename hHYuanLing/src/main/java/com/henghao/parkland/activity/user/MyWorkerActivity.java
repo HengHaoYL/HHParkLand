@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * 我的轨迹
  */
-public class MyWorkerActivity extends ActivityFragmentSupport   {
+public class MyWorkerActivity extends ActivityFragmentSupport {
 
 
     @ViewInject(R.id.tv_select)
@@ -111,9 +111,9 @@ public class MyWorkerActivity extends ActivityFragmentSupport   {
         // TODO Auto-generated method stub
     }
 
-    @OnClick({R.id.tv_select,R.id.tv_time,R.id.tv_submit})
-    private void viewOnClick(View v){
-        switch (v.getId()){
+    @OnClick({R.id.tv_select, R.id.tv_time, R.id.tv_submit})
+    private void viewOnClick(View v) {
+        switch (v.getId()) {
             case R.id.tv_select:
                 popupWindowHelper.showFromBottom(v);
                 break;
@@ -121,26 +121,28 @@ public class MyWorkerActivity extends ActivityFragmentSupport   {
                 getDialogTime("请选择时间");
                 break;
             case R.id.tv_submit:
-                String selectWhat=tv_select.getText().toString().trim();
-                String contant=tv_contant.getText().toString().trim();
-                String person=tv_people.getText().toString().trim();
-                if(ToolsKit.isEmpty(selectWhat)){
+                String selectWhat = tv_select.getText().toString().trim();
+                String contant = tv_contant.getText().toString().trim();
+                String person = tv_people.getText().toString().trim();
+                if (ToolsKit.isEmpty(selectWhat)) {
                     msg("请选择工作类型");
                     return;
                 }
-                if(ToolsKit.isEmpty(contant)){
+                if (ToolsKit.isEmpty(contant)) {
                     msg("请填写内容");
+                    tv_contant.requestFocus();
                     return;
                 }
-                if(ToolsKit.isEmpty(mTime)){
+                if (ToolsKit.isEmpty(mTime)) {
                     msg("请选择时间");
                     return;
                 }
-                if(ToolsKit.isEmpty(person)){
+                if (ToolsKit.isEmpty(person)) {
+                    tv_people.requestFocus();
                     msg("请填写人员名称");
                     return;
                 }
-                mProtocol.saveMylocusMsg(getLoginUid(),person,contant,mTime,selectWhat);
+                mProtocol.saveMylocusMsg(getLoginUid(), person, contant, mTime, selectWhat);
                 mActivityFragmentView.viewLoading(View.VISIBLE);
                 break;
         }
@@ -150,8 +152,8 @@ public class MyWorkerActivity extends ActivityFragmentSupport   {
         DateChooseWheelViewDialog startDateChooseDialog = new DateChooseWheelViewDialog(this, new DateChooseWheelViewDialog.DateChooseInterface() {
             @Override
             public void getDateTime(String time, boolean longTimeChecked) {
-               tv_time.setText(time);
-                mTime=time;
+                tv_time.setText(time);
+                mTime = time;
             }
         });
         startDateChooseDialog.setDateDialogTitle(title);
@@ -164,11 +166,12 @@ public class MyWorkerActivity extends ActivityFragmentSupport   {
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if(url.endsWith(ProtocolUrl.PROJECT_SAVE_MYLOCUSMSG)){
+        if (url.endsWith(ProtocolUrl.PROJECT_SAVE_MYLOCUSMSG)) {
             //我的轨迹
-            if(jo instanceof BaseEntity){
-                BaseEntity mEntity = (BaseEntity)jo;
+            if (jo instanceof BaseEntity) {
+                BaseEntity mEntity = (BaseEntity) jo;
                 msg(mEntity.getMsg());
+                onBackPressed();
                 return;
             }
         }

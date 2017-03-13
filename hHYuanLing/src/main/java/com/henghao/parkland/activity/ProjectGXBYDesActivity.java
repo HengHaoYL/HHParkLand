@@ -21,6 +21,8 @@ import butterknife.InjectView;
  */
 public class ProjectGXBYDesActivity extends ActivityFragmentSupport {
 
+    @InjectView(R.id.tv_title)
+    TextView tvTitle;
     @InjectView(R.id.tv_gxName)
     TextView tvGxName;
     @InjectView(R.id.tv_gxProcedure)
@@ -56,6 +58,7 @@ public class ProjectGXBYDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("工序报验");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tvTitle.setText("工序报验");
     }
 
     @Override

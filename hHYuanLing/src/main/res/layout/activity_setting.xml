@@ -15,7 +15,8 @@
         android:textSize="@dimen/gj_d"
         android:textColor="@color/text_color_b"
         android:padding="@dimen/padding_big"
-        android:text="关于我们" />
+        android:text="关于我们"
+        android:id="@+id/textView3" />
 
 
     <View

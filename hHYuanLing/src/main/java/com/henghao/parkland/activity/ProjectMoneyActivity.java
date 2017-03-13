@@ -185,7 +185,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
                 mMoneyAdapter.setData(data);
                 mXlistview.setAdapter(mMoneyAdapter);
                 mMoneyAdapter.notifyDataSetChanged();
-                SGWalletEntity entity = data.get(data.size() - 1);
+                SGWalletEntity entity = data.get(0);
                 final double money = entity.getMoney();
                 runOnUiThread(new Runnable() {
                     @Override

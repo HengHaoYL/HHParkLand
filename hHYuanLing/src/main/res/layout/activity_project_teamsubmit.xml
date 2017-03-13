@@ -35,6 +35,11 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,8 +57,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:hint="请输入文字"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -110,7 +117,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
+                android:digits="0123456789X"
+                android:hint="请输入身份证号"
+                android:inputType="number"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
@@ -140,7 +149,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
+                android:hint="请输入手机号"
+                android:inputType="number"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"

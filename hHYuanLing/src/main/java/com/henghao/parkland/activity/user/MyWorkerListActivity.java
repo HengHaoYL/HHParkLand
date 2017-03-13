@@ -2,7 +2,9 @@ package com.henghao.parkland.activity.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsJson;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *我的轨迹展示列表
+ * 我的轨迹展示列表
  */
 public class MyWorkerListActivity extends ActivityFragmentSupport {
 
@@ -75,6 +77,9 @@ public class MyWorkerListActivity extends ActivityFragmentSupport {
     @Override
     public void onResume() {
         super.onResume();
+        /**
+         * 访问网络
+         */
         ProjectSecProtocol mProtocol = new ProjectSecProtocol(this);
         mProtocol.addResponseListener(this);
         mProtocol.queryMylocusMsg(getLoginUid());
@@ -84,6 +89,10 @@ public class MyWorkerListActivity extends ActivityFragmentSupport {
     @Override
     public void initData() {
         super.initData();
+        View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
+        TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
+        tv_title.setText("我的轨迹");
+        mXlistView.addHeaderView(HeaderView);
         mAdapter = new MyWorkerListAdapter(this, mData);
         mXlistView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
@@ -92,7 +101,7 @@ public class MyWorkerListActivity extends ActivityFragmentSupport {
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if(jo == null){
+        if (jo == null) {
             mActivityFragmentView.viewMainGone();
             return;
         }

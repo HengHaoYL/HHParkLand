@@ -18,6 +18,10 @@ import butterknife.InjectView;
 public class ProjectSBDataDesActivity extends ActivityFragmentSupport {
 
 
+    @InjectView(R.id.tv_title)
+    TextView tvTitle;
+    @InjectView(R.id.tv_name)
+    TextView tvName;
     @InjectView(R.id.tv_sbName)
     TextView tvSbName;
     @InjectView(R.id.tv_sbSpec)
@@ -49,6 +53,7 @@ public class ProjectSBDataDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("设备信息");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tvTitle.setText("设备信息");
     }
 
     @Override
@@ -56,6 +61,7 @@ public class ProjectSBDataDesActivity extends ActivityFragmentSupport {
         super.initData();
         Bundle bundle = getIntent().getBundleExtra("bundle");
         ProjectSBDataEntity mEntity = (ProjectSBDataEntity) bundle.getSerializable(Constant.INTNET_DATA);
+        tvName.setText(mEntity.getName());
         tvSbName.setText(mEntity.getSbName());
         tvSbNum.setText(mEntity.getSbNum() + "");
         tvSbPurpose.setText(mEntity.getSbPurpose());

@@ -51,19 +51,21 @@ public class ProjectTechnologAdapter extends ArrayAdapter<ProjectTechnologEntity
             mHodlerView = new HodlerView();
             convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
             mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+            mHodlerView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
             mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
             convertView.setTag(mHodlerView);
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
         mHodlerView.tv_title.setText(getItem(position).getContent());
+        mHodlerView.tv_name.setText(getItem(position).getName());
         mHodlerView.tv_time.setText(getItem(position).getDates());
         viewClick(mHodlerView, convertView, position);
         return convertView;
     }
 
-    public void setPath(String path){
-        mPath=path;
+    public void setPath(String path) {
+        mPath = path;
     }
 
     private void viewClick(HodlerView mHodlerView, View convertView, final int position) {
@@ -77,7 +79,7 @@ public class ProjectTechnologAdapter extends ArrayAdapter<ProjectTechnologEntity
                 intent.setClass(mActivityFragmentSupport, ProjectTechnologDesActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(Constant.INTNET_DATA, mentity);
-                bundle.putString(Constant.INTNET_URL,mPath);
+                bundle.putString(Constant.INTNET_URL, mPath);
                 intent.putExtra("bundle", bundle);
                 mActivityFragmentSupport.startActivity(intent);
             }
@@ -87,6 +89,8 @@ public class ProjectTechnologAdapter extends ArrayAdapter<ProjectTechnologEntity
     private class HodlerView {
 
         TextView tv_title;
+
+        TextView tv_name;
 
         TextView tv_time;
     }

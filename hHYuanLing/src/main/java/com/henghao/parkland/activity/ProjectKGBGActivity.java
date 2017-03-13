@@ -12,6 +12,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectKGBGAdapter;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectKGBGEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
@@ -63,6 +64,10 @@ public class ProjectKGBGActivity extends ActivityFragmentSupport {
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (XiangmuFragment.mInfoEntity == null) {
+                    msg("请先添加项目信息！");
+                    return;
+                }
                 Intent intent = new Intent();
                 intent.setClass(ProjectKGBGActivity.this, ProjectKGBGSubmitActivity.class);
                 startActivity(intent);
@@ -101,7 +106,7 @@ public class ProjectKGBGActivity extends ActivityFragmentSupport {
         if (url.endsWith(ProtocolUrl.PROJECT_QUERYKGREPORTMSG)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mData = (BaseEntity) jo;
-               // msg(mData.getMsg());
+                // msg(mData.getMsg());
                 tvState.setVisibility(View.VISIBLE);
                 tvState.setText(mData.getMsg());
                 return;

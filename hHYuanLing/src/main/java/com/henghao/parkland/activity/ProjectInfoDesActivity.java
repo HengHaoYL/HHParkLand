@@ -16,8 +16,20 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  */
 public class ProjectInfoDesActivity extends ActivityFragmentSupport {
 
+    @ViewInject(R.id.tv_title)
+    TextView tvTitle;
+
     @ViewInject(R.id.et_xmName)
     TextView etXmName;
+
+    @ViewInject(R.id.et_constructionUnit)
+    TextView etConstructionUnit;
+
+    @ViewInject(R.id.tv_startTime)
+    TextView tvStartTime;
+
+    @ViewInject(R.id.tv_completionTime)
+    TextView tvCompletionTime;
 
     @ViewInject(R.id.et_xmPerson)
     TextView etXmPerson;
@@ -51,17 +63,21 @@ public class ProjectInfoDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("项目信息");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tvTitle.setText("项目信息");
     }
 
     @Override
     public void initData() {
         super.initData();
-        Bundle bundle=getIntent().getBundleExtra("bundle");
-        ProjectInfoEntity mEntity = (ProjectInfoEntity)bundle.getSerializable(Constant.INTNET_DATA);
+        Bundle bundle = getIntent().getBundleExtra("bundle");
+        ProjectInfoEntity mEntity = (ProjectInfoEntity) bundle.getSerializable(Constant.INTNET_DATA);
+        tvStartTime.setText(mEntity.getStartTime());
+        tvCompletionTime.setText(mEntity.getCompletionTime());
         etXmName.setText(mEntity.getXmName());
         etXmAdd.setText(mEntity.getXmAdd());
         etXmContact.setText(mEntity.getXmContact());
         etXmPerson.setText(mEntity.getXmPerson());
-        etXmPersonNum.setText(mEntity.getXmPersonNum()+"");
+        etXmPersonNum.setText(mEntity.getXmPersonNum() + "");
+        etConstructionUnit.setText(mEntity.getConstructionUnit());
     }
 }

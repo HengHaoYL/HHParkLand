@@ -11,6 +11,7 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
@@ -65,6 +66,8 @@ public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("施工日志");
         mLeftTextView.setVisibility(View.VISIBLE);
         tvTitle.setText("施工日志");
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
     }
 
     @Override
@@ -80,6 +83,7 @@ public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
                 break;
             case R.id.btn_sub:
                 if (checkData()) {
+                    int PID = XiangmuFragment.mInfoEntity.getPid();
                     String dates = tvDates.getText().toString().trim();
                     String proactContent = etProactContent.getText().toString().trim();
                     String technicalIndex = etTechnicalIndex.getText().toString().trim();
@@ -91,7 +95,7 @@ public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
                      */
                     ProjectProtocol mProtocol = new ProjectProtocol(this);
                     mProtocol.addResponseListener(this);
-                    mProtocol.saveBuildersdiaryMsg(getLoginUid(), dates, proactContent, technicalIndex, builder, principal, workingCondition);
+                    mProtocol.saveConstructionLogMsg(PID, getLoginUid(), dates, proactContent, technicalIndex, builder, principal, workingCondition);
                     mActivityFragmentView.viewLoading(View.VISIBLE);
                 }
                 break;
@@ -147,7 +151,7 @@ public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.PROJECT_SAVEBUILDERSDIARYMSG)) {
+        if (url.endsWith(ProtocolUrl.PROJECT_SAVECONSTRUCTIONLOGMSG)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity base = (BaseEntity) jo;
                 msg(base.getMsg());

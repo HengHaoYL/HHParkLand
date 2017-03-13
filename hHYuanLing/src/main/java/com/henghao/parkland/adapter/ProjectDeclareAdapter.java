@@ -19,7 +19,7 @@ import com.lidroid.xutils.BitmapUtils;
 import java.util.List;
 
 /**
- * 技术交底〈一句话功能简述〉 〈功能详细描述〉
+ * 进度申报〈一句话功能简述〉 〈功能详细描述〉
  *
  * @author zhangxianwen
  * @version HDMNV100R001, 2015年12月21日
@@ -50,21 +50,25 @@ public class ProjectDeclareAdapter extends ArrayAdapter<ProjectDeclareEntity> {
         HodlerView mHodlerView = null;
         if (convertView == null) {
             mHodlerView = new HodlerView();
-            convertView = this.inflater.inflate(R.layout.list_item_hsresult, null);
-            mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_hsDepartment);
-            mHodlerView.iv_hsImg = (ImageView) convertView.findViewById(R.id.iv_hsImg);
+            convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
+            mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+            mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+            mHodlerView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
+            mHodlerView.iv_hsImg = (ImageView) convertView.findViewById(R.id.iv_Img);
             convertView.setTag(mHodlerView);
         } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
-        mHodlerView.tv_title.setText(getItem(position).getDates());
-        mBitmapUtils.display(mHodlerView.iv_hsImg,mPath+getItem(position).getUrl().get(0));
+        mHodlerView.tv_title.setVisibility(View.GONE);
+        mHodlerView.tv_time.setText(getItem(position).getDates());
+        mHodlerView.tv_name.setText(getItem(position).getName());
+        mBitmapUtils.display(mHodlerView.iv_hsImg, mPath + getItem(position).getUrl().get(0));
         viewClick(mHodlerView, convertView, position);
         return convertView;
     }
 
-    public void setPath(String path){
-        mPath=path;
+    public void setPath(String path) {
+        mPath = path;
     }
 
     private void viewClick(HodlerView mHodlerView, View convertView, final int position) {
@@ -78,7 +82,7 @@ public class ProjectDeclareAdapter extends ArrayAdapter<ProjectDeclareEntity> {
                 intent.setClass(mActivityFragmentSupport, ProjectDeclareDesActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(Constant.INTNET_DATA, mentity);
-                bundle.putString(Constant.INTNET_URL,mPath);
+                bundle.putString(Constant.INTNET_URL, mPath);
                 intent.putExtra("bundle", bundle);
                 mActivityFragmentSupport.startActivity(intent);
             }
@@ -87,7 +91,11 @@ public class ProjectDeclareAdapter extends ArrayAdapter<ProjectDeclareEntity> {
 
     private class HodlerView {
 
+        TextView tv_time;
+
         TextView tv_title;
+
+        TextView tv_name;
 
         ImageView iv_hsImg;
     }

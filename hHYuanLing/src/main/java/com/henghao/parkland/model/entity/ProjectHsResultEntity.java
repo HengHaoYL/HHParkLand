@@ -10,19 +10,30 @@ import java.util.ArrayList;
  */
 
 public class ProjectHSResultEntity extends IdEntity {
-    /*
-    hsDeparment:"xx",会审单位
-    hsImgId:null,会审图片路径
-    "url":[
-     "/construct/Img/Picture_01_Lake.jpg"
-     ],
+    /**
+     * hsDeparment:"xx",会审单位
+     * hsImgId:null,会审图片路径
+     * name:"xx"    项目名称
+     * "url":[
+     * "/construct/Img/Picture_01_Lake.jpg"
+     * ],
      */
     @Expose
     private String hsDeparment;//会审单位
     @Expose
     private String hsImgId;//会审图片路径
     @Expose
+    private String name;//项目名称
+    @Expose
     private ArrayList<String> url;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getHsDeparment() {
         return hsDeparment;

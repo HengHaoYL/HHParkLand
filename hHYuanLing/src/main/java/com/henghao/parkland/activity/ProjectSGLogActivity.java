@@ -12,6 +12,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectSGLogAdapter;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectSGLogEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
@@ -31,9 +32,9 @@ import butterknife.InjectView;
 
 public class ProjectSGLogActivity extends ActivityFragmentSupport {
 
-    @InjectView(R.id.tv_state_log)
+    @InjectView(R.id.tv_state_projectsglog)
     TextView tvState;
-    @InjectView(R.id.lv_log)
+    @InjectView(R.id.lv_projectsglog)
     XListView listView;
 
     private List<ProjectSGLogEntity> data;
@@ -42,7 +43,7 @@ public class ProjectSGLogActivity extends ActivityFragmentSupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_project_log);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_sglog);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -65,6 +66,10 @@ public class ProjectSGLogActivity extends ActivityFragmentSupport {
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (XiangmuFragment.mInfoEntity == null) {
+                    msg("请先添加项目信息！");
+                    return;
+                }
                 Intent intent = new Intent(ProjectSGLogActivity.this, ProjectSGLogSubmitActivity.class);
                 startActivity(intent);
             }
@@ -91,14 +96,14 @@ public class ProjectSGLogActivity extends ActivityFragmentSupport {
          */
         ProjectProtocol mProtocol = new ProjectProtocol(this);
         mProtocol.addResponseListener(this);
-        mProtocol.queryBuildersdiaryMsg(getLoginUid());
+        mProtocol.queryConstructionLogMsg(getLoginUid());
         mActivityFragmentView.viewLoading(View.VISIBLE);
     }
 
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.PROJECT_QUERYBUILDERSDIARYMSG)) {
+        if (url.endsWith(ProtocolUrl.PROJECT_QUERYCONSTRUCTIONLOGMSG)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mData = (BaseEntity) jo;
                 // msg(mData.getMsg());

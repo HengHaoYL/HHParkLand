@@ -14,15 +14,34 @@ public class ProjectBGManageEntity extends IdEntity {
      * 确认方：String confirmingParty
      * 变更时间：String times
      * 变更依据图：file file
+     * 项目名称：String name
      */
     @Expose
     private String confirmingParty;
+    @Expose
+    private String name;
     @Expose
     private String times;
     @Expose
     private String files;
     @Expose
     private ArrayList<String> url;
+
+    public String getFiles() {
+        return files;
+    }
+
+    public void setFiles(String files) {
+        this.files = files;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getConfirmingParty() {
         return confirmingParty;
@@ -40,13 +59,6 @@ public class ProjectBGManageEntity extends IdEntity {
         this.times = times;
     }
 
-    public String getFile() {
-        return files;
-    }
-
-    public void setFile(String files) {
-        this.files = files;
-    }
 
     public ArrayList<String> getUrl() {
         return url;

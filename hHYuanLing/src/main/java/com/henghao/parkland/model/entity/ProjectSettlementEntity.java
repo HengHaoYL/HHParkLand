@@ -7,12 +7,14 @@ import java.util.ArrayList;
 
 /**
  * Created by 晏琦云 on 2017/3/3.
+ * 项目结算
  */
 
 public class ProjectSettlementEntity extends IdEntity {
     /**
      * settlementBookId: "xx",               结算书编号
      * dates:"xx",                           结算日期
+     * name:"xx",                            项目名称
      * url:-[                                返回图片路径集合（返回json为string）
      * 0:"xx"                                结算书文件存放路径
      * ],
@@ -23,6 +25,16 @@ public class ProjectSettlementEntity extends IdEntity {
     private String settlementBookId;
     @Expose
     private ArrayList<String> url;
+    @Expose
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getDates() {
         return dates;

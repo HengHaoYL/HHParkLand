@@ -14,6 +14,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectBGManageAdapter;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectBGManageEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
@@ -68,6 +69,10 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport {
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (XiangmuFragment.mInfoEntity == null) {
+                    msg("请先添加项目信息！");
+                    return;
+                }
                 Intent intent = new Intent(ProjectBGManageActivity.this, ProjectBGManageSubmitActivity.class);
                 startActivity(intent);
             }
@@ -119,7 +124,7 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport {
                     List<ProjectBGManageEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
                     String topPath = mData.getPath();//图片URL头部地址
                     for (ProjectBGManageEntity entity : homeData) {
-                        entity.setFile(topPath);
+                        entity.setFiles(topPath);
                         data.add(entity);
                     }
                     runOnUiThread(new Runnable() {

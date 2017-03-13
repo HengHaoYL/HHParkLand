@@ -22,6 +22,8 @@ import butterknife.InjectView;
 public class ProjectSettlementDesActivity extends ActivityFragmentSupport {
 
 
+    @InjectView(R.id.tv_title)
+    TextView tvTitle;
     @InjectView(R.id.tv_dates)
     TextView tvDates;
     @InjectView(R.id.tv_files)
@@ -30,6 +32,8 @@ public class ProjectSettlementDesActivity extends ActivityFragmentSupport {
     NoScrollGridView gridView;
 
     CommonGridViewAdapter mAdapter;
+    @InjectView(R.id.tv_name)
+    TextView tvName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class ProjectSettlementDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("项目结算");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tvTitle.setText("项目结算");
     }
 
     @Override
@@ -59,6 +64,7 @@ public class ProjectSettlementDesActivity extends ActivityFragmentSupport {
         Bundle bundle = getIntent().getBundleExtra("bundle");
         ProjectSettlementEntity mEntity = (ProjectSettlementEntity) bundle.getSerializable(Constant.INTNET_DATA);
         tvDates.setText(mEntity.getDates());
+        tvName.setText(mEntity.getName());
         /**
          * 拼接图片URL地址
          */

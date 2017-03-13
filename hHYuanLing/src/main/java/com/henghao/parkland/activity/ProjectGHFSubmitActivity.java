@@ -11,9 +11,11 @@ import android.widget.Toast;
 
 import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
 import com.benefit.buy.library.utils.tools.ToolsKit;
+import com.benefit.buy.library.utils.tools.ToolsRegex;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -84,6 +86,8 @@ public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("供货方信息");
         mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
     }
 
     @Override
@@ -108,64 +112,73 @@ public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
                     /**
                      * 访问网络
                      */
-                    OkHttpClient okHttpClient = new OkHttpClient();
-                    Request.Builder builder = new Request.Builder();
-                    MultipartBuilder multipartBuilder = new MultipartBuilder();
-                    String epName = etEpName.getText().toString().trim();//企业名称
-                    String epAdd = etEpAdd.getText().toString().trim();//企业地址
-                    String epDate = tvEpDate.getText().toString().trim();//供货日期
-                    String epTel = etEpTel.getText().toString().trim();//联系方式
-                    multipartBuilder.type(MultipartBuilder.FORM)//
-                            .addFormDataPart("uid", getLoginUid())//用户ID
-                            .addFormDataPart("epName", epName)//企业名称
-                            .addFormDataPart("epAdd", epAdd)//企业地址
-                            .addFormDataPart("epDate", epDate)//供货日期
-                            .addFormDataPart("epTel", epTel);//联系方式
-                    for (File file : mFileList1) {
-                        multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//供货合同图片
-                    }
-                    for (File file : mFileList2) {
-                        multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//检验检疫证书图片
-                    }
-                    RequestBody requestBody = multipartBuilder.build();
-                    Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_SAVESUPPLIERMSG).build();
-                    mActivityFragmentView.viewLoading(View.VISIBLE);
-                    Call call = okHttpClient.newCall(request);
-                    call.enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Request request, IOException e) {
-                            Log.e(TAG, "onFailure: " + e.getMessage());
-                            e.printStackTrace();
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    msg("网络请求错误！");
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onResponse(Response response) throws IOException {
-                            String content = response.body().string();
-                            try {
-                                JSONObject jsonObject = new JSONObject(content);
-                                final String result = jsonObject.getString("result");
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        mActivityFragmentView.viewLoading(View.GONE);
-                                        Toast.makeText(ProjectGHFSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                finish();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+                    requestNetwork();
                 }
                 break;
         }
+    }
+
+    /**
+     * 访问网络
+     */
+    private void requestNetwork() {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request.Builder builder = new Request.Builder();
+        MultipartBuilder multipartBuilder = new MultipartBuilder();
+        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        String epName = etEpName.getText().toString().trim();//企业名称
+        String epAdd = etEpAdd.getText().toString().trim();//企业地址
+        String epDate = tvEpDate.getText().toString().trim();//供货日期
+        String epTel = etEpTel.getText().toString().trim();//联系方式
+        multipartBuilder.type(MultipartBuilder.FORM)//
+                .addFormDataPart("uid", getLoginUid())//用户ID
+                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
+                .addFormDataPart("epName", epName)//企业名称
+                .addFormDataPart("epAdd", epAdd)//企业地址
+                .addFormDataPart("epDate", epDate)//供货日期
+                .addFormDataPart("epTel", epTel);//联系方式
+        for (File file : mFileList1) {
+            multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//供货合同图片
+        }
+        for (File file : mFileList2) {
+            multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//检验检疫证书图片
+        }
+        RequestBody requestBody = multipartBuilder.build();
+        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_SAVESUPPLIERMSG).build();
+        mActivityFragmentView.viewLoading(View.VISIBLE);
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                Log.e(TAG, "onFailure: " + e.getMessage());
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        msg("网络请求错误！");
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                String content = response.body().string();
+                try {
+                    JSONObject jsonObject = new JSONObject(content);
+                    final String result = jsonObject.getString("result");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mActivityFragmentView.viewLoading(View.GONE);
+                            Toast.makeText(ProjectGHFSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /**
@@ -199,6 +212,11 @@ public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
         }
         if (ToolsKit.isEmpty(tvJianyan.getText().toString().trim())) {
             msg("请选择检验检疫证书图片！");
+            return false;
+        }
+        if (!ToolsRegex.isMobileNumber(etEpTel.getText().toString().trim())) {
+            msg("联系方式格式错误！");
+            etEpTel.requestFocus();
             return false;
         }
         return true;

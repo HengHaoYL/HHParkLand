@@ -22,21 +22,24 @@ import java.util.ArrayList;
  */
 public class ProjectTechnologDesActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.tv_time)
-    TextView tv_time;
-    @ViewInject(R.id.tv_address)
-    TextView tv_address;
-    @ViewInject(R.id.tv_person)
-    TextView tv_person;
-
-    @ViewInject(R.id.gridview)
-    GridView gridview;
+    @ViewInject(R.id.tv_title)
+    TextView tv_title;
+    @ViewInject(R.id.tv_name)
+    TextView tv_name;
+    @ViewInject(R.id.tv_dates)
+    TextView tv_dates;
+    @ViewInject(R.id.tv_sites)
+    TextView tv_sites;
+    @ViewInject(R.id.tv_content)
+    TextView tv_content;
+    @ViewInject(R.id.gridView)
+    GridView gridView;
     private ArrayList<String> mUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_project_xckcdesc);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_technologydes);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -53,6 +56,7 @@ public class ProjectTechnologDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("技术交底");
         mLeftTextView.setVisibility(View.VISIBLE);
+        tv_title.setText("技术交底");
     }
 
     @Override
@@ -61,19 +65,19 @@ public class ProjectTechnologDesActivity extends ActivityFragmentSupport {
         Bundle bundle = getIntent().getBundleExtra("bundle");
         ProjectTechnologEntity mEntity = (ProjectTechnologEntity) bundle.getSerializable(Constant.INTNET_DATA);
         final String path = bundle.getString(Constant.INTNET_URL);
-        tv_time.setText(mEntity.getDates());
-        tv_address.setText(mEntity.getSites());
-        tv_person.setText(mEntity.getContent());
+        tv_dates.setText(mEntity.getDates());
+        tv_name.setText(mEntity.getName());
+        tv_sites.setText(mEntity.getSites());
+        tv_content.setText(mEntity.getContent());
         //处理图片地址
         mUrl = new ArrayList<>();
         for (String url : mEntity.getUrl()) {
             mUrl.add(path + url);
         }
         CommonGridViewAdapter mAdapter = new CommonGridViewAdapter(this, mUrl);
-        gridview.setAdapter(mAdapter);
+        gridView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ScanImageUtils.ScanImage(ProjectTechnologDesActivity.this, mUrl, position);

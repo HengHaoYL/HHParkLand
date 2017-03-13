@@ -51,6 +51,7 @@ public class ProjectXckcAdapter extends ArrayAdapter<ProjectXcKcEntity> {
             mHodlerView = new HodlerView();
             convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
             mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+            mHodlerView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
             mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
             convertView.setTag(mHodlerView);
         } else {
@@ -58,6 +59,7 @@ public class ProjectXckcAdapter extends ArrayAdapter<ProjectXcKcEntity> {
         }
         ProjectXcKcEntity mEntity = getItem(position);
         mHodlerView.tv_title.setText(mEntity.getXcPerson());
+        mHodlerView.tv_name.setText(mEntity.getName());
         mHodlerView.tv_time.setText(mEntity.getXcTime());
         viewClick(mHodlerView, convertView, position);
         return convertView;
@@ -81,6 +83,8 @@ public class ProjectXckcAdapter extends ArrayAdapter<ProjectXcKcEntity> {
     private class HodlerView {
 
         TextView tv_title;
+
+        TextView tv_name;
 
         TextView tv_time;
     }

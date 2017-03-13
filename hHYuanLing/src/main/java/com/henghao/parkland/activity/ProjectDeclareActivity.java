@@ -14,6 +14,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectDeclareAdapter;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectDeclareEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
@@ -31,10 +32,10 @@ import java.util.List;
  */
 public class ProjectDeclareActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.lv_projectteam)
+    @ViewInject(R.id.lv_projectdeclare)
     private XListView mXlistView;
 
-    @ViewInject(R.id.tv_state_projectteam)
+    @ViewInject(R.id.tv_state_projectdeclare)
     private TextView tvState;
 
     private ArrayList<ProjectDeclareEntity> mDataList;
@@ -44,7 +45,7 @@ public class ProjectDeclareActivity extends ActivityFragmentSupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_project_team);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_declare);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -68,6 +69,10 @@ public class ProjectDeclareActivity extends ActivityFragmentSupport {
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (XiangmuFragment.mInfoEntity == null) {
+                    msg("请先添加项目信息！");
+                    return;
+                }
                 Intent intent = new Intent();
                 intent.setClass(ProjectDeclareActivity.this, ProjectDeclareSubmitActivity.class);
                 startActivity(intent);
@@ -123,8 +128,6 @@ public class ProjectDeclareActivity extends ActivityFragmentSupport {
                 mAdapter.notifyDataSetChanged();
                 return;
             }
-
-
         }
     }
 }

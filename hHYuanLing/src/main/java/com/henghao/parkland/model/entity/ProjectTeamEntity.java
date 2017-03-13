@@ -8,16 +8,19 @@ import com.henghao.parkland.model.IdEntity;
  */
 
 public class ProjectTeamEntity extends IdEntity {
-    /*
-    personnelType:"xx",人员类型
-    workPost:"xx",工作岗位
-    psIdcard:"xx",身份证号
-    psName:"xx",姓名
-    psTel:"xx",联系电话
-    uid:6 用户编号
+    /**
+     * personnelType:"xx",人员类型
+     * workPost:"xx",工作岗位
+     * psIdcard:"xx",身份证号
+     * psName:"xx",姓名
+     * name:"xx",项目名称
+     * psTel:"xx",联系电话
+     * uid:6 用户编号
      */
     @Expose
     private String psIdcard;//身份证号
+    @Expose
+    private String name;//项目名称
     @Expose
     private String personnelType;//personnelType
     @Expose
@@ -75,5 +78,13 @@ public class ProjectTeamEntity extends IdEntity {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

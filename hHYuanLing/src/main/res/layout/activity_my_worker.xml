@@ -28,11 +28,11 @@
                 android:id="@+id/tv_select"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:hint="请选择"
-                android:textColorHint="@color/text_color_c"
-                android:textColor="@color/text_color_c"
                 android:drawableRight="@drawable/arrow_right"
+                android:hint="请选择"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
 
@@ -63,7 +63,7 @@
                 android:hint="请填写文字"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/text_color_c"
+                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -90,11 +90,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:drawableRight="@drawable/icon_datatime"
                 android:hint="请选择日期"
                 android:padding="@dimen/padding_big"
-                android:drawableRight="@drawable/icon_datatime"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/text_color_c"
+                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -124,7 +124,7 @@
                 android:hint="请填写文字"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
-                android:textColorHint="@color/text_color_c"
+                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
         </LinearLayout>
 
