@@ -12,12 +12,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\strikethrough.png"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\capture_pic.png",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\capture_pic.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_projectthree.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_projectthree.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\capture_pic.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\capture_pic.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\justify_left.png",
@@ -64,6 +64,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\home_tab2_1.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_select.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_select.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_more.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_more.png"
     },
@@ -80,16 +84,20 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\my_seven.png"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\justify_center.png",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\justify_center.png"
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_jungong.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_jungong.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_projectfore.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_projectfore.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\undo.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\undo.png"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_projectfore.png",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_projectfore.png"
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\justify_center.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\justify_center.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_projectsix.png",
@@ -116,6 +124,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\home_tab0_2.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_calendar.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_calendar.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_datatime.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_datatime.png"
     },
@@ -140,12 +152,20 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\app_three.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_myqiandao.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_myqiandao.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\login_btn.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\login_btn.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\my_thirty.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\my_thirty.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_biangeng.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_biangeng.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\youhui.png",
@@ -156,8 +176,16 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\right_title.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_yijian.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_yijian.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\arrow_down_.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\arrow_down_.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_wenjian.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_wenjian.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\home_tab5_2.png",
@@ -174,6 +202,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\txt_color.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\txt_color.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_myproject.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_myproject.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\my_eleven.png",
@@ -194,6 +226,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_projectsgzj.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_projectsgzj.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_falvfagui.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_falvfagui.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\home_tab3_1.png",
@@ -228,12 +264,20 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\underline.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_schedule.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_schedule.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\home_tab1_2.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\home_tab1_2.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_projectsgjh.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_projectsgjh.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_mymoneycase.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_mymoneycase.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\outdent.png",
@@ -284,6 +328,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_time_qiandao.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\btn_blackback.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\btn_blackback.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\scan_right.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\scan_right.png"
     },
@@ -328,6 +376,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_eight.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_checkbox_normal.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_checkbox_normal.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\login_edittext.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\login_edittext.png"
     },
@@ -346,6 +398,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_grayciecle.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_grayciecle.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_my_camera.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_my_camera.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\my_nine.png",
@@ -368,8 +424,16 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\app_notview.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_photo.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_photo.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_projectrzbw.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_projectrzbw.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\app_ten.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\app_ten.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_projectsgbw.png",
@@ -384,8 +448,16 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\btn_circle.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_checkbox_checked.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_checkbox_checked.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_company_qiandao.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_company_qiandao.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_my_back.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_my_back.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\bg_page_05.png",
@@ -410,6 +482,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\bg_page_02.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\bg_page_02.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_mywork.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_mywork.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_time.png",
@@ -444,16 +520,20 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_back.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\app_nine.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\app_nine.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_projecsgzl.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_projecsgzl.png"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\encode_btn.png",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\encode_btn.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\home_tab2_2.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\home_tab2_2.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\encode_btn.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\encode_btn.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\home_tab3_2.png",
@@ -500,6 +580,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\bg_page_04.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_setting.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_setting.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\tree_market.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\tree_market.png"
     },
@@ -520,6 +604,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\yjfk_input_bg.9.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_share.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_share.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ico_nfc.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\ico_nfc.png"
     },
@@ -532,8 +620,32 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\app_one.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_guanyuwe.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_guanyuwe.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_clearing.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_clearing.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\app_eight.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\app_eight.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_technology.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_technology.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_orangecircle.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_orangecircle.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_camera.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_camera.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon_myriji.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-xxhdpi\\icon_myriji.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_stuff.png",

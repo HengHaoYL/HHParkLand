@@ -105,11 +105,6 @@ public class ProtocolUrl {
      **************************/
 
     /**
-     * 日志备忘
-     */
-    public static final String PROJECT_RZBEIWANG = "http://172.16.13.101:8080/YL_BigData/projectManage/saveJournalMemoMsg";
-
-    /**
      * 施工钱包查询
      */
     public static final String PROJECT_SGWALLET = "projectManage/queryWalletMsg";
@@ -118,6 +113,11 @@ public class ProtocolUrl {
      * 施工钱包Excel下载
      */
     public static final String DOWNLOAD_WALLETEXCEL = "download/walletExcel";
+
+    /**
+     * 开工报告文件下载
+     */
+    public static final String DOWNLOAD_KGREPORTFILE = "download/kgReportFile";
 
     /**
      * 查询施工信息

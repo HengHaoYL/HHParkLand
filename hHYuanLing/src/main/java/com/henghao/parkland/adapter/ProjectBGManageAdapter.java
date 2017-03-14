@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.ProjectBGManageDesActivity;
+import com.henghao.parkland.activity.projectmanage.ProjectBGManageDesActivity;
 import com.henghao.parkland.model.entity.ProjectBGManageEntity;
 import com.lidroid.xutils.BitmapUtils;
 

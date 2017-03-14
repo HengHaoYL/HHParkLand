@@ -7,21 +7,21 @@ import butterknife.ButterKnife.Finder;
 public class GuanhuActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.GuanhuActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624080, "field 'tvTreeId'");
+    view = finder.findRequiredView(source, 2131624086, "field 'tvTreeId'");
     target.tvTreeId = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624346, "field 'tv_title'");
+    view = finder.findRequiredView(source, 2131624515, "field 'tv_title'");
     target.tv_title = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624081, "field 'tvYhSite'");
+    view = finder.findRequiredView(source, 2131624087, "field 'tvYhSite'");
     target.tvYhSite = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624082, "field 'tvYhTime'");
+    view = finder.findRequiredView(source, 2131624088, "field 'tvYhTime'");
     target.tvYhTime = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624083, "field 'etYhWorkder'");
+    view = finder.findRequiredView(source, 2131624089, "field 'etYhWorkder'");
     target.etYhWorkder = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624085, "field 'etYhDetails'");
+    view = finder.findRequiredView(source, 2131624091, "field 'etYhDetails'");
     target.etYhDetails = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624100, "field 'etComment'");
+    view = finder.findRequiredView(source, 2131624106, "field 'etComment'");
     target.etComment = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624101, "field 'btnSubmit' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624107, "field 'btnSubmit' and method 'onClick'");
     target.btnSubmit = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -31,7 +31,7 @@ public class GuanhuActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624102, "field 'btnCancel' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624108, "field 'btnCancel' and method 'onClick'");
     target.btnCancel = (android.widget.Button) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -41,11 +41,11 @@ public class GuanhuActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624092, "field 'rgClean'");
+    view = finder.findRequiredView(source, 2131624098, "field 'rgClean'");
     target.rgClean = (android.widget.RadioGroup) view;
-    view = finder.findRequiredView(source, 2131624096, "field 'rgTreegrowup'");
+    view = finder.findRequiredView(source, 2131624102, "field 'rgTreegrowup'");
     target.rgTreegrowup = (android.widget.RadioGroup) view;
-    view = finder.findRequiredView(source, 2131624086, "field 'rgQuestion'");
+    view = finder.findRequiredView(source, 2131624092, "field 'rgQuestion'");
     target.rgQuestion = (com.henghao.parkland.views.FlowRadioGroup) view;
   }
 

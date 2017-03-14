@@ -68,6 +68,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\anim\\pophidden_anim.xml"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\anim\\anim_exit.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\anim\\anim_exit.xml"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_bottom.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\HHParkLand\\b_library\\unspecified\\res\\anim\\slide_out_to_bottom.xml"
     },
@@ -126,6 +130,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\anim\\anim_enter.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\anim\\anim_enter.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\anim\\push_bottom_in.xml",

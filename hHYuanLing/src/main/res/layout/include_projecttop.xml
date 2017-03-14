@@ -32,4 +32,28 @@
             android:background="@drawable/right_title"
             android:scaleType="fitXY" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_normal">
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/selector_checkbox"
+            android:text="全选/全不选"
+            android:textColor="@color/text_color_c"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="编辑"
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
+    </LinearLayout>
 </LinearLayout>

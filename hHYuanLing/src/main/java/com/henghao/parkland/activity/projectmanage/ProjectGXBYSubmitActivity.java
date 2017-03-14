@@ -1,0 +1,347 @@
+package com.henghao.parkland.activity.projectmanage;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
+import com.benefit.buy.library.utils.tools.ToolsKit;
+import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.ProtocolUrl;
+import com.henghao.parkland.R;
+import com.henghao.parkland.adapter.CommonListStringAdapter;
+import com.henghao.parkland.fragment.XiangmuFragment;
+import com.henghao.parkland.utils.PopupWindowHelper;
+import com.henghao.parkland.views.DateChooseWheelViewDialog;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.MultipartBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+/**
+ * 项目管理 --工序报验提交
+ */
+public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
+
+    @InjectView(R.id.tv_gxName)
+    TextView tvGxName;
+    @InjectView(R.id.et_gxProcedure)
+    EditText etGxProcedure;
+    @InjectView(R.id.et_workPost)
+    EditText etWorkPost;
+    @InjectView(R.id.tv_gxTime)
+    TextView tvGxTime;
+    @InjectView(R.id.tv_uploadImage)
+    TextView tvUploadImage;
+    @InjectView(R.id.tv_submit)
+    TextView tvSubmit;
+    @InjectView(R.id.rg_personnelType)
+    RadioGroup rgPersonnelType;
+    @InjectView(R.id.tv_personnelType)
+    TextView tvPersonnelType;
+
+    private View popView;
+
+    private PopupWindowHelper popupWindowHelper;
+
+    private static final int REQUEST_IMAGE = 0x00;
+    private String select_str = "施工员";//默认选中的人员类型
+    private String personnelType;//交接者
+    private ArrayList<String> mSelectPath;
+    private ArrayList<File> mFileList = new ArrayList<>();
+    private List<String> sgPersons;//施工员
+    private List<String> jlPersons;//监理员
+    private List<String> glPersons;//管理员
+    private LayoutInflater inflater;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.mActivityFragmentView.viewMain(R.layout.activity_project_gxbysubmit);
+        this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
+        this.mActivityFragmentView.viewEmptyGone();
+        this.mActivityFragmentView.viewLoading(View.GONE);
+        this.mActivityFragmentView.getNavitionBarView().setVisibility(View.VISIBLE);
+        setContentView(this.mActivityFragmentView);
+        ButterKnife.inject(this);
+        initWidget();
+        initData();
+    }
+
+    @Override
+    public void initWidget() {
+        super.initWidget();
+        initWithBar();
+        mLeftTextView.setText("工序报验");
+        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        tvGxName.setText(XiangmuFragment.mInfoEntity.getXmName());
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+        /**
+         * 初始化数据
+         */
+        sgPersons = new ArrayList<>();
+        jlPersons = new ArrayList<>();
+        glPersons = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            sgPersons.add("施工员" + i);
+            jlPersons.add("监理员" + i);
+            glPersons.add("管理员" + i);
+        }
+        ((RadioButton) rgPersonnelType.getChildAt(0)).setChecked(true);
+        /**
+         * 单选框监听事件
+         */
+        rgPersonnelType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_one://施工员
+                        select_str = "施工员";
+                        break;
+                    case R.id.rb_two://监理员
+                        select_str = "监理员";
+                        break;
+                    case R.id.rb_three://管理员
+                        select_str = "管理员";
+                        break;
+                }
+                tvPersonnelType.setText("");
+            }
+        });
+    }
+
+    /**
+     * 交接者选项
+     */
+    private void getPersonnel(final List<String> mList) {
+        inflater = LayoutInflater.from(this);
+        this.popView = inflater.inflate(R.layout.common_android_listview, null);
+        ListView mListView = (ListView) this.popView.findViewById(R.id.mlistview);
+        CommonListStringAdapter mListStringAdapter = new CommonListStringAdapter(ProjectGXBYSubmitActivity.this, mList);
+        mListView.setAdapter(mListStringAdapter);
+        mListStringAdapter.notifyDataSetChanged();
+        this.popupWindowHelper = new PopupWindowHelper(this.popView);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                // TODO Auto-generated method stub
+                String whatSelect = mList.get(arg2);
+                tvPersonnelType.setText(whatSelect);
+                personnelType = whatSelect;
+                popupWindowHelper.dismiss();
+            }
+        });
+    }
+
+    @OnClick({R.id.tv_gxTime, R.id.tv_uploadImage, R.id.tv_submit, R.id.tv_personnelType})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_gxTime:
+                getDialogTime("请选择日期");
+                break;
+            case R.id.tv_personnelType:
+                if (select_str.equals("施工员")) {
+                    getPersonnel(sgPersons);
+                } else if (select_str.equals("监理员")) {
+                    getPersonnel(jlPersons);
+                } else if (select_str.equals("管理员")) {
+                    getPersonnel(glPersons);
+                }
+                popupWindowHelper.showFromBottom(view);
+                break;
+            case R.id.tv_uploadImage:
+                addPic();
+                break;
+            case R.id.tv_submit:
+                if (checkData()) {
+                    requestData();
+                }
+                break;
+        }
+    }
+
+    private boolean checkData() {
+        if (ToolsKit.isEmpty(etGxProcedure.getText().toString().trim())) {
+            msg("工序名称不能为空！");
+            etGxProcedure.requestFocus();
+            return false;
+        }
+        if (ToolsKit.isEmpty(tvPersonnelType.getText().toString().trim())) {
+            msg("请选择交接者");
+            return false;
+        }
+        if (ToolsKit.isEmpty(etWorkPost.getText().toString().trim())) {
+            msg("工作岗位不能为空！");
+            etWorkPost.requestFocus();
+            return false;
+        }
+        if (tvGxTime.getText().toString().trim().equals("施工日期")) {
+            msg("请选择施工时间！");
+            return false;
+        }
+        if (tvUploadImage.getText().toString().trim().equals("影像资料图")) {
+            msg("请选择图片！");
+            return false;
+        }
+        return true;
+    }
+
+    private DateChooseWheelViewDialog getDialogTime(String title) {
+        DateChooseWheelViewDialog startDateChooseDialog = new DateChooseWheelViewDialog(this, new DateChooseWheelViewDialog.DateChooseInterface() {
+            @Override
+            public void getDateTime(String time, boolean longTimeChecked) {
+                tvGxTime.setText(time);
+            }
+        });
+        startDateChooseDialog.setDateDialogTitle(title);
+        startDateChooseDialog.showDateChooseDialog();
+        startDateChooseDialog.setCanceledOnTouchOutside(true);
+        return startDateChooseDialog;
+    }
+
+    /**
+     * 访问网络
+     */
+    private void requestData() {
+        String gxName = tvGxName.getText().toString().trim();//工程名称
+        String gxProcedure = etGxProcedure.getText().toString().trim();//工序名称
+        String workPost = etWorkPost.getText().toString().trim();//工作岗位
+        String gxTime = tvGxTime.getText().toString().trim();//施工日期
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request.Builder builder = new Request.Builder();
+        String UID = getLoginUid();
+        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        MultipartBuilder multipartBuilder = new MultipartBuilder();
+        multipartBuilder.type(MultipartBuilder.FORM)//
+                .addFormDataPart("uid", UID)//用户ID
+                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
+                .addFormDataPart("gxName", gxName)
+                .addFormDataPart("gxProcedure", gxProcedure)
+                .addFormDataPart("personnelType", personnelType)
+                .addFormDataPart("workPost", workPost)
+                .addFormDataPart("gxTime", gxTime);
+        for (File file : mFileList) {
+            multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//图片
+        }
+        RequestBody requestBody = multipartBuilder.build();
+        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_SAVECHECKOUTMSG).build();
+        mActivityFragmentView.viewLoading(View.VISIBLE);
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mActivityFragmentView.viewLoading(View.GONE);
+                    }
+                });
+                msg("网络请求错误！");
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                String content = response.body().string();
+                try {
+                    JSONObject jsonObject = new JSONObject(content);
+                    final String result = jsonObject.getString("result");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mActivityFragmentView.viewLoading(View.GONE);
+                            Toast.makeText(ProjectGXBYSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+    /**
+     * 添加图片
+     */
+    private void addPic() {
+        // 查看session是否过期
+        // int selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
+        int selectedMode = MultiImageSelectorActivity.MODE_MULTI;
+        int maxNum = 9;
+        Intent picIntent = new Intent(this, MultiImageSelectorActivity.class);
+        // 是否显示拍摄图片
+        picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
+        // 最大可选择图片数量
+        picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, maxNum);
+        // 选择模式
+        picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, selectedMode);
+        // 默认选择
+        if ((this.mSelectPath != null) && (this.mSelectPath.size() > 0)) {
+            picIntent.putExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, this.mSelectPath);
+        }
+        startActivityForResult(picIntent, REQUEST_IMAGE);
+    }
+
+    @SuppressWarnings("static-access")
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
+            if (requestCode == REQUEST_IMAGE) {
+                if ((resultCode == Activity.RESULT_OK) || (resultCode == Activity.RESULT_CANCELED)) {
+                    this.mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
+                    if (!ToolsKit.isEmpty(this.mSelectPath)) {
+                        List<String> fileNames = new ArrayList<>();
+                        mFileList.clear();
+                        for (String filePath : mSelectPath) {
+                            String imageName = getImageName(filePath);
+                            fileNames.add(imageName);
+                            File file = new File(filePath);
+                            mFileList.add(file);
+                        }
+                        tvUploadImage.setText("图片名：" + fileNames.toString());
+                        //                        this.mBitmapUtils.display(this.mUserHeaderImageView, headerImg);
+                    }
+                }
+            }
+        }
+    }
+
+    private String getImageName(String url) {
+        return url.substring(url.lastIndexOf("/") + 1);
+    }
+}

@@ -26,14 +26,13 @@ import java.io.Serializable;
  */
 public class BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = -3440061414071692254L;
     @Expose
     @SerializedName("result")
     private String msg;
 
     @Expose
-    @SerializedName("error")
-    private int error;
+    @SerializedName("status")
+    private int status;
     @Expose
     @SerializedName("path")
     private String path;
@@ -50,12 +49,12 @@ public class BaseEntity implements Serializable {
         this.msg = msg;
     }
 
-    public int getError() {
-        return error;
+    public int getStatus() {
+        return status;
     }
 
-    public void setError(int error) {
-        this.error = error;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Object getData() {

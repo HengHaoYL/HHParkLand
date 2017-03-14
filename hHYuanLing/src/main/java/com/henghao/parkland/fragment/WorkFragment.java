@@ -20,6 +20,7 @@ import java.util.List;
 
 /**
  * 工作台 〈一句话功能简述〉 〈功能详细描述〉
+ *
  * @author zhangxianwen
  * @version HDMNV100R001, 2016年8月15日
  * @see [相关类/方法]
@@ -83,6 +84,7 @@ public class WorkFragment extends FragmentSupport {
      */
     /**
      * 标题操作 〈一句话功能简述〉 〈功能详细描述〉
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="结算日期"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_dates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawablePadding="@dimen/padding_normal"
+                android:drawableRight="@drawable/icon_calendar"
+                android:padding="@dimen/padding_big"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="结算书"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_files"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/icon_photo"
+                android:hint="请选择图片"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_big"
+            android:background="@drawable/btn_bluecircleframe"
+            android:gravity="center"
+            android:padding="@dimen/padding_big"
+            android:text="完成"
+            android:textColor="@color/white"
+            android:textSize="@dimen/gj_d" />
+
+    </LinearLayout>
+
+</ScrollView>

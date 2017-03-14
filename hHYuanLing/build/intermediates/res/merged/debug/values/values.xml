@@ -522,6 +522,7 @@
     <dimen name="drop_down_list_header_padding_top">12dp</dimen>
     <dimen name="drop_down_list_header_progress_bar_height">36dp</dimen>
     <dimen name="drop_down_list_header_release_min_distance">20dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
     <dimen name="field_margin_right">5dp</dimen>
     <dimen name="field_textsize">14sp</dimen>
     <dimen name="fitment_mark">80dip</dimen>
@@ -592,6 +593,7 @@
     <dimen name="space_size">2dp</dimen>
     <dimen name="togglebutton_w">20dip</dimen>
     <dimen name="view_btn_height">46dp</dimen>
+    <dimen name="view_edit">66dip</dimen>
     <dimen name="view_height">48dp</dimen>
     <dimen name="view_height_">24dip</dimen>
     <dimen name="view_height_a">28dip</dimen>
@@ -600,7 +602,9 @@
     <dimen name="view_height_d">54dip</dimen>
     <dimen name="view_high">260dip</dimen>
     <dimen name="view_listview">160dip</dimen>
+    <dimen name="view_mytop">248dip</dimen>
     <dimen name="view_popwindow">200dip</dimen>
+    <dimen name="viewheader_hieght">55dip</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
     <item name="action_bar_activity_content" type="id"/>
@@ -693,7 +697,7 @@
     <string name="about_protocol">用户协议</string>
     <string name="about_update">检查更新</string>
     <string name="about_version">当前版本：</string>
-    <string name="account_cancel_affirm">是否确定注销？</string>
+    <string name="account_cancel_affirm">是否确定退出？</string>
     <string name="account_cancel_hint">提示</string>
     <string name="account_exit">退出登录</string>
     <string name="action_settings">设置</string>
@@ -823,6 +827,10 @@
     <string name="msg_share_text">Or type some text and press Enter</string>
     <string name="msg_sure">Are you sure?</string>
     <string name="msg_unmount_usb">Sorry, the SD card is not accessible.</string>
+    <string name="my_loginnicheng">点击修改昵称</string>
+    <string name="my_loginnotitle">暂未登录</string>
+    <string name="my_logintitle">点击登录更精彩</string>
+    <string name="my_updateusernametitle">修改昵称</string>
     <string name="next">下一步</string>
     <string name="ok">确定</string>
     <string name="options_clean_hint">清除缓存将会删除已经加载好的商品图片哟！</string>
@@ -915,6 +923,7 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="tb_munion_tip_download_prefix">正在下载:</string>
     <string name="title_activity_login">登录</string>
+    <string name="title_activity_project_manager">ProjectManagerActivity</string>
     <string name="top_hint">将条形码或二维码置于取景框内系统会自动扫描</string>
     <string name="umeng_common_action_cancel">Cancel</string>
     <string name="umeng_common_action_continue">Continue</string>
@@ -1029,6 +1038,12 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/app_bg</item>
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
         <item name="listLayout">@layout/abc_select_dialog_material</item>

@@ -5,30 +5,30 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="62279466860500"
+    timestamp="77860206035940"
     token="-2688314428420569926"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="4006" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="370" />
     <task
         name="verifier"
-        duration="0" />
+        duration="36" />
 
     <artifact
         location="D:\Studio_Project\HHParkLand\hHYuanLing\build\outputs\apk\hHYuanLing-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="62279466860500"
-        verifier="COLD_SWAP_REQUESTED" >
+        timestamp="77860206035940"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="D:\Studio_Project\HHParkLand\hHYuanLing\build\outputs\apk\hHYuanLing-debug.apk"
             type="MAIN" />

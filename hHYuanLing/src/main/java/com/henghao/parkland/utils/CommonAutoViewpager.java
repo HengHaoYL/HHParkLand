@@ -1,8 +1,5 @@
 package com.henghao.parkland.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 
@@ -12,8 +9,12 @@ import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ImagePagerAdapter;
 import com.henghao.parkland.views.viewpage.AutoScrollViewPager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 更方便我们设置滚动图 〈一句话功能简述〉 〈功能详细描述〉
+ *
  * @author Administrator
  * @version HDMNV100R001, 2016年8月26日
  * @see [相关类/方法]
@@ -48,12 +49,13 @@ public class CommonAutoViewpager {
     }
 
     public static void viewPageAdapter(ActivityFragmentSupport mContext, AutoScrollViewPager viewPager,
-            CirclePageIndicator indicator) {
+                                       CirclePageIndicator indicator) {
         /** 广告滚动 **/
         List<Integer> imageIdList = new ArrayList<Integer>();
-        imageIdList.add(R.drawable.baner_one);
+        imageIdList.add(R.drawable.banner_1);
         imageIdList.add(R.drawable.banber_two);
-        imageIdList.add(R.drawable.banner_tird);
+        imageIdList.add(R.drawable.banner_3);
+        imageIdList.add(R.drawable.banner_4);
         // imageIdList.add(R.drawable.images_icon);
         indicator.setVisibility(View.VISIBLE);
         viewPager.startAutoScroll();

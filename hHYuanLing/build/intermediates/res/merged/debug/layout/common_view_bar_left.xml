@@ -6,6 +6,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/padding_normal"
         android:src="@drawable/btn_back" >
     </ImageView>
 
@@ -13,7 +14,7 @@
          android:id="@+id/bar_left_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
-        android:layout_marginLeft="@dimen/padding_small"
+        android:layout_marginLeft="@dimen/padding_normal"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="@dimen/gj_e"/>
