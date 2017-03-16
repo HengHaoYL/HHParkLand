@@ -245,8 +245,8 @@ public class YhManageActivity extends ActivityFragmentSupport {
         List<YhBean> data = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(str_result);
-            int error = jsonObject.getInt("error");//错误代码 0 错误 1 正确
-            if (error == 1) {
+            int status = jsonObject.getInt("status");//错误代码 0 正确 1 错误
+            if (status == 0) {
                 JSONArray dataArray = jsonObject.getJSONArray("data");
                 for (int i = 0; i < dataArray.length(); i++) {
                     JSONObject yhObject = dataArray.getJSONObject(i);
@@ -389,8 +389,8 @@ public class YhManageActivity extends ActivityFragmentSupport {
                         Log.i(TAG, "onResponse: " + result_str);
                         try {
                             JSONObject jsonObject = new JSONObject(result_str);
-                            int error = jsonObject.getInt("error");
-                            if (error == 0) {
+                            int status = jsonObject.getInt("status");
+                            if (status == 1) {
                                 final String result = jsonObject.getString("result");
                                 runOnUiThread(new Runnable() {
                                     @Override

@@ -163,8 +163,8 @@ public class TreeMessageActivity extends ActivityFragmentSupport {
                         try {
                             JSONObject jsonObject = new JSONObject(str_result);
                             final String result = jsonObject.getString("result");
-                            int error = jsonObject.getInt("error");//错误代码 0 错误 1 正确
-                            if (error == 1) {
+                            int status = jsonObject.getInt("status");//错误代码 0 正确 1 错误
+                            if (status == 0) {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {

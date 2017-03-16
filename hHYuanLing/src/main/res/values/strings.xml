@@ -214,4 +214,6 @@
     <string name="viewfinderview_status_text1">将二维码/条码放入取景框内</string>
     <string name="viewfinderview_status_text2">即可自动扫描</string>
     <string name="title_activity_project_manager">ProjectManagerActivity</string>
+    <string name="app">应用中心</string>
+    <string name="workshow">信息展示</string>
 </resources>

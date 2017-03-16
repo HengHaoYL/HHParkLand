@@ -127,18 +127,44 @@
             android:name=".activity.GuideActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
+        <!-- 签到页面 -->
         <activity
             android:name=".activity.QiandaoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
+        <!-- 签到提交页面 -->
         <activity
             android:name=".activity.QiandaoSubmitActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
-
         <!-- 测试View -->
         <activity
             android:name=".activity.ViewTestActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!-- 设备租赁详情页面 -->
+        <activity
+            android:name=".activity.workshow.EquipmentLeasingDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 苗木信息详情页面 -->
+        <activity
+            android:name=".activity.workshow.SeedlingDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 招标信息详情页面 -->
+        <activity
+            android:name=".activity.workshow.BidDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 人员招聘详情页面 -->
+        <activity
+            android:name=".activity.workshow.RecruitDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />

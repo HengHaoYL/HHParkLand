@@ -118,7 +118,7 @@ public class AppFragment extends FragmentSupport {
         // TODO Auto-generated method stub
         initWithCenterBar();
         this.mCenterTextView.setVisibility(View.VISIBLE);
-        this.mCenterTextView.setText(getResources().getString(R.string.app_name));
+        this.mCenterTextView.setText(R.string.app);
         initWithBar();
         this.mLeftImageView.setVisibility(View.VISIBLE);
         this.mLeftImageView.setImageResource(R.drawable.home_liebiao);

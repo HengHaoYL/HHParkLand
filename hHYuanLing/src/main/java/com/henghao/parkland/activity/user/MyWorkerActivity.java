@@ -84,7 +84,7 @@ public class MyWorkerActivity extends ActivityFragmentSupport {
         mLeftTextView.setVisibility(View.VISIBLE);
 
         LayoutInflater inflater = LayoutInflater.from(this);
-        this.popView = LayoutInflater.from(this).inflate(R.layout.common_android_listview, null);
+        this.popView = inflater.inflate(R.layout.common_android_listview, null);
         ListView mListView = (ListView) this.popView.findViewById(R.id.mlistview);
         final List<String> mList = new ArrayList<String>();
         mList.add("工作任务");

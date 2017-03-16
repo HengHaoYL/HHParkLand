@@ -12,12 +12,16 @@ import java.util.ArrayList;
 public class ProjectHSResultEntity extends IdEntity {
     /**
      * hsDeparment:"xx",会审单位
+     * hid:"xx",表主键
      * hsImgId:null,会审图片路径
      * name:"xx"    项目名称
      * "url":[
      * "/construct/Img/Picture_01_Lake.jpg"
      * ],
      */
+    private boolean isChecked;//是否被选中
+    @Expose
+    private int hid;//表主键
     @Expose
     private String hsDeparment;//会审单位
     @Expose
@@ -26,6 +30,22 @@ public class ProjectHSResultEntity extends IdEntity {
     private String name;//项目名称
     @Expose
     private ArrayList<String> url;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getHid() {
+        return hid;
+    }
+
+    public void setHid(int hid) {
+        this.hid = hid;
+    }
 
     public String getName() {
         return name;

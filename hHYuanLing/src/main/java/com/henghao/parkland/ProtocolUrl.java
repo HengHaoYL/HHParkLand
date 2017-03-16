@@ -105,6 +105,26 @@ public class ProtocolUrl {
      **************************/
 
     /**
+     * 项目信息删除
+     */
+    public static final String DELETE_PROJECT = "/projectManage/delete/project";
+
+    /**
+     * 会审结果删除
+     */
+    public static final String DELETE_HSRESULT = "/projectManage/delete/hsResult";
+
+    /**
+     * 供货方信息删除
+     */
+    public static final String DELETE_SUPPLIER = "/projectManage/delete/supplier";
+
+    /**
+     * 项目结算删除
+     */
+    public static final String DELETE_SETTLEMENT = "/projectManage/delete/settlement";
+
+    /**
      * 施工钱包查询
      */
     public static final String PROJECT_SGWALLET = "projectManage/queryWalletMsg";
@@ -310,6 +330,32 @@ public class ProtocolUrl {
     public static final String PROJECT_QUERY_MYLOCUSMSG = "projectManage/queryMylocusMsg";
 
     /************************ 项目管理 end **************************/
+
+    /************************
+     * 工作台
+     **************************/
+
+    /**
+     * 设备租赁信息查询
+     */
+    public static final String RELEASE_QUERYEQUIPMENTLEASING = "release/queryEquipmentLeasing";
+
+    /**
+     * 苗木信息查询
+     */
+    public static final String RELEASE_QUERYSEEDLINGMESSAGE = "release/querySeedlingmessage";
+
+    /**
+     * 招标信息查询
+     */
+    public static final String RELEASE_QUERYBID = "release/queryBid";
+
+    /**
+     * 人员招聘查询
+     */
+    public static final String RELEASE_QUERYRECRUIT = "release/queryRecruit";
+
+    /************************ 工作台 end **************************/
 
     /**
      * 上传错误日志到服务器

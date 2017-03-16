@@ -23,7 +23,7 @@ import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.fragment.HomeFragment;
 import com.henghao.parkland.fragment.MsgFragment;
 import com.henghao.parkland.fragment.MyLoginFragment;
-import com.henghao.parkland.fragment.WorkFragment;
+import com.henghao.parkland.fragment.WorkShowFragment;
 import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.HCMenuEntity;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -120,7 +120,6 @@ public class MainActivity extends ActivityFragmentSupport {
 
     }
 
-
     /**
      * 牵扯到的tab items
      */
@@ -133,7 +132,7 @@ public class MainActivity extends ActivityFragmentSupport {
                 R.drawable.selector_xiangmu, MsgFragment.class.getName(), -1);// 信息
         this.menuLists.add(mMenuJob);
         HCMenuEntity mMenuWork = new HCMenuEntity(3, getResources().getString(R.string.hc_work),
-                R.drawable.selector_work, WorkFragment.class.getName(), -1);// 工作台
+                R.drawable.selector_work, WorkShowFragment.class.getName(), -1);// 工作台
         this.menuLists.add(mMenuWork);
         HCMenuEntity mMenuCommunication = new HCMenuEntity(4, getResources().getString(R.string.hc_xiangmu),
                 R.drawable.selector_mall, AppFragment.class.getName(), -1);// 应用

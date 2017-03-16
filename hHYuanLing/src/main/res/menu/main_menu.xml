@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_menu_one"
+        android:title="设备租赁" />
+    <item
+        android:id="@+id/main_menu_two"
+        android:title="苗木信息">
+        <menu>
+            <item
+                android:id="@+id/submenu_one"
+                android:title="乔木信息" />
+            <item
+                android:id="@+id/submenu_two"
+                android:title="地栽灌木" />
+            <item
+                android:id="@+id/submenu_three"
+                android:title="藤" />
+            <item
+                android:id="@+id/submenu_four"
+                android:title="草本植物" />
+            <item
+                android:id="@+id/submenu_five"
+                android:title="竹" />
+            <item
+                android:id="@+id/submenu_six"
+                android:title="棕榈植物" />
+            <item
+                android:id="@+id/submenu_seven"
+                android:title="水生植物" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/main_menu_three"
+        android:title="招标信息" />
+    <item
+        android:id="@+id/main_menu_four"
+        android:title="人员招聘" />
+
+</menu>

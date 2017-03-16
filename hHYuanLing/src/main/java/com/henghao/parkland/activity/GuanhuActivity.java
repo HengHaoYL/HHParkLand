@@ -226,8 +226,8 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                         Log.i(TAG, "onResponse: " + result_str);
                         try {
                             JSONObject jsonObject = new JSONObject(result_str);
-                            int error = jsonObject.getInt("error");//错误代码 0 错误 1 正确
-                            if (error == 1) {
+                            int status = jsonObject.getInt("status");//错误代码 0 正确 1 错误
+                            if (status == 0) {
                                 final String result = jsonObject.getString("result");
                                 runOnUiThread(new Runnable() {
                                     @Override

@@ -52,10 +52,9 @@ public class CommonAutoViewpager {
                                        CirclePageIndicator indicator) {
         /** 广告滚动 **/
         List<Integer> imageIdList = new ArrayList<Integer>();
-        imageIdList.add(R.drawable.banner_1);
+        imageIdList.add(R.drawable.baner_one);
         imageIdList.add(R.drawable.banber_two);
-        imageIdList.add(R.drawable.banner_3);
-        imageIdList.add(R.drawable.banner_4);
+        imageIdList.add(R.drawable.banner_tird);
         // imageIdList.add(R.drawable.images_icon);
         indicator.setVisibility(View.VISIBLE);
         viewPager.startAutoScroll();

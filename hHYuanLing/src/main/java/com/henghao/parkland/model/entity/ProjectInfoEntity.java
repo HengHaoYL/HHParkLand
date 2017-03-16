@@ -19,6 +19,8 @@ public class ProjectInfoEntity extends IdEntity {
      * xmPersonNum:10 项目人数
      * pid:xx 项目信息ID
      */
+    private boolean checked;//多选框选中状态
+
     @Expose
     private String xmAdd;
     @Expose
@@ -37,6 +39,14 @@ public class ProjectInfoEntity extends IdEntity {
     private String xmPerson;
     @Expose
     private int xmPersonNum;
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
 
     public String getStartTime() {
         return startTime;

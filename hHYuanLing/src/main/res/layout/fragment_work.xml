@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.benefit.buy.library.views.NoScrollListView
         android:id="@+id/listview_xuqiu"
@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:divider="@color/white"
-        android:dividerHeight="0dip" >
-    </com.benefit.buy.library.views.NoScrollListView>
+        android:dividerHeight="0dip" />
 
 </ScrollView>

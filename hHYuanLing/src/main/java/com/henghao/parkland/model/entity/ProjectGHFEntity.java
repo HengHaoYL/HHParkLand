@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ProjectGHFEntity extends IdEntity {
     /**
+     * sid: "xx",                            表主键
      * epAdd: "xx",                          企业地址
      * epCompactId: "xx",                    供货合同图片编号
      * epDate:"xx",                          供货日期
@@ -21,6 +22,9 @@ public class ProjectGHFEntity extends IdEntity {
      * 0:"/checkout/Img/1IMG_20170301_164119.jpg"         供货商图片文件存放路径
      * ],
      */
+    private boolean isChecked;//是否被选中
+    @Expose
+    private int sid;//表主键
     @Expose
     private String epAdd;//企业地址
     @Expose
@@ -35,6 +39,22 @@ public class ProjectGHFEntity extends IdEntity {
     private String epTel;//联系方式
     @Expose
     private ArrayList<String> url;//返回图片路径集合
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
 
     public String getEpAdd() {
         return epAdd;
