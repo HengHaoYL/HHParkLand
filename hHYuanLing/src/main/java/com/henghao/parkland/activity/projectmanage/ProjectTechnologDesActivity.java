@@ -2,7 +2,6 @@ package com.henghao.parkland.activity.projectmanage;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -11,14 +10,13 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.CommonGridViewAdapter;
 import com.henghao.parkland.model.entity.ProjectTechnologEntity;
-import com.henghao.parkland.utils.ScanImageUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 
 /**
- * 项目管理 -- 技术交底
+ * 项目管理 -- 技术交底详细信息
  */
 public class ProjectTechnologDesActivity extends ActivityFragmentSupport {
 
@@ -34,7 +32,8 @@ public class ProjectTechnologDesActivity extends ActivityFragmentSupport {
     TextView tv_content;
     @ViewInject(R.id.gridView)
     GridView gridView;
-    private ArrayList<String> mUrl;
+
+    CommonGridViewAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,24 +63,19 @@ public class ProjectTechnologDesActivity extends ActivityFragmentSupport {
         super.initData();
         Bundle bundle = getIntent().getBundleExtra("bundle");
         ProjectTechnologEntity mEntity = (ProjectTechnologEntity) bundle.getSerializable(Constant.INTNET_DATA);
-        final String path = bundle.getString(Constant.INTNET_URL);
         tv_dates.setText(mEntity.getDates());
         tv_name.setText(mEntity.getName());
         tv_sites.setText(mEntity.getSites());
         tv_content.setText(mEntity.getContent());
-        //处理图片地址
-        mUrl = new ArrayList<>();
-        for (String url : mEntity.getUrl()) {
-            mUrl.add(path + url);
+        /**
+         * 拼接图片URL地址
+         */
+        ArrayList<String> data = new ArrayList<>();
+        ArrayList<String> urls = mEntity.getUrl();
+        for (String url : urls) {
+            data.add(mEntity.getPhotoId() + url);
         }
-        CommonGridViewAdapter mAdapter = new CommonGridViewAdapter(this, mUrl);
+        mAdapter = new CommonGridViewAdapter(this, data);
         gridView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ScanImageUtils.ScanImage(ProjectTechnologDesActivity.this, mUrl, position);
-            }
-        });
     }
 }

@@ -13,6 +13,7 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.benefit.buy.library.utils.tools.ToolsRegex;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.protocol.LoginProtocol;
@@ -100,7 +101,7 @@ public class RegisterFragment extends FragmentSupport {
                     String phone = login_phone.getText().toString().trim();
                     String pwd = login_pass.getText().toString().trim();
                     //注册
-                    mLoginProtocol.reg_user(userName, pwd, phone);
+                    mLoginProtocol.reg_user(userName, pwd, phone, String.valueOf(1));
                     mActivityFragmentView.viewLoading(View.VISIBLE);
                 }
                 break;
@@ -136,6 +137,25 @@ public class RegisterFragment extends FragmentSupport {
         if (url.endsWith(ProtocolUrl.APP_REG)) {
             BaseEntity mBaseEntity = (BaseEntity) jo;
             mActivity.msg(mBaseEntity.getMsg());
+            int result_status = mBaseEntity.getStatus();
+            /**
+             * 注册成功
+             */
+            if (result_status == 0) {
+                cleadData();
+                LoginAndRegActivity loginAndRegActivity = (LoginAndRegActivity) getActivity();
+                loginAndRegActivity.setLoginFragment();
+            }
         }
+    }
+
+    /**
+     * 清空数据
+     */
+    private void cleadData() {
+        login_user.setText("");
+        login_phone.setText("");
+        login_pass.setText("");
+        login_passagain.setText("");
     }
 }

@@ -74,7 +74,7 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
     public void initData() {
         super.initData();
         initWithBar();
-        mLeftTextView.setText("进度申报");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
         mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());

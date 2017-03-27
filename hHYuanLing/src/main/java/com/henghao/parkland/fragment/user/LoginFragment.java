@@ -86,7 +86,7 @@ public class LoginFragment extends FragmentSupport {
                 if (checkData()) {
                     LoginProtocol mLoginProtocol = new LoginProtocol(mActivity);
                     mLoginProtocol.addResponseListener(this);
-                    mLoginProtocol.login(login_user.getText().toString().trim(), login_pass.getText().toString().trim());
+                    mLoginProtocol.login(login_user.getText().toString().trim(), login_pass.getText().toString().trim(), String.valueOf(1));
                     mActivityFragmentView.viewLoading(View.VISIBLE);
                 }
                 break;

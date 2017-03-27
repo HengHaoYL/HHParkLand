@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +29,7 @@ import butterknife.InjectView;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class SeedlingAdapter extends ArrayAdapter<SeedlingEntity> {
+public class SeedlingAdapter extends BaseAdapter {
 
     private final LayoutInflater inflater;
 
@@ -37,13 +37,30 @@ public class SeedlingAdapter extends ArrayAdapter<SeedlingEntity> {
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
+    private List<SeedlingEntity> mList;
+
     public SeedlingAdapter(ActivityFragmentSupport activityFragment, List<SeedlingEntity> mList) {
-        super(activityFragment, R.layout.item_seedling, mList);
+        this.mList = mList;
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
         this.mBitmapUtils = new BitmapUtils(activityFragment, Constant.CACHE_DIR_PATH);
         this.mBitmapUtils.configDefaultLoadFailedImage(R.drawable.img_loading_fail_big);
         this.mBitmapUtils.configDefaultLoadingImage(R.drawable.img_loading_default_big);
+    }
+
+    @Override
+    public int getCount() {
+        return mList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
@@ -56,18 +73,19 @@ public class SeedlingAdapter extends ArrayAdapter<SeedlingEntity> {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tvAddress.setText(getItem(position).getAddress());
-        holder.tvContent.setText(getItem(position).getContent());
-        holder.tvDates.setText(getItem(position).getDates());
-        holder.tvSupplier.setText(getItem(position).getSupplier());
-        holder.tvTitleName.setText(getItem(position).getTitleName());
-        mBitmapUtils.display(holder.imageview, getItem(position).getFilesId() + getItem(position).getUrl().get(0));
+        SeedlingEntity entity = mList.get(position);
+        holder.tvAddress.setText(entity.getAddress());
+        holder.tvContent.setText(entity.getContent());
+        holder.tvDates.setText(entity.getDates());
+        holder.tvSupplier.setText(entity.getSupplier());
+        holder.tvTitleName.setText(entity.getTitleName());
+        mBitmapUtils.display(holder.imageview, entity.getFilesId() + entity.getUrl().get(0));
         viewClick(holder, convertView, position);
         return convertView;
     }
 
     private void viewClick(ViewHolder mHodlerView, View convertView, final int position) {
-        final SeedlingEntity mentity = getItem(position);
+        final SeedlingEntity mentity = mList.get(position);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -10,6 +10,10 @@ import com.henghao.parkland.model.IdEntity;
  */
 public class ProjectSGLogEntity extends IdEntity {
 
+    private boolean isChecked;//是否被选中
+    // 表主键
+    @Expose
+    private int cid;
     // 项目名称
     @Expose
     private String name;
@@ -31,6 +35,22 @@ public class ProjectSGLogEntity extends IdEntity {
     // 完成工作情况
     @Expose
     private String workingCondition;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getCid() {
+        return cid;
+    }
+
+    public void setCid(int cid) {
+        this.cid = cid;
+    }
 
     public String getName() {
         return name;

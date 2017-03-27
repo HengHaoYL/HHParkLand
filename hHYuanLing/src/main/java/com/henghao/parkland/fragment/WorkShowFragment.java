@@ -1,6 +1,7 @@
 package com.henghao.parkland.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsJson;
-import com.benefit.buy.library.views.NoScrollListView;
+import com.benefit.buy.library.views.xlistview.XListView;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
@@ -43,10 +44,14 @@ import java.util.List;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class WorkShowFragment extends FragmentSupport {
+public class WorkShowFragment extends FragmentSupport implements XListView.IXListViewListener {
 
     @ViewInject(R.id.listview_xuqiu)
-    private NoScrollListView listview_xuqiu;
+    private XListView listview_xuqiu;
+
+    // 设置一个最大的数据条数，超过即不再加载
+    private int MaxDateNum;
+    private int indexOfSelect = 2;//选中的板块 1设备租赁 2苗木信息 3招标信息 4人员招聘
 
     private TextView tv_title;//标题
 
@@ -55,15 +60,19 @@ public class WorkShowFragment extends FragmentSupport {
 
     private EquipmentLeasingAdapter equipmentLeasingAdapter;//设备租赁适配器
     private List<EquipmentLeasingEntity> equipmentLeasingEntities;//设备租赁数据
+    private List<EquipmentLeasingEntity> initEquipmentLeasingEntities;//初始加载设备租赁数据
 
     private SeedlingAdapter seedlingAdapter;//苗木信息适配器
     private List<SeedlingEntity> seedlingEntities;//苗木信息数据
+    private List<SeedlingEntity> initSeedlingEntities;//初始加载苗木信息数据
 
     private BidAdapter bidAdapter;//招标信息适配器
     private List<BidEntity> bidEntities;//招标信息数据
+    private List<BidEntity> initBidEntities;//初始加载招标信息数据
 
     private RecruitAdapter recruitAdapter;//人员招聘适配器
     private List<RecruitEntity> recruitEntities;//人员招聘数据
+    private List<RecruitEntity> initRecruitEntities;//初始加载人员招聘数据
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,16 +94,20 @@ public class WorkShowFragment extends FragmentSupport {
         initView();
         //设备租赁
         equipmentLeasingEntities = new ArrayList<>();
-        equipmentLeasingAdapter = new EquipmentLeasingAdapter(this.mActivity, equipmentLeasingEntities);
+        initEquipmentLeasingEntities = new ArrayList<>();
+        equipmentLeasingAdapter = new EquipmentLeasingAdapter(this.mActivity, initEquipmentLeasingEntities);
         //苗木信息
         seedlingEntities = new ArrayList<>();
-        seedlingAdapter = new SeedlingAdapter(this.mActivity, seedlingEntities);
+        initSeedlingEntities = new ArrayList<>();
+        seedlingAdapter = new SeedlingAdapter(this.mActivity, initSeedlingEntities);
         //招标信息
         bidEntities = new ArrayList<>();
-        bidAdapter = new BidAdapter(this.mActivity, bidEntities);
+        initBidEntities = new ArrayList<>();
+        bidAdapter = new BidAdapter(this.mActivity, initBidEntities);
         //人员招聘
         recruitEntities = new ArrayList<>();
-        recruitAdapter = new RecruitAdapter(this.mActivity, recruitEntities);
+        initRecruitEntities = new ArrayList<>();
+        recruitAdapter = new RecruitAdapter(this.mActivity, initRecruitEntities);
         /**
          * 第一次进入时默认显示苗木信息的数据
          */
@@ -174,18 +187,22 @@ public class WorkShowFragment extends FragmentSupport {
                     case 0://设备租赁
                         protocol.queryEquipmentLeasing();
                         mActivityFragmentView.viewLoading(View.VISIBLE);
+                        indexOfSelect = 1;
                         break;
                     case 1://苗木信息
                         protocol.querySeedlingmessage();
                         mActivityFragmentView.viewLoading(View.VISIBLE);
+                        indexOfSelect = 2;
                         break;
                     case 2://招标信息
                         protocol.queryBid();
                         mActivityFragmentView.viewLoading(View.VISIBLE);
+                        indexOfSelect = 3;
                         break;
                     case 3://人员招聘
                         protocol.queryRecruit();
                         mActivityFragmentView.viewLoading(View.VISIBLE);
+                        indexOfSelect = 4;
                         break;
                 }
             }
@@ -199,12 +216,120 @@ public class WorkShowFragment extends FragmentSupport {
     }
 
     public void initWidget() {
+        listview_xuqiu.setXListViewListener(this);
         initwithContent();
+    }
+
+    private void loadMoreData() {
+        Handler handler = new Handler();
+        switch (indexOfSelect) {
+            case 1://设备租赁
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        int count = equipmentLeasingAdapter.getCount();
+                        if (count + 10 < MaxDateNum) {
+                            // 每次加载10条
+                            for (int i = count; i < count + 10; i++) {
+                                EquipmentLeasingEntity entity = equipmentLeasingEntities.get(i);
+                                initEquipmentLeasingEntities.add(entity);
+                                equipmentLeasingAdapter.notifyDataSetChanged();
+                            }
+                            listview_xuqiu.stopLoadMore();
+                        } else {
+                            // 数据已经不足10条
+                            for (int i = count; i < MaxDateNum; i++) {
+                                EquipmentLeasingEntity entity = equipmentLeasingEntities.get(i);
+                                initEquipmentLeasingEntities.add(entity);
+                                equipmentLeasingAdapter.notifyDataSetChanged();
+                            }
+                            listview_xuqiu.setPullLoadEnable(false);
+                        }
+                    }
+                }, 1000);
+                break;
+            case 2://苗木信息
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        int count = seedlingAdapter.getCount();
+                        if (count + 10 < MaxDateNum) {
+                            // 每次加载10条
+                            for (int i = count; i < count + 10; i++) {
+                                SeedlingEntity entity = seedlingEntities.get(i);
+                                initSeedlingEntities.add(entity);
+                                seedlingAdapter.notifyDataSetChanged();
+                            }
+                            listview_xuqiu.stopLoadMore();
+                        } else {
+                            // 数据已经不足10条
+                            for (int i = count; i < MaxDateNum; i++) {
+                                SeedlingEntity entity = seedlingEntities.get(i);///////////////
+                                initSeedlingEntities.add(entity);
+                                seedlingAdapter.notifyDataSetChanged();
+                            }
+                            listview_xuqiu.setPullLoadEnable(false);
+                        }
+                    }
+                }, 1000);
+                break;
+            case 3://招标信息
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        int count = bidAdapter.getCount();
+                        if (count + 10 < MaxDateNum) {
+                            // 每次加载10条
+                            for (int i = count; i < count + 10; i++) {
+                                BidEntity entity = bidEntities.get(i);
+                                initBidEntities.add(entity);
+                                bidAdapter.notifyDataSetChanged();
+                            }
+                            listview_xuqiu.stopLoadMore();
+                        } else {
+                            // 数据已经不足10条
+                            for (int i = count; i < MaxDateNum; i++) {
+                                BidEntity entity = bidEntities.get(i);
+                                initBidEntities.add(entity);
+                                bidAdapter.notifyDataSetChanged();
+                            }
+                            listview_xuqiu.setPullLoadEnable(false);
+                        }
+                    }
+                }, 1000);
+                break;
+            case 4://人员招聘
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        int count = recruitAdapter.getCount();
+                        if (count + 10 < MaxDateNum) {
+                            // 每次加载10条
+                            for (int i = count; i < count + 10; i++) {
+                                RecruitEntity entity = recruitEntities.get(i);
+                                initRecruitEntities.add(entity);
+                                recruitAdapter.notifyDataSetChanged();
+                            }
+                            listview_xuqiu.stopLoadMore();
+                        } else {
+                            // 数据已经不足10条
+                            for (int i = count; i < MaxDateNum; i++) {
+                                RecruitEntity entity = recruitEntities.get(i);
+                                initRecruitEntities.add(entity);
+                                recruitAdapter.notifyDataSetChanged();
+                            }
+                            listview_xuqiu.setPullLoadEnable(false);
+                        }
+                    }
+                }, 1000);
+                break;
+        }
     }
 
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
+        listview_xuqiu.setPullLoadEnable(true);
         /**
          * 设备租赁
          */
@@ -227,15 +352,28 @@ public class WorkShowFragment extends FragmentSupport {
                     Type type = new TypeToken<List<EquipmentLeasingEntity>>() {
                     }.getType();
                     equipmentLeasingEntities.clear();
+                    initEquipmentLeasingEntities.clear();
                     List<EquipmentLeasingEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
                     String topPath = mData.getPath();//图片URL头部地址
                     for (EquipmentLeasingEntity entity : homeData) {
                         entity.setFilesId(topPath);
                         equipmentLeasingEntities.add(entity);
                     }
+                    MaxDateNum = equipmentLeasingEntities.size(); // 设置最大数据条数
                     /**
                      * 展示设备租赁数据
                      */
+                    if (MaxDateNum > 10) {
+                        for (int i = 0; i < 10; i++) {
+                            EquipmentLeasingEntity entity = equipmentLeasingEntities.get(i);
+                            initEquipmentLeasingEntities.add(entity);
+                        }
+                    } else {
+                        for (int i = 0; i < MaxDateNum; i++) {
+                            EquipmentLeasingEntity entity = equipmentLeasingEntities.get(i);
+                            initEquipmentLeasingEntities.add(entity);
+                        }
+                    }
                     equipmentLeasingAdapter.notifyDataSetChanged();
                     listview_xuqiu.setAdapter(equipmentLeasingAdapter);
                 }
@@ -263,15 +401,28 @@ public class WorkShowFragment extends FragmentSupport {
                     Type type = new TypeToken<List<SeedlingEntity>>() {
                     }.getType();
                     seedlingEntities.clear();
+                    initSeedlingEntities.clear();
                     List<SeedlingEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
                     String topPath = mData.getPath();//图片URL头部地址
                     for (SeedlingEntity entity : homeData) {
                         entity.setFilesId(topPath);
                         seedlingEntities.add(entity);
                     }
+                    MaxDateNum = seedlingEntities.size(); // 设置最大数据条数
                     /**
                      * 展示苗木信息数据
                      */
+                    if (MaxDateNum > 10) {
+                        for (int i = 0; i < 10; i++) {
+                            SeedlingEntity entity = seedlingEntities.get(i);
+                            initSeedlingEntities.add(entity);
+                        }
+                    } else {
+                        for (int i = 0; i < MaxDateNum; i++) {
+                            SeedlingEntity entity = seedlingEntities.get(i);
+                            initSeedlingEntities.add(entity);
+                        }
+                    }
                     seedlingAdapter.notifyDataSetChanged();
                     listview_xuqiu.setAdapter(seedlingAdapter);
                 }
@@ -288,19 +439,32 @@ public class WorkShowFragment extends FragmentSupport {
                  */
                 mActivityFragmentView.viewMainGone();
                 mActivity.msg(mData.getMsg());
+            } else if (jo instanceof List) {
+                /**
+                 * 查询结果有数据，做数据展示
+                 */
+                mActivityFragmentView.viewEmptyGone();
+                bidEntities.clear();
+                initBidEntities.clear();
+                bidEntities = (List<BidEntity>) jo;
+                MaxDateNum = bidEntities.size(); // 设置最大数据条数
+                /**
+                 * 展示招标信息数据 10条
+                 */
+                if (MaxDateNum > 10) {
+                    for (int i = 0; i < 10; i++) {
+                        BidEntity entity = bidEntities.get(i);
+                        initBidEntities.add(entity);
+                    }
+                } else {
+                    for (int i = 0; i < MaxDateNum; i++) {
+                        BidEntity entity = bidEntities.get(i);
+                        initBidEntities.add(entity);
+                    }
+                }
+                bidAdapter.notifyDataSetChanged();
+                listview_xuqiu.setAdapter(bidAdapter);
             }
-            /**
-             * 查询结果有数据，做数据展示
-             */
-            mActivityFragmentView.viewEmptyGone();
-            bidEntities.clear();
-            List<BidEntity> homeData = (List<BidEntity>) jo;
-            /**
-             * 展示苗木信息数据
-             */
-            bidEntities.addAll(homeData);
-            bidAdapter.notifyDataSetChanged();
-            listview_xuqiu.setAdapter(bidAdapter);
         }
         /**
          * 人员招聘
@@ -313,19 +477,61 @@ public class WorkShowFragment extends FragmentSupport {
                  */
                 mActivityFragmentView.viewMainGone();
                 mActivity.msg(mData.getMsg());
+            } else if (jo instanceof List) {
+                /**
+                 * 查询结果有数据，做数据展示
+                 */
+                mActivityFragmentView.viewEmptyGone();
+                recruitEntities.clear();
+                initRecruitEntities.clear();
+                recruitEntities = (List<RecruitEntity>) jo;
+                MaxDateNum = recruitEntities.size(); // 设置最大数据条数
+                /**
+                 * 展示人员招聘数据 10条
+                 */
+                if (MaxDateNum > 10) {
+                    for (int i = 0; i < 10; i++) {
+                        RecruitEntity entity = recruitEntities.get(i);
+                        initRecruitEntities.add(entity);
+                    }
+                } else {
+                    for (int i = 0; i < MaxDateNum; i++) {
+                        RecruitEntity entity = recruitEntities.get(i);
+                        initRecruitEntities.add(entity);
+                    }
+                }
+                recruitAdapter.notifyDataSetChanged();
+                listview_xuqiu.setAdapter(recruitAdapter);
             }
-            /**
-             * 查询结果有数据，做数据展示
-             */
-            mActivityFragmentView.viewEmptyGone();
-            recruitEntities.clear();
-            List<RecruitEntity> homeData = (List<RecruitEntity>) jo;
-            /**
-             * 展示人员招聘数据
-             */
-            recruitAdapter.addAll(homeData);
-            recruitAdapter.notifyDataSetChanged();
-            listview_xuqiu.setAdapter(recruitAdapter);
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        WorkShowProtocol protocol = new WorkShowProtocol(mActivity);
+        protocol.addResponseListener(WorkShowFragment.this);
+        switch (indexOfSelect) {
+            case 1://设备租赁
+                protocol.queryEquipmentLeasing();
+                mActivityFragmentView.viewLoading(View.VISIBLE);
+                break;
+            case 2://苗木信息
+                protocol.querySeedlingmessage();
+                mActivityFragmentView.viewLoading(View.VISIBLE);
+                break;
+            case 3://招标信息
+                protocol.queryBid();
+                mActivityFragmentView.viewLoading(View.VISIBLE);
+                break;
+            case 4://人员招聘
+                protocol.queryRecruit();
+                mActivityFragmentView.viewLoading(View.VISIBLE);
+                break;
+        }
+    }
+
+    @Override
+    public void onLoadMore() {
+        loadMoreData();
     }
 }

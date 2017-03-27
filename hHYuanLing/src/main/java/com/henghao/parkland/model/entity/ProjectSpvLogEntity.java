@@ -9,6 +9,10 @@ import com.google.gson.annotations.Expose;
  */
 public class ProjectSpvLogEntity implements java.io.Serializable {
 
+    private boolean isChecked;//是否被选中
+    // 表主键
+    @Expose
+    private int sid;
     // 工程名称
     @Expose
     private String projectName;
@@ -36,6 +40,22 @@ public class ProjectSpvLogEntity implements java.io.Serializable {
     // 总监理工工程师
     @Expose
     private String engineer;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
 
     public String getOther() {
         return other;

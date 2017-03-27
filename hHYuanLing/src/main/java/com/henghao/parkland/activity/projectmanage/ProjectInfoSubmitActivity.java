@@ -66,7 +66,7 @@ public class ProjectInfoSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("项目信息");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
     }
 

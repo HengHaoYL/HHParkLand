@@ -84,20 +84,45 @@ public class ProtocolUrl {
      * 签到
      **************************/
 
+    /**
+     * 签到
+     */
     public static final String APP_QIANDAO = "report";
+
+    /**
+     * 查询签到次数
+     */
+    public static final String APP_NUMBEROFQIANDAO = "/report/message";
 
     /************************ 签到 end **************************/
     /************************
      * 养护管理
      **************************/
-//   http://172.16.13.101:8080/YL_BigData/queryGhManagemsg?yid&treeId
 
-    public static final String APP_YANGHU = "queryGhManagemsg";
+    /**
+     * 查询当天养护状态信息数据访问接口
+     */
+    public static final String QUERYYGSTATUSMSG = "/YhManage/queryYhStatusMsg";
+
+    /**
+     * 通过植物编号查询树木信息访问接口
+     */
+    public static final String QUERYTREEMSGBYID = "/YhManage/queryTreeMsgById";
+
+    /**
+     * 养护状态信息数据保存接口
+     */
+    public static final String SAVESTATUSMSG = "/YhManage/saveStatusMsg";
 
     /**
      * 通过植物编号查询管护信息访问接口
      */
     public static final String APP_GHMANAGEMSGBYID = "/YhManage/queryGhManageMsgByid";
+
+    /**
+     * 植物信息录入接口
+     */
+    public static final String SAVETREE = "/YhManage/saveTreeMsg";
 
     /************************ 养护管理 end **************************/
     /************************
@@ -110,14 +135,74 @@ public class ProtocolUrl {
     public static final String DELETE_PROJECT = "/projectManage/delete/project";
 
     /**
+     * 技术交底删除
+     */
+    public static final String DELETE_TECHNOLOGY = "/projectManage/delete/technology";
+
+    /**
      * 会审结果删除
      */
     public static final String DELETE_HSRESULT = "/projectManage/delete/hsResult";
 
     /**
+     * 进度申报删除
+     */
+    public static final String DELETE_DECLARATION = "/projectManage/delete/declaration";
+
+    /**
      * 供货方信息删除
      */
     public static final String DELETE_SUPPLIER = "/projectManage/delete/supplier";
+
+    /**
+     * 变更管理删除
+     */
+    public static final String DELETE_ALTERATION = "/projectManage/delete/alteration";
+
+    /**
+     * 竣工验收删除
+     */
+    public static final String DELETE_FINALACCEPTANCE = "/projectManage/delete/finalacceptance";
+
+    /**
+     * 施工人员删除
+     */
+    public static final String DELETE_SGPERSONNEL = "/projectManage/delete/sgPersonnel";
+
+    /**
+     * 监理日志删除
+     */
+    public static final String DELETE_SUPERVISIONLOG = "/projectManage/delete/supervisionlog";
+
+    /**
+     * 施工日志删除
+     */
+    public static final String DELETE_CONSTURCTIONLOG = "/projectManage/delete/constructionLog";
+
+    /**
+     * 施工安全日志删除
+     */
+    public static final String DELETE_CONSTURCTIONSAFELOG = "/projectManage/delete/constructionSafetyLog";
+
+    /**
+     * 现场勘察删除
+     */
+    public static final String DELETE_PROSPECT = "/projectManage/delete/prospect";
+
+    /**
+     * 开工报告删除
+     */
+    public static final String DELETE_KGREPORT = "/projectManage/delete/kgReport";
+
+    /**
+     * 设备信息删除
+     */
+    public static final String DELETE_EQUIPMENT = "/projectManage/delete/equipment";
+
+    /**
+     * 工序报验删除
+     */
+    public static final String DELETE_CHECKOUT = "/projectManage/delete/checkout";
 
     /**
      * 项目结算删除
@@ -162,10 +247,17 @@ public class ProtocolUrl {
      * 现场勘查
      */
     public static final String PROJECT_SAVEXCKC = "projectManage/saveProspectMsg";
+
     /**
-     * 技术交底添加
+     * 技术交底提交
      */
     public static final String PROJECT_SAVEJSJD = "projectManage/saveTechnologyMsg";
+
+    /**
+     * 提交用户会审结果信息数据访问接口
+     */
+    public static final String SAVEHSRESULTMSG = "/projectManage/saveHsResultMsg";//提交用户会审结果信息数据访问接口
+
     /**
      * 进度申报提交
      */
@@ -312,12 +404,17 @@ public class ProtocolUrl {
     /**
      * 查询技术交底
      */
-    public static final String PROJECT_QUERYDECLARATIONMSG = "projectManage/queryTechnologyMsg";
+    public static final String PROJECT_QUERYTECHNOLOGYMSG = "projectManage/queryTechnologyMsg";
 
     /**
      * 查询进度申报
      */
-    public static final String PROJECT_QUERYJDSB = "projectManage/queryDeclarationMsg";
+    public static final String PROJECT_QUERYDECLARATIONMSG = "projectManage/queryDeclarationMsg";
+
+    /**
+     * 管护信息数据保存接口
+     */
+    public static final String SAVEGHMANAGEMSG = "/YhManage/saveGhManageMsg";
 
     /**
      * 添加我的轨迹

@@ -2,7 +2,6 @@ package com.henghao.parkland.activity.projectmanage;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -11,7 +10,6 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.CommonGridViewAdapter;
 import com.henghao.parkland.model.entity.ProjectDeclareEntity;
-import com.henghao.parkland.utils.ScanImageUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -29,8 +27,9 @@ public class ProjectDeclareDesActivity extends ActivityFragmentSupport {
     @ViewInject(R.id.tv_time)
     TextView tv_time;
     @ViewInject(R.id.gridView)
-    GridView gridview;
-    private ArrayList<String> mUrl;
+    GridView gridView;
+
+    CommonGridViewAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,22 +59,17 @@ public class ProjectDeclareDesActivity extends ActivityFragmentSupport {
         super.initData();
         Bundle bundle = getIntent().getBundleExtra("bundle");
         ProjectDeclareEntity mEntity = (ProjectDeclareEntity) bundle.getSerializable(Constant.INTNET_DATA);
-        final String path = bundle.getString(Constant.INTNET_URL);
         tv_time.setText(mEntity.getDates());
         tv_name.setText(mEntity.getName());
-        //处理图片地址
-        mUrl = new ArrayList<>();
-        for (String url : mEntity.getUrl()) {
-            mUrl.add(path + url);
+        /**
+         * 拼接图片URL地址
+         */
+        ArrayList<String> data = new ArrayList<>();
+        ArrayList<String> urls = mEntity.getUrl();
+        for (String url : urls) {
+            data.add(mEntity.getPhotoId() + url);
         }
-        CommonGridViewAdapter mAdapter = new CommonGridViewAdapter(this, mUrl);
-        gridview.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ScanImageUtils.ScanImage(ProjectDeclareDesActivity.this, mUrl, position);
-            }
-        });
+        mAdapter = new CommonGridViewAdapter(this, data);
+        gridView.setAdapter(mAdapter);
     }
 }

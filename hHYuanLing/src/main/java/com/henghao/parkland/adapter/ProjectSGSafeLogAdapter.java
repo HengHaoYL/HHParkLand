@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.projectmanage.ProjectSGSafeLogDesActivity;
+import com.henghao.parkland.callback.MyCallBack;
 import com.henghao.parkland.model.entity.ProjectSGSafeLogEntity;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -36,49 +38,114 @@ public class ProjectSGSafeLogAdapter extends ArrayAdapter<ProjectSGSafeLogEntity
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    public ProjectSGSafeLogAdapter(ActivityFragmentSupport activityFragment, List<ProjectSGSafeLogEntity> mList) {
+    private boolean showCheckBox = false;//true 多选框显示 false 多选框不显示
+
+    private MyCallBack callBack;
+
+    public ProjectSGSafeLogAdapter(ActivityFragmentSupport activityFragment, List<ProjectSGSafeLogEntity> mList, MyCallBack callBack) {
         super(activityFragment, R.layout.item_projectsafelog, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
         this.mBitmapUtils = new BitmapUtils(activityFragment, Constant.CACHE_DIR_PATH);
         this.mBitmapUtils.configDefaultLoadFailedImage(R.drawable.img_loading_fail_big);
         this.mBitmapUtils.configDefaultLoadingImage(R.drawable.img_loading_default_big);
+        this.callBack = callBack;
+    }
+
+    /**
+     * 显示多选框
+     */
+    public void showCheckBox() {
+        showCheckBox = true;
+    }
+
+    /**
+     * 取消显示多选框
+     */
+    public void hideCheckBox() {
+        showCheckBox = false;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder mHodlerView = null;
+        final ProjectSGSafeLogEntity entity = getItem(position);
+        ViewHolder holder = null;
         if (convertView == null) {
             convertView = this.inflater.inflate(R.layout.item_projectsafelog, null);
-            mHodlerView = new ViewHolder(convertView);
-            convertView.setTag(mHodlerView);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
         } else {
-            mHodlerView = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
-        mHodlerView.tvName.setText(getItem(position).getName());
-        mHodlerView.tvConstructionUnit.setText(getItem(position).getConstructionUnit());
-        mHodlerView.tvStartTime.setText(getItem(position).getStartTime());
-        mHodlerView.tvCompletionTime.setText(getItem(position).getCompletionTime());
-        viewClick(mHodlerView, convertView, position);
+        /**
+         * 显示多选框
+         */
+        if (showCheckBox) {
+            holder.checkBox.setVisibility(View.VISIBLE);
+        } else {
+            holder.checkBox.setVisibility(View.GONE);
+        }
+        holder.checkBox.setChecked(entity.isChecked());
+        holder.tvName.setText(entity.getName());
+        holder.tvConstructionUnit.setText(entity.getConstructionUnit());
+        holder.tvStartTime.setText(entity.getStartTime());
+        holder.tvCompletionTime.setText(entity.getCompletionTime());
+        viewClick(holder, convertView, position);
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (entity.isChecked()) {
+                    entity.setChecked(false);
+                    callBack.removeId(entity.getCid());
+                } else {
+                    entity.setChecked(true);
+                    callBack.addId(entity.getCid());
+                }
+                callBack.setChecked();
+                notifyDataSetChanged();
+            }
+        });
         return convertView;
     }
 
     private void viewClick(ViewHolder mHodlerView, View convertView, final int position) {
-        final ProjectSGSafeLogEntity mentity = getItem(position);
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(mActivityFragmentSupport, ProjectSGSafeLogDesActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(Constant.INTNET_DATA, mentity);
-                intent.putExtra("bundle", bundle);
-                mActivityFragmentSupport.startActivity(intent);
-            }
-        });
+        final ProjectSGSafeLogEntity entity = getItem(position);
+        if (showCheckBox) {
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    /**
+                     * 如果多选框选中，则不选，否则选中
+                     */
+                    if (entity.isChecked()) {
+                        entity.setChecked(false);
+                        callBack.removeId(entity.getCid());
+                    } else {
+                        entity.setChecked(true);
+                        callBack.addId(entity.getCid());
+                    }
+                    callBack.setChecked();
+                    notifyDataSetChanged();
+                }
+            });
+        } else {
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(mActivityFragmentSupport, ProjectSGSafeLogDesActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Constant.INTNET_DATA, entity);
+                    intent.putExtra("bundle", bundle);
+                    mActivityFragmentSupport.startActivity(intent);
+                }
+            });
+        }
     }
 
     static class ViewHolder {
+        @InjectView(R.id.checkBox)
+        CheckBox checkBox;
         @InjectView(R.id.tv_name)
         TextView tvName;
         @InjectView(R.id.tv_constructionUnit)

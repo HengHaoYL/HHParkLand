@@ -9,8 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.model.protocol.HttpPublic;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -103,12 +103,13 @@ public class MaintenanceActivity extends ActivityFragmentSupport {
                 okHttpClient = new OkHttpClient();
                 Request.Builder builder = new Request.Builder();
                 FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
-                RequestBody requestBody = requestBodyBuilder.add("treeId", treeId)//
-                        .add("yhStatusname", yhStatusname)//
-                        .add("yhStatustime", yhStatustime)//
-                        .add("yhStatussite", yhStatussite)
+                RequestBody requestBody = requestBodyBuilder.add("treeId", treeId)//植物编号
+                        .add("yhStatusname", yhStatusname)//养护状态
+                        .add("yhStatustime", yhStatustime)//养护时间
+                        .add("yhStatussite", yhStatussite)//养护地点
+                        .add("uid", getLoginUid())//用户ID
                         .build();
-                Request request = builder.post(requestBody).url(HttpPublic.SAVESTATUSMSG).build();
+                Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.SAVESTATUSMSG).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override

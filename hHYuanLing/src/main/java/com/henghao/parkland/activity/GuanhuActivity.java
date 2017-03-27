@@ -13,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.model.protocol.HttpPublic;
 import com.henghao.parkland.views.FlowRadioGroup;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -170,6 +170,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_submit_guanhu:
+                mActivityFragmentView.viewLoading(View.VISIBLE);
                 yhWorker = etYhWorkder.getText().toString().trim();
                 yhDetails = etYhDetails.getText().toString().trim();
                 yhComment = etComment.getText().toString().trim();
@@ -194,6 +195,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                  * 封装请求参数到requestBodyBuilder中，构建requestBody
                  */
                 requestBodyBuilder.add("yid", String.valueOf(yid));
+                requestBodyBuilder.add("uid", getLoginUid());
                 requestBodyBuilder.add("treeId", treeId);
                 requestBodyBuilder.add("yhSite", yhSite);
                 requestBodyBuilder.add("yhWorker", yhWorker);
@@ -204,7 +206,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                 requestBodyBuilder.add("treeGrowup", treeGrowup);
                 requestBodyBuilder.add("yhComment", yhComment);
                 RequestBody requestBody = requestBodyBuilder.build();
-                Request request = builder.post(requestBody).url(HttpPublic.SAVEGHMANAGEMSG).build();
+                Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.SAVEGHMANAGEMSG).build();
                 /**
                  * 封装request
                  */
@@ -215,6 +217,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                mActivityFragmentView.viewLoading(View.GONE);
                                 Toast.makeText(GuanhuActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -232,6 +235,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        mActivityFragmentView.viewLoading(View.GONE);
                                         Toast.makeText(GuanhuActivity.this, result, Toast.LENGTH_SHORT).show();
                                     }
                                 });
@@ -240,6 +244,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        mActivityFragmentView.viewLoading(View.GONE);
                                         Toast.makeText(GuanhuActivity.this, "添加失败，请重试！", Toast.LENGTH_SHORT).show();
                                     }
                                 });
@@ -248,6 +253,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    mActivityFragmentView.viewLoading(View.GONE);
                                     Toast.makeText(GuanhuActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
                                 }
                             });

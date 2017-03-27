@@ -80,7 +80,7 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
     public void initData() {
         super.initData();
         initWithBar();
-        mLeftTextView.setText("技术交底");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
         mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());

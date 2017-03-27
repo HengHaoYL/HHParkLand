@@ -43,17 +43,17 @@ public class LoginProtocol extends BaseModel {
     /**
      * 登陆
      *
-     * @param userName
-     * @param password
-     * @see [类、类#方法、类#成员]
-     * @since [产品/模块版本]
+     * @param userName 用户名
+     * @param password 密码
+     * @param utid     用户类型（普通用户默认为1）
      */
-    public void login(String userName, String password) {
+    public void login(String userName, String password, String utid) {
         try {
             String url = ProtocolUrl.APP_LOGIN;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("username", userName);
             params.put("password", password);
+            params.put("utid", utid);
             this.mBeeCallback.url(url).type(String.class).params(params);
             this.aq.ajax(this.mBeeCallback);
         } catch (Exception e) {
@@ -64,20 +64,21 @@ public class LoginProtocol extends BaseModel {
     /**
      * 注册
      *
-     * @param userName
-     * @param password
-     * @see [类、类#方法、类#成员]
-     * @since [产品/模块版本]
+     * @param userName 用户名
+     * @param password 密码
+     * @param phone    手机号
+     * @param utid     用户类型（普通用户默认为1）
      */
-    public void reg_user(String userName, String password, String phone) {
+    public void reg_user(String userName, String password, String phone, String utid) {
         try {
             String url = ProtocolUrl.APP_REG;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("username", userName);
             params.put("password", password);
             params.put("tel", phone);
+            params.put("utid", utid);
             /*String str = ToolsKit.getParams(params);
-			String paramVal = ToolsSecret.encode(str);
+            String paramVal = ToolsSecret.encode(str);
 			HashMap<String, String> postParams = new HashMap<String, String>();
 			postParams.put("params", paramVal);*/
             this.mBeeCallback.url(url).type(String.class).params(params);
@@ -98,7 +99,7 @@ public class LoginProtocol extends BaseModel {
                     LoginProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                     return;
                 }
-                if(mBaseEntity.getData()==null || mBaseEntity.getData()=="null"){
+                if (mBaseEntity.getData() == null || mBaseEntity.getData() == "null") {
                     LoginProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                     return;
                 }
@@ -110,8 +111,8 @@ public class LoginProtocol extends BaseModel {
                 /**** end ****/
                 if (url.endsWith(ProtocolUrl.APP_LOGIN)) {
                     // 登录
-                    JSONObject mJson=new JSONObject(object);
-                    JSONObject mData=mJson.getJSONObject("data");
+                    JSONObject mJson = new JSONObject(object);
+                    JSONObject mData = mJson.getJSONObject("data");
                     UserLoginEntity loginEntity = ToolsJson.parseObjecta(mData.toString(), UserLoginEntity.class);
                     LoginProtocol.this.OnMessageResponse(url, loginEntity, status);
                 }

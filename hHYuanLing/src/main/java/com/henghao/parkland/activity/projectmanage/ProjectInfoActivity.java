@@ -15,6 +15,7 @@ import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.views.xlistview.XListView;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
@@ -80,6 +81,7 @@ public class ProjectInfoActivity extends ActivityFragmentSupport implements MyCa
     @Override
     public void initWidget() {
         super.initWidget();
+        mActivityFragmentView.viewMainGone();
         initWithBar();
         mLeftTextView.setText("项目信息");
         mLeftTextView.setVisibility(View.VISIBLE);
@@ -159,6 +161,7 @@ public class ProjectInfoActivity extends ActivityFragmentSupport implements MyCa
     @Override
     public void onResume() {
         super.onResume();
+        itemID.clear();//清空
         checkBox.setChecked(false);//默认不选中
         tvEdit.setText("编辑");
         checkBox.setVisibility(View.GONE);
@@ -183,12 +186,13 @@ public class ProjectInfoActivity extends ActivityFragmentSupport implements MyCa
                 // msg(mData.getMsg());
                 mActivityFragmentView.viewMainGone();
                 return;
+            } else if (jo instanceof List) {
+                mActivityFragmentView.viewEmptyGone();
+                List<ProjectInfoEntity> homedata = (List<ProjectInfoEntity>) jo;
+                data.clear();
+                data.addAll(homedata);
+                mAdapter.notifyDataSetChanged();
             }
-            mActivityFragmentView.viewEmptyGone();
-            List<ProjectInfoEntity> homedata = (List<ProjectInfoEntity>) jo;
-            data.clear();
-            data.addAll(homedata);
-            mAdapter.notifyDataSetChanged();
         }
     }
 
@@ -242,7 +246,7 @@ public class ProjectInfoActivity extends ActivityFragmentSupport implements MyCa
      *
      * @param entity
      */
-    private void deleteInfo(List<DeleteEntity> entity) {
+    private void deleteInfo(final List<DeleteEntity> entity) {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         Gson gson = new Gson();
@@ -259,7 +263,7 @@ public class ProjectInfoActivity extends ActivityFragmentSupport implements MyCa
                     @Override
                     public void run() {
                         mActivityFragmentView.viewLoading(View.GONE);
-                        Toast.makeText(ProjectInfoActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -269,31 +273,42 @@ public class ProjectInfoActivity extends ActivityFragmentSupport implements MyCa
                 String result_str = response.body().string();
                 Type type = new TypeToken<BaseEntity>() {
                 }.getType();
-                final BaseEntity baseEntity = ToolsJson.parseObjecta(result_str, type);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(context, baseEntity.getMsg(), Toast.LENGTH_SHORT).show();
-                        mActivityFragmentView.viewLoading(View.GONE);
-                        /**
-                         * 刷新界面
-                         */
-                        itemID.clear();
-                        // 如果全选按钮被选中，将全选按钮选中状态取消
-                        checkBox.setChecked(false);
-                        List<Integer> idList = getIdList();
-                        for (int id : idList) {
-                            removeList(id);
+                try {
+                    final BaseEntity baseEntity = ToolsJson.parseObjecta(result_str, type);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(context, baseEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                            mActivityFragmentView.viewLoading(View.GONE);
+                            /**
+                             * 刷新界面
+                             */
+                            itemID.clear();
+                            // 如果全选按钮被选中，将全选按钮选中状态取消
+                            checkBox.setChecked(false);
+                            List<Integer> idList = getIdList();
+                            for (int id : idList) {
+                                removeList(id);
+                            }
+                            mAdapter.notifyDataSetChanged();
+                            /**
+                             * 全部删除之后
+                             */
+                            if (data.size() == 0) {
+                                mActivityFragmentView.viewMainGone();
+                            }
                         }
-                        mAdapter.notifyDataSetChanged();
-                        /**
-                         * 全部删除之后
-                         */
-                        if (data.size() == 0) {
-                            mActivityFragmentView.viewMainGone();
+                    });
+                } catch (JsonSyntaxException e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mActivityFragmentView.viewLoading(View.GONE);
+                            Toast.makeText(context, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                });
+                    });
+                    e.printStackTrace();
+                }
             }
         });
     }

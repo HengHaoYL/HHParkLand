@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.henghao.parkland.ActivityFragmentSupport;
@@ -59,7 +60,9 @@ public class QiandaoSubmitActivity extends ActivityFragmentSupport {
      */
     @ViewInject(R.id.btn_submit_qiandaosubmit)
     private Button btn_submit_qiandaosubmit;
-    private String address;
+    private String address;//签到地址
+    private double latitude;//纬度
+    private double longitude;//经度
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +104,8 @@ public class QiandaoSubmitActivity extends ActivityFragmentSupport {
         Intent intent = getIntent();
         String time = intent.getStringExtra("time");
         address = intent.getStringExtra("address");
+        latitude = intent.getDoubleExtra("latitude", 0);
+        longitude = intent.getDoubleExtra("longitude", 0);
         String company = intent.getStringExtra("company");
         tv_time_qiandaosubmit.setText(time);
         tv_address_qiandaosubmit.setText(address);
@@ -114,7 +119,7 @@ public class QiandaoSubmitActivity extends ActivityFragmentSupport {
                 // 提交
                 QianDaoProtocol mQianDaoProtocol = new QianDaoProtocol(this);
                 mQianDaoProtocol.addResponseListener(this);
-                mQianDaoProtocol.qiandao(getLoginUid(), address, et_note_qiandao.getText().toString().trim());
+                mQianDaoProtocol.qiandao(getLoginUid(), address, latitude, longitude, et_note_qiandao.getText().toString().trim());
                 mActivityFragmentView.viewLoading(View.VISIBLE);
                 break;
         }
@@ -125,11 +130,9 @@ public class QiandaoSubmitActivity extends ActivityFragmentSupport {
         super.OnMessageResponse(url, jo, status);
         if (jo instanceof BaseEntity) {
             BaseEntity base = (BaseEntity) jo;
-            msg(base.getMsg());
-            setResult(RESULT_OK);
+            Toast.makeText(context, base.getMsg(), Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
-
     }
 }

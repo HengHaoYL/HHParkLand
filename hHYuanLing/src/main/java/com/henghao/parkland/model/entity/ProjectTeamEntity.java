@@ -9,6 +9,7 @@ import com.henghao.parkland.model.IdEntity;
 
 public class ProjectTeamEntity extends IdEntity {
     /**
+     * sid:"xx",表主键
      * personnelType:"xx",人员类型
      * workPost:"xx",工作岗位
      * psIdcard:"xx",身份证号
@@ -17,12 +18,15 @@ public class ProjectTeamEntity extends IdEntity {
      * psTel:"xx",联系电话
      * uid:6 用户编号
      */
+    private boolean isChecked;//是否被选中
+    @Expose
+    private int sid;//表主键
     @Expose
     private String psIdcard;//身份证号
     @Expose
     private String name;//项目名称
     @Expose
-    private String personnelType;//personnelType
+    private String personnelType;//人员类型
     @Expose
     private String workPost;//工作岗位
     @Expose
@@ -31,6 +35,22 @@ public class ProjectTeamEntity extends IdEntity {
     private String psTel;//联系电话
     @Expose
     private String uid;//用户编号
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
 
     public String getPersonnelType() {
         return personnelType;

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.utils.tools.ToolsKit;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
@@ -227,7 +228,7 @@ public class XiangmuFragment extends FragmentSupport {
     private void initwithContent() {
         initWithCenterBar();
         this.mCenterTextView.setVisibility(View.VISIBLE);
-        mCenterTextView.setText("请添加项目信息");
+        mCenterTextView.setText("项目管理");
 //        requestInternet();
         initWithBar();
         this.mLeftImageView.setVisibility(View.VISIBLE);
@@ -256,11 +257,15 @@ public class XiangmuFragment extends FragmentSupport {
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
-            public void onFailure(Request request, IOException e) {
-                getActivity().runOnUiThread(new Runnable() {
+            public void onFailure(Request request, final IOException e) {
+                mActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getActivity(), "网络访问错误！", Toast.LENGTH_SHORT).show();
+                        if (e.toString().indexOf("java.net.SocketTimeoutException") != -1) {
+                            Toast.makeText(mActivity, "网络访问错误！请稍后重试！", Toast.LENGTH_SHORT).show();
+                        } else if (e.toString().indexOf("") != 1) {
+                            Toast.makeText(mActivity, "网络不给力，请检查网络设置。", Toast.LENGTH_SHORT).show();
+                        }
                         mActivityFragmentView.viewLoading(View.GONE);
                     }
                 });
@@ -271,52 +276,63 @@ public class XiangmuFragment extends FragmentSupport {
                 String result_str = response.body().string();
                 Type baseEntityTye = new TypeToken<BaseEntity>() {
                 }.getType();
-                /**
-                 * 解析Json
-                 */
-                final BaseEntity baseEntity = ToolsJson.parseObjecta(result_str, baseEntityTye);
-                String data = ToolsJson.toJson(baseEntity.getData());
-                if (ToolsKit.isEmpty(data)) {//如果返回数据为空
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mCenterTextView.setText(baseEntity.getMsg());
-                            mActivityFragmentView.viewLoading(View.GONE);
-                            /**
-                             * 还原初始化数据
-                             */
-                            if (mList != null) {
-                                mInfoEntity = null;
-                                index = 0;
-                                mList.clear();
-                                projectNames = null;
-                            }
-                        }
-                    });
-                } else {
-                    Type type = new TypeToken<List<ProjectInfoEntity>>() {
-                    }.getType();
-                    mList = ToolsJson.parseObjecta(data, type);
+                try {
                     /**
-                     * 取得返回的项目信息集合名称列表
+                     * 解析Json
                      */
-                    if (mList != null) {
-                        projectNames = new String[mList.size()];
-                        for (int i = 0; i < mList.size(); i++) {
-                            projectNames[i] = mList.get(i).getXmName();
-                        }
+                    final BaseEntity baseEntity = ToolsJson.parseObjecta(result_str, baseEntityTye);
+                    String data = ToolsJson.toJson(baseEntity.getData());
+                    if (ToolsKit.isEmpty(data)) {//如果返回数据为空
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                mCenterTextView.setText(baseEntity.getMsg());
                                 mActivityFragmentView.viewLoading(View.GONE);
                                 /**
-                                 * 默认显示第一个项目信息的名称，如果已选则其他，则显示其他项目信息名称
+                                 * 还原初始化数据
                                  */
-                                mCenterTextView.setText(mList.get(index).getXmName());
-                                mInfoEntity = mList.get(index);
+                                if (mList != null) {
+                                    mInfoEntity = null;
+                                    index = 0;
+                                    mList.clear();
+                                    projectNames = null;
+                                }
                             }
                         });
+                    } else {
+                        Type type = new TypeToken<List<ProjectInfoEntity>>() {
+                        }.getType();
+                        mList = ToolsJson.parseObjecta(data, type);
+                        /**
+                         * 取得返回的项目信息集合名称列表
+                         */
+                        if (mList != null) {
+                            projectNames = new String[mList.size()];
+                            for (int i = 0; i < mList.size(); i++) {
+                                projectNames[i] = mList.get(i).getXmName();
+                            }
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mActivityFragmentView.viewLoading(View.GONE);
+                                    /**
+                                     * 默认显示第一个项目信息的名称，如果已选则其他，则显示其他项目信息名称
+                                     */
+                                    mCenterTextView.setText(mList.get(index).getXmName());
+                                    mInfoEntity = mList.get(index);
+                                }
+                            });
+                        }
                     }
+                } catch (JsonSyntaxException e) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mActivityFragmentView.viewLoading(View.GONE);
+                            Toast.makeText(mActivity, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    e.printStackTrace();
                 }
             }
         });

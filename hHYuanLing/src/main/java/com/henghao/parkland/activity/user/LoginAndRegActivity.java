@@ -70,6 +70,14 @@ public class LoginAndRegActivity extends ActivityFragmentSupport implements OnCh
         mTabs.setOnCheckedChangeListener(this);
     }
 
+    public void setLoginFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        loginFragment = (LoginFragment) LoginFragment.newInstance(0);
+        ft.replace(R.id.fragment_content, loginFragment).commit();
+        ((RadioButton) mTabs.getChildAt(0)).setChecked(true);
+    }
+
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         // TODO Auto-generated method stub

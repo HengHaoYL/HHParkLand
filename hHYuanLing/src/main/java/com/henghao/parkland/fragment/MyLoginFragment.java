@@ -17,6 +17,7 @@ import com.benefit.buy.library.views.dialog.BaseDialog;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.QiandaoActivity;
+import com.henghao.parkland.activity.projectmanage.ProjectInfoActivity;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.activity.user.MyWorkerListActivity;
 import com.henghao.parkland.activity.user.SettingActivity;
@@ -104,7 +105,7 @@ public class MyLoginFragment extends FragmentSupport {
         }
     }
 
-    @OnClick({R.id.tv_login, R.id.ll_updatename, R.id.image_setting, R.id.tv_myworker, R.id.tv_qiandao})
+    @OnClick({R.id.tv_login, R.id.ll_updatename, R.id.image_setting, R.id.tv_myworker, R.id.tv_qiandao, R.id.tv_myproject})
     private void viewClick(View v) {
         Intent intent = new Intent();
         switch (v.getId()) {
@@ -119,8 +120,10 @@ public class MyLoginFragment extends FragmentSupport {
                 }
                 break;
             case R.id.ll_updatename:
-                intent.setClass(mActivity, LoginAndRegActivity.class);
-                startActivity(intent);
+                if (!isLogin()) {
+                    intent.setClass(mActivity, LoginAndRegActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.image_setting:
                 //设置
@@ -135,6 +138,11 @@ public class MyLoginFragment extends FragmentSupport {
             case R.id.tv_qiandao:
                 //签到
                 intent.setClass(mActivity, QiandaoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_myproject:
+                //我的项目
+                intent.setClass(mActivity, ProjectInfoActivity.class);
                 startActivity(intent);
                 break;
         }

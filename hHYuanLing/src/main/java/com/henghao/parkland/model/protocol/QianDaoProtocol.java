@@ -25,7 +25,8 @@ import java.util.Map;
 
 /**
  * 〈一句话功能简述〉 〈功能详细描述〉
- *  签到
+ * 签到
+ *
  * @author zhangxianwen
  * @version HDMNV100R001, 2015年6月5日
  * @see [相关类/方法]
@@ -40,18 +41,20 @@ public class QianDaoProtocol extends BaseModel {
     /**
      * 登陆
      *
-     * @param site 地址
+     * @param site     地址
      * @param comments 备注
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
-    public void qiandao(String uid, String site,String comments) {
+    public void qiandao(String uid, String site, double latitude, double longitude, String comments) {
         try {
             String url = ProtocolUrl.APP_QIANDAO;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
             params.put("site", site);
             params.put("comments", comments);
+            params.put("latitude", latitude);
+            params.put("longitude", longitude);
             this.mBeeCallback.url(url).type(String.class).params(params);
             this.aq.ajax(this.mBeeCallback);
         } catch (Exception e) {
@@ -59,7 +62,22 @@ public class QianDaoProtocol extends BaseModel {
         }
     }
 
-
+    /**
+     * 查询签到次数
+     *
+     * @param uid
+     */
+    public void numberOfQiandao(String uid) {
+        try {
+            String url = ProtocolUrl.APP_NUMBEROFQIANDAO;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private final BeeCallback<String> mBeeCallback = new BeeCallback<String>() {
 
@@ -72,8 +90,8 @@ public class QianDaoProtocol extends BaseModel {
                     QianDaoProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                     return;
                 }
-                Object obj=ToolsJson.toJson(mBaseEntity.getData());
-                if(obj==null){
+                Object obj = ToolsJson.toJson(mBaseEntity.getData());
+                if (obj == null) {
                     QianDaoProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
                 String data = ToolsJson.toJson(mBaseEntity.getData());
@@ -86,7 +104,10 @@ public class QianDaoProtocol extends BaseModel {
                     // 签到
                     QianDaoProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
-
+                if (url.endsWith(ProtocolUrl.APP_NUMBEROFQIANDAO)) {
+                    // 签到
+                    QianDaoProtocol.this.OnMessageResponse(url, mBaseEntity, status);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

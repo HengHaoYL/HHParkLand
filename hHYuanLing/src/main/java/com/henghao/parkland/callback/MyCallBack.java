@@ -2,6 +2,7 @@ package com.henghao.parkland.callback;
 
 /**
  * Created by 晏琦云 on 2017/3/14.
+ * 删除list_item所用到的回调接口
  */
 
 public interface MyCallBack {

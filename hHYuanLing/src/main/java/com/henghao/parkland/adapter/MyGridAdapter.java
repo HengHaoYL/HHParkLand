@@ -82,16 +82,6 @@ public class MyGridAdapter extends ArrayAdapter<AppGridEntity> {
                         intent.setClass(mActivityFragmentSupport, QiandaoActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    /*case 3:
-                        //日志
-                        intent.setClass(mActivityFragmentSupport, ProjectSGLogSubmitActivity.class);
-                        mActivityFragmentSupport.startActivity(intent);
-                        break;*/
-                   /* case 5:
-                        //项目管理
-                        intent.setClass(mActivityFragmentSupport, ProjectActivity.class);
-                        mActivityFragmentSupport.startActivity(intent);
-                        break;*/
                 }
             }
         });

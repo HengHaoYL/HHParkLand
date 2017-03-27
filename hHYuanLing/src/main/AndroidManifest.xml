@@ -175,11 +175,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 养护主页面 -->
-        <activity
-            android:name=".activity.YanghuMainActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 养护管理界面 -->
         <activity
             android:name=".activity.YhManageActivity"
@@ -199,17 +194,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 项目管理界面 -->
-        <activity
-            android:name=".activity.projectmanage.ProjectActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 工作备忘添加 -->
-        <activity
-            android:name=".activity.projectmanage.ProjectWorkBWAddActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 监理日志 -->
         <activity
             android:name=".activity.projectmanage.ProjectSpvLogActivity"
@@ -229,29 +214,9 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工备忘添加 -->
-        <activity
-            android:name=".activity.projectmanage.ProjectSGBWAddActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工备忘 -->
-        <activity
-            android:name=".activity.projectmanage.ProjectSGBWActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工资料添加 -->
-        <activity
-            android:name=".activity.projectmanage.ProjectSGMaterialAddActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工材料 -->
-        <activity
-            android:name=".activity.projectmanage.ProjectSGMaterialActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.YHDataActivity"
             android:configChanges="orientation|keyboardHidden"

@@ -28,11 +28,6 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dip"
-            android:background="#e3e3e3" />
-
         <RadioGroup
             android:id="@+id/tabs_rg"
             android:layout_width="fill_parent"

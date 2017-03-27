@@ -87,7 +87,7 @@ public class YHDataActivity extends ActivityFragmentSupport {
         String treeId = getIntent().getStringExtra("treeId");
         YHDataProtocol mmProtocol = new YHDataProtocol(this);
         mmProtocol.addResponseListener(this);
-        mmProtocol.getYHData(yId, treeId);
+        mmProtocol.getYHData(yId, treeId, getLoginUid());
         mActivityFragmentView.viewLoading(View.VISIBLE);
     }
 

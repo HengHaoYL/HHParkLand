@@ -84,7 +84,7 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("现场勘查");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
         mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class ProjectXcKcEntity extends IdEntity {
 
     /**
+     * ppid:"xx",                            表主键
      * xcAdd:"xx",                           现场勘探地址
      * xcPerson:"xx",                        现场勘探人员姓名
      * xcSituation:xx,                       现场勘探图片路径编号
@@ -22,13 +23,16 @@ public class ProjectXcKcEntity extends IdEntity {
      * "/Prospect/Img/IMG_20170221_094513.jpg"
      * ]
      */
-
+    private boolean isChecked;//是否被选中
     @Expose
     @SerializedName("url")
     private ArrayList<String> url;
 
     @Expose
     private String name;
+
+    @Expose
+    private int ppid;
 
     @Expose
     private String xcAdd;
@@ -41,6 +45,22 @@ public class ProjectXcKcEntity extends IdEntity {
 
     @Expose
     private String xcTime;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getPpid() {
+        return ppid;
+    }
+
+    public void setPpid(int ppid) {
+        this.ppid = ppid;
+    }
 
     public String getName() {
         return name;

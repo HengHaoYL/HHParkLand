@@ -46,12 +46,13 @@ public class YHDataProtocol extends BaseModel {
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
-    public void getYHData(int yid, String treeId) {
+    public void getYHData(int yid, String treeId, String uid) {
         try {
             String url = ProtocolUrl.APP_GHMANAGEMSGBYID;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("yid", yid);
             params.put("treeId", treeId);
+            params.put("uid", uid);
             this.mBeeCallback.url(url).type(String.class).params(params);
             this.aq.ajax(this.mBeeCallback);
         } catch (Exception e) {

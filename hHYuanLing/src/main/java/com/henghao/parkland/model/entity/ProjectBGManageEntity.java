@@ -11,11 +11,15 @@ import java.util.ArrayList;
 
 public class ProjectBGManageEntity extends IdEntity {
     /**
+     * 表主键：int aid
      * 确认方：String confirmingParty
      * 变更时间：String times
      * 变更依据图：file file
      * 项目名称：String name
      */
+    private boolean isChecked;//是否被选中
+    @Expose
+    private int aid;
     @Expose
     private String confirmingParty;
     @Expose
@@ -26,6 +30,22 @@ public class ProjectBGManageEntity extends IdEntity {
     private String files;
     @Expose
     private ArrayList<String> url;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
+    }
 
     public String getFiles() {
         return files;

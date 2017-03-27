@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -19,16 +18,18 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.YhAdapter;
 import com.henghao.parkland.model.entity.YhBean;
-import com.henghao.parkland.model.protocol.HttpPublic;
 import com.henghao.parkland.views.dialog.DialogList;
 import com.henghao.parkland.views.dialog.DialogYanghu;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 import com.zbar.lib.zxing.CaptureActivity;
 
@@ -67,8 +68,6 @@ public class YhManageActivity extends ActivityFragmentSupport {
 
     @InjectView(R.id.lv_yhmanage)
     ListView listView;
-    @InjectView(R.id.tv_state_yhmanage)
-    TextView tvState;
     private YhAdapter adapter;
     private List<YhBean> dataList;//数据信息列表
     /**
@@ -99,6 +98,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
     @Override
     public void initWidget() {
         super.initWidget();
+        mActivityFragmentView.viewMainGone();
         /**
          * 定位
          */
@@ -109,7 +109,10 @@ public class YhManageActivity extends ActivityFragmentSupport {
 
         okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
-        request = builder.url(HttpPublic.QUERYYGSTATUSMSG).get().build();
+        FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
+        requestBodyBuilder.add("uid", getLoginUid());
+        RequestBody requestBody = requestBodyBuilder.build();
+        request = builder.url(ProtocolUrl.ROOT_URL + ProtocolUrl.QUERYYGSTATUSMSG).post(requestBody).build();
         /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -137,6 +140,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        mActivityFragmentView.viewMainGone();
                         mActivityFragmentView.viewLoading(View.GONE);
                         Toast.makeText(YhManageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
                     }
@@ -153,14 +157,10 @@ public class YhManageActivity extends ActivityFragmentSupport {
                         dataList = parseJson(str_result);
                         Collections.reverse(dataList);
                         mActivityFragmentView.viewLoading(View.GONE);
-                        if (dataList.size() == 0) {
-                            tvState.setVisibility(View.VISIBLE);
-                            tvState.setText("你今天还没有对植物进行养护哦！");
-                        } else {
-                            tvState.setVisibility(View.GONE);
+                        if (dataList.size() != 0) {
+                            mActivityFragmentView.viewEmptyGone();
                             adapter = new YhAdapter(dataList, YhManageActivity.this);
                             listView.setAdapter(adapter);
-
                         }
                     }
                 });
@@ -174,9 +174,9 @@ public class YhManageActivity extends ActivityFragmentSupport {
         mLeftTextView.setVisibility(View.VISIBLE);
         mLeftTextView.setText("养护管理");
         initWithRightBar();
-        mRightImageView.setVisibility(View.VISIBLE);
+        mRightImageView.setVisibility(View.GONE);
         mRightImageView.setImageResource(R.drawable.scan_right);
-        mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
+        mRightImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //二维码
@@ -265,9 +265,17 @@ public class YhManageActivity extends ActivityFragmentSupport {
                     bean.setIsNo(isNo);
                     data.add(bean);
                 }
+                mRightImageView.setVisibility(View.VISIBLE);
             } else {
+                /**
+                 * 如果未登录，则不可以进行养护
+                 */
                 String result = jsonObject.getString("result");
-                Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+                if (result.equals("请登录")) {
+                    mRightImageView.setVisibility(View.GONE);
+                } else {
+                    mRightImageView.setVisibility(View.VISIBLE);
+                }
             }
         } catch (JSONException e) {
             Toast.makeText(YhManageActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
@@ -367,7 +375,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
                 /**
                  * 查询二维码ID
                  */
-                Request request = builder.url(HttpPublic.QUERYTREEMSGBYID + "?treeId=" + content).get().build();
+                Request request = builder.url(ProtocolUrl.ROOT_URL + ProtocolUrl.QUERYTREEMSGBYID + "?treeId=" + content).get().build();
                 /**
                  * 把request封装
                  */

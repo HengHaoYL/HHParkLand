@@ -71,7 +71,7 @@ public class ProjectSettlementSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("项目结算");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
         mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());

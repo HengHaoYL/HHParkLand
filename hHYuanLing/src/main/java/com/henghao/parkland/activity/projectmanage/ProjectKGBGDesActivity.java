@@ -105,7 +105,7 @@ public class ProjectKGBGDesActivity extends ActivityFragmentSupport {
             Request.Builder builder = new Request.Builder();
             FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
             requestBodyBuilder.add("uid", getLoginUid());
-            requestBodyBuilder.add("kid", mEntity.getKid());
+            requestBodyBuilder.add("kid", String.valueOf(mEntity.getKid()));
             RequestBody requestBody = requestBodyBuilder.build();
             Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DOWNLOAD_KGREPORTFILE).build();
             Call call = okHttpClient.newCall(request);

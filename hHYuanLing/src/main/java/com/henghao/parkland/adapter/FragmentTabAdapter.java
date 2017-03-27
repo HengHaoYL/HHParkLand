@@ -1,13 +1,14 @@
 package com.henghao.parkland.adapter;
 
-import java.util.List;
-
-import com.henghao.parkland.fragment.FragmentSupport;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
+
+import com.henghao.parkland.R;
+import com.henghao.parkland.fragment.FragmentSupport;
+
+import java.util.List;
 
 /**
  * tabs mangage
@@ -27,7 +28,7 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener {
     private OnRgsExtraCheckedChangedListener onRgsExtraCheckedChangedListener; // 用于让调用者在切换tab时候增加新的功能
 
     public FragmentTabAdapter(FragmentActivity fragmentActivity, List<FragmentSupport> fts, int fragmentContentId,
-            RadioGroup rgs) {
+                              RadioGroup rgs) {
         fragments = fts;
         this.rgs = rgs;
         this.fragmentActivity = fragmentActivity;
@@ -42,7 +43,7 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener {
     public void remove() {
         if (fragments != null) {
             FragmentTransaction ft = fragmentActivity.getSupportFragmentManager().beginTransaction();
-            for (FragmentSupport f: fragments) {
+            for (FragmentSupport f : fragments) {
                 ft.remove(f);
             }
             ft.commit();
@@ -66,8 +67,7 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener {
                 if (fragment.isAdded()) {
                     //                    fragment.onStart(); // 启动目标tab的onStart()
                     fragment.onResume(); // 启动目标tab的onResume()
-                }
-                else {
+                } else {
                     ft.add(fragmentContentId, fragment);
                 }
                 showTab(i); // 显示目标tab
@@ -94,6 +94,7 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener {
 
     /**
      * 切换tab
+     *
      * @param idx
      */
     private void showTab(int idx) {
@@ -102,8 +103,7 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener {
             FragmentTransaction ft = obtainFragmentTransaction(idx);
             if (idx == i) {
                 ft.show(fragment);
-            }
-            else {
+            } else {
                 ft.hide(fragment);
             }
             ft.commit();
@@ -113,18 +113,18 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener {
 
     /**
      * 获取一个带动画的FragmentTransaction
+     *
      * @param index
      * @return
      */
     private FragmentTransaction obtainFragmentTransaction(int index) {
         FragmentTransaction ft = fragmentActivity.getSupportFragmentManager().beginTransaction();
         // 设置切换动画
-        //        if (index > currentTab) {
-        //            ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out);
-        //        }
-        //        else {
-        //            ft.setCustomAnimations(R.anim.slide_right_in, R.anim.slide_right_out);
-        //        }
+        if (index > currentTab) {
+            ft.setCustomAnimations(R.anim.push_left_in, R.anim.push_left_out);
+        } else {
+            ft.setCustomAnimations(R.anim.push_right_in, R.anim.push_right_out);
+        }
         return ft;
     }
 

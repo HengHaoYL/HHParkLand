@@ -63,7 +63,7 @@ public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("施工日志");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         tvTitle.setText("施工日志");
         initWithCenterBar();

@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
         android:id="@+id/bar_center_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center" >
-    </ImageView>
+        android:layout_gravity="center"
+        android:gravity="center"></ImageView>
 
     <TextView
-         android:id="@+id/bar_center_title"
+        android:id="@+id/bar_center_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/padding_small"
+        android:ellipsize="end"
+        android:ems="8"
+        android:gravity="center"
+        android:singleLine="true"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="@dimen/gj_f"/>
+        android:textSize="@dimen/gj_f"
+        android:textStyle="bold" />
 
 </merge>

@@ -4,22 +4,58 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_state_projectkgbg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="20sp"
-        android:visibility="gone" />
-
     <com.benefit.buy.library.views.xlistview.XListView
         android:id="@+id/lv_projectkgbg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/layout_bottom"
         android:cacheColorHint="@color/transparent"
         android:divider="@color/transparent"
         android:fadingEdge="none"
         android:listSelector="@drawable/list_selector_transition"
         android:splitMotionEvents="false" />
 
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/padding_normal"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_greencircleframe"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_normal"
+            android:paddingLeft="@dimen/padding_big"
+            android:paddingRight="@dimen/padding_big"
+            android:paddingTop="@dimen/padding_normal"
+            android:text="删除"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/gj_d" />
+
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_normal"
+            android:layout_weight="1"
+            android:background="@drawable/btn_orangecircleframe"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_normal"
+            android:paddingLeft="@dimen/padding_big"
+            android:paddingRight="@dimen/padding_big"
+            android:paddingTop="@dimen/padding_normal"
+            android:text="取消"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/gj_d" />
+    </LinearLayout>
 </RelativeLayout>

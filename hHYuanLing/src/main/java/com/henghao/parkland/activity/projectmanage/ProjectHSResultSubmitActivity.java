@@ -12,9 +12,9 @@ import android.widget.Toast;
 import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
-import com.henghao.parkland.model.protocol.HttpPublic;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.MediaType;
@@ -72,7 +72,7 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("会审结果");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         mFileList = new ArrayList<>();
         initWithCenterBar();
@@ -108,7 +108,7 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
                         multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//会审图片
                     }
                     RequestBody requestBody = multipartBuilder.build();
-                    Request request = builder.post(requestBody).url(HttpPublic.SAVEHSRESULTMSG).build();
+                    Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.SAVEHSRESULTMSG).build();
                     mActivityFragmentView.viewLoading(View.VISIBLE);
                     Call call = okHttpClient.newCall(request);
                     call.enqueue(new Callback() {

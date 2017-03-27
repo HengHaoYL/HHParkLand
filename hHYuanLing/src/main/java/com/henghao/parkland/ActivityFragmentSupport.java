@@ -643,6 +643,7 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         this.mActivityFragmentView.viewLoading(View.GONE);
         if (jo == null) {
+            msg("网络访问错误！");
             return;
         }
     }

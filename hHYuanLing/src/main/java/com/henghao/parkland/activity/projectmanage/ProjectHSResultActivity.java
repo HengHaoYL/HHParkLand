@@ -15,6 +15,7 @@ import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.views.xlistview.XListView;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
@@ -80,6 +81,7 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport implements 
     @Override
     public void initWidget() {
         super.initWidget();
+        mActivityFragmentView.viewMainGone();
         initWithBar();
         mLeftTextView.setText("会审结果");
         mLeftTextView.setVisibility(View.VISIBLE);
@@ -89,6 +91,10 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport implements 
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (getLoginUser() == null) {
+                    msg("请先登录！");
+                    return;
+                }
                 if (XiangmuFragment.mInfoEntity == null) {
                     msg("请先添加项目信息！");
                     return;
@@ -157,6 +163,7 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport implements 
     @Override
     public void onResume() {
         super.onResume();
+        itemID.clear();//清空
         checkBox.setChecked(false);//默认不选中
         tvEdit.setText("编辑");
         checkBox.setVisibility(View.GONE);
@@ -179,7 +186,6 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport implements 
             if (jo instanceof BaseEntity) {
                 BaseEntity mData = (BaseEntity) jo;
                 if (mData.getStatus() > 0) {
-                    //msg(mData.getMsg());
                     mActivityFragmentView.viewMainGone();
                     return;
                 } else {
@@ -194,13 +200,8 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport implements 
                         entity.setHsImgId(topPath);
                         data.add(entity);
                     }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mAdapter.notifyDataSetChanged();
-                            mXlistView.setAdapter(mAdapter);
-                        }
-                    });
+                    mAdapter.notifyDataSetChanged();
+                    mXlistView.setAdapter(mAdapter);
                 }
             }
         }
@@ -283,31 +284,42 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport implements 
                 String result_str = response.body().string();
                 Type type = new TypeToken<BaseEntity>() {
                 }.getType();
-                final BaseEntity baseEntity = ToolsJson.parseObjecta(result_str, type);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(context, baseEntity.getMsg(), Toast.LENGTH_SHORT).show();
-                        mActivityFragmentView.viewLoading(View.GONE);
-                        /**
-                         * 刷新界面
-                         */
-                        itemID.clear();
-                        // 如果全选按钮被选中，将全选按钮选中状态取消
-                        checkBox.setChecked(false);
-                        List<Integer> idList = getIdList();
-                        for (int id : idList) {
-                            removeList(id);
+                try {
+                    final BaseEntity baseEntity = ToolsJson.parseObjecta(result_str, type);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(context, baseEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                            mActivityFragmentView.viewLoading(View.GONE);
+                            /**
+                             * 刷新界面
+                             */
+                            itemID.clear();
+                            // 如果全选按钮被选中，将全选按钮选中状态取消
+                            checkBox.setChecked(false);
+                            List<Integer> idList = getIdList();
+                            for (int id : idList) {
+                                removeList(id);
+                            }
+                            mAdapter.notifyDataSetChanged();
+                            /**
+                             * 全部删除之后
+                             */
+                            if (data.size() == 0) {
+                                mActivityFragmentView.viewMainGone();
+                            }
                         }
-                        mAdapter.notifyDataSetChanged();
-                        /**
-                         * 全部删除之后
-                         */
-                        if (data.size() == 0) {
-                            mActivityFragmentView.viewMainGone();
+                    });
+                } catch (JsonSyntaxException e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mActivityFragmentView.viewLoading(View.GONE);
+                            Toast.makeText(context, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                });
+                    });
+                    e.printStackTrace();
+                }
             }
         });
     }

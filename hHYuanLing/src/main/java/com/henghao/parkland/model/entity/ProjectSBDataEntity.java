@@ -9,6 +9,10 @@ import com.henghao.parkland.model.IdEntity;
  */
 
 public class ProjectSBDataEntity extends IdEntity {
+    private boolean isChecked;//是否被选中
+    // 表主键
+    @Expose
+    private int eid;
     // 项目名称
     @Expose
     private String name;
@@ -27,6 +31,22 @@ public class ProjectSBDataEntity extends IdEntity {
     // 设备来源
     @Expose
     private String sbSource;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getEid() {
+        return eid;
+    }
+
+    public void setEid(int eid) {
+        this.eid = eid;
+    }
 
     public String getName() {
         return name;

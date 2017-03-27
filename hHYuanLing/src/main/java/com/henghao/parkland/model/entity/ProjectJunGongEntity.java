@@ -12,6 +12,10 @@ import java.util.ArrayList;
  */
 public class ProjectJunGongEntity implements java.io.Serializable {
 
+    private boolean isChecked;//是否被选中
+    // 表主键
+    @Expose
+    private int fid;
     // 工程名称
     @Expose
     private String projectName;
@@ -27,6 +31,22 @@ public class ProjectJunGongEntity implements java.io.Serializable {
     // 文件路径
     @Expose
     private ArrayList<String> url;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getFid() {
+        return fid;
+    }
+
+    public void setFid(int fid) {
+        this.fid = fid;
+    }
 
     public String getProjectName() {
         return projectName;

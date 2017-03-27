@@ -61,7 +61,7 @@ public class ProjectSBDataSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("设备信息");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         ((RadioButton) rgSbSource.getChildAt(0)).setChecked(true);
         initWithCenterBar();

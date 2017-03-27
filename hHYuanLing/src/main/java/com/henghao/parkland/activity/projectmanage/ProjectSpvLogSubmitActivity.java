@@ -69,7 +69,7 @@ public class ProjectSpvLogSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("监理日志");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         tvTitle.setText("监理日志");
         tvName.setText(XiangmuFragment.mInfoEntity.getXmName());

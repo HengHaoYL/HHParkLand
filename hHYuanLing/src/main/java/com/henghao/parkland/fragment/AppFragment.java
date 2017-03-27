@@ -83,21 +83,6 @@ public class AppFragment extends FragmentSupport {
         mEntity7.setImageId(R.drawable.app_seven);
         mEntity7.setName("园林资讯");
         mList.add(mEntity7);
-        //第八个
-        AppGridEntity mEntity8 = new AppGridEntity();
-        mEntity8.setImageId(R.drawable.app_eight);
-        mEntity8.setName("微博");
-        mList.add(mEntity8);
-        //第九个
-        AppGridEntity mEntity9 = new AppGridEntity();
-        mEntity9.setImageId(R.drawable.app_nine);
-        mEntity9.setName("信息查询");
-        mList.add(mEntity9);
-        //第十个
-        AppGridEntity mEntity10 = new AppGridEntity();
-        mEntity10.setImageId(R.drawable.app_ten);
-        mEntity10.setName("数字城市");
-        mList.add(mEntity10);
         AppGridAdapter maAdapter = new AppGridAdapter(this.mActivity, mList);
         this.gridview.setAdapter(maAdapter);
         maAdapter.notifyDataSetChanged();

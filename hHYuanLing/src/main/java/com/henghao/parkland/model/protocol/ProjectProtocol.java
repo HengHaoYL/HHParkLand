@@ -356,7 +356,7 @@ public class ProjectProtocol extends BaseModel {
      */
     public void queryTechnologyMsg(String uid) {
         try {
-            String url = ProtocolUrl.PROJECT_QUERYDECLARATIONMSG;
+            String url = ProtocolUrl.PROJECT_QUERYTECHNOLOGYMSG;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
             this.mBeeCallback.url(url).type(String.class).params(params);
@@ -371,9 +371,9 @@ public class ProjectProtocol extends BaseModel {
      *
      * @param uid
      */
-    public void queryJDSB(String uid) {
+    public void queryDeclarationMsg(String uid) {
         try {
-            String url = ProtocolUrl.PROJECT_QUERYJDSB;
+            String url = ProtocolUrl.PROJECT_QUERYDECLARATIONMSG;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
             this.mBeeCallback.url(url).type(String.class).params(params);
@@ -646,11 +646,11 @@ public class ProjectProtocol extends BaseModel {
                     List<ProjectTeamEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectProtocol.this.OnMessageResponse(url, homeData, status);
                 }
-                if (url.endsWith(ProtocolUrl.PROJECT_QUERYDECLARATIONMSG)) {
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYTECHNOLOGYMSG)) {
                     // 查询技术交底
                     ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
-                if (url.endsWith(ProtocolUrl.PROJECT_QUERYJDSB)) {
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYDECLARATIONMSG)) {
                     // 进度申报
                     ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }

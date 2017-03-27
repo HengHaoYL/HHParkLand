@@ -63,7 +63,7 @@ public class ProjectSGSafeLogSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("施工安全日志");
+        mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         tvTitle.setText("施工安全日志");
         initWithCenterBar();

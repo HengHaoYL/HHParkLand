@@ -11,6 +11,10 @@ import java.util.ArrayList;
  */
 
 public class ProjectGXBYEntity extends IdEntity {
+    private boolean isChecked;//是否被选中
+    // 表主键
+    @Expose
+    private int cid;
     // 工程名称
     @Expose
     private String gxName;
@@ -31,6 +35,22 @@ public class ProjectGXBYEntity extends IdEntity {
     private String gxImgId;
     @Expose
     private ArrayList<String> url;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getCid() {
+        return cid;
+    }
+
+    public void setCid(int cid) {
+        this.cid = cid;
+    }
 
     public String getGxName() {
         return gxName;

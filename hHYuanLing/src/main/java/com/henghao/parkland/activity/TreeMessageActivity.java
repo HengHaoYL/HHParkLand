@@ -11,8 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.model.protocol.HttpPublic;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -140,7 +140,7 @@ public class TreeMessageActivity extends ActivityFragmentSupport {
                 requestBodyBuilder.add("treeSite", treeSite);
                 requestBodyBuilder.add("treeTime", treeTime);
                 RequestBody requestBody = requestBodyBuilder.build();
-                Request request = builder.post(requestBody).url(HttpPublic.SAVETREE).build();
+                Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.SAVETREE).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override

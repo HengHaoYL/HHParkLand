@@ -1,6 +1,5 @@
 package com.henghao.parkland.activity.projectmanage;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -12,10 +11,10 @@ import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.benefit.buy.library.views.xlistview.XListView;
 import com.henghao.parkland.ActivityFragmentSupport;
-import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectMoneyAdapter;
+import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.SGWalletEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
 import com.lidroid.xutils.ViewUtils;
@@ -23,6 +22,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
@@ -34,10 +34,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
 
 /**
  * 施工钱包
@@ -77,10 +76,10 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
     @Override
     public void initData() {
         super.initData();
+        mActivityFragmentView.viewMainGone();
         initWithBar();
         initWithRightBar();
         mRightTextView.setText("导出EXCEL");
-        mRightTextView.setVisibility(View.VISIBLE);
         mLeftTextView.setVisibility(View.VISIBLE);
         mLeftTextView.setText("施工钱包");
         mXlistview.setXListViewListener(this);
@@ -89,61 +88,76 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         /**
          * 下载文件
          */
-        mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
+        mRightTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String sdPath = getSDPath();
                 if (!ToolsKit.isEmpty(sdPath)) {
                     final File parentfile = new File(sdPath + "/ParKLand");
                     makeDir(parentfile);
-                    /**
-                     * 访问网络
-                     */
-                    OkHttpClient okHttpClient = new OkHttpClient();
-                    Request.Builder builder = new Request.Builder();
-                    FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
-                    requestBodyBuilder.add("uid", getLoginUid());
-                    RequestBody requestBody = requestBodyBuilder.build();
-                    Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DOWNLOAD_WALLETEXCEL).build();
-                    Call call = okHttpClient.newCall(request);
-                    call.enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Request request, IOException e) {
-                            e.printStackTrace();
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(ProjectMoneyActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onResponse(Response response) throws IOException {
-                            InputStream inputStream = response.body().byteStream();
-                            Date date = new Date();
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-                            String fileName = dateFormat.format(date);
-                            final File file = new File(parentfile, fileName + ".xls");
-                            file.createNewFile();
-                            file.setWritable(Boolean.TRUE);
-                            FileOutputStream fos = new FileOutputStream(file);
-                            int len;
-                            byte[] buffer = new byte[1024];
-                            while ((len = inputStream.read(buffer)) != -1) {
-                                fos.write(buffer, 0, len);
-                            }
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(context, "文件下载成功！" + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
-                    });
+                    downloadFile(parentfile);
                 } else {
                     Toast.makeText(context, "您当前没有SD卡，请插入SD卡后进行操作！", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    /**
+     * 下载文件
+     *
+     * @param parentfile
+     */
+    private void downloadFile(final File parentfile) {
+        /**
+         * 访问网络
+         */
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request.Builder builder = new Request.Builder();
+        FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
+        requestBodyBuilder.add("uid", getLoginUid());
+        RequestBody requestBody = requestBodyBuilder.build();
+        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DOWNLOAD_WALLETEXCEL).build();
+        Call call = okHttpClient.newCall(request);
+        mActivityFragmentView.viewLoading(View.VISIBLE);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mActivityFragmentView.viewLoading(View.GONE);
+                        Toast.makeText(ProjectMoneyActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                InputStream inputStream = response.body().byteStream();
+                Headers headers = response.headers();
+                for (int i = 0; i < headers.size(); i++) {
+                    System.out.println(headers.name(i) + "：" + headers.value(i));
+                }
+                String content = headers.get("Content-Disposition");
+                String fileName = content.substring(content.indexOf("filename=") + 9).replace("\"", "");
+                final File file = new File(parentfile, fileName);
+                file.createNewFile();
+                file.setWritable(Boolean.TRUE);
+                FileOutputStream fos = new FileOutputStream(file);
+                int len;
+                byte[] buffer = new byte[1024];
+                while ((len = inputStream.read(buffer)) != -1) {
+                    fos.write(buffer, 0, len);
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mActivityFragmentView.viewLoading(View.GONE);
+                        Toast.makeText(context, "文件下载成功！" + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }
@@ -159,9 +173,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
          */
         ProjectProtocol mProjectProtocol = new ProjectProtocol(this);
         mProjectProtocol.addResponseListener(this);
-        SharedPreferences preferences = getLoginUserSharedPre();
-        String UID = preferences.getString(Constant.USERID, null);
-        mProjectProtocol.querySGWallet(UID);
+        mProjectProtocol.querySGWallet(getLoginUid());
         mActivityFragmentView.viewLoading(View.VISIBLE);
     }
 
@@ -179,7 +191,13 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
         if (url.endsWith(ProtocolUrl.PROJECT_SGWALLET)) {
-            if (jo instanceof List) {
+            if (jo instanceof BaseEntity) {
+                mActivityFragmentView.viewMainGone();
+                mRightTextView.setVisibility(View.GONE);
+                return;
+            } else if (jo instanceof List) {
+                mActivityFragmentView.viewEmptyGone();
+                mRightTextView.setVisibility(View.VISIBLE);
                 List<SGWalletEntity> data = (List<SGWalletEntity>) jo;
                 mList.addAll(data);
                 mMoneyAdapter.setData(data);
@@ -187,12 +205,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
                 mMoneyAdapter.notifyDataSetChanged();
                 SGWalletEntity entity = data.get(0);
                 final double money = entity.getMoney();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tv_total_money.setText("总金额：" + money + "元");
-                    }
-                });
+                tv_total_money.setText("总金额：" + money + "元");
             }
         }
     }

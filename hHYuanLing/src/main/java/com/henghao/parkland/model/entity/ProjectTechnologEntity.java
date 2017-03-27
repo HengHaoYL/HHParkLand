@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ProjectTechnologEntity extends IdEntity {
     /**
+     * tid:"xx",                              表主键
      * dates:"xx",                            时间
      * name:"xx",                             项目名称
      * sites:"xx",                            地点
@@ -19,6 +20,11 @@ public class ProjectTechnologEntity extends IdEntity {
      * 0:"xx"                    图片存放路径
      * ]
      */
+
+    private boolean isChecked;//是否被选中
+
+    @Expose
+    private int tid;
 
     @Expose
     private String dates;
@@ -37,6 +43,22 @@ public class ProjectTechnologEntity extends IdEntity {
 
     @Expose
     ArrayList<String> url;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getTid() {
+        return tid;
+    }
+
+    public void setTid(int tid) {
+        this.tid = tid;
+    }
 
     public String getName() {
         return name;

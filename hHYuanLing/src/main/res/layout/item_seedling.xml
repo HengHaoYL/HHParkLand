@@ -60,7 +60,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/tel_shape"
+                android:ellipsize="end"
                 android:padding="@dimen/padding_normal"
+                android:singleLine="true"
                 android:text="供应商地址"
                 android:textColor="#CD2626"
                 android:textSize="12sp" />
@@ -80,6 +82,8 @@
                 android:id="@+id/tv_dates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
                 android:text="2017-03-15 10:20"
                 android:textColor="@color/text_color_b"
                 android:textSize="12sp" />

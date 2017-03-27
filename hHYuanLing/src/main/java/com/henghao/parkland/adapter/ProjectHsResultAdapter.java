@@ -89,7 +89,7 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
         holder.checkBox.setChecked(entity.isChecked());
         holder.tvDates.setText(getItem(position).getHsDeparment());
         holder.tvName.setText(getItem(position).getName());
-        mBitmapUtils.display(holder.ivImg, getItem(position).getHsImgId() + getItem(position).getUrl().get(0));
+        mBitmapUtils.display(holder.ivImg, entity.getHsImgId() + entity.getUrl().get(0));
         viewClick(holder, convertView, position);
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override

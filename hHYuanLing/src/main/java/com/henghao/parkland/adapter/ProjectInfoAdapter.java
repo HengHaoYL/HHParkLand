@@ -19,6 +19,9 @@ import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * 项目信息〈一句话功能简述〉 〈功能详细描述〉
  *
@@ -66,32 +69,28 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final ProjectInfoEntity entity = getItem(position);
-        HodlerView mHodlerView = null;
+        ViewHolder holder = null;
         if (convertView == null) {
-            mHodlerView = new HodlerView();
             convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
-            mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
-            mHodlerView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
-            mHodlerView.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
-            mHodlerView.checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
-            convertView.setTag(mHodlerView);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
         } else {
-            mHodlerView = (HodlerView) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
         /**
          * 显示多选框
          */
         if (showCheckBox) {
-            mHodlerView.checkBox.setVisibility(View.VISIBLE);
+            holder.checkBox.setVisibility(View.VISIBLE);
         } else {
-            mHodlerView.checkBox.setVisibility(View.GONE);
+            holder.checkBox.setVisibility(View.GONE);
         }
-        mHodlerView.checkBox.setChecked(entity.isChecked());
-        mHodlerView.tv_title.setText(entity.getConstructionUnit());
-        mHodlerView.tv_name.setText(entity.getXmName());
-        mHodlerView.tv_time.setText(entity.getXmPerson());
-        viewClick(mHodlerView, convertView, position);
-        mHodlerView.checkBox.setOnClickListener(new View.OnClickListener() {
+        holder.checkBox.setChecked(entity.isChecked());
+        holder.tvTitle.setText(entity.getConstructionUnit());
+        holder.tvName.setText(entity.getXmName());
+        holder.tvTime.setText(entity.getXmPerson());
+        viewClick(holder, convertView, position);
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (entity.isChecked()) {
@@ -108,7 +107,7 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
         return convertView;
     }
 
-    private void viewClick(final HodlerView mHodlerView, View convertView, final int position) {
+    private void viewClick(ViewHolder mHodlerView, View convertView, final int position) {
         final ProjectInfoEntity entity = getItem(position);
         if (showCheckBox) {
             convertView.setOnClickListener(new View.OnClickListener() {
@@ -143,14 +142,18 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
         }
     }
 
-    private class HodlerView {
-
-        TextView tv_title;
-
-        TextView tv_name;
-
-        TextView tv_time;
-
+    static class ViewHolder {
+        @InjectView(R.id.checkBox)
         CheckBox checkBox;
+        @InjectView(R.id.tv_name)
+        TextView tvName;
+        @InjectView(R.id.tv_title)
+        TextView tvTitle;
+        @InjectView(R.id.tv_time)
+        TextView tvTime;
+
+        ViewHolder(View view) {
+            ButterKnife.inject(this, view);
+        }
     }
 }
