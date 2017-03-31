@@ -2,21 +2,22 @@ package com.henghao.parkland.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsJson;
+import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.benefit.buy.library.views.xlistview.XListView;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.BidAdapter;
-import com.henghao.parkland.adapter.CommonListStringAdapter;
 import com.henghao.parkland.adapter.EquipmentLeasingAdapter;
 import com.henghao.parkland.adapter.RecruitAdapter;
 import com.henghao.parkland.adapter.SeedlingAdapter;
@@ -26,7 +27,7 @@ import com.henghao.parkland.model.entity.EquipmentLeasingEntity;
 import com.henghao.parkland.model.entity.RecruitEntity;
 import com.henghao.parkland.model.entity.SeedlingEntity;
 import com.henghao.parkland.model.protocol.WorkShowProtocol;
-import com.henghao.parkland.utils.PopupWindowHelper;
+import com.henghao.parkland.views.dialog.DialogWorkShow;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -55,8 +56,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
 
     private TextView tv_title;//标题
 
-    private View popView;
-    private PopupWindowHelper popupWindowHelper;
+//    private View dialogView;
 
     private EquipmentLeasingAdapter equipmentLeasingAdapter;//设备租赁适配器
     private List<EquipmentLeasingEntity> equipmentLeasingEntities;//设备租赁数据
@@ -73,6 +73,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
     private RecruitAdapter recruitAdapter;//人员招聘适配器
     private List<RecruitEntity> recruitEntities;//人员招聘数据
     private List<RecruitEntity> initRecruitEntities;//初始加载人员招聘数据
+    private DialogWorkShow dialog;//选择对话框
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -161,56 +162,102 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
         initWithBar();
         this.mLeftImageView.setVisibility(View.VISIBLE);
         this.mLeftImageView.setImageResource(R.drawable.home_liebiao);
-        LayoutInflater inflater = LayoutInflater.from(mActivity);
-        this.popView = inflater.inflate(R.layout.common_android_listview, null);
-        ListView mListView = (ListView) this.popView.findViewById(R.id.mlistview);
-        final List<String> mList = new ArrayList<String>();
-        mList.add("设备租赁");
-        mList.add("苗木信息");
-        mList.add("招标信息");
-        mList.add("人员招聘");
-        CommonListStringAdapter mListStringAdapter = new CommonListStringAdapter(mActivity, mList);
-        mListView.setAdapter(mListStringAdapter);
-        mListStringAdapter.notifyDataSetChanged();
-        this.popupWindowHelper = new PopupWindowHelper(this.popView);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+//        LayoutInflater inflater = LayoutInflater.from(mActivity);
+//        this.dialogView = inflater.inflate(R.layout.workshow_dialog, null);
+//        ListView mListView = (ListView) this.dialogView.findViewById(R.id.dialog_listview);
+//        final List<String> mList = new ArrayList<String>();
+//        mList.add("设备租赁");
+//        mList.add("苗木信息");
+//        mList.add("招标信息");
+//        mList.add("人员招聘");
+//        CommonListStringAdapter mListStringAdapter = new CommonListStringAdapter(mActivity, mList);
+//        mListView.setAdapter(mListStringAdapter);
+//        mListStringAdapter.notifyDataSetChanged();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+//        builder.setView(dialogView);
+//        final AlertDialog dialog = builder.create();
+//        dialog.setContentView(dialogView);
+        dialog = new DialogWorkShow(mActivity, new DialogWorkShow.DialogWorkShowListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                // TODO Auto-generated method stub
-                String whatSelect = mList.get(arg2);
-                tv_title.setText(whatSelect);
-                popupWindowHelper.dismiss();
+            public void onClick(View view) {
                 WorkShowProtocol protocol = new WorkShowProtocol(mActivity);
                 protocol.addResponseListener(WorkShowFragment.this);
-                switch (arg2) {
-                    case 0://设备租赁
+                switch (view.getId()) {
+                    case R.id.tv_dialog1://设备租赁
+                        tv_title.setText("设备租赁");
                         protocol.queryEquipmentLeasing();
                         mActivityFragmentView.viewLoading(View.VISIBLE);
                         indexOfSelect = 1;
                         break;
-                    case 1://苗木信息
+                    case R.id.tv_dialog2://苗木信息
+                        tv_title.setText("苗木信息");
                         protocol.querySeedlingmessage();
                         mActivityFragmentView.viewLoading(View.VISIBLE);
                         indexOfSelect = 2;
                         break;
-                    case 2://招标信息
+                    case R.id.tv_dialog3://招标信息
+                        tv_title.setText("招标信息");
                         protocol.queryBid();
                         mActivityFragmentView.viewLoading(View.VISIBLE);
                         indexOfSelect = 3;
                         break;
-                    case 3://人员招聘
+                    case R.id.tv_dialog4://人员招聘
+                        tv_title.setText("人员招聘");
                         protocol.queryRecruit();
                         mActivityFragmentView.viewLoading(View.VISIBLE);
                         indexOfSelect = 4;
                         break;
                 }
+                dialog.dismiss();
             }
         });
+        Window dialogWindow = dialog.getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
+        lp.x = ToolsKit.dip2px(mActivity, 4); // 新位置X坐标
+        lp.y = ToolsKit.dip2px(mActivity, 57); // 新位置Y坐标
+        dialogWindow.setAttributes(lp);
+//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+//                // TODO Auto-generated method stub
+//                String whatSelect = mList.get(arg2);
+//                tv_title.setText(whatSelect);
+//                WorkShowProtocol protocol = new WorkShowProtocol(mActivity);
+//                protocol.addResponseListener(WorkShowFragment.this);
+//                switch (arg2) {
+//                    case 0://设备租赁
+//                        protocol.queryEquipmentLeasing();
+//                        mActivityFragmentView.viewLoading(View.VISIBLE);
+//                        indexOfSelect = 1;
+//                        dialog.dismiss();
+//                        break;
+//                    case 1://苗木信息
+//                        protocol.querySeedlingmessage();
+//                        mActivityFragmentView.viewLoading(View.VISIBLE);
+//                        indexOfSelect = 2;
+//                        dialog.dismiss();
+//                        break;
+//                    case 2://招标信息
+//                        protocol.queryBid();
+//                        mActivityFragmentView.viewLoading(View.VISIBLE);
+//                        indexOfSelect = 3;
+//                        dialog.dismiss();
+//                        break;
+//                    case 3://人员招聘
+//                        protocol.queryRecruit();
+//                        mActivityFragmentView.viewLoading(View.VISIBLE);
+//                        indexOfSelect = 4;
+//                        dialog.dismiss();
+//                        break;
+//                }
+//            }
+//        });
         mLeftImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindowHelper.showAsDropDown(v);
+                dialog.show();
             }
         });
     }
@@ -373,6 +420,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
                             EquipmentLeasingEntity entity = equipmentLeasingEntities.get(i);
                             initEquipmentLeasingEntities.add(entity);
                         }
+                        listview_xuqiu.setPullLoadEnable(false);
                     }
                     equipmentLeasingAdapter.notifyDataSetChanged();
                     listview_xuqiu.setAdapter(equipmentLeasingAdapter);
@@ -422,6 +470,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
                             SeedlingEntity entity = seedlingEntities.get(i);
                             initSeedlingEntities.add(entity);
                         }
+                        listview_xuqiu.setPullLoadEnable(false);
                     }
                     seedlingAdapter.notifyDataSetChanged();
                     listview_xuqiu.setAdapter(seedlingAdapter);
@@ -461,6 +510,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
                         BidEntity entity = bidEntities.get(i);
                         initBidEntities.add(entity);
                     }
+                    listview_xuqiu.setPullLoadEnable(false);
                 }
                 bidAdapter.notifyDataSetChanged();
                 listview_xuqiu.setAdapter(bidAdapter);
@@ -499,6 +549,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
                         RecruitEntity entity = recruitEntities.get(i);
                         initRecruitEntities.add(entity);
                     }
+                    listview_xuqiu.setPullLoadEnable(false);
                 }
                 recruitAdapter.notifyDataSetChanged();
                 listview_xuqiu.setAdapter(recruitAdapter);

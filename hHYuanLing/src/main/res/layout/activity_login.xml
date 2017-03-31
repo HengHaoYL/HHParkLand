@@ -12,64 +12,78 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="@dimen/padding_big"
-        android:layout_marginRight="@dimen/padding_big"
-        android:layout_marginTop="@dimen/padding_big"
+        android:layout_margin="@dimen/padding_big"
         android:orientation="vertical"
         android:paddingBottom="@dimen/padding_vertical"
         android:paddingLeft="@dimen/padding_normal"
         android:paddingRight="@dimen/padding_normal"
         android:paddingTop="@dimen/padding_vertical">
 
-        <TextView
+        <LinearLayout
+            android:gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/padding_big"
-            android:gravity="center"
-            android:padding="@dimen/padding_normal"
-            android:text="@string/login_toservice"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/gj_c" />
+            android:orientation="horizontal">
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/home_tab41"/>
+            <EditText
+                android:id="@+id/login_user"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/view_height"
+                android:background="@null"
+                android:gravity="bottom"
+                android:hint="@string/login_user_phone"
+                android:inputType="text"
+                android:maxLength="16"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/padding_normal"
+                android:paddingLeft="@dimen/padding_normal"
+                android:singleLine="true"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color" />
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView"
+        <View
             android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/padding_big"
-            android:src="@drawable/icon_login" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <EditText
+                android:id="@+id/login_pass"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/view_height"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="bottom"
+                android:hint="@string/login_pass_hint"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/padding_normal"
+                android:paddingLeft="@dimen/padding_normal"
+                android:singleLine="true"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color" />
 
-        <EditText
-            android:id="@+id/login_user"
-            style="@style/Shop.Widget.EditText"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/view_height"
-            android:gravity="bottom"
-            android:hint="@string/login_user"
-            android:inputType="text"
-            android:maxLength="16"
-            android:maxLines="1"
-            android:paddingBottom="@dimen/padding_normal"
-            android:paddingLeft="@dimen/padding_normal"
-            android:singleLine="true"
-            android:textColorHint="@color/hint_color" />
+            <ImageView
+                android:id="@+id/iv_eye_login"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_launcher" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/login_pass"
-            style="@style/Shop.Widget.EditText"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/view_height"
-            android:gravity="bottom"
-            android:hint="@string/login_pass_hint"
-            android:inputType="textPassword"
-            android:maxLength="16"
-            android:maxLines="1"
-            android:paddingBottom="@dimen/padding_normal"
-            android:paddingLeft="@dimen/padding_normal"
-            android:singleLine="true"
-            android:textColorHint="@color/hint_color" />
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:background="@color/line" />
 
     </LinearLayout>
 
@@ -115,7 +129,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/login_pass_quick"
@@ -128,8 +142,7 @@
                 android:padding="@dimen/padding_normal"
                 android:text="@string/login_pass_quick"
                 android:textColor="@color/text_color_b"
-                android:textSize="@dimen/gj_d"
-               />
+                android:textSize="@dimen/gj_d" />
         </RelativeLayout>
 
 

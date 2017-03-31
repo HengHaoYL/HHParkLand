@@ -2,6 +2,8 @@ package com.henghao.parkland.fragment.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +46,11 @@ public class LoginFragment extends FragmentSupport {
     @ViewInject(R.id.login_pass)
     private EditText login_pass;
 
+    @ViewInject(R.id.iv_eye_login)
+    private ImageView iv_eye_login;
+
+    private boolean passwordFlag = true; // 隐藏密码的标志 true 隐藏 false 显示
+
     public static FragmentSupport newInstance(Object obj) {
         LoginFragment fragment = new LoginFragment();
         if (fragment.object == null) {
@@ -68,16 +75,16 @@ public class LoginFragment extends FragmentSupport {
 
     private void initData() {
         mLeftImageView = (ImageView) getActivity().findViewById(R.id.bar_left_img);
-        mLeftTextView = (TextView) getActivity().findViewById(R.id.bar_left_title);
-        mLeftTextView.setText("登录");
         mLeftImageView.setImageDrawable(getResources().getDrawable(R.drawable.btn_blackback));
+        mCenterTextView = (TextView) getActivity().findViewById(R.id.bar_center_title);
+        mCenterTextView.setText("登录");
     }
 
     public void initWidget() {
     }
 
 
-    @OnClick({R.id.tv_login})
+    @OnClick({R.id.tv_login, R.id.iv_eye_login})
     public void viewClick(View v) {
         Intent intent = new Intent();
         switch (v.getId()) {
@@ -88,6 +95,15 @@ public class LoginFragment extends FragmentSupport {
                     mLoginProtocol.addResponseListener(this);
                     mLoginProtocol.login(login_user.getText().toString().trim(), login_pass.getText().toString().trim(), String.valueOf(1));
                     mActivityFragmentView.viewLoading(View.VISIBLE);
+                }
+                break;
+            case R.id.iv_eye_login:
+                if (passwordFlag) {
+                    login_pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    passwordFlag = false;
+                } else {
+                    login_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    passwordFlag = true;
                 }
                 break;
         }

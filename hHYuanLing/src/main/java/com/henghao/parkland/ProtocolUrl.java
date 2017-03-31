@@ -30,7 +30,7 @@ public class ProtocolUrl {
     static {
         if (!isURL) {
             // 生产地址
-            ROOT_URL = "http://safe.higdata.com/YL_BigData";
+            ROOT_URL = "http://221.13.13.134:2218/YL_BigData";
         } else {
             // 测试地址/192.168.1.12
             ROOT_URL = "http://172.16.13.101:8080/YL_BigData";

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
-        android:visibility="gone"></LinearLayout>
+        android:visibility="gone" />
 
     <FrameLayout
         android:id="@+id/tab_content"
@@ -32,15 +32,46 @@
             android:id="@+id/tabs_rg"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/header"
+            android:background="@color/bottom_bar"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_small"
-            android:paddingTop="@dimen/padding_small">
+            android:paddingTop="@dimen/padding_small"
+            android:paddingBottom="@dimen/padding_small">
 
+            <!-- 工作台 -->
+            <RadioButton
+                android:id="@+id/hc_work"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:button="@null"
+                android:drawablePadding="@dimen/padding_small"
+                android:drawableTop="@drawable/selector_work"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/hc_work"
+                android:textColor="@drawable/tab_selector"
+                android:textSize="@dimen/gj_d" />
+
+            <!--应用-->
+            <RadioButton
+                android:id="@+id/hc_xiangmu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:button="@null"
+                android:drawablePadding="@dimen/padding_small"
+                android:drawableTop="@drawable/selector_xiangmu"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/hc_xiangmu"
+                android:textColor="@drawable/tab_selector"
+                android:textSize="@dimen/gj_d" />
+
+            <!--首页-->
             <RadioButton
                 android:id="@+id/yg_home"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:button="@null"
@@ -53,52 +84,10 @@
                 android:textColor="@drawable/tab_selector"
                 android:textSize="@dimen/gj_d" />
 
-            <RadioButton
-                android:id="@+id/hc_mall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:button="@null"
-                android:drawablePadding="@dimen/padding_small"
-                android:drawableTop="@drawable/selector_mall"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="@string/hc_xinxi"
-                android:textColor="@drawable/tab_selector"
-                android:textSize="@dimen/gj_d" />
-            <!-- 工作台 -->
-
-            <RadioButton
-                android:id="@+id/hc_work"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:button="@null"
-                android:drawablePadding="@dimen/padding_small"
-                android:drawableTop="@drawable/selector_work"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="@string/hc_work"
-                android:textColor="@drawable/tab_selector"
-                android:textSize="@dimen/gj_d" />
-
-            <RadioButton
-                android:id="@+id/hc_xiangmu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:button="@null"
-                android:drawablePadding="@dimen/padding_small"
-                android:drawableTop="@drawable/selector_xiangmu"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="@string/hc_xiangmu"
-                android:textColor="@drawable/tab_selector"
-                android:textSize="@dimen/gj_d" />
-
+            <!--项目管理-->
             <RadioButton
                 android:id="@+id/hc_xiangmuganli"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:button="@null"
@@ -110,9 +99,10 @@
                 android:textColor="@drawable/tab_selector"
                 android:textSize="@dimen/gj_d" />
 
+            <!--我的-->
             <RadioButton
                 android:id="@+id/hc_my"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:background="@drawable/selector_tab"

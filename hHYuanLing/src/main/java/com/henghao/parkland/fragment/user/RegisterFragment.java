@@ -79,9 +79,9 @@ public class RegisterFragment extends FragmentSupport {
 
     private void initData() {
         mLeftImageView = (ImageView) getActivity().findViewById(R.id.bar_left_img);
-        mLeftTextView = (TextView) getActivity().findViewById(R.id.bar_left_title);
-        mLeftTextView.setText("注册");
         mLeftImageView.setImageDrawable(getResources().getDrawable(R.drawable.btn_blackback));
+        mCenterTextView = (TextView) getActivity().findViewById(R.id.bar_center_title);
+        mCenterTextView.setText("注册");
     }
 
 
@@ -111,21 +111,31 @@ public class RegisterFragment extends FragmentSupport {
     private boolean checkData() {
         if (ToolsKit.isEmpty(login_user.getText().toString().trim())) {
             mActivity.msg("用户名不能为空");
+            login_user.requestFocus();
             return false;
         } else if (ToolsKit.isEmpty(login_phone.getText().toString().trim())) {
-            mActivity.msg("电话号码不能为空");
+            mActivity.msg("手机号码不能为空");
+            login_phone.requestFocus();
             return false;
         } else if (!ToolsRegex.isMobileNumber(login_phone.getText().toString().trim())) {
             mActivity.msg("电话号码格式不正确");
+            login_phone.requestFocus();
             return false;
         } else if (ToolsKit.isEmpty(login_pass.getText().toString().trim())) {
             mActivity.msg("密码不能为空");
+            login_pass.requestFocus();
             return false;
         } else if (ToolsKit.isEmpty(login_passagain.getText().toString().trim())) {
             mActivity.msg("密码确认不能为空");
+            login_passagain.requestFocus();
             return false;
         } else if (!login_passagain.getText().toString().trim().equals(login_pass.getText().toString().trim())) {
             mActivity.msg("两次输入密码不相同");
+            login_pass.requestFocus();
+            return false;
+        } else if (login_pass.getText().toString().trim().length() < 6 || login_pass.getText().toString().trim().length() > 16) {
+            mActivity.msg("密码格式不正确");
+            login_pass.requestFocus();
             return false;
         }
         return true;

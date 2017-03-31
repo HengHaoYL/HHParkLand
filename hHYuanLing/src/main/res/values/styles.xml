@@ -111,7 +111,6 @@
         <item name="android:backgroundDimAmount">0.5</item>
         <!-- 模糊 -->
     </style>
-
     <!-- 下拉弹出框 -->
     <style name="AnimationUpPopup">
         <item name="android:windowEnterAnimation">@anim/grow_fade_in_from_bottom</item>
@@ -151,4 +150,5 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

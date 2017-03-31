@@ -54,14 +54,15 @@ public class LoginAndRegActivity extends ActivityFragmentSupport implements OnCh
 
     private void initWithContent() {
         // TODO Auto-generated method stub
-        mActivityFragmentView.getNavitionBarView().setBackgroundColor(getResources().getColor(R.color.white));
+        mActivityFragmentView.getNavitionBarView().setBackgroundColor(getResources().getColor(R.color.blue));
         /** 导航栏 */
+        initWithCenterBar();
+        mCenterTextView.setVisibility(View.VISIBLE);
+        mCenterTextView.setText("登录");
+        mCenterTextView.setTextColor(getResources().getColor(R.color.white));
         initWithBar();
-        mLeftTextView.setVisibility(View.VISIBLE);
         mLeftImageView.setVisibility(View.VISIBLE);
         mLeftImageView.setImageResource(R.drawable.btn_blackback);
-        mLeftTextView.setText("注册");
-        mLeftTextView.setTextColor(getResources().getColor(R.color.text_color_a));
     }
 
     @Override

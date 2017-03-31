@@ -117,6 +117,9 @@ public class MyLoginFragment extends FragmentSupport {
                     String cancel = mResources.getString(R.string.cancel);
                     String message = mResources.getString(R.string.account_cancel_affirm);
                     BaseDialog.getDialog(mActivity, title, message, cancel, cancelListener, ok, exitListener).show();
+                } else {
+                    intent.setClass(mActivity, LoginAndRegActivity.class);
+                    startActivity(intent);
                 }
                 break;
             case R.id.ll_updatename:
@@ -152,10 +155,6 @@ public class MyLoginFragment extends FragmentSupport {
     private boolean isLogin() {
         if (!ToolsKit.isEmpty(mActivity.getLoginUser())) {
             return true;
-        } else {
-            Intent intent = new Intent();
-            intent.setClass(mActivity, LoginAndRegActivity.class);
-            startActivity(intent);
         }
         return false;
     }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/select_dialog"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/padding_more">
+
+    <TextView
+        android:id="@+id/tv_dialog1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_textview"
+        android:gravity="center"
+        android:padding="@dimen/padding_big"
+        android:text="设备租赁"
+        android:textColor="#303030"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/tv_dialog2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_textview"
+        android:gravity="center"
+        android:padding="@dimen/padding_big"
+        android:text="苗木信息"
+        android:textColor="#303030"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/tv_dialog3"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_textview"
+        android:gravity="center"
+        android:padding="@dimen/padding_big"
+        android:text="招标信息"
+        android:textColor="#303030"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/tv_dialog4"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_textview"
+        android:gravity="center"
+        android:padding="@dimen/padding_big"
+        android:text="人员招聘"
+        android:textColor="#303030"
+        android:textSize="16sp" />
+</LinearLayout>

@@ -38,7 +38,7 @@
     <!-- 登录 -->
     <string name="login">登 录</string>
     <string name="click_login">点击登录</string>
-    <string name="login_user">用户名</string>
+    <string name="login_user_phone">用户名</string>
     <string name="login_pass_hint">密码</string>
     <string name="login_pass_find">忘记密码</string>
     <string name="login_pass_quick">注册账号</string>
@@ -54,7 +54,7 @@
     <string name="register_code">验  证</string>
     <string name="register_echo_pass">请输入密码</string>
     <string name="register_echo_repeat_pass">再次输入密码</string>
-    <string name="register_finish">注册完成</string>
+    <string name="register_finish">注册</string>
     <string name="account_exit">退出登录</string>
     <string name="register_sender_code">重发验证码</string>
     <string name="register_surplus_code">还有</string>

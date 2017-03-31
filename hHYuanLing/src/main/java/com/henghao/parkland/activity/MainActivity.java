@@ -92,7 +92,6 @@ public class MainActivity extends ActivityFragmentSupport {
                 }
             }
         } catch (Exception e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
         // Intent intent = getIntent();
@@ -113,7 +112,6 @@ public class MainActivity extends ActivityFragmentSupport {
 
     @Override
     public void initData() {
-        // TODO Auto-generated method stub
         // 导航栏
         mActivityFragmentView.getNavitionBarView().setVisibility(View.GONE);
 
@@ -128,9 +126,9 @@ public class MainActivity extends ActivityFragmentSupport {
         HCMenuEntity mMenuHome = new HCMenuEntity(1, getResources().getString(R.string.hc_home),
                 R.drawable.selector_home, HomeFragment.class.getName(), -1);// 首页
         this.menuLists.add(mMenuHome);
-        HCMenuEntity mMenuJob = new HCMenuEntity(2, getResources().getString(R.string.hc_xinxi),
-                R.drawable.selector_xiangmu, MsgFragment.class.getName(), -1);// 信息
-        this.menuLists.add(mMenuJob);
+//        HCMenuEntity mMenuJob = new HCMenuEntity(2, getResources().getString(R.string.hc_xinxi),
+//                R.drawable.selector_xiangmu, MsgFragment.class.getName(), -1);// 信息
+//        this.menuLists.add(mMenuJob);
         HCMenuEntity mMenuWork = new HCMenuEntity(3, getResources().getString(R.string.hc_work),
                 R.drawable.selector_work, WorkShowFragment.class.getName(), -1);// 工作台
         this.menuLists.add(mMenuWork);

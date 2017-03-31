@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.henghao.parkland.ActivityFragmentSupport;
@@ -14,12 +13,14 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.workshow.SeedlingDetailActivity;
 import com.henghao.parkland.model.entity.SeedlingEntity;
+import com.henghao.parkland.views.CircleImageView;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+
 
 /**
  * 工作台苗木信息展示〈一句话功能简述〉 〈功能详细描述〉
@@ -101,7 +102,7 @@ public class SeedlingAdapter extends BaseAdapter {
 
     static class ViewHolder {
         @InjectView(R.id.imageview)
-        ImageView imageview;
+        CircleImageView imageview;
         @InjectView(R.id.tv_titleName)
         TextView tvTitleName;
         @InjectView(R.id.tv_content)
