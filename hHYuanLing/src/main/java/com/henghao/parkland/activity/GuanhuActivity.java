@@ -42,8 +42,6 @@ import butterknife.OnClick;
 public class GuanhuActivity extends ActivityFragmentSupport {
     @InjectView(R.id.tv_treeid_guanhu)
     TextView tvTreeId;
-    @InjectView(R.id.tv_title)
-    TextView tv_title;
     @InjectView(R.id.tv_yhsite_guanhu)
     TextView tvYhSite;
     @InjectView(R.id.tv_yhtime_guanhu)
@@ -98,7 +96,6 @@ public class GuanhuActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setVisibility(View.VISIBLE);
         mLeftTextView.setText("管护信息");
-        tv_title.setText("管护信息");
         Intent intent = getIntent();
         yid = intent.getIntExtra("yid", 0);
         treeId = intent.getStringExtra("treeId");

@@ -86,18 +86,21 @@ public class XListView extends ListView implements OnScrollListener {
      */
     public XListView(Context context) {
         super(context);
+        if (isInEditMode()) return;
         initWithContext(context);
         this.context = context;
     }
 
     public XListView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        if (isInEditMode()) return;
         initWithContext(context);
         this.context = context;
     }
 
     public XListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        if (isInEditMode()) return;
         initWithContext(context);
         this.context = context;
     }
@@ -321,7 +324,7 @@ public class XListView extends ListView implements OnScrollListener {
                     // invoke load more.
                     if (mEnablePullLoad && (mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) && !mPullLoading) {
                         startLoadMore();
-                    } else if(!mEnablePullLoad){
+                    } else if (!mEnablePullLoad) {
                         Toast.makeText(context, "到底了......", Toast.LENGTH_SHORT).show();
                     }
                     resetFooterHeight();

@@ -46,6 +46,7 @@ public class XListViewHeader extends LinearLayout {
 
     public XListViewHeader(Context context) {
         super(context);
+        if (isInEditMode()) return;
         initView(context);
     }
 
@@ -55,6 +56,7 @@ public class XListViewHeader extends LinearLayout {
      */
     public XListViewHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
+        if (isInEditMode()) return;
         initView(context);
     }
 
