@@ -11,7 +11,10 @@
         android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="@dimen/padding_big">
+        android:paddingBottom="@dimen/padding_normal"
+        android:paddingLeft="@dimen/padding_big"
+        android:paddingRight="@dimen/padding_big"
+        android:paddingTop="@dimen/padding_normal">
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -34,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="项目名称"
                 android:textColor="@color/text_color_b"
-                android:textSize="@dimen/gj_d" />
+                android:textSize="@dimen/info_name_size" />
 
             <TextView
                 android:id="@+id/tv_title"
@@ -43,16 +46,14 @@
                 android:layout_marginTop="@dimen/padding_normal"
                 android:text="信息"
                 android:textColor="@color/text_color_b"
-                android:textSize="@dimen/gj_d" />
+                android:textSize="@dimen/info_enterprise_size" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="2016.02.13"
-            android:textColor="@color/text_color_b"
-            android:textSize="@dimen/gj_d" />
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/light_gray"
+            android:gravity="right" />
     </LinearLayout>
 </LinearLayout>

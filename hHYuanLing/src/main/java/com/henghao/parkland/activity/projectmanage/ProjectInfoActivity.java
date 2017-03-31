@@ -109,8 +109,6 @@ public class ProjectInfoActivity extends ActivityFragmentSupport implements MyCa
         super.initData();
         itemID = new ArrayList<>();
         View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
-        TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
-        tv_title.setText("项目信息");
         checkBox = (CheckBox) HeaderView.findViewById(R.id.checkBox);
         tvEdit = (TextView) HeaderView.findViewById(R.id.tv_edit);
         listView.addHeaderView(HeaderView);

@@ -121,68 +121,69 @@ public class XiangmuFragment extends FragmentSupport {
         mList2.add(mEntity);
         //第二个
         AppGridEntity mEntity2 = new AppGridEntity();
-        mEntity2.setImageId(R.drawable.icon_clearing);
-        mEntity2.setName("项目结算");
+        mEntity2.setImageId(R.drawable.icon_projecttwo);
+        mEntity2.setName("会审结果");
         mList2.add(mEntity2);
         //第三个
         AppGridEntity mEntity3 = new AppGridEntity();
-        mEntity3.setImageId(R.drawable.icon_projecttwo);
-        mEntity3.setName("会审结果");
+        mEntity3.setImageId(R.drawable.icon_projectthree);
+        mEntity3.setName("供货方信息");
         mList2.add(mEntity3);
         //第四个
         AppGridEntity mEntity4 = new AppGridEntity();
-        mEntity4.setImageId(R.drawable.icon_projectthree);
-        mEntity4.setName("供货方信息");
+        mEntity4.setImageId(R.drawable.icon_projectfore);
+        mEntity4.setName("施工人员");
         mList2.add(mEntity4);
         //第五个
         AppGridEntity mEntity5 = new AppGridEntity();
-        mEntity5.setImageId(R.drawable.icon_projectfore);
-        mEntity5.setName("施工人员");
+        mEntity5.setImageId(R.drawable.icon_projectfive);
+        mEntity5.setName("开工报告");
         mList2.add(mEntity5);
         //第六个
         AppGridEntity mEntity6 = new AppGridEntity();
-        mEntity6.setImageId(R.drawable.icon_projectfive);
-        mEntity6.setName("开工报告");
+        mEntity6.setImageId(R.drawable.icon_projectsix);
+        mEntity6.setName("设备信息");
         mList2.add(mEntity6);
         //第七个
         AppGridEntity mEntity7 = new AppGridEntity();
-        mEntity7.setImageId(R.drawable.icon_projectsix);
-        mEntity7.setName("设备信息");
+        mEntity7.setImageId(R.drawable.icon_projectseven);
+        mEntity7.setName("工序报验");
         mList2.add(mEntity7);
         //第八个
         AppGridEntity mEntity8 = new AppGridEntity();
-        mEntity8.setImageId(R.drawable.icon_projectseven);
-        mEntity8.setName("工序报验");
+        mEntity8.setImageId(R.drawable.icon_eight);
+        mEntity8.setName("现场勘察");
         mList2.add(mEntity8);
         //第九个
         AppGridEntity mEntity9 = new AppGridEntity();
-        mEntity9.setImageId(R.drawable.icon_eight);
-        mEntity9.setName("现场勘察");
+        mEntity9.setImageId(R.drawable.icon_biangeng);
+        mEntity9.setName("变更管理");
         mList2.add(mEntity9);
         //第十个
         AppGridEntity mEntity10 = new AppGridEntity();
-        mEntity10.setImageId(R.drawable.icon_biangeng);
-        mEntity10.setName("变更管理");
+        mEntity10.setImageId(R.drawable.icon_jungong);
+        mEntity10.setName("竣工验收");
         mList2.add(mEntity10);
         //第十一个
         AppGridEntity mEntity11 = new AppGridEntity();
-        mEntity11.setImageId(R.drawable.icon_jungong);
-        mEntity11.setName("竣工验收");
+        mEntity11.setImageId(R.drawable.icon_schedule);
+        mEntity11.setName("进度申报");
         mList2.add(mEntity11);
         //第十二个
         AppGridEntity mEntity12 = new AppGridEntity();
-        mEntity12.setImageId(R.drawable.icon_schedule);
-        mEntity12.setName("进度申报");
+        mEntity12.setImageId(R.drawable.icon_technology);
+        mEntity12.setName("技术交底");
         mList2.add(mEntity12);
-        //第十二个
+        //第十三个
         AppGridEntity mEntity13 = new AppGridEntity();
-        mEntity13.setImageId(R.drawable.icon_technology);
-        mEntity13.setName("技术交底");
+        mEntity13.setImageId(R.drawable.icon_clearing);
+        mEntity13.setName("项目结算");
         mList2.add(mEntity13);
         mProAdapter = new ProjectFirstAdapter(this.mActivity, mList2);
         this.gridview.setAdapter(mProAdapter);
         mProAdapter.notifyDataSetChanged();
     }
+
 
     /**
      * 我的

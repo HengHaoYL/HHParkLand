@@ -25,7 +25,6 @@
         android:orientation="horizontal"
         android:visibility="gone">
 
-
         <TextView
             android:id="@+id/tv_delete"
             android:layout_width="0dip"
@@ -40,7 +39,6 @@
             android:text="删除"
             android:textColor="#ffffff"
             android:textSize="@dimen/gj_d" />
-
 
         <TextView
             android:id="@+id/tv_cancel"

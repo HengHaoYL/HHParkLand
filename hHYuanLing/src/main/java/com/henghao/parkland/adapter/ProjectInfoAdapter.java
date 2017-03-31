@@ -86,9 +86,7 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
             holder.checkBox.setVisibility(View.GONE);
         }
         holder.checkBox.setChecked(entity.isChecked());
-        holder.tvTitle.setText(entity.getConstructionUnit());
         holder.tvName.setText(entity.getXmName());
-        holder.tvTime.setText(entity.getXmPerson());
         viewClick(holder, convertView, position);
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,8 +147,6 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
         TextView tvName;
         @InjectView(R.id.tv_title)
         TextView tvTitle;
-        @InjectView(R.id.tv_time)
-        TextView tvTime;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

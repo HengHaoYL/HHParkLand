@@ -96,63 +96,63 @@ public class ProjectFirstAdapter extends ArrayAdapter<AppGridEntity> {
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                     case 1:
-                        //项目结算
-                        intent.setClass(mActivityFragmentSupport, ProjectSettlementActivity.class);
-                        mActivityFragmentSupport.startActivity(intent);
-                        break;
-                    case 2:
                         //会审结果
                         intent.setClass(mActivityFragmentSupport, ProjectHSResultActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 3:
+                    case 2:
                         //供货方信息
                         intent.setClass(mActivityFragmentSupport, ProjectGHFActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 4:
+                    case 3:
                         //施工团队
                         intent.setClass(mActivityFragmentSupport, ProjectTeamActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 5:
+                    case 4:
                         //开工报告
                         intent.setClass(mActivityFragmentSupport, ProjectKGBGActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 6:
+                    case 5:
                         //设备信息
                         intent.setClass(mActivityFragmentSupport, ProjectSBDataActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 7:
+                    case 6:
                         //工序报验
                         intent.setClass(mActivityFragmentSupport, ProjectGXBYActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 8:
+                    case 7:
                         //现场勘察
                         intent.setClass(mActivityFragmentSupport, ProjectXckcActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 9:
+                    case 8:
                         //变更管理
                         intent.setClass(mActivityFragmentSupport, ProjectBGManageActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 10:
+                    case 9:
                         //竣工验收
                         intent.setClass(mActivityFragmentSupport, ProjectJunGongActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 11:
+                    case 10:
                         //进度申报
                         intent.setClass(mActivityFragmentSupport, ProjectDeclareActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
-                    case 12:
+                    case 11:
                         //技术交底
                         intent.setClass(mActivityFragmentSupport, ProjectTechnologActivity.class);
+                        mActivityFragmentSupport.startActivity(intent);
+                        break;
+                    case 12:
+                        //项目结算
+                        intent.setClass(mActivityFragmentSupport, ProjectSettlementActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
                         break;
                 }

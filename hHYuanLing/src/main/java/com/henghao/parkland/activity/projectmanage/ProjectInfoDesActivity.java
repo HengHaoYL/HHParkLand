@@ -16,9 +16,6 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  */
 public class ProjectInfoDesActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.tv_title)
-    TextView tvTitle;
-
     @ViewInject(R.id.et_xmName)
     TextView etXmName;
 
@@ -63,7 +60,6 @@ public class ProjectInfoDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("项目信息");
         mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("项目信息");
     }
 
     @Override

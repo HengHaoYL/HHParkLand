@@ -46,6 +46,9 @@ public class LoginFragment extends FragmentSupport {
     @ViewInject(R.id.login_pass)
     private EditText login_pass;
 
+    @ViewInject(R.id.login_reset_password)
+    private TextView tv_reset_password;
+
     @ViewInject(R.id.iv_eye_login)
     private ImageView iv_eye_login;
 
@@ -84,7 +87,7 @@ public class LoginFragment extends FragmentSupport {
     }
 
 
-    @OnClick({R.id.tv_login, R.id.iv_eye_login})
+    @OnClick({R.id.tv_login, R.id.iv_eye_login, R.id.login_reset_password})
     public void viewClick(View v) {
         Intent intent = new Intent();
         switch (v.getId()) {
@@ -106,6 +109,8 @@ public class LoginFragment extends FragmentSupport {
                     passwordFlag = true;
                 }
                 break;
+            case R.id.login_reset_password:
+                mActivity.msg("未实现");
         }
     }
 
