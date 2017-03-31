@@ -111,8 +111,6 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport implements 
         super.initData();
         itemID = new ArrayList<>();
         View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
-        TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
-        tv_title.setText("会审结果");
         checkBox = (CheckBox) HeaderView.findViewById(R.id.checkBox);
         tvEdit = (TextView) HeaderView.findViewById(R.id.tv_edit);
         mXlistView.addHeaderView(HeaderView);

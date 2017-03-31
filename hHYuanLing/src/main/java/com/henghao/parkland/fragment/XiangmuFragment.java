@@ -231,7 +231,7 @@ public class XiangmuFragment extends FragmentSupport {
 //        requestInternet();
         initWithBar();
         this.mLeftImageView.setVisibility(View.VISIBLE);
-        this.mLeftImageView.setImageResource(R.drawable.home_liebiao2);
+        this.mLeftImageView.setImageResource(R.drawable.home_liebiao);
     }
 
     @Override

@@ -133,7 +133,7 @@ public class MainActivity extends ActivityFragmentSupport {
                 R.drawable.selector_work, WorkShowFragment.class.getName(), -1);// 工作台
         this.menuLists.add(mMenuWork);
         HCMenuEntity mMenuCommunication = new HCMenuEntity(4, getResources().getString(R.string.hc_xiangmu),
-                R.drawable.selector_mall, AppFragment.class.getName(), -1);// 应用
+                R.drawable.selector_xiangmu, AppFragment.class.getName(), -1);// 应用
         this.menuLists.add(mMenuCommunication);
         HCMenuEntity mXiangmuguanl = new HCMenuEntity(5, getResources().getString(R.string.hc_xiangmuguanl),
                 R.drawable.selector_xiangmuguanli, XiangmuFragment.class.getName(), -1);// 项目管理

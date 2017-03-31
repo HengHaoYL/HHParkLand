@@ -90,8 +90,6 @@ public class MyWorkerListActivity extends ActivityFragmentSupport {
     public void initData() {
         super.initData();
         View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_projecttop, null);
-        TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
-        tv_title.setText("我的轨迹");
         mXlistView.addHeaderView(HeaderView);
         mAdapter = new MyWorkerListAdapter(this, mData);
         mXlistView.setAdapter(mAdapter);
