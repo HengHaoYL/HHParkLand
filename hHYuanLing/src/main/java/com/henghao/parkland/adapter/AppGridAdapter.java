@@ -20,6 +20,7 @@ import java.util.List;
 
 /**
  * App应用展示〈一句话功能简述〉 〈功能详细描述〉
+ *
  * @author zhangxianwen
  * @version HDMNV100R001, 2015年12月21日
  * @see [相关类/方法]
@@ -54,27 +55,26 @@ public class AppGridAdapter extends ArrayAdapter<AppGridEntity> {
             mHodlerView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
             mHodlerView.image_title = (ImageView) convertView.findViewById(R.id.image_title);
             convertView.setTag(mHodlerView);
-        }
-        else {
+        } else {
             mHodlerView = (HodlerView) convertView.getTag();
         }
         if (position == this.mList.size()) {
             mHodlerView.image_title.setImageBitmap(BitmapFactory.decodeResource(
                     this.mActivityFragmentSupport.getResources(), R.drawable.icon_addpic_unfocused));
             mHodlerView.tv_title.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             mHodlerView.image_title.setImageResource(getItem(position).getImageId());
             mHodlerView.tv_title.setVisibility(View.VISIBLE);
             mHodlerView.tv_title.setText(getItem(position).getName());
         }
 
-        viewOnClick(mHodlerView,convertView,position);
+        viewOnClick(mHodlerView, convertView, position);
         return convertView;
     }
 
     /**
      * 点击
+     *
      * @param mHodlerView
      * @param convertView
      * @param position
@@ -83,11 +83,9 @@ public class AppGridAdapter extends ArrayAdapter<AppGridEntity> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent();
-                switch (position){
+                Intent intent = new Intent();
+                switch (position) {
                     case 0:
-                        break;
-                    case 1:
                         //养护
                         intent.setClass(mActivityFragmentSupport, YhManageActivity.class);
                         mActivityFragmentSupport.startActivity(intent);
