@@ -50,8 +50,8 @@ public class ProjectBGManageDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("变更管理");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("变更管理");
     }
 
     @Override

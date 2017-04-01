@@ -35,8 +35,8 @@ public class SettingActivity extends ActivityFragmentSupport   {
     private void initWithContent() {
         // TODO Auto-generated method stub
         initWithBar();
-        mLeftTextView.setText("设置");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("设置");
     }
 
     @Override

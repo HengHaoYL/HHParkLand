@@ -94,8 +94,8 @@ public class GuanhuActivity extends ActivityFragmentSupport {
      */
     public void initData() {
         initWithBar();
-        mLeftTextView.setVisibility(View.VISIBLE);
-        mLeftTextView.setText("管护信息");
+        initWithCenterBar();
+        mCenterTextView.setText("管护信息");
         Intent intent = getIntent();
         yid = intent.getIntExtra("yid", 0);
         treeId = intent.getStringExtra("treeId");

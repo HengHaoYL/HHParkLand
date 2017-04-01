@@ -17,9 +17,6 @@ import butterknife.InjectView;
  */
 public class ProjectTeamDesActivity extends ActivityFragmentSupport {
 
-
-    @InjectView(R.id.tv_title)
-    TextView tv_title;
     @InjectView(R.id.tv_name)
     TextView tv_name;
     @InjectView(R.id.tv_personnelType)
@@ -51,9 +48,8 @@ public class ProjectTeamDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("施工人员");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tv_title.setText("施工人员");
+        initWithCenterBar();
+        mCenterTextView.setText("施工人员");
     }
 
     @Override

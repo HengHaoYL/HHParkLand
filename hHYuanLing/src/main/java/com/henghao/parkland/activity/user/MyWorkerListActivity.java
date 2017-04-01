@@ -59,8 +59,8 @@ public class MyWorkerListActivity extends ActivityFragmentSupport {
         mData = new ArrayList<>();
         mActivityFragmentView.viewLoading(View.VISIBLE);
         initWithBar();
-        mLeftTextView.setText("我的轨迹");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("我的轨迹");
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);
         mRightTextView.setText("添加");

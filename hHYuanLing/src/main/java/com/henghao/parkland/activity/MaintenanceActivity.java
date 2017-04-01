@@ -76,8 +76,8 @@ public class MaintenanceActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setVisibility(View.VISIBLE);
-        mLeftTextView.setText("养护信息");
+        initWithCenterBar();
+        mCenterTextView.setText("养护信息");
     }
 
     public void initData() {

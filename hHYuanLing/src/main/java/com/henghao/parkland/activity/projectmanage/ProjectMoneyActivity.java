@@ -80,8 +80,8 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         initWithBar();
         initWithRightBar();
         mRightTextView.setText("导出EXCEL");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        mLeftTextView.setText("施工钱包");
+        initWithCenterBar();
+        mCenterTextView.setText("施工钱包");
         mXlistview.setXListViewListener(this);
         initView();
         mMoneyAdapter = new ProjectMoneyAdapter(this);

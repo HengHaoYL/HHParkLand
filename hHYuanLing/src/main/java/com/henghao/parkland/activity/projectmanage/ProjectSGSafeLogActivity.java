@@ -85,9 +85,9 @@ public class ProjectSGSafeLogActivity extends ActivityFragmentSupport implements
         super.initWidget();
         mActivityFragmentView.viewMainGone();
         initWithBar();
-        mLeftTextView.setText("施工安全日志");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
         initWithRightBar();
+        mCenterTextView.setText("施工安全日志");
         mRightTextView.setText("添加");
         mRightTextView.setVisibility(View.VISIBLE);
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {

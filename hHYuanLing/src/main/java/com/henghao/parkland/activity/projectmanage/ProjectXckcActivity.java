@@ -88,8 +88,8 @@ public class ProjectXckcActivity extends ActivityFragmentSupport implements MyCa
         data = new ArrayList<>();
         mActivityFragmentView.viewLoading(View.VISIBLE);
         initWithBar();
-        mLeftTextView.setText("现场勘查");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("现场勘查");
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);
         mRightTextView.setText("添加");

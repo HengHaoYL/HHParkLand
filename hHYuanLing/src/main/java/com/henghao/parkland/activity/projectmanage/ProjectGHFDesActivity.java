@@ -21,9 +21,6 @@ import butterknife.InjectView;
  */
 public class ProjectGHFDesActivity extends ActivityFragmentSupport {
 
-
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_name)
     TextView tvName;
     @InjectView(R.id.tv_epName)
@@ -57,9 +54,8 @@ public class ProjectGHFDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("供货方信息");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("供货方信息");
+        initWithCenterBar();
+        mCenterTextView.setText("供货方信息");
     }
 
     @Override

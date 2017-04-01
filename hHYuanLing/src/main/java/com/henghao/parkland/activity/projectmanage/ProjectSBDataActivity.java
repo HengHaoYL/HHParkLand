@@ -84,8 +84,8 @@ public class ProjectSBDataActivity extends ActivityFragmentSupport implements My
         super.initWidget();
         mActivityFragmentView.viewMainGone();
         initWithBar();
-        mLeftTextView.setText("设备信息");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("设备信息");
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);
         mRightTextView.setText("添加");

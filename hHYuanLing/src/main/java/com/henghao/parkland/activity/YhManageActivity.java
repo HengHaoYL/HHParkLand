@@ -171,8 +171,8 @@ public class YhManageActivity extends ActivityFragmentSupport {
     @Override
     public void initData() {
         initWithBar();
-        mLeftTextView.setVisibility(View.VISIBLE);
-        mLeftTextView.setText("养护管理");
+        initWithCenterBar();
+        mCenterTextView.setText("养护管理");
         initWithRightBar();
         mRightImageView.setVisibility(View.GONE);
         mRightImageView.setImageResource(R.drawable.scan_right);

@@ -21,9 +21,6 @@ import butterknife.InjectView;
  */
 public class ProjectSettlementDesActivity extends ActivityFragmentSupport {
 
-
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_dates)
     TextView tvDates;
     @InjectView(R.id.tv_files)
@@ -53,9 +50,8 @@ public class ProjectSettlementDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("项目结算");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("项目结算");
+        initWithCenterBar();
+        mCenterTextView.setText("项目结算");
     }
 
     @Override

@@ -22,8 +22,6 @@ import static com.henghao.parkland.R.id.gridView;
  */
 public class ProjectXckcDesActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.tv_title)
-    TextView tv_title;
     @ViewInject(R.id.tv_name)
     TextView tv_name;
     @ViewInject(R.id.tv_time)
@@ -55,9 +53,8 @@ public class ProjectXckcDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("现场勘察");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tv_title.setText("现场勘察");
+        initWithCenterBar();
+        mCenterTextView.setText("现场勘察");
     }
 
     @Override

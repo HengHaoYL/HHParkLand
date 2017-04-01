@@ -17,8 +17,6 @@ import butterknife.InjectView;
  */
 public class ProjectSpvLogDesActivity extends ActivityFragmentSupport {
 
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_projectName)
     TextView tvProjectName;
     @InjectView(R.id.tv_supervisionPosition)
@@ -56,9 +54,8 @@ public class ProjectSpvLogDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("监理日志");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("监理日志");
+        initWithCenterBar();
+        mCenterTextView.setText("监理日志");
     }
 
     @Override

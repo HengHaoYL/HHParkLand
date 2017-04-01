@@ -82,8 +82,8 @@ public class ProjectGHFActivity extends ActivityFragmentSupport implements MyCal
         super.initWidget();
         mActivityFragmentView.viewMainGone();
         initWithBar();
-        mLeftTextView.setText("供货方信息");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("供货方信息");
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);
         mRightTextView.setText("添加");

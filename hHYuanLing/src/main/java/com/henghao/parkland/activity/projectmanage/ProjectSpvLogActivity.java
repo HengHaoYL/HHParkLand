@@ -87,8 +87,8 @@ public class ProjectSpvLogActivity extends ActivityFragmentSupport implements My
         super.initWidget();
         mActivityFragmentView.viewMainGone();
         initWithBar();
-        mLeftTextView.setText("监理日志");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("监理日志");
         initWithRightBar();
         mRightTextView.setText("添加");
         mRightTextView.setVisibility(View.VISIBLE);

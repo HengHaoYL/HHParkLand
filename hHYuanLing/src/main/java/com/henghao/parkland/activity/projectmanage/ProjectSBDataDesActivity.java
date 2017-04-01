@@ -17,9 +17,6 @@ import butterknife.InjectView;
  */
 public class ProjectSBDataDesActivity extends ActivityFragmentSupport {
 
-
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_name)
     TextView tvName;
     @InjectView(R.id.tv_sbName)
@@ -51,9 +48,8 @@ public class ProjectSBDataDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("设备信息");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("设备信息");
+        initWithCenterBar();
+        mCenterTextView.setText("设备信息");
     }
 
     @Override

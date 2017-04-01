@@ -55,8 +55,8 @@ public class EquipmentLeasingDetailActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("设备租赁");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("设备租赁");
     }
 
     @Override

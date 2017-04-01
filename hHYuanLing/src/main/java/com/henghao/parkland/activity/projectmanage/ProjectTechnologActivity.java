@@ -86,8 +86,8 @@ public class ProjectTechnologActivity extends ActivityFragmentSupport implements
         super.initWidget();
         mActivityFragmentView.viewMainGone();
         initWithBar();
-        mLeftTextView.setText("技术交底");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("技术交底");
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);
         mRightTextView.setText("添加");

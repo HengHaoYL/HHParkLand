@@ -36,8 +36,6 @@ import static com.henghao.parkland.activity.projectmanage.ProjectMoneyActivity.m
  */
 public class ProjectKGBGDesActivity extends ActivityFragmentSupport {
 
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_time)
     TextView tvTime;
     @InjectView(R.id.tv_fileName)
@@ -66,9 +64,8 @@ public class ProjectKGBGDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("开工报告");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("开工报告");
+        initWithCenterBar();
+        mCenterTextView.setText("开工报告");
     }
 
     @Override

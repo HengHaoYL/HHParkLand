@@ -18,13 +18,6 @@ import org.json.JSONException;
 
 public class YHDataActivity extends ActivityFragmentSupport {
 
-
-    /**
-     * 标题
-     */
-    @ViewInject(R.id.tv_title)
-    private TextView tv_title;
-
     /**
      * 植物编号
      */
@@ -95,9 +88,8 @@ public class YHDataActivity extends ActivityFragmentSupport {
     public void initData() {
         super.initData();
         initWithBar();
-        mLeftTextView.setVisibility(View.VISIBLE);
-        mLeftTextView.setText("管护信息");
-        tv_title.setText("管护信息");
+        initWithCenterBar();
+        mCenterTextView.setText("管护信息");
     }
 
     @Override

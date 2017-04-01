@@ -80,8 +80,8 @@ public class MyWorkerActivity extends ActivityFragmentSupport {
     private void initWithContent() {
         // TODO Auto-generated method stub
         initWithBar();
-        mLeftTextView.setText("我的轨迹");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("我的轨迹");
 
         LayoutInflater inflater = LayoutInflater.from(this);
         this.popView = inflater.inflate(R.layout.common_android_listview, null);

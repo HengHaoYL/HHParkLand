@@ -21,8 +21,6 @@ import butterknife.InjectView;
  */
 public class ProjectJunGongDesActivity extends ActivityFragmentSupport {
 
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_projectName)
     TextView tvProjectName;
     @InjectView(R.id.tv_dates)
@@ -52,9 +50,8 @@ public class ProjectJunGongDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("竣工验收");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("竣工验收");
+        initWithCenterBar();
+        mCenterTextView.setText("竣工验收");
     }
 
     @Override

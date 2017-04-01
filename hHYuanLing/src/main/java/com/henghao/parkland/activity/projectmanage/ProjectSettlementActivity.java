@@ -84,8 +84,8 @@ public class ProjectSettlementActivity extends ActivityFragmentSupport implement
         super.initWidget();
         mActivityFragmentView.viewMainGone();
         initWithBar();
-        mLeftTextView.setText("项目结算");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("项目结算");
         initWithRightBar();
         mRightTextView.setText("添加");
         mRightTextView.setVisibility(View.VISIBLE);

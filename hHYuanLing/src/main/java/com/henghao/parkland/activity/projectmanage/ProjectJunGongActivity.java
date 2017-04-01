@@ -87,8 +87,8 @@ public class ProjectJunGongActivity extends ActivityFragmentSupport implements M
         super.initWidget();
         mActivityFragmentView.viewMainGone();
         initWithBar();
-        mLeftTextView.setText("竣工验收");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("竣工验收");
         initWithRightBar();
         mRightTextView.setText("添加");
         mRightTextView.setVisibility(View.VISIBLE);

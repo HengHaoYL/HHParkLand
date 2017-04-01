@@ -20,8 +20,6 @@ import java.util.ArrayList;
  */
 public class ProjectDeclareDesActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.tv_title)
-    TextView tv_title;
     @ViewInject(R.id.tv_name)
     TextView tv_name;
     @ViewInject(R.id.tv_time)
@@ -49,9 +47,8 @@ public class ProjectDeclareDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("进度申报");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tv_title.setText("进度申报");
+        initWithCenterBar();
+        mCenterTextView.setText("进度申报");
     }
 
     @Override

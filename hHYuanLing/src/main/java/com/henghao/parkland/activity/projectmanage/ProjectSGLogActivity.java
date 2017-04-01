@@ -85,8 +85,8 @@ public class ProjectSGLogActivity extends ActivityFragmentSupport implements MyC
         super.initWidget();
         mActivityFragmentView.viewMainGone();
         initWithBar();
-        mLeftTextView.setText("施工日志");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("施工日志");
         initWithRightBar();
         mRightTextView.setText("添加");
         mRightTextView.setVisibility(View.VISIBLE);

@@ -83,8 +83,8 @@ public class TreeMessageActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setVisibility(View.VISIBLE);
-        mLeftTextView.setText("植物信息录入");
+        initWithCenterBar();
+        mCenterTextView.setText("植物信息录入");
     }
 
     /**

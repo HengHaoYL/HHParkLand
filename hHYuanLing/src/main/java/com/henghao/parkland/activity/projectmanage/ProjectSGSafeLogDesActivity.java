@@ -17,9 +17,6 @@ import butterknife.InjectView;
  */
 public class ProjectSGSafeLogDesActivity extends ActivityFragmentSupport {
 
-
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_name)
     TextView tvName;
     @InjectView(R.id.tv_constructionUnit)
@@ -59,9 +56,8 @@ public class ProjectSGSafeLogDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("施工安全日志");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("施工安全日志");
+        initWithCenterBar();
+        mCenterTextView.setText("施工安全日志");
     }
 
     @Override

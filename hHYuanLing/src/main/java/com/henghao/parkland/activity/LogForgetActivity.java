@@ -35,7 +35,7 @@ public class LogForgetActivity extends ActivityFragmentSupport {
     public void initData() {
         super.initData();
         initWithBar();
-        mLeftTextView.setVisibility(View.VISIBLE);
-        mLeftTextView.setText("工作备忘");
+        initWithCenterBar();
+        mCenterTextView.setText("工作备忘");
     }
 }

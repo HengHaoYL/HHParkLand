@@ -83,8 +83,8 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
         super.initWidget();
         mActivityFragmentView.viewMainGone();
         initWithBar();
-        mLeftTextView.setText("变更管理");
-        mLeftTextView.setVisibility(View.VISIBLE);
+        initWithCenterBar();
+        mCenterTextView.setText("变更管理");
         initWithRightBar();
         mRightTextView.setText("添加");
         mRightTextView.setVisibility(View.VISIBLE);

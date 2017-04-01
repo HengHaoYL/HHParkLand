@@ -20,8 +20,6 @@ import java.util.ArrayList;
  */
 public class ProjectTechnologDesActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.tv_title)
-    TextView tv_title;
     @ViewInject(R.id.tv_name)
     TextView tv_name;
     @ViewInject(R.id.tv_dates)
@@ -53,9 +51,8 @@ public class ProjectTechnologDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("技术交底");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tv_title.setText("技术交底");
+        initWithCenterBar();
+        mCenterTextView.setText("技术交底");
     }
 
     @Override
