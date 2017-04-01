@@ -44,20 +44,20 @@ public class AppFragment extends FragmentSupport {
     private void initData() {
         List<AppGridEntity> mList = new ArrayList<AppGridEntity>();
         //第一个
-        AppGridEntity mEntity = new AppGridEntity();
-        mEntity.setImageId(R.drawable.app_one);
-        mEntity.setName("苗木管理");
-        mList.add(mEntity);
+//        AppGridEntity mEntity = new AppGridEntity();
+//        mEntity.setImageId(R.drawable.app_one);
+//        mEntity.setName("苗木管理");
+//        mList.add(mEntity);
         //第二个
         AppGridEntity mEntity2 = new AppGridEntity();
         mEntity2.setImageId(R.drawable.app_two);
         mEntity2.setName("养护管理");
         mList.add(mEntity2);
         //第三个
-        AppGridEntity mEntity3 = new AppGridEntity();
-        mEntity3.setImageId(R.drawable.app_three);
-        mEntity3.setName("招投标");
-        mList.add(mEntity3);
+//        AppGridEntity mEntity3 = new AppGridEntity();
+//        mEntity3.setImageId(R.drawable.app_three);
+//        mEntity3.setName("招投标");
+//        mList.add(mEntity3);
         //第四个
         AppGridEntity mEntity4 = new AppGridEntity();
         mEntity4.setImageId(R.drawable.app_one);
@@ -100,7 +100,6 @@ public class AppFragment extends FragmentSupport {
      * @since [产品/模块版本]
      */
     private void initwithContent() {
-        // TODO Auto-generated method stub
         initWithCenterBar();
         this.mCenterTextView.setVisibility(View.VISIBLE);
         this.mCenterTextView.setText(R.string.app);

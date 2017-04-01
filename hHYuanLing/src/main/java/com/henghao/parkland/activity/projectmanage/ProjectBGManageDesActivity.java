@@ -21,9 +21,6 @@ import butterknife.InjectView;
  */
 public class ProjectBGManageDesActivity extends ActivityFragmentSupport {
 
-
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_name)
     TextView tvName;
     @InjectView(R.id.tv_confirmingParty)
@@ -55,7 +52,6 @@ public class ProjectBGManageDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("变更管理");
         mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("变更管理");
     }
 
     @Override

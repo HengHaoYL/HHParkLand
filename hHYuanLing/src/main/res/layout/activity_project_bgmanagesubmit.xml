@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:drawablePadding="@dimen/padding_normal"
-                android:drawableRight="@drawable/icon_calendar"
+                android:drawableRight="@drawable/icon_add"
                 android:padding="@dimen/padding_big"
                 android:textSize="@dimen/gj_d" />
 
@@ -83,7 +83,7 @@
                 android:id="@+id/tv_files"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableRight="@drawable/icon_photo"
+                android:drawableRight="@drawable/icon_add"
                 android:padding="@dimen/padding_big"
                 android:textSize="@dimen/gj_d" />
 

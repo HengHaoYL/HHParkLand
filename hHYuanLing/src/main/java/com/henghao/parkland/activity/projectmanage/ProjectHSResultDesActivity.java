@@ -27,8 +27,6 @@ public class ProjectHSResultDesActivity extends ActivityFragmentSupport {
     TextView tvHsDeparment;
     @InjectView(R.id.tv_name)
     TextView tvName;
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.gridView)
     NoScrollGridView gridView;
 
@@ -52,7 +50,6 @@ public class ProjectHSResultDesActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("会审结果");
         mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("会审结果");
     }
 
     @Override
