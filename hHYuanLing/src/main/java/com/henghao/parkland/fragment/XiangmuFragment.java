@@ -18,11 +18,13 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectFirstAdapter;
+import com.henghao.parkland.adapter.ProjectSecondAdapter;
 import com.henghao.parkland.model.entity.AppGridEntity;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.ProjectInfoEntity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -48,7 +50,7 @@ public class XiangmuFragment extends FragmentSupport {
 
     @ViewInject(R.id.gridview)
     private GridView gridview;
-    //    private ProjectSecondAdapter mMyAdapter;
+    private ProjectSecondAdapter mMyAdapter;
     private ProjectFirstAdapter mProAdapter;
     public static ProjectInfoEntity mInfoEntity;//通用的项目信息
     private List<ProjectInfoEntity> mList;//项目信息集合
@@ -105,7 +107,7 @@ public class XiangmuFragment extends FragmentSupport {
     }
 
     private void initData() {
-//        projectTop();
+        projectTop();
         projectMy();
     }
 
@@ -188,35 +190,35 @@ public class XiangmuFragment extends FragmentSupport {
     /**
      * 我的
      */
-//    private void projectTop() {
-//        List<AppGridEntity> mList = new ArrayList<AppGridEntity>();
-//        //第一个
-//        AppGridEntity mEntity = new AppGridEntity();
-//        mEntity.setImageId(R.drawable.icon_projectsgbw);
-//        mEntity.setName("监理日志");
-//        mList.add(mEntity);
-////        //第二个
-////        AppGridEntity mEntity2 = new AppGridEntity();
-////        mEntity2.setImageId(R.drawable.icon_projectsgjh);
-////        mEntity2.setName("施工备忘");
-////        mList.add(mEntity2);
-//        //第二个
-////        AppGridEntity mEntity2 = new AppGridEntity();
-////        mEntity2.setImageId(R.drawable.icon_projecsgzl);
-////        mEntity2.setName("施工资料");
-////        mList.add(mEntity2);
+    private void projectTop() {
+        List<AppGridEntity> mList = new ArrayList<AppGridEntity>();
+        //第一个
+        AppGridEntity mEntity = new AppGridEntity();
+        mEntity.setImageId(R.drawable.icon_projectsgbw);
+        mEntity.setName("监理日志");
+        mList.add(mEntity);
 //        //第二个
 //        AppGridEntity mEntity2 = new AppGridEntity();
-//        mEntity2.setImageId(R.drawable.icon_projectrzbw);
-//        mEntity2.setName("施工日志");
+//        mEntity2.setImageId(R.drawable.icon_projectsgjh);
+//        mEntity2.setName("施工备忘");
 //        mList.add(mEntity2);
-//        //第三个
-//        AppGridEntity mEntity3 = new AppGridEntity();
-//        mEntity3.setImageId(R.drawable.icon_projectsgzj);
-//        mEntity3.setName("施工钱包");
-//        mList.add(mEntity3);
-//        mMyAdapter = new ProjectSecondAdapter(this.mActivity, mList);
-//    }
+        //第二个
+//        AppGridEntity mEntity2 = new AppGridEntity();
+//        mEntity2.setImageId(R.drawable.icon_projecsgzl);
+//        mEntity2.setName("施工资料");
+//        mList.add(mEntity2);
+        //第二个
+        AppGridEntity mEntity2 = new AppGridEntity();
+        mEntity2.setImageId(R.drawable.icon_projectrzbw);
+        mEntity2.setName("施工日志");
+        mList.add(mEntity2);
+        //第三个
+        AppGridEntity mEntity3 = new AppGridEntity();
+        mEntity3.setImageId(R.drawable.icon_projectsgzj);
+        mEntity3.setName("施工钱包");
+        mList.add(mEntity3);
+        mMyAdapter = new ProjectSecondAdapter(this.mActivity, mList);
+    }
 
     /**
      * 标题操作 〈一句话功能简述〉 〈功能详细描述〉
@@ -341,19 +343,19 @@ public class XiangmuFragment extends FragmentSupport {
         initwithContent();
     }
 
-//    @OnClick({R.id.xm_my, R.id.xm_project})
-//    private void vieOnClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.xm_project:
-//                //项目管理
-//                this.gridview.setAdapter(mProAdapter);
-//                mProAdapter.notifyDataSetChanged();
-//                break;
-//            case R.id.xm_my:
-//                //我的
-//                this.gridview.setAdapter(mMyAdapter);
-//                mMyAdapter.notifyDataSetChanged();
-//                break;
-//        }
-//    }
+    @OnClick({R.id.xm_my, R.id.xm_project})
+    private void viewOnClick(View v) {
+        switch (v.getId()) {
+            case R.id.xm_project:
+                //项目管理
+                this.gridview.setAdapter(mProAdapter);
+                mProAdapter.notifyDataSetChanged();
+                break;
+            case R.id.xm_my:
+                //我的
+                this.gridview.setAdapter(mMyAdapter);
+                mMyAdapter.notifyDataSetChanged();
+                break;
+        }
+    }
 }

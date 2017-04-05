@@ -72,13 +72,7 @@ public class AppGridAdapter extends ArrayAdapter<AppGridEntity> {
         return convertView;
     }
 
-    /**
-     * 点击
-     *
-     * @param mHodlerView
-     * @param convertView
-     * @param position
-     */
+    //点击
     private void viewOnClick(HodlerView mHodlerView, View convertView, final int position) {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

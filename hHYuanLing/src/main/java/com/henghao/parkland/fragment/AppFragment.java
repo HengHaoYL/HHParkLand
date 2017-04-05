@@ -90,11 +90,6 @@ public class AppFragment extends FragmentSupport {
 
     /**
      * 标题操作 〈一句话功能简述〉 〈功能详细描述〉
-     * @see [类、类#方法、类#成员]
-     * @since [产品/模块版本]
-     */
-    /**
-     * 标题操作 〈一句话功能简述〉 〈功能详细描述〉
      *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]

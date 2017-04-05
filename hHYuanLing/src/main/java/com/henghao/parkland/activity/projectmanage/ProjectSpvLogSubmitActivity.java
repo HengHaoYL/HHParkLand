@@ -27,9 +27,6 @@ import butterknife.OnClick;
  */
 public class ProjectSpvLogSubmitActivity extends ActivityFragmentSupport {
 
-
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_name)
     TextView tvName;
     @InjectView(R.id.tv_dates)
@@ -69,9 +66,6 @@ public class ProjectSpvLogSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        mLeftTextView.setText("");
-        mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("监理日志");
         tvName.setText(XiangmuFragment.mInfoEntity.getXmName());
         initWithCenterBar();
         mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());

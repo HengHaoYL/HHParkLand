@@ -482,6 +482,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--技术交底-->
         <activity
             android:name=".activity.projectmanage.ProjectTechnologDesActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -499,6 +500,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--进度申报-->
         <activity
             android:name=".activity.projectmanage.ProjectDeclareDesActivity"
             android:configChanges="orientation|keyboardHidden"
