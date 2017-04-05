@@ -214,7 +214,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
         Window dialogWindow = dialog.getWindow();
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
-        lp.x = ToolsKit.dip2px(mActivity, 4); // 新位置X坐标
+        lp.x = ToolsKit.dip2px(mActivity, 7); // 新位置X坐标
         lp.y = ToolsKit.dip2px(mActivity, 57); // 新位置Y坐标
         dialogWindow.setAttributes(lp);
 //        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

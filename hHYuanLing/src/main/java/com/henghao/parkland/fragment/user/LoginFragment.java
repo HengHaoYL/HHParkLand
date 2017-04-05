@@ -52,8 +52,6 @@ public class LoginFragment extends FragmentSupport {
     @ViewInject(R.id.iv_eye_login)
     private ImageView iv_eye_login;
 
-    private boolean passwordFlag = true; // 隐藏密码的标志 true 隐藏 false 显示
-
     public static FragmentSupport newInstance(Object obj) {
         LoginFragment fragment = new LoginFragment();
         if (fragment.object == null) {
@@ -101,12 +99,15 @@ public class LoginFragment extends FragmentSupport {
                 }
                 break;
             case R.id.iv_eye_login:
-                if (passwordFlag) {
-                    login_pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    passwordFlag = false;
-                } else {
+                boolean isSelected = iv_eye_login.isSelected();
+                //反转选中状态
+                iv_eye_login.setSelected(!isSelected);
+                if (isSelected) {
+                    //选中时显示密码
                     login_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    passwordFlag = true;
+                } else {
+                    //未选中时隐藏密码
+                    login_pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
                 break;
             case R.id.login_reset_password:

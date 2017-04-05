@@ -102,7 +102,7 @@
                 android:id="@+id/iv_eye_login"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/icon_eye" />
+                android:src="@drawable/selector_showpw" />
         </LinearLayout>
 
         <View
