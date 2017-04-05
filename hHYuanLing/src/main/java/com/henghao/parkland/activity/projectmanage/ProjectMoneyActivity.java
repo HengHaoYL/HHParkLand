@@ -155,7 +155,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
                     @Override
                     public void run() {
                         mActivityFragmentView.viewLoading(View.GONE);
-                        Toast.makeText(context, "文件下载成功！" + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "文件导出成功：" + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -164,9 +164,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
 
     private void initView() {
         View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_poject_money, mXlistview, false);
-        TextView tv_title = (TextView) HeaderView.findViewById(R.id.tv_title);
         tv_total_money = (TextView) HeaderView.findViewById(R.id.tv_total_money);
-        tv_title.setText("施工钱包");
         mXlistview.addHeaderView(HeaderView);
         /**
          * 访问网络数据

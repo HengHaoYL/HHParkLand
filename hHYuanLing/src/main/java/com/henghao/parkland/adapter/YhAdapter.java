@@ -60,7 +60,6 @@ public class YhAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         final YhBean bean = list.get(position);
-        viewHolder.tvId.setText(bean.getId() + "");
         viewHolder.tvTreeid.setText(bean.getTreeId());
         viewHolder.tvBehavior.setText(bean.getYhStatusname());
         viewHolder.tvPlace.setText(bean.getYhStatussite());
@@ -107,8 +106,6 @@ public class YhAdapter extends BaseAdapter {
 
 
     static class ViewHolder {
-        @InjectView(R.id.tv_id_yanghuitem)
-        TextView tvId;
         @InjectView(R.id.tv_treeid_yanghuitem)
         TextView tvTreeid;
         @InjectView(R.id.tv_behavior_yanghuitem)
@@ -118,7 +115,7 @@ public class YhAdapter extends BaseAdapter {
         @InjectView(R.id.tv_time_yanghuitem)
         TextView tvTime;
         @InjectView(R.id.btn_write_yanghuitem)
-        Button btnWrite;
+        TextView btnWrite;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

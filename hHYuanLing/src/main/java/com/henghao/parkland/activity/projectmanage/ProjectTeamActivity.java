@@ -103,7 +103,7 @@ public class ProjectTeamActivity extends ActivityFragmentSupport implements MyCa
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setIcon(R.drawable.icon_select);
-                builder.setTitle("请选择要添加人员的类型！");
+                builder.setTitle("请选择要添加人员的类型");
                 builder.setItems(select_array, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

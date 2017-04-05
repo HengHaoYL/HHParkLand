@@ -208,7 +208,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/padding_normal"
-            android:background="@drawable/btn_greencircleframe"
+            android:background="@drawable/shape_blue_botton"
             android:padding="@dimen/padding_big"
             android:text="提交"
             android:textColor="#ffffff" />

@@ -79,7 +79,7 @@
             <View
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/home_tab41" />
+                android:background="@drawable/icon_pw" />
 
             <EditText
                 android:id="@+id/login_pass"
@@ -100,9 +100,9 @@
 
             <ImageView
                 android:id="@+id/iv_eye_login"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:src="@drawable/ic_launcher" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/icon_eye" />
         </LinearLayout>
 
         <View

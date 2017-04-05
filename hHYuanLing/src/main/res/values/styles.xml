@@ -7,6 +7,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/app_bg</item>
     </style>
+
     <!-- 启动样式 -->
     <style name="Theme.Start" parent="AppBaseTheme">
         <item name="android:windowBackground">@color/white</item>
@@ -142,7 +143,7 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

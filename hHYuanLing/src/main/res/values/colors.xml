@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <color name="yellow">#f0c13b</color>
+    <color name="darkblue">#2477aA</color>
     <!-- app背景颜色 -->
     <color name="app_bg">#ececec</color>
     <color name="car_bg">#f5f5f5</color>

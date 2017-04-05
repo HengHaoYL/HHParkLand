@@ -27,9 +27,6 @@ import butterknife.OnClick;
  */
 public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
 
-
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
     @InjectView(R.id.tv_dates)
     TextView tvDates;
     @InjectView(R.id.et_proactContent)
@@ -43,7 +40,7 @@ public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
     @InjectView(R.id.et_builder)
     EditText etBuilder;
     @InjectView(R.id.btn_sub)
-    Button btnSub;
+    TextView btnSub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +62,6 @@ public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
         initWithBar();
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
-        tvTitle.setText("施工日志");
         initWithCenterBar();
         mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
     }

@@ -175,7 +175,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
         mCenterTextView.setText("养护管理");
         initWithRightBar();
         mRightImageView.setVisibility(View.GONE);
-        mRightImageView.setImageResource(R.drawable.scan_right);
+        mRightImageView.setImageResource(R.drawable.scan);
         mRightImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

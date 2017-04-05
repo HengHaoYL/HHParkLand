@@ -16,7 +16,7 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_greencircleframe"
+            android:background="@drawable/shape_blue_botton"
             android:gravity="center"
             android:paddingBottom="@dimen/padding_normal"
             android:paddingLeft="@dimen/padding_big"
