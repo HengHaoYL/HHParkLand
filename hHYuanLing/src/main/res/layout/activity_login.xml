@@ -27,7 +27,7 @@
             android:padding="@dimen/padding_normal"
             android:text="@string/login_toservice"
             android:textColor="@color/blue"
-            android:textSize="@dimen/gj_c" />
+            android:textSize="@dimen/gj_f" />
 
         <ImageView
             android:id="@+id/imageView"
