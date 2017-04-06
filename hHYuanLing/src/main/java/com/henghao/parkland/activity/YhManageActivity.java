@@ -273,6 +273,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
                 String result = jsonObject.getString("result");
                 if (result.equals("请登录")) {
                     mRightImageView.setVisibility(View.GONE);
+                    Toast.makeText(context, "请登录！", Toast.LENGTH_SHORT).show();
                 } else {
                     mRightImageView.setVisibility(View.VISIBLE);
                 }
