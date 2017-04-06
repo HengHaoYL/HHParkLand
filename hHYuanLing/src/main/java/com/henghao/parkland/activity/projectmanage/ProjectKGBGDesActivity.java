@@ -91,6 +91,7 @@ public class ProjectKGBGDesActivity extends ActivityFragmentSupport {
      * 下载文件
      */
     private void downloadFile() {
+        mActivityFragmentView.viewLoading(View.VISIBLE);
         String sdPath = getSDPath();
         if (!ToolsKit.isEmpty(sdPath)) {
             final File parentfile = new File(sdPath + "/ParKLand");
@@ -130,6 +131,7 @@ public class ProjectKGBGDesActivity extends ActivityFragmentSupport {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            mActivityFragmentView.viewLoading(View.GONE);
                             Toast.makeText(context, "文件下载成功！" + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
                         }
                     });
