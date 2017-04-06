@@ -257,7 +257,6 @@ public class AppInfoService extends Service implements BusinessResponse {
 
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					// ((Activity) context).finish();
 				}
 			});
@@ -266,7 +265,6 @@ public class AppInfoService extends Service implements BusinessResponse {
 
 				@Override
 				public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-					// TODO Auto-generated method stub
 					if (keyCode == KeyEvent.KEYCODE_BACK) {// 监听返回按键
 						// ((Activity) context).finish();
 					}

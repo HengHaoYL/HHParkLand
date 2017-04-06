@@ -335,7 +335,6 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        // TODO Auto-generated method stub
         super.onSaveInstanceState(outState);
         outState.putString("exception", "exception");
     }
@@ -431,7 +430,6 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
 
     @Override
     public void isExit() {
-        // TODO Auto-generated method stub\
     }
 
     @Override

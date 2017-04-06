@@ -120,7 +120,6 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
     }
 
     private void initView() {
-        // TODO Auto-generated method stub
         mActivityFragmentView.viewMainGone();
         LayoutInflater mInflater = LayoutInflater.from(this.mActivity);
         //添加布局
@@ -155,7 +154,6 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
      * @since [产品/模块版本]
      */
     private void initwithContent() {
-        // TODO Auto-generated method stub
         initWithCenterBar();
         this.mCenterTextView.setVisibility(View.VISIBLE);
         this.mCenterTextView.setText(R.string.workshow);
@@ -221,7 +219,6 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
 //
 //            @Override
 //            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-//                // TODO Auto-generated method stub
 //                String whatSelect = mList.get(arg2);
 //                tv_title.setText(whatSelect);
 //                WorkShowProtocol protocol = new WorkShowProtocol(mActivity);

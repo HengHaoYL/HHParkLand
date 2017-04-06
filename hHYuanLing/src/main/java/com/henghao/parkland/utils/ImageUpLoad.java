@@ -20,7 +20,6 @@ public class ImageUpLoad {
 
 			@Override
 			public void onStart() {
-				// TODO Auto-generated method stub
 				// super.onStart();
 			}
 
@@ -35,8 +34,7 @@ public class ImageUpLoad {
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override

@@ -44,7 +44,6 @@ public class SiftImagesActivity extends ActivityFragmentSupport {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         this.mActivityFragmentView.viewMain(R.layout.common_view_pager);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
@@ -59,7 +58,6 @@ public class SiftImagesActivity extends ActivityFragmentSupport {
 
     @Override
     public void initData() {
-        // TODO Auto-generated method stub
         super.initData();
         if (this.imagesList != null) {
             SiftImagePagerAdapter madapter = new SiftImagePagerAdapter(this, this.imagesList);
@@ -74,26 +72,22 @@ public class SiftImagesActivity extends ActivityFragmentSupport {
 
             @Override
             public void onPageSelected(int arg0) {
-                // TODO Auto-generated method stub
                 SiftImagesActivity.this.pageindex = SiftImagesActivity.this.mViewpager.getCurrentItem() + 1;
                 SiftImagesActivity.this.pageTv.setText(SiftImagesActivity.this.pageindex + "");
             }
 
             @Override
             public void onPageScrolled(int arg0, float arg1, int arg2) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onPageScrollStateChanged(int arg0) {
-                // TODO Auto-generated method stub
             }
         });
     }
 
     @Override
     public void initWidget() {
-        // TODO Auto-generated method stub
         this.imagesList = new ArrayList<String>();
         this.imagesList.clear();
         Intent intent = getIntent();

@@ -70,7 +70,6 @@ public class MyWorkerActivity extends ActivityFragmentSupport {
 
     @Override
     public void initWidget() {
-        // TODO Auto-generated method stub
         initWithContent();
         mProtocol = new ProjectSecProtocol(this);
         mProtocol.addResponseListener(this);
@@ -78,7 +77,6 @@ public class MyWorkerActivity extends ActivityFragmentSupport {
     }
 
     private void initWithContent() {
-        // TODO Auto-generated method stub
         initWithBar();
         initWithCenterBar();
         mCenterTextView.setText("我的轨迹");
@@ -98,7 +96,6 @@ public class MyWorkerActivity extends ActivityFragmentSupport {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                // TODO Auto-generated method stub
                 String whatSelect = mList.get(arg2);
                 tv_select.setText(whatSelect);
                 popupWindowHelper.dismiss();
@@ -108,7 +105,6 @@ public class MyWorkerActivity extends ActivityFragmentSupport {
 
     @Override
     public void initData() {
-        // TODO Auto-generated method stub
     }
 
     @OnClick({R.id.tv_select, R.id.tv_time, R.id.tv_submit})

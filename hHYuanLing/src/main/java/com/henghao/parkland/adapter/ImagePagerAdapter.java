@@ -161,7 +161,6 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 			this.context.startActivity(intent);
 		}
 		catch (Exception e) {
-			// TODO Auto-generated catch block
 			try {
 				Intent intent = new Intent();
 				// String clazzPix = captureName(mAdLink);
@@ -172,7 +171,6 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 				this.context.startActivity(intent);
 			}
 			catch (Exception ex) {
-				// TODO Auto-generated catch block
 				NSLog.e(this, ex.getMessage());
 			}
 		}

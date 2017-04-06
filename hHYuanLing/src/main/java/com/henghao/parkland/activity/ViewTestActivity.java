@@ -50,7 +50,6 @@ public class ViewTestActivity extends ActivityFragmentSupport {
     }
 
     private void initWithContent() {
-        // TODO Auto-generated method stub
         /** 导航栏 */
         initWithBar();
         this.mLeftTextView.setText("View测试");

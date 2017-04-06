@@ -203,7 +203,6 @@ public class ISOActivity extends ActivityFragmentSupport {
      * @since [产品/模块版本]
      */
     private void nfcAdapterView() {
-        // TODO Auto-generated method stub
         this.mAdapter = NfcAdapter.getDefaultAdapter(this);
         // 创建一个通用的PendingIntent，将交付给了这个活动。NFC堆栈将填写的意图与发现的标签的细节提供这个活动之前。
         this.mPendingIntent = PendingIntent.getActivity(this, 0,
@@ -227,7 +226,6 @@ public class ISOActivity extends ActivityFragmentSupport {
 
             @Override
             public boolean onMarkerClick(Marker marker) {
-                // TODO Auto-generated method stub
                 Intent intent = new Intent();
                 for (int i = 0; i < ISOActivity.this.mList.size(); i++) {
                     if (marker.getTitle().contains(ISOActivity.this.mList.get(i).getTreeName())) {
@@ -249,7 +247,6 @@ public class ISOActivity extends ActivityFragmentSupport {
      */
     @Override
     public void initWidget() {
-        // TODO Auto-generated method stub
         showLoginAlert();
         initWithCenterBar();
         this.mCenterTextView.setText("园林大数据溯源云平台");
@@ -473,7 +470,6 @@ public class ISOActivity extends ActivityFragmentSupport {
     }
 
     private void UpdateVIew(TreeEntity treeEntity) {
-        // TODO Auto-generated method stub
         AddTreeAll();
         this.mNotAdapter.notifyDataSetChanged();
     }
@@ -594,7 +590,6 @@ public class ISOActivity extends ActivityFragmentSupport {
      * @since [产品/模块版本]
      */
     private void AddTreeAll() {
-        // TODO Auto-generated method stub
         this.allTreeNum = 0;
         this.notTreeNum = 0;
         for (int i = 0; i < this.mList.size(); i++) {
@@ -619,7 +614,6 @@ public class ISOActivity extends ActivityFragmentSupport {
      */
     @Override
     public void onResume() {
-        // TODO Auto-generated method stub
         super.onResume();
         this.mMapView.onResume();
         if (!hasInternetConnected()) {
@@ -642,7 +636,6 @@ public class ISOActivity extends ActivityFragmentSupport {
      */
     @Override
     public void onPause() {
-        // TODO Auto-generated method stub
         super.onPause();
         this.mMapView.onPause();
     }
@@ -653,7 +646,6 @@ public class ISOActivity extends ActivityFragmentSupport {
      * @since [产品/模块版本]
      */
     private void showLoginAlert() {
-        // TODO Auto-generated method stub
         this.dlg = new DialogAlertEdit(ISOActivity.this, new DialogAlertEdit.DialogAlertListener() {
 
             @Override
@@ -671,7 +663,6 @@ public class ISOActivity extends ActivityFragmentSupport {
 
                         @Override
                         public void run() {
-                            // TODO Auto-generated method stub
                             initDevice();
                             ISOActivity.this.mActivityFragmentView.viewLoading(View.GONE);
                             ISOActivity.this.rl_bottom.setVisibility(View.VISIBLE);
@@ -706,7 +697,6 @@ public class ISOActivity extends ActivityFragmentSupport {
      */
     @Override
     public void initData() {
-        // TODO Auto-generated method stub
     }
 
     @Override
@@ -985,7 +975,6 @@ public class ISOActivity extends ActivityFragmentSupport {
 
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
-        // TODO Auto-generated method stub
         super.OnMessageResponse(url, jo, status);
         this.mActivityFragmentView.viewLoading(View.GONE);
         if (url.endsWith(ProtocolUrl.APP_GET_NFCBYID)) {

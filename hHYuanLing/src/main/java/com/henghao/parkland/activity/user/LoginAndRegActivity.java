@@ -43,7 +43,6 @@ public class LoginAndRegActivity extends ActivityFragmentSupport implements OnCh
 
     @Override
     public void initWidget() {
-        // TODO Auto-generated method stub
         initWithContent();
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -53,7 +52,6 @@ public class LoginAndRegActivity extends ActivityFragmentSupport implements OnCh
     }
 
     private void initWithContent() {
-        // TODO Auto-generated method stub
         mActivityFragmentView.getNavitionBarView().setBackgroundColor(getResources().getColor(R.color.blue));
         /** 导航栏 */
         initWithCenterBar();
@@ -67,7 +65,6 @@ public class LoginAndRegActivity extends ActivityFragmentSupport implements OnCh
 
     @Override
     public void initData() {
-        // TODO Auto-generated method stub
         mTabs.setOnCheckedChangeListener(this);
     }
 
@@ -81,7 +78,6 @@ public class LoginAndRegActivity extends ActivityFragmentSupport implements OnCh
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        // TODO Auto-generated method stub
         // mRadioGroup.check(checkedId);
         // llHeader.check(checkedId);
         for (int i = 0; i < group.getChildCount(); i++) {

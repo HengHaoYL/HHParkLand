@@ -156,7 +156,6 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                // TODO Auto-generated method stub
                 String whatSelect = mList.get(arg2);
                 tvPersonnelType.setText(whatSelect);
                 personnelType = whatSelect;

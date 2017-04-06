@@ -37,7 +37,6 @@ public class AnimCart {
     int[] rect;
 
     public AnimCart(Activity context, int[] rect) {
-        // TODO Auto-generated constructor stub
         this.context = context;
         this.rect = rect;
         animation_viewGroup = createAnimLayout();
@@ -178,13 +177,11 @@ public class AnimCart {
 
             @Override
             public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
                 number++;
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                // TODO Auto-generated method stub
                 number--;
                 if (number == 0) {
                     isClean = true;
@@ -194,7 +191,6 @@ public class AnimCart {
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
             }
         });
         view.startAnimation(mAnimationSet);
@@ -204,7 +200,6 @@ public class AnimCart {
      * 内存过低时及时处理动画产生的未处理冗余
      */
     public void onLowMemory() {
-        // TODO Auto-generated method stub
         isClean = true;
         try {
             animation_viewGroup.removeAllViews();

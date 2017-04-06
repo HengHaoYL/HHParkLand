@@ -85,7 +85,6 @@ public class QiandaoSubmitActivity extends ActivityFragmentSupport {
      */
     @Override
     public void initWidget() {
-        // TODO Auto-generated method stub
         initWithBar();
         mLeftTextView.setVisibility(View.VISIBLE);
         mLeftTextView.setText("返回");

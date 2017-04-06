@@ -74,7 +74,6 @@ public class PushParseJsonService extends Service {
 			data = jsObj.getString("custom_content");
 		}
 		catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return super.onStartCommand(intent, flags, startId);

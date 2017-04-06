@@ -395,7 +395,6 @@ public class XListView extends ListView implements OnScrollListener {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        // TODO Auto-generated method stub
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 xDistance = yDistance = 0f;

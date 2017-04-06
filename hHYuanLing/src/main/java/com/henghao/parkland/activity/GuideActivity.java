@@ -94,7 +94,6 @@ public class GuideActivity extends ActivityFragmentSupport {
 
 	@Override
 	public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
-		// TODO Auto-generated method stub
 		super.OnMessageResponse(url, jo, status);
 		if (jo == null) {
 			// 提示

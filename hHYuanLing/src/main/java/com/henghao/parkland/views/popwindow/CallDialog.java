@@ -32,7 +32,6 @@ public class CallDialog implements BusinessResponse {
 	private String mCompanyId;
 
 	public CallDialog(Context context, String tel) {
-		// TODO Auto-generated constructor stub
 		this.mContext = context;
 		this.mTel = tel;
 	}
@@ -60,7 +59,6 @@ public class CallDialog implements BusinessResponse {
 
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
-			// TODO Auto-generated method stub
 			Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + CallDialog.this.mTel));
 			CallDialog.this.mContext.startActivity(intent);
 			dialog.dismiss();
@@ -71,13 +69,11 @@ public class CallDialog implements BusinessResponse {
 
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
-			// TODO Auto-generated method stub
 			dialog.dismiss();
 		}
 	};
 
 	@Override
 	public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
-		// TODO Auto-generated method stub
 	}
 }

@@ -206,7 +206,6 @@ public class QiandaoActivity extends ActivityFragmentSupport {
      */
     @Override
     public void initWidget() {
-        // TODO Auto-generated method stub
         initWithBar();
         this.mLeftTextView.setVisibility(View.VISIBLE);
         this.mLeftTextView.setText("返回");
@@ -302,7 +301,6 @@ public class QiandaoActivity extends ActivityFragmentSupport {
      */
     @Override
     public void initData() {
-        // TODO Auto-generated method stub
         /**
          * 定位
          */
@@ -330,13 +328,11 @@ public class QiandaoActivity extends ActivityFragmentSupport {
     protected void onDestroy() {
         // 退出时销毁定位
         this.locationClient.stop();
-        // TODO Auto-generated method stub
         super.onDestroy();
     }
 
     @Override
     public void onPause() {
-        // TODO Auto-generated method stub
         super.onPause();
         this.locationClient.stop();
     }

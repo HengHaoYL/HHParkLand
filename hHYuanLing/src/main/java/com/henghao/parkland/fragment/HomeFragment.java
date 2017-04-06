@@ -68,7 +68,6 @@ public class HomeFragment extends FragmentSupport {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                // TODO Auto-generated method stub
                 String whatSelect = mList.get(arg2);
                 HomeFragment.this.tv_search_main.setText(whatSelect);
                 HomeFragment.this.popupWindowHelper.dismiss();
@@ -82,7 +81,6 @@ public class HomeFragment extends FragmentSupport {
      * @since [产品/模块版本]
      */
     private void initwithContent() {
-        // TODO Auto-generated method stub
         initWithCenterBar();
         this.mCenterTextView.setVisibility(View.VISIBLE);
         this.mCenterTextView.setText(getResources().getString(R.string.app_name));

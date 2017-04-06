@@ -167,7 +167,6 @@ public class FreePushMessageReceiver extends PushMessageReceiver {
 				}
 			}
 			catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -198,7 +197,6 @@ public class FreePushMessageReceiver extends PushMessageReceiver {
 				}
 			}
 			catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -123,7 +123,6 @@ public class MyFragment extends FragmentSupport {
      * @since [产品/模块版本]
      */
     private void initwithContent() {
-        // TODO Auto-generated method stub
         this.mActivityFragmentView.getNavitionBarView().setVisibility(View.GONE);
     }
 

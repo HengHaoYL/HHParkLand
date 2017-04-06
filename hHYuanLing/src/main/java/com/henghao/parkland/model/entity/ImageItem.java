@@ -44,7 +44,6 @@ public class ImageItem implements Serializable {
 			try {
 				bitmap = Bimp.revitionImageSize(imagePath);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

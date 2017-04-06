@@ -12,7 +12,6 @@ public class BeeQuery<T> extends AQuery {
 
     public BeeQuery(Context context) {
         super(context);
-        // TODO Auto-generated constructor stub
     }
 
     public static final int ENVIRONMENT_PRODUCTION = 1;

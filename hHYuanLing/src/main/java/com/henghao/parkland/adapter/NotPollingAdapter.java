@@ -65,7 +65,6 @@ public class NotPollingAdapter extends ArrayAdapter<TreeEntity> {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent();
 				intent.putExtra(Constant.INTNET_TYPE, 112);
 				intent.putExtra(Constant.INTNET_DATA, mEntity);

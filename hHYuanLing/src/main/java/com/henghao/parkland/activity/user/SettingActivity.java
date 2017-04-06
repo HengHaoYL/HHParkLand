@@ -28,12 +28,10 @@ public class SettingActivity extends ActivityFragmentSupport   {
 
     @Override
     public void initWidget() {
-        // TODO Auto-generated method stub
         initWithContent();
     }
 
     private void initWithContent() {
-        // TODO Auto-generated method stub
         initWithBar();
         initWithCenterBar();
         mCenterTextView.setText("设置");
@@ -41,7 +39,6 @@ public class SettingActivity extends ActivityFragmentSupport   {
 
     @Override
     public void initData() {
-        // TODO Auto-generated method stub
     }
 
 }

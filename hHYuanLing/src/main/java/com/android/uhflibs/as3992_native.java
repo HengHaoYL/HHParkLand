@@ -179,7 +179,6 @@ public class as3992_native {
 			try {
 				lock.wait(200);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok && (buf[0] > 0) && (buf.length >= 14)) {
@@ -246,7 +245,6 @@ public class as3992_native {
 			try {
 				lock.wait(200);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if ((read_ok) && (buf[0] == 0) && (buf[1] > 0)) {
@@ -290,7 +288,6 @@ public class as3992_native {
 			try {
 				lock.wait(200);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if ((read_ok) && (buf[0] == 0)) {
@@ -323,7 +320,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok && (buf.length >= 1) && buf[0] == 0) {
@@ -356,7 +352,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok/* && buf[0] == 0 */) {
@@ -396,7 +391,6 @@ public class as3992_native {
 					Log.d("as3992", "search begin to wait");
 					lock.wait(100);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				if (read_ok && buf.length >= 2 && (buf[1] > 2) && (buf.length >= buf[1] + 2)) {
@@ -457,7 +451,6 @@ public class as3992_native {
 					Log.d("as3992", "search begin to wait");
 					lock.wait(100);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 //				if (read_ok && (buf[5] > 2) && (buf.length >= buf[5] + 6)) {	//8?
@@ -507,7 +500,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok && (buf.length >= 1) && buf[0] == 0) {
@@ -541,7 +533,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok && (buf[1] > 0)
@@ -598,7 +589,6 @@ public class as3992_native {
 //			try {
 //				lock.wait(100);
 //			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
 //				e.printStackTrace();
 //			}
 //			// if(read_ok /*&& buf[0] == 0 */&& buf[1] == count)
@@ -647,7 +637,6 @@ public class as3992_native {
 				try {
 					lock.wait(100);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				// if(read_ok /*&& buf[0] == 0 */&& buf[1] == count)
@@ -702,7 +691,6 @@ public class as3992_native {
 				try {
 					lock.wait(100);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				if (read_ok && (buf.length >= 1) && buf[0] != 0) {
@@ -743,7 +731,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok) {
@@ -789,7 +776,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok && (buf.length >= 18)) {
@@ -848,7 +834,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok) {
@@ -881,7 +866,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok && buf.length >= 12) {
@@ -908,7 +892,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok) {
@@ -938,7 +921,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok) {
@@ -963,7 +945,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok) {
@@ -989,7 +970,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok) {
@@ -1014,7 +994,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok && (buf.length >= 41)) {
@@ -1046,7 +1025,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok && (buf.length >= 3)) {
@@ -1081,7 +1059,6 @@ public class as3992_native {
 			try {
 				lock.wait(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (read_ok && (buf.length >= 2)) {

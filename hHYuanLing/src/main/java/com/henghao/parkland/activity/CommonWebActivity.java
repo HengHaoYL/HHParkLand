@@ -76,7 +76,6 @@ public class CommonWebActivity extends ActivityFragmentSupport implements JsCall
 
 	@Override
 	public void initData() {
-		// TODO Auto-generated method stub
 		String title = getIntent().getStringExtra(Constant.INTNET_TITLE);
 		initTitle(title);
 		this.url = getIntent().getStringExtra(Constant.INTNET_URL);
@@ -90,7 +89,6 @@ public class CommonWebActivity extends ActivityFragmentSupport implements JsCall
 	}
 
 	private void initTitle(String title) {
-		// TODO Auto-generated method stub
 		initWithBar();
 		// initWithCenterBar();
 		this.mLeftTextView.setVisibility(View.VISIBLE);
@@ -105,7 +103,6 @@ public class CommonWebActivity extends ActivityFragmentSupport implements JsCall
 
 	@Override
 	public void onBackPressed() {
-		// TODO Auto-generated method stub
 		super.onBackPressed();
 		if (getIntent().getIntExtra("ONBACKFLAG", 0) == 120) {
 			Intent _intent = new Intent();
