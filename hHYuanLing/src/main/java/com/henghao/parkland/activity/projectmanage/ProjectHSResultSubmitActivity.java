@@ -45,6 +45,8 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
     private ArrayList<String> mSelectPath;//图片地址
     private List<File> mFileList;//图片文件
 
+    @InjectView(R.id.tv_name)
+    TextView tvName;
     @InjectView(R.id.et_hsDeparment)
     EditText etHsDeparment;
     @InjectView(R.id.tv_hsImg)
@@ -77,6 +79,7 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
         mFileList = new ArrayList<>();
         initWithCenterBar();
         mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        tvName.setText(XiangmuFragment.mInfoEntity.getXmName());
     }
 
     @Override
