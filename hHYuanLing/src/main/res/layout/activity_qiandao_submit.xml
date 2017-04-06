@@ -117,14 +117,15 @@
         android:padding="10dp">
 
         <EditText
-            android:padding="@dimen/padding_normal"
             android:id="@+id/et_note_qiandao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="140dp"
             android:background="@drawable/shape_comment"
             android:gravity="top"
             android:hint="备注"
+            android:minHeight="140dp"
+            android:padding="@dimen/padding_normal"
+            android:textColorHint="@color/text_color_c"
             android:textSize="16sp" />
 
         <ImageView

@@ -40,6 +40,11 @@ public class YHDataActivity extends ActivityFragmentSupport {
     @ViewInject(R.id.tv_worker)
     private TextView tv_worker;
     /**
+     * 养护内容
+     */
+    @ViewInject(R.id.tv_details)
+    private TextView tv_details;
+    /**
      * 问题发现
      */
     @ViewInject(R.id.tv_question)
@@ -110,6 +115,7 @@ public class YHDataActivity extends ActivityFragmentSupport {
         tv_address.setText(mdata.getYhSite());
         tv_time.setText(mdata.getYhTime());
         tv_worker.setText(mdata.getYhWorker());
+        tv_details.setText(mdata.getYhDetails());
         tv_question.setText(mdata.getYhQuestion());
         tv_growup.setText(mdata.getTreeGrowup());
         tv_data.setText(mdata.getYhComment());
