@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.benefit.buy.library.views.CircularImageView;
 import com.benefit.buy.library.views.dialog.BaseDialog;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
+import com.henghao.parkland.activity.DebugSetupActivity;
 import com.henghao.parkland.activity.QiandaoActivity;
 import com.henghao.parkland.activity.projectmanage.ProjectInfoActivity;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
@@ -77,7 +80,21 @@ public class MyLoginFragment extends FragmentSupport {
         ViewUtils.inject(this, this.mActivityFragmentView);
         initWidget();
         initData();
+        if (BuildConfig.DEBUG) initButton();
         return this.mActivityFragmentView;
+    }
+
+    /**
+     * 设置HOST按钮
+     */
+    private void initButton() {
+        Button bt = (Button) mActivityFragmentView.findViewById(R.id.bt_set_host);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DebugSetupActivity.class));
+            }
+        });
     }
 
     private void initData() {

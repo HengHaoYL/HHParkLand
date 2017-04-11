@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -262,6 +263,7 @@ public class XiangmuFragment extends FragmentSupport {
                 mActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Log.e("fail", "请求失败", e);
                         if (e.toString().indexOf("java.net.SocketTimeoutException") != -1) {
                             Toast.makeText(mActivity, "网络访问错误！请稍后重试！", Toast.LENGTH_SHORT).show();
                         } else if (e.toString().indexOf("") != 1) {

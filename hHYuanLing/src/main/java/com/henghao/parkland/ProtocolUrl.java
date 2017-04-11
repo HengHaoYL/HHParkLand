@@ -29,19 +29,18 @@ public class ProtocolUrl {
 //    private static boolean isURL = false;
 
     static {
-        if (!isURL) {
-            // 生产地址
-            ROOT_URL = "http://221.13.13.134:2218/YL_BigData";
-        } else {
+        if (BuildConfig.DEBUG) {
             // 测试地址/192.168.1.12
-            ROOT_URL = "http://172.16.13.112:8080/YL_BigData";
+            ROOT_URL = "http://172.16.13.101:8080/YL_BigData";
             //172.16.13.101:8080/login/az?username=?&password=?
             /*ROOT_URL = "http://safe.higdata.com/Java_Nfc/";*/
 //			ROOT_URL = "http://192.168.1.12/Java_Nfc";
+        } else {
+            // 生产地址
+            ROOT_URL = "http://221.13.13.134:2218/YL_BigData";
         }
     }
 
-    // TODO 用户相关
     /************************
      * 用户相关
      **************************/
@@ -60,7 +59,6 @@ public class ProtocolUrl {
 
     /************************ 用户相关 end **************************/
 
-    // TODO app系统 相关
     /************************
      * app系统 相关
      **************************/

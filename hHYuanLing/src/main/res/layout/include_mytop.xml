@@ -4,6 +4,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_mytop"
         android:orientation="vertical">
@@ -30,7 +31,9 @@
             android:layout_width="fill_parent"
             android:layout_height="@dimen/btn_width_applycode"
             android:background="@color/app_bg"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="horizontal">
+
+        </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout
@@ -117,4 +120,15 @@
         </LinearLayout>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/bt_set_host"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:text="调试选项" />
 </RelativeLayout>

@@ -270,7 +270,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--项目信息-->
+        <!-- 项目信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectInfoActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -281,97 +281,97 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--会审结果-->
+        <!-- 会审结果 -->
         <activity
             android:name=".activity.projectmanage.ProjectHSResultActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--会审结果提交-->
+        <!-- 会审结果提交 -->
         <activity
             android:name=".activity.projectmanage.ProjectHSResultSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--会审结果详细信息-->
+        <!-- 会审结果详细信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectHSResultDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--供货方-->
+        <!-- 供货方 -->
         <activity
             android:name=".activity.projectmanage.ProjectGHFActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--供货方提交-->
+        <!-- 供货方提交 -->
         <activity
             android:name=".activity.projectmanage.ProjectGHFSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--供货方详细信息-->
+        <!-- 供货方详细信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectGHFDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--项目结算-->
+        <!-- 项目结算 -->
         <activity
             android:name=".activity.projectmanage.ProjectSettlementActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--项目结算提交-->
+        <!-- 项目结算提交 -->
         <activity
             android:name=".activity.projectmanage.ProjectSettlementSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--项目结算详细信息-->
+        <!-- 项目结算详细信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectSettlementDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--施工人员-->
+        <!-- 施工人员 -->
         <activity
             android:name=".activity.projectmanage.ProjectTeamActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--施工人员提交-->
+        <!-- 施工人员提交 -->
         <activity
             android:name=".activity.projectmanage.ProjectTeamSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--施工人员详细信息-->
+        <!-- 施工人员详细信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectTeamDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--开工报告-->
+        <!-- 开工报告 -->
         <activity
             android:name=".activity.projectmanage.ProjectKGBGActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--开工报告提交-->
+        <!-- 开工报告提交 -->
         <activity
             android:name=".activity.projectmanage.ProjectKGBGSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--开工报告详细信息-->
+        <!-- 开工报告详细信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectKGBGDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--设备信息-->
+        <!-- 设备信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectSBDataActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -387,121 +387,121 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--工序报验-->
+        <!-- 工序报验 -->
         <activity
             android:name=".activity.projectmanage.ProjectGXBYActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--工序报验提交-->
+        <!-- 工序报验提交 -->
         <activity
             android:name=".activity.projectmanage.ProjectGXBYSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--工序报验详细信息-->
+        <!-- 工序报验详细信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectGXBYDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--变更管理-->
+        <!-- 变更管理 -->
         <activity
             android:name=".activity.projectmanage.ProjectBGManageActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--变更管理提交-->
+        <!-- 变更管理提交 -->
         <activity
             android:name=".activity.projectmanage.ProjectBGManageSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--变更管理详细信息-->
+        <!-- 变更管理详细信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectBGManageDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--竣工验收-->
+        <!-- 竣工验收 -->
         <activity
             android:name=".activity.projectmanage.ProjectJunGongActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--竣工验收提交-->
+        <!-- 竣工验收提交 -->
         <activity
             android:name=".activity.projectmanage.ProjectJunGongSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--竣工验收详细信息-->
+        <!-- 竣工验收详细信息 -->
         <activity
             android:name=".activity.projectmanage.ProjectJunGongDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--现场勘查详细-->
+        <!-- 现场勘查详细 -->
         <activity
             android:name=".activity.projectmanage.ProjectXckcDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--现场勘查-->
+        <!-- 现场勘查 -->
         <activity
             android:name=".activity.projectmanage.ProjectXckcActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--现场勘查提交-->
+        <!-- 现场勘查提交 -->
         <activity
             android:name=".activity.projectmanage.ProjectXckcSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--项目信息详细-->
+        <!-- 项目信息详细 -->
         <activity
             android:name=".activity.projectmanage.ProjectInfoDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--图片信息-->
+        <!-- 图片信息 -->
         <activity
             android:name=".activity.SiftImagesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--技术交底-->
+        <!-- 技术交底 -->
         <activity
             android:name=".activity.projectmanage.ProjectTechnologActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--技术交底-->
+        <!-- 技术交底 -->
         <activity
             android:name=".activity.projectmanage.ProjectTechnologSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--技术交底-->
+        <!-- 技术交底 -->
         <activity
             android:name=".activity.projectmanage.ProjectTechnologDesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--进度申报-->
+        <!-- 进度申报 -->
         <activity
             android:name=".activity.projectmanage.ProjectDeclareActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--进度申报-->
+        <!-- 进度申报 -->
         <activity
             android:name=".activity.projectmanage.ProjectDeclareSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--进度申报-->
+        <!-- 进度申报 -->
         <activity
             android:name=".activity.projectmanage.ProjectDeclareDesActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -547,7 +547,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="Gr4Rq0Yl84nFIXH9lfNa5VkSKOKpEb1L" />
 
-
+        <activity android:name=".activity.DebugSetupActivity"></activity>
     </application>
 
 </manifest>
