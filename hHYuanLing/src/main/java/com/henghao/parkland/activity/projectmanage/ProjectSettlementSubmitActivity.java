@@ -14,6 +14,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
+import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -35,6 +36,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import id.zelory.compressor.FileUtil;
 
 /**
  * 项目管理 -- 项目结算提交
@@ -105,6 +107,7 @@ public class ProjectSettlementSubmitActivity extends ActivityFragmentSupport {
                             .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
                             .addFormDataPart("uid", getLoginUid())//用户ID
                             .addFormDataPart("dates", dates);//结算日期
+                    FileUtils.compressImagesFromList(mFileList, context);
                     for (File file : mFileList) {
                         multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//结算书图片
                     }
@@ -120,6 +123,7 @@ public class ProjectSettlementSubmitActivity extends ActivityFragmentSupport {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    mActivityFragmentView.viewLoading(View.GONE);
                                     Toast.makeText(ProjectSettlementSubmitActivity.this, "网络请求错误！", Toast.LENGTH_SHORT).show();
                                 }
                             });

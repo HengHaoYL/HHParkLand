@@ -2,8 +2,10 @@ package com.henghao.parkland.activity.projectmanage;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +34,8 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+
+import id.zelory.compressor.Compressor;
 
 
 /**
@@ -144,6 +148,18 @@ public class ProjectKGBGSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("kgTime", mData)
                 .addFormDataPart("uid", getLoginUid())//用户ID
                 .addFormDataPart("pid", String.valueOf(PID));//用户ID
+        //压缩文件(如果是图片的话)
+        try {
+            Compressor compressor = new Compressor.Builder(context)
+                    .setQuality(90)
+                    .setMaxHeight(2048)
+                    .setMaxWidth(2048)
+                    .setCompressFormat(Bitmap.CompressFormat.JPEG)
+                    .build();
+            douFile = compressor.compressToFile(douFile);
+        } catch (Exception e) {
+            Log.e("Compress", "压缩失败", e);
+        }
         multipartBuilder.addFormDataPart(douFile.getName(), douFile.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), douFile));//图片
         RequestBody requestBody = multipartBuilder.build();
         Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_SAVEKGBG).build();
@@ -153,6 +169,7 @@ public class ProjectKGBGSubmitActivity extends ActivityFragmentSupport {
             @Override
             public void onFailure(Request request, IOException e) {
                 e.printStackTrace();
+                mActivityFragmentView.viewLoading(View.GONE);
                 msg("网络请求错误！");
             }
 

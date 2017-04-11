@@ -15,6 +15,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
+import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -161,6 +162,7 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("xcPerson", name)
                 .addFormDataPart("uid", getLoginUid())//用户ID
                 .addFormDataPart("pid", String.valueOf(PID));//项目信息ID
+        FileUtils.compressImagesFromList(mFileList,context);
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//现场情况图片
         }
@@ -172,6 +174,7 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
             @Override
             public void onFailure(Request request, IOException e) {
                 e.printStackTrace();
+                mActivityFragmentView.viewLoading(View.GONE);
                 msg("网络请求错误！");
             }
 

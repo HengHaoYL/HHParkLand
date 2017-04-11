@@ -17,6 +17,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
+import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -128,6 +129,7 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
                             .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
                             .addFormDataPart("confirmingParty", confirmingParty)//
                             .addFormDataPart("times", times);//
+                    FileUtils.compressImagesFromList(mFileList,context);
                     for (File file : mFileList) {
                         multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//变更依据图片
                     }
@@ -143,6 +145,7 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    mActivityFragmentView.viewLoading(View.GONE);
                                     msg("网络请求错误！");
                                 }
                             });

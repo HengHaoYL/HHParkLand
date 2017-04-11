@@ -16,6 +16,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
+import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -137,6 +138,8 @@ public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("epAdd", epAdd)//企业地址
                 .addFormDataPart("epDate", epDate)//供货日期
                 .addFormDataPart("epTel", epTel);//联系方式
+        FileUtils.compressImagesFromList(mFileList1, context);
+        FileUtils.compressImagesFromList(mFileList2, context);
         for (File file : mFileList1) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//供货合同图片
         }
@@ -152,6 +155,7 @@ public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
             public void onFailure(Request request, IOException e) {
                 Log.e(TAG, "onFailure: " + e.getMessage());
                 e.printStackTrace();
+                mActivityFragmentView.viewLoading(View.GONE);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

@@ -2,6 +2,7 @@ package com.henghao.parkland.activity.projectmanage;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
+import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.squareup.okhttp.Call;
@@ -37,6 +39,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import id.zelory.compressor.Compressor;
 
 /**
  * 项目管理 -- 竣工验收
@@ -117,6 +120,9 @@ public class ProjectJunGongSubmitActivity extends ActivityFragmentSupport {
                 break;
             case R.id.tv_submit:
                 if (checkData()) {
+                    FileUtils.compressImagesFromList(mFileList1, context);
+                    FileUtils.compressImagesFromList(mFileList2, context);
+                    FileUtils.compressImagesFromList(mFileList3, context);
                     requestNetwork();
                 }
                 break;
@@ -124,6 +130,7 @@ public class ProjectJunGongSubmitActivity extends ActivityFragmentSupport {
     }
 
     /**
+     * /**
      * 访问网络
      */
     private void requestNetwork() {

@@ -25,7 +25,8 @@ public class ProtocolUrl {
      */
     public static String ROOT_URL = "";
 
-    public static boolean isURL = false;
+    private static boolean isURL = true;
+//    private static boolean isURL = false;
 
     static {
         if (!isURL) {

@@ -20,6 +20,7 @@ import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.CommonListStringAdapter;
 import com.henghao.parkland.fragment.XiangmuFragment;
+import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.utils.PopupWindowHelper;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.squareup.okhttp.Call;
@@ -251,6 +252,7 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("personnelType", personnelType)
                 .addFormDataPart("workPost", workPost)
                 .addFormDataPart("gxTime", gxTime);
+        FileUtils.compressImagesFromList(mFileList,context);
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//图片
         }

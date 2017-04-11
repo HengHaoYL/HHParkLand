@@ -3,11 +3,19 @@ package com.henghao.parkland.utils;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.util.Log;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import id.zelory.compressor.Compressor;
 
 
 public class FileUtils {
@@ -136,4 +144,35 @@ public class FileUtils {
 //
 //        return null;
 //    }
+    /**
+     * 压缩List中的图片
+     *
+     * @param files 文件list
+     */
+    public static void compressImagesFromList(List<File> files,Context context) {
+        List<File> tempList = new ArrayList<>();
+        Compressor compressor = new Compressor.Builder(context)
+                .setQuality(90)
+                .setMaxHeight(2048)
+                .setMaxWidth(2048)
+                .setCompressFormat(Bitmap.CompressFormat.JPEG)
+                .build();
+        for (int i = 0; i < files.size(); i++) {
+            File file = files.get(i);
+            Log.i("Compress", "压缩前, file→"+file.getAbsolutePath()+", size→"+file.length());
+            while (file.length() >= 1048576L) {
+                try {
+                    file = compressor.compressToFile(file);
+                } catch (Exception e) {
+                    //文件不是图片时会导致压缩失败
+                    Log.e("Compressor", "图片压缩失败", e);
+                    break;
+                }
+            }
+            Log.i("Compress", "压缩后" + file.length());
+            tempList.add(file);
+        }
+        files.clear();
+        files.addAll(tempList);
+    }
 }
