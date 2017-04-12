@@ -18,7 +18,7 @@ import com.benefit.buy.library.views.dialog.BaseDialog;
 import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.DebugSetupActivity;
+import com.henghao.parkland.activity.DebugSettingActivity;
 import com.henghao.parkland.activity.QiandaoActivity;
 import com.henghao.parkland.activity.projectmanage.ProjectInfoActivity;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
@@ -92,7 +92,7 @@ public class MyLoginFragment extends FragmentSupport {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), DebugSetupActivity.class));
+                startActivity(new Intent(getActivity(), DebugSettingActivity.class));
             }
         });
     }

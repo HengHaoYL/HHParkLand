@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -72,6 +74,18 @@ public class ProjectJunGongSubmitActivity extends ActivityFragmentSupport {
     private ArrayList<File> mFileList2 = new ArrayList<>();//被选中的竣工图图片文件
     private ArrayList<File> mFileList3 = new ArrayList<>();//被选中的竣工报告图片文件
 
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case FileUtils.COMPRESS_FINISH:
+                    mActivityFragmentView.viewLoading(View.GONE);
+                    requestNetwork();
+                    break;
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,10 +134,8 @@ public class ProjectJunGongSubmitActivity extends ActivityFragmentSupport {
                 break;
             case R.id.tv_submit:
                 if (checkData()) {
-                    FileUtils.compressImagesFromList(mFileList1, context);
-                    FileUtils.compressImagesFromList(mFileList2, context);
-                    FileUtils.compressImagesFromList(mFileList3, context);
-                    requestNetwork();
+                    mActivityFragmentView.viewLoading(View.VISIBLE, getString(R.string.compressing));
+                    FileUtils.compressImagesFromList(context, handler, mFileList1, mFileList2, mFileList3);
                 }
                 break;
         }

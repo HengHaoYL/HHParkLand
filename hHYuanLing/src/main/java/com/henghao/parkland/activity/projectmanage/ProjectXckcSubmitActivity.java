@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -57,15 +59,25 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
 
 
     private ArrayList<String> mSelectPath;
-
     private ArrayList<File> mFileList = new ArrayList<>();
-
     private static final int REQUEST_IMAGE = 0x00;
 
     private String mData;
     private String name;
     private String address;
     private String data;
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case FileUtils.COMPRESS_FINISH:
+                    mActivityFragmentView.viewLoading(View.GONE);
+                    requestData();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +113,8 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
         switch (v.getId()) {
             case R.id.tv_submit:
                 if (checkData()) {
-                    requestData();
+                    mActivityFragmentView.viewLoading(View.VISIBLE, getString(R.string.compressing));
+                    FileUtils.compressImagesFromList(context, handler, mFileList);
                 }
                 break;
             case R.id.et_time:
@@ -150,6 +163,7 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
         return startDateChooseDialog;
     }
 
+
     private void requestData() {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
@@ -162,7 +176,6 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("xcPerson", name)
                 .addFormDataPart("uid", getLoginUid())//用户ID
                 .addFormDataPart("pid", String.valueOf(PID));//项目信息ID
-        FileUtils.compressImagesFromList(mFileList,context);
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//现场情况图片
         }

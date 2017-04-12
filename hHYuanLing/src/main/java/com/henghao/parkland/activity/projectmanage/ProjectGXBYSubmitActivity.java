@@ -3,6 +3,8 @@ package com.henghao.parkland.activity.projectmanage;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -79,6 +81,18 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
     private List<String> jlPersons;//监理员
     private List<String> glPersons;//管理员
     private LayoutInflater inflater;
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case FileUtils.COMPRESS_FINISH:
+                    mActivityFragmentView.viewLoading(View.GONE);
+                    requestData();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,7 +200,8 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
                 break;
             case R.id.tv_submit:
                 if (checkData()) {
-                    requestData();
+                    mActivityFragmentView.viewLoading(View.VISIBLE,getString(R.string.compressing));
+                    FileUtils.compressImagesFromList(context, handler, mFileList);
                 }
                 break;
         }
@@ -252,7 +267,6 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("personnelType", personnelType)
                 .addFormDataPart("workPost", workPost)
                 .addFormDataPart("gxTime", gxTime);
-        FileUtils.compressImagesFromList(mFileList,context);
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//图片
         }

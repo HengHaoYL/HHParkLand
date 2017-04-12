@@ -221,4 +221,5 @@
     <string name="app">应用中心</string>
     <string name="workshow">信息展示</string>
     <string name="login_reset_password">忘记密码</string>
+    <string name="compressing">数据处理中</string>
 </resources>

@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -144,35 +145,52 @@ public class FileUtils {
 //
 //        return null;
 //    }
+
     /**
-     * 压缩List中的图片
+     * 压缩List中的图片，方法运行在子线程，压缩完成后会发送 what = {@value COMPRESS_FINISH} 到传入的 {@link Handler}
      *
-     * @param files 文件list
+     * @param filesArray 文件list数组
+     * @param handler    用于接收压缩进度的 {@link Handler}
+     * @return 执行图片压缩的线程 {@link Thread}
      */
-    public static void compressImagesFromList(List<File> files,Context context) {
-        List<File> tempList = new ArrayList<>();
-        Compressor compressor = new Compressor.Builder(context)
-                .setQuality(90)
-                .setMaxHeight(2048)
-                .setMaxWidth(2048)
-                .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                .build();
-        for (int i = 0; i < files.size(); i++) {
-            File file = files.get(i);
-            Log.i("Compress", "压缩前, file→"+file.getAbsolutePath()+", size→"+file.length());
-            while (file.length() >= 1048576L) {
-                try {
-                    file = compressor.compressToFile(file);
-                } catch (Exception e) {
-                    //文件不是图片时会导致压缩失败
-                    Log.e("Compressor", "图片压缩失败", e);
-                    break;
+    @SafeVarargs
+    public static Thread compressImagesFromList(final Context context, final Handler handler, final List<File>... filesArray) {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                for (List<File> files : filesArray) {
+                    List<File> tempList = new ArrayList<>();
+                    Compressor compressor = new Compressor.Builder(context)
+                            .setQuality(90)
+                            .setMaxHeight(2048)
+                            .setMaxWidth(2048)
+                            .setCompressFormat(Bitmap.CompressFormat.JPEG)
+                            .build();
+                    for (int i = 0; i < files.size(); i++) {
+                        File file = files.get(i);
+                        Log.i("Compress", "压缩前, file→" + file.getAbsolutePath() + ", size→" + file.length());
+                        while (file.length() >= 1048576L) {
+                            try {
+                                file = compressor.compressToFile(file);
+                            } catch (Exception e) {
+                                //文件不是图片时会导致压缩失败
+                                Log.e("Compressor", "图片压缩失败", e);
+                                break;
+                            }
+                        }
+                        Log.i("Compress", "压缩后" + file.length());
+                        tempList.add(file);
+                    }
+                    files.clear();
+                    files.addAll(tempList);
                 }
+                //发送压缩完成消息
+                handler.sendEmptyMessage(COMPRESS_FINISH);
             }
-            Log.i("Compress", "压缩后" + file.length());
-            tempList.add(file);
-        }
-        files.clear();
-        files.addAll(tempList);
+        };
+        thread.start();
+        return thread;
     }
+
+    public static final int COMPRESS_FINISH = 100;
 }

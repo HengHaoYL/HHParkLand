@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -56,12 +58,21 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
     @ViewInject(R.id.et_content)
     private EditText et_content;
 
-
     private ArrayList<String> mSelectPath;
-
     private ArrayList<File> mFileList = new ArrayList<>();
-
     private static final int REQUEST_IMAGE = 0x00;
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case FileUtils.COMPRESS_FINISH:
+                    mActivityFragmentView.viewLoading(View.GONE);
+                    requestData();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +103,8 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
         switch (v.getId()) {
             case R.id.tv_submit:
                 if (checkData()) {
-                    requestData();
+                    mActivityFragmentView.viewLoading(View.VISIBLE, getString(R.string.compressing));
+                    FileUtils.compressImagesFromList(context, handler, mFileList);
                 }
                 break;
             case R.id.tv_dates:
@@ -143,7 +155,7 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         SharedPreferences preferences = getLoginUserSharedPre();
-        String UID = preferences.getString(Constant.USERID, "0");//用户ID
+        String UID = preferences.getString(Constant.USERID, "");//用户ID
         int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
         String dates = tv_dates.getText().toString().trim();//日期
         String sites = et_sites.getText().toString().trim();//地点
@@ -155,7 +167,6 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("content", content)//内容
                 .addFormDataPart("uid", UID)//用户ID
                 .addFormDataPart("pid", String.valueOf(PID));//项目信息ID
-        FileUtils.compressImagesFromList(mFileList,context);
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//图片
         }

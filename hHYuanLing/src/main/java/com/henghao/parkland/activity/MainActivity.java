@@ -70,12 +70,12 @@ public class MainActivity extends ActivityFragmentSupport {
         this.mActivityFragmentView.viewLoading(View.GONE);
         this.mActivityFragmentView.clipToPadding(true);
         setContentView(this.mActivityFragmentView);
-        if (getLoginUid() == null) {
-            Intent intent = new Intent();
-            intent.setClass(this, LoginAndRegActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        if (getLoginUid() == null) {
+//            Intent intent = new Intent();
+//            intent.setClass(this, LoginAndRegActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
         com.lidroid.xutils.ViewUtils.inject(this);
         menuList();
         try {

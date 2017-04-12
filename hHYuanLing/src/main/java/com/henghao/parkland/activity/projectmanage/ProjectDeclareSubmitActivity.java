@@ -3,6 +3,8 @@ package com.henghao.parkland.activity.projectmanage;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +57,17 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
     private static final int REQUEST_IMAGE = 0x00;
 
     private String mData;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case FileUtils.COMPRESS_FINISH:
+                    mActivityFragmentView.viewLoading(View.GONE);
+                    submit();
+                    break;
+            }
+        }
+    };
 
 
     @Override
@@ -86,7 +99,8 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
         switch (v.getId()) {
             case R.id.tv_submit:
                 if (checkData()) {
-                    requestData();
+                    mActivityFragmentView.viewLoading(View.VISIBLE, getString(R.string.compressing));
+                    FileUtils.compressImagesFromList(context, handler, mFileList);
                 }
                 break;
             case R.id.et_time:
@@ -125,7 +139,7 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
         return startDateChooseDialog;
     }
 
-    private void requestData() {
+    private void submit() {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
@@ -134,7 +148,6 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("dates", mData)
                 .addFormDataPart("uid", getLoginUid())//用户ID
                 .addFormDataPart("pid", String.valueOf(PID));//项目信息ID
-        FileUtils.compressImagesFromList(mFileList,context);
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//图片
         }
@@ -170,7 +183,6 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
             }
         });
     }
-
 
     /**
      * 添加图片

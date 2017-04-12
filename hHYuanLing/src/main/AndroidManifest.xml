@@ -547,7 +547,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="Gr4Rq0Yl84nFIXH9lfNa5VkSKOKpEb1L" />
 
-        <activity android:name=".activity.DebugSetupActivity"></activity>
+        <activity android:name=".activity.DebugSettingActivity"></activity>
     </application>
 
 </manifest>

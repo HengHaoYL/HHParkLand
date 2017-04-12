@@ -3,6 +3,8 @@ package com.henghao.parkland.activity.projectmanage;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -61,6 +63,18 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
     private ArrayList<File> mFileList = new ArrayList<>();
     private static final String TAG = "ProjectBGManageSubmitAc";
 
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case FileUtils.COMPRESS_FINISH://压缩完成
+                    mActivityFragmentView.viewLoading(View.GONE);
+                    submit();
+                    break;
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,63 +130,67 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
                 break;
             case R.id.tv_submit:
                 if (checkData()) {
-                    /**
-                     * 请求访问网络
-                     */
-                    OkHttpClient okHttpClient = new OkHttpClient();
-                    Request.Builder builder = new Request.Builder();
-                    MultipartBuilder multipartBuilder = new MultipartBuilder();
-                    String times = tvTimes.getText().toString().trim();//变更时间
-                    int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
-                    multipartBuilder.type(MultipartBuilder.FORM)//
-                            .addFormDataPart("uid", getLoginUid())//用户ID
-                            .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
-                            .addFormDataPart("confirmingParty", confirmingParty)//
-                            .addFormDataPart("times", times);//
-                    FileUtils.compressImagesFromList(mFileList,context);
-                    for (File file : mFileList) {
-                        multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//变更依据图片
-                    }
-                    RequestBody requestBody = multipartBuilder.build();
-                    Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_SAVEALTERATIONMSG).build();
-                    mActivityFragmentView.viewLoading(View.VISIBLE);
-                    Call call = okHttpClient.newCall(request);
-                    call.enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Request request, IOException e) {
-                            Log.e(TAG, "onFailure: " + e.getMessage());
-                            e.printStackTrace();
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mActivityFragmentView.viewLoading(View.GONE);
-                                    msg("网络请求错误！");
-                                }
-                            });
-                        }
+                    mActivityFragmentView.viewLoading(View.VISIBLE, getString(R.string.compressing));
+                    FileUtils.compressImagesFromList(context, handler, mFileList);
+                    break;
+                }
+        }
+    }
 
+    /**
+     * 提交信息
+     */
+    private void submit() {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request.Builder builder = new Request.Builder();
+        MultipartBuilder multipartBuilder = new MultipartBuilder();
+        String times = tvTimes.getText().toString().trim();//变更时间
+        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        multipartBuilder.type(MultipartBuilder.FORM)//
+                .addFormDataPart("uid", getLoginUid())//用户ID
+                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
+                .addFormDataPart("confirmingParty", confirmingParty)//
+                .addFormDataPart("times", times);//
+        for (File file : mFileList) {
+            multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//变更依据图片
+        }
+        RequestBody requestBody = multipartBuilder.build();
+        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_SAVEALTERATIONMSG).build();
+        mActivityFragmentView.viewLoading(View.VISIBLE);
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                Log.e(TAG, "onFailure: " + e.getMessage());
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mActivityFragmentView.viewLoading(View.GONE);
+                        msg("网络请求错误！");
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                String content = response.body().string();
+                try {
+                    JSONObject jsonObject = new JSONObject(content);
+                    final String result = jsonObject.getString("result");
+                    runOnUiThread(new Runnable() {
                         @Override
-                        public void onResponse(Response response) throws IOException {
-                            String content = response.body().string();
-                            try {
-                                JSONObject jsonObject = new JSONObject(content);
-                                final String result = jsonObject.getString("result");
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        mActivityFragmentView.viewLoading(View.GONE);
-                                        Toast.makeText(ProjectBGManageSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                finish();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                        public void run() {
+                            mActivityFragmentView.viewLoading(View.GONE);
+                            Toast.makeText(ProjectBGManageSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
                         }
                     });
+                    finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                break;
-        }
+            }
+        });
     }
 
     /**

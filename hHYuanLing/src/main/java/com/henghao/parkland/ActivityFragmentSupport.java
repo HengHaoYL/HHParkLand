@@ -26,6 +26,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -497,7 +498,7 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
 
     @Override
     public String getLoginUid() {
-        return this.mSharedPreferences.getString(Constant.USERID, "0");
+        return this.mSharedPreferences.getString(Constant.USERID, "");
     }
 
     @Override
@@ -629,6 +630,7 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
                 ;
             }.sendEmptyMessageDelayed(0, delayed);
         } catch (Exception e) {
+            Log.e("msg", "发生错误", e);
         }
     }
 

@@ -252,8 +252,8 @@ public class XiangmuFragment extends FragmentSupport {
         Request.Builder builder = new Request.Builder();
         FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Constant.SHARED_SET, 0);
-        String UID = sharedPreferences.getString(Constant.USERID, "0");
-        requestBodyBuilder.add("uid", UID);
+        String UID = sharedPreferences.getString(Constant.USERID, "");
+        if (UID != null) requestBodyBuilder.add("uid", UID);
         RequestBody requestBody = requestBodyBuilder.build();
         Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_QUERYPROJECTMSG).build();
         Call call = okHttpClient.newCall(request);
