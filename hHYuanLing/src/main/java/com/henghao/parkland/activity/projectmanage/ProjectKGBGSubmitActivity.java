@@ -216,6 +216,10 @@ public class ProjectKGBGSubmitActivity extends ActivityFragmentSupport {
                     // Get the Uri of the selected file
                     Uri uri = data.getData();
                     String path = FileUtils.getPath(this, uri);
+                    if (!checkFile(path)) {
+                        Toast.makeText(context, "文件格式不正确", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
                     douFile = new File(path);
                     tv_wenjian.setText("文件名：" + douFile.getName());
                 }
@@ -224,4 +228,11 @@ public class ProjectKGBGSubmitActivity extends ActivityFragmentSupport {
         }
     }
 
+    private String[] suffixEnable = {".txt", ".doc", ".docx", ".rtf", ".pdf"};
+
+    private boolean checkFile(String path) {
+        for (String suffix : suffixEnable)
+            if (path.endsWith(suffix)) return true;
+        return false;
+    }
 }

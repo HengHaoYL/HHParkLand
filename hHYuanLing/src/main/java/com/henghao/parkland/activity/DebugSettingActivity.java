@@ -35,7 +35,7 @@ public class DebugSettingActivity extends Activity {
     private final int HOST = 1;         //00000001
 
     //Preferences键
-    private final String KEY_HOST = "setting.host";
+    public static final String KEY_HOST = "setting.host";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

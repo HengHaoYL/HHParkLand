@@ -76,7 +76,7 @@ public class XiangmuFragment extends FragmentSupport {
      * 标题点击事件
      */
     private void initClick() {
-        mCenterTextView.setOnClickListener(new View.OnClickListener() {
+        mRightTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /**
@@ -235,6 +235,9 @@ public class XiangmuFragment extends FragmentSupport {
         initWithBar();
         this.mLeftImageView.setVisibility(View.VISIBLE);
         this.mLeftImageView.setImageResource(R.drawable.home_liebiao);
+        initWithRightBar();
+        mRightTextView.setVisibility(View.VISIBLE);
+        mRightTextView.setText("切换");
     }
 
     @Override

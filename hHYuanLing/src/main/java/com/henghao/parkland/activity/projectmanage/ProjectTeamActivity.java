@@ -228,7 +228,7 @@ public class ProjectTeamActivity extends ActivityFragmentSupport implements MyCa
                         List<DeleteEntity> deleteArray = new ArrayList<DeleteEntity>();
                         for (Integer id : itemID) {
                             DeleteEntity entity = new DeleteEntity();
-                            entity.setUid(new Integer(getLoginUid()).intValue());
+                            entity.setUid(getLoginUid());
                             entity.setId(id);
                             deleteArray.add(entity);
                         }

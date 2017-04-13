@@ -2,6 +2,7 @@ package com.henghao.parkland.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,14 +15,14 @@ import android.widget.RadioGroup;
 import com.benefit.buy.library.utils.NSLog;
 import com.benefit.buy.library.views.ToastView;
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.Constant;
+import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.adapter.FragmentTabAdapter;
 import com.henghao.parkland.fragment.AppFragment;
 import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.fragment.HomeFragment;
-import com.henghao.parkland.fragment.MsgFragment;
 import com.henghao.parkland.fragment.MyLoginFragment;
 import com.henghao.parkland.fragment.WorkShowFragment;
 import com.henghao.parkland.fragment.XiangmuFragment;
@@ -114,7 +115,10 @@ public class MainActivity extends ActivityFragmentSupport {
     public void initData() {
         // 导航栏
         mActivityFragmentView.getNavitionBarView().setVisibility(View.GONE);
-
+        if (BuildConfig.DEBUG) {
+            SharedPreferences sp = getSharedPreferences("DebugSetting", MODE_PRIVATE);
+            ProtocolUrl.ROOT_URL = sp.getString(DebugSettingActivity.KEY_HOST, "http://172.16.13.101:8080/YL_BigData");
+        }
 
     }
 
