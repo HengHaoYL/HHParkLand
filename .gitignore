@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gradle/
+.idea/
+/build/
+/hHYuanLing/build/
+/x_library/build/
+/HHParkLand.iml
+/hHYuanLing/hHYuanLing.iml
+/x_library/x_library.iml
+/local.properties
+/HHYuanLing.iml
