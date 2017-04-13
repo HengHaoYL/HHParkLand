@@ -97,6 +97,7 @@ public class QiandaoActivity extends ActivityFragmentSupport {
     private ImageView img_confirm_qiandao;
     private double latitude;//纬度
     private double longitude;//经度
+    private String addrStr;//当前地理位置
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +124,7 @@ public class QiandaoActivity extends ActivityFragmentSupport {
                 String time = this.tv_hourminute_qiandao.getText().toString();// 签到时间
                 String address = this.tv_place_qiandao.getText().toString(); // 签到地址
                 String company = this.tv_company_qiandao.getText().toString();// 当前企业
-                if (address.equals("没有定位信息！")) {
+                if (ToolsKit.isEmpty(addrStr)) {
                     Toast.makeText(QiandaoActivity.this, "当前没有定位，请定位后再签到！", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -176,7 +177,7 @@ public class QiandaoActivity extends ActivityFragmentSupport {
             }
             latitude = location.getLatitude();
             longitude = location.getLongitude();
-            String addrStr = location.getAddrStr();
+            addrStr = location.getAddrStr();
             System.out.println("经度：" + longitude + "，纬度：" + latitude);
             /**
              * 如果GPS未打开且无网络
