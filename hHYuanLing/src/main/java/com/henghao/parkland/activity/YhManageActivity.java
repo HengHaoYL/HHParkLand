@@ -373,13 +373,9 @@ public class YhManageActivity extends ActivityFragmentSupport {
 //                Bitmap bitmap = data.getParcelableExtra(DECODED_BITMAP_KEY);//二维码照片
                 okHttpClient = new OkHttpClient();
                 Request.Builder builder = new Request.Builder();
-                /**
-                 * 查询二维码ID
-                 */
+                //查询二维码ID
                 Request request = builder.url(ProtocolUrl.ROOT_URL + ProtocolUrl.QUERYTREEMSGBYID + "?treeId=" + content).get().build();
-                /**
-                 * 把request封装
-                 */
+                //把request封装
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
@@ -399,7 +395,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
                         try {
                             JSONObject jsonObject = new JSONObject(result_str);
                             int status = jsonObject.getInt("status");
-                            if (status == 1) {
+                            if (status > 0) {
                                 final String result = jsonObject.getString("result");
                                 runOnUiThread(new Runnable() {
                                     @Override
@@ -409,15 +405,11 @@ public class YhManageActivity extends ActivityFragmentSupport {
                                     }
                                 });
                             } else {
-                                /**
-                                 *   获取养护时间
-                                 */
+                                //获取养护时间
                                 Date date = new Date(System.currentTimeMillis());
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                                 String time_format = dateFormat.format(date);//格式化时间
-                                /**
-                                 * 跳转到植物养护信息界面
-                                 */
+                                //跳转到植物养护信息界面
                                 Intent intent = new Intent(YhManageActivity.this, MaintenanceActivity.class);
                                 intent.putExtra("treeId", content);
                                 intent.putExtra("yhStatusname", str_state);
@@ -447,9 +439,8 @@ public class YhManageActivity extends ActivityFragmentSupport {
                             "对不起，获取不到当前的地理位置！请开启GPS和网络", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                /**
-                 * 跳转到植物信息录入界面
-                 */
+
+                //跳转到植物信息录入界面
                 Intent intent = new Intent(YhManageActivity.this, TreeMessageActivity.class);
                 intent.putExtra("treeId", content);
                 intent.putExtra("treeSite", addrStr);
