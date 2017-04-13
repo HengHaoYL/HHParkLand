@@ -4,7 +4,7 @@
     <string name="app_name">园林企业管理平台</string>
     <!-- 共有的 -->
     <string name="back">返回</string>
-    <string name="home_exit">再按一次退出^_^</string>
+    <string name="home_exit">press again to exit</string>
     <string name="more">更多</string>
     <string name="account_cancel_hint">提示</string>
     <string name="account_cancel_affirm">是否确定退出？</string>
@@ -29,23 +29,23 @@
 
     <!-- main tab -->
     <string name="hc_home">首页</string>
-    <string name="hc_xinxi">消息</string>
+    <string name="hc_xinxi">message</string>
     <string name="hc_work">工作台</string>
     <string name="hc_xiangmu">应用</string>
     <string name="hc_xiangmuguanl">项目管理</string>
     <string name="hc_my">我的</string>
 
     <!-- 登录 -->
-    <string name="login">登 录</string>
+    <string name="login">login</string>
     <string name="click_login">点击登录</string>
     <string name="login_user_phone">用户名/手机号</string>
-    <string name="login_phone">手机号</string>
+    <string name="login_phone">phone number</string>
     <string name="login_user">用户名</string>
-    <string name="login_pass_hint">密码</string>
-    <string name="login_pass_find">忘记密码</string>
-    <string name="login_pass_quick">注册账号</string>
-    <string name="login_msg_hint">亲，你还没有登录^_^</string>
-    <string name="login_exit">注销</string>
+    <string name="login_pass_hint">password</string>
+    <string name="login_pass_find">forget password</string>
+    <string name="login_pass_quick">register</string>
+    <string name="login_msg_hint">not login yet</string>
+    <string name="login_exit">logout</string>
     <string name="cooperation_login">使用合作网站账号登录</string>
     <string name="register_hint_protocol">我已阅读并接受</string>
     <string name="register_hint_protocol_click">溯源用户协议</string>
@@ -220,6 +220,6 @@
     <string name="title_activity_project_manager">ProjectManagerActivity</string>
     <string name="app">应用中心</string>
     <string name="workshow">信息展示</string>
-    <string name="login_reset_password">忘记密码</string>
     <string name="compressing">数据处理中</string>
+    <string name="login_reset_password">forget password</string>
 </resources>
