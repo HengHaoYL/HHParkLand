@@ -74,10 +74,10 @@ public class AppFragment extends FragmentSupport {
 //        mEntity6.setName("备用金申请");
 //        mList.add(mEntity6);
         //第六个
-        AppGridEntity mEntity6 = new AppGridEntity();
-        mEntity6.setImageId(R.drawable.app_six);
-        mEntity6.setName("社区");
-        mList.add(mEntity6);
+//        AppGridEntity mEntity6 = new AppGridEntity();
+//        mEntity6.setImageId(R.drawable.app_six);
+//        mEntity6.setName("社区");
+//        mList.add(mEntity6);
         //第七个
         AppGridEntity mEntity7 = new AppGridEntity();
         mEntity7.setImageId(R.drawable.app_seven);
