@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:padding="@dimen/padding_big"
-                android:text="当前地址"
+                android:text="正在获取定位......"
                 android:textColor="@color/text_color_c"
                 android:textSize="@dimen/gj_d" />
 
