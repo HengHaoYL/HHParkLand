@@ -22,7 +22,7 @@
     <color name="bgColor_overlay">#60000000</color>
     <color name="black">#ff000000</color>
     <color name="black_deep">#FF000000</color>
-    <color name="blue">#009CFF</color>
+    <color name="blue">#3497DA</color>
     <color name="bottom_bar_normal_bg">#2D2F31</color>
     <color name="bottom_text_color_normal">#ffffff</color>
     <color name="btn_answer_normal">#2dafa3</color>
@@ -51,6 +51,7 @@
     <color name="common_botton_bar_blue">#2ea7e0</color>
     <color name="common_top_bar_blue">#4ebcd3</color>
     <color name="cyan">#00ff00</color>
+    <color name="deepblue">#6BA0CA</color>
     <color name="default_circle_indicator_fill_color">#FFFFFFFF</color>
     <color name="default_circle_indicator_page_color">#00000000</color>
     <color name="default_circle_indicator_stroke_color">#FFDDDDDD</color>

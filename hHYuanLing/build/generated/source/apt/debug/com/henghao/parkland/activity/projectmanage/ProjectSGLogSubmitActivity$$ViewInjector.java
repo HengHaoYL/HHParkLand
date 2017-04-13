@@ -7,9 +7,7 @@ import butterknife.ButterKnife.Finder;
 public class ProjectSGLogSubmitActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectSGLogSubmitActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624515, "field 'tvTitle'");
-    target.tvTitle = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624069, "field 'tvDates' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624068, "field 'tvDates' and method 'onClick'");
     target.tvDates = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -30,7 +28,7 @@ public class ProjectSGLogSubmitActivity$$ViewInjector {
     view = finder.findRequiredView(source, 2131624252, "field 'etBuilder'");
     target.etBuilder = (android.widget.EditText) view;
     view = finder.findRequiredView(source, 2131624253, "field 'btnSub' and method 'onClick'");
-    target.btnSub = (android.widget.Button) view;
+    target.btnSub = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
         @Override public void onClick(
@@ -42,7 +40,6 @@ public class ProjectSGLogSubmitActivity$$ViewInjector {
   }
 
   public static void reset(com.henghao.parkland.activity.projectmanage.ProjectSGLogSubmitActivity target) {
-    target.tvTitle = null;
     target.tvDates = null;
     target.etProactContent = null;
     target.etTechnicalIndex = null;

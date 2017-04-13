@@ -14,6 +14,8 @@
     <attr format="string" name="title"/>
     <attr format="dimension" name="unSelectstrokeWidth"/>
     <attr format="color" name="unselectedColor"/>
+    <attr format="integer" name="visible_tab_count"/>
+    <attr format="boolean" name="windowActionBar"/>
     <bool name="abc_action_bar_embed_tabs">true</bool>
     <bool name="abc_allow_stacked_button_bar">true</bool>
     <bool name="abc_config_actionMenuItemAllCaps">true</bool>
@@ -43,7 +45,8 @@
     <color name="bgColor_overlay">#60000000</color>
     <color name="black">#ff000000</color>
     <color name="black_deep">#FF000000</color>
-    <color name="blue">#009CFF</color>
+    <color name="blue">#3497DA</color>
+    <color name="bottom_bar">#f5f5f5</color>
     <color name="bottom_bar_normal_bg">#2D2F31</color>
     <color name="bottom_text_color_normal">#ffffff</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
@@ -65,7 +68,7 @@
     <color name="btn_login_pressed">#46678d</color>
     <color name="btn_logout_normal">#d33f3f</color>
     <color name="btn_logout_pressed">#DA5A4D</color>
-    <color name="btn_my_color">#00acff </color>
+    <color name="btn_my_color">#00acff</color>
     <color name="btn_press_color">#66000000</color>
     <color name="btn_pressed_green_solid">#B6DA53</color>
     <color name="btn_register_normal">#ffffff</color>
@@ -89,6 +92,8 @@
     <color name="common_top_bar_blue">#4ebcd3</color>
     <color name="contents_text">#ff000000</color>
     <color name="cyan">#00ff00</color>
+    <color name="darkblue">#2477aA</color>
+    <color name="deepblue">#6BA0CA</color>
     <color name="default_circle_indicator_fill_color">#FFFFFFFF</color>
     <color name="default_circle_indicator_page_color">#00000000</color>
     <color name="default_circle_indicator_stroke_color">#FFDDDDDD</color>
@@ -124,12 +129,12 @@
     <color name="grid_state_pressed">#1Affffff</color>
     <color name="half_transparent">#45000000</color>
     <color name="hc_hint_color">#4e4e4e</color>
-    <color name="hc_more_bg">#35000000 </color>
-    <color name="header">#2F2F2F</color>
+    <color name="hc_more_bg">#35000000</color>
+    <color name="header">#3398d9</color>
     <color name="headergreen">#59B187</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
-    <color name="hint_color">#dedede</color>
+    <color name="hint_color">#D9D9D9</color>
     <color name="holo_blue_bright">#ff00ddff</color>
     <color name="holo_green_light">#ff99cc00</color>
     <color name="holo_orange_light">#ffffbb33</color>
@@ -137,7 +142,7 @@
     <color name="light_gray">#ff999999</color>
     <color name="lightgreen">#99CC33</color>
     <color name="lightseagreen">#38bdb3</color>
-    <color name="line">#e5e5e5 </color>
+    <color name="line">#e5e5e5</color>
     <color name="list_itease_primary_color">#000</color>
     <color name="list_itease_secondary_color">#888888</color>
     <color name="login_code_hint">#ffe5e5</color>
@@ -195,18 +200,18 @@
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <color name="tab_text_nonr">#EDEDED</color>
-    <color name="tab_text_sel">#77C256</color>
+    <color name="tab_text_nonr">#666666</color>
+    <color name="tab_text_sel">#3398d9</color>
     <color name="text_10">#333333</color>
     <color name="text_11">#999999</color>
     <color name="text_color">#777777</color>
-    <color name="text_color_a">#444444 </color>
-    <color name="text_color_b">#777777 </color>
+    <color name="text_color_a">#444444</color>
+    <color name="text_color_b">#777777</color>
     <color name="text_color_c">#a0a0a0</color>
     <color name="text_color_d">#c0c0c0</color>
-    <color name="text_color_green">#26bd9f </color>
-    <color name="text_color_t">#7b000000 </color>
-    <color name="text_color_w">#7bffffff </color>
+    <color name="text_color_green">#26bd9f</color>
+    <color name="text_color_t">#7b000000</color>
+    <color name="text_color_w">#7bffffff</color>
     <color name="top_bar_normal_bg">#00acff</color>
     <color name="topbar_3">#339EFE</color>
     <color name="transparent">#00000000</color>
@@ -226,6 +231,7 @@
     <color name="vpi__bright_foreground_inverse_holo_dark">@color/vpi__bright_foreground_holo_light</color>
     <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
     <color name="white">#ffffff</color>
+    <color name="yellow">#f0c13b</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode">
             
             <enum name="normal" value="0"/>
@@ -269,6 +275,7 @@
             <enum name="wrap_content" value="0"/>
         </attr><attr format="reference" name="actionBarDivider"/><attr format="reference" name="actionBarItemBackground"/><attr format="reference" name="actionMenuTextAppearance"/><attr format="color|reference" name="actionMenuTextColor"/><attr format="reference" name="actionModeStyle"/><attr format="reference" name="actionModeCloseButtonStyle"/><attr format="reference" name="actionModeBackground"/><attr format="reference" name="actionModeSplitBackground"/><attr format="reference" name="actionModeCloseDrawable"/><attr format="reference" name="actionModeCutDrawable"/><attr format="reference" name="actionModeCopyDrawable"/><attr format="reference" name="actionModePasteDrawable"/><attr format="reference" name="actionModeSelectAllDrawable"/><attr format="reference" name="actionModeShareDrawable"/><attr format="reference" name="actionModeFindDrawable"/><attr format="reference" name="actionModeWebSearchDrawable"/><attr format="reference" name="actionModePopupWindowStyle"/><attr format="reference" name="textAppearanceLargePopupMenu"/><attr format="reference" name="textAppearanceSmallPopupMenu"/><attr format="reference" name="textAppearancePopupMenuHeader"/><attr format="reference" name="dialogTheme"/><attr format="dimension" name="dialogPreferredPadding"/><attr format="reference" name="listDividerAlertDialog"/><attr format="reference" name="actionDropDownStyle"/><attr format="dimension" name="dropdownListPreferredItemHeight"/><attr format="reference" name="spinnerDropDownItemStyle"/><attr format="reference" name="homeAsUpIndicator"/><attr format="reference" name="actionButtonStyle"/><attr format="reference" name="buttonBarStyle"/><attr format="reference" name="buttonBarButtonStyle"/><attr format="reference" name="selectableItemBackground"/><attr format="reference" name="selectableItemBackgroundBorderless"/><attr format="reference" name="borderlessButtonStyle"/><attr format="reference" name="dividerVertical"/><attr format="reference" name="dividerHorizontal"/><attr format="reference" name="activityChooserViewStyle"/><attr format="reference" name="toolbarStyle"/><attr format="reference" name="toolbarNavigationButtonStyle"/><attr format="reference" name="popupMenuStyle"/><attr format="reference" name="popupWindowStyle"/><attr format="reference|color" name="editTextColor"/><attr format="reference" name="editTextBackground"/><attr format="reference" name="imageButtonStyle"/><attr format="reference" name="textAppearanceSearchResultTitle"/><attr format="reference" name="textAppearanceSearchResultSubtitle"/><attr format="reference|color" name="textColorSearchUrl"/><attr format="reference" name="searchViewStyle"/><attr format="dimension" name="listPreferredItemHeight"/><attr format="dimension" name="listPreferredItemHeightSmall"/><attr format="dimension" name="listPreferredItemHeightLarge"/><attr format="dimension" name="listPreferredItemPaddingLeft"/><attr format="dimension" name="listPreferredItemPaddingRight"/><attr format="reference" name="dropDownListViewStyle"/><attr format="reference" name="listPopupWindowStyle"/><attr format="reference" name="textAppearanceListItem"/><attr format="reference" name="textAppearanceListItemSmall"/><attr format="reference" name="panelBackground"/><attr format="dimension" name="panelMenuListWidth"/><attr format="reference" name="panelMenuListTheme"/><attr format="reference" name="listChoiceBackgroundIndicator"/><attr format="color" name="colorPrimary"/><attr format="color" name="colorPrimaryDark"/><attr format="color" name="colorAccent"/><attr format="color" name="colorControlNormal"/><attr format="color" name="colorControlActivated"/><attr format="color" name="colorControlHighlight"/><attr format="color" name="colorButtonNormal"/><attr format="color" name="colorSwitchThumbNormal"/><attr format="reference" name="controlBackground"/><attr format="color" name="colorBackgroundFloating"/><attr format="reference" name="alertDialogStyle"/><attr format="reference" name="alertDialogButtonGroupStyle"/><attr format="boolean" name="alertDialogCenterButtons"/><attr format="reference" name="alertDialogTheme"/><attr format="reference|color" name="textColorAlertDialogListItem"/><attr format="reference" name="buttonBarPositiveButtonStyle"/><attr format="reference" name="buttonBarNegativeButtonStyle"/><attr format="reference" name="buttonBarNeutralButtonStyle"/><attr format="reference" name="autoCompleteTextViewStyle"/><attr format="reference" name="buttonStyle"/><attr format="reference" name="buttonStyleSmall"/><attr format="reference" name="checkboxStyle"/><attr format="reference" name="checkedTextViewStyle"/><attr format="reference" name="editTextStyle"/><attr format="reference" name="radioButtonStyle"/><attr format="reference" name="ratingBarStyle"/><attr format="reference" name="ratingBarStyleIndicator"/><attr format="reference" name="ratingBarStyleSmall"/><attr format="reference" name="seekBarStyle"/><attr format="reference" name="spinnerStyle"/><attr format="reference" name="switchStyle"/><attr format="reference" name="listMenuViewStyle"/></declare-styleable>
     <declare-styleable name="ButtonBarLayout"><attr format="boolean" name="allowStacking"/></declare-styleable>
+    <declare-styleable name="CircleImageView"><attr format="dimension" name="border_width"/><attr format="color" name="border_color"/></declare-styleable>
     <declare-styleable name="CirclePageIndicator"><attr name="centered"/><attr format="color" name="fillColor"/><attr format="color" name="pageColor"/><attr name="android:orientation"/><attr format="dimension" name="radius"/><attr format="boolean" name="snap"/><attr format="color" name="strokeColor"/><attr name="strokeWidth"/><attr name="android:background"/></declare-styleable>
     <declare-styleable name="CircularImageView"><attr format="boolean" name="border"/><attr format="dimension" name="border_width"/><attr format="color" name="border_color"/><attr format="boolean" name="shadow"/></declare-styleable>
     <declare-styleable name="ColorStateListItem"><attr name="android:color"/><attr format="float" name="alpha"/><attr name="android:alpha"/></declare-styleable>
@@ -406,7 +413,7 @@
             <enum name="screen" value="15"/>
         </attr></declare-styleable>
     <declare-styleable name="ViewDataEmpty"><attr format="reference" name="viewMain"/><attr format="reference" name="viewEmpty"/></declare-styleable>
-    <declare-styleable name="ViewPagerIndicator"><attr format="reference" name="vpiCirclePageIndicatorStyle"/><attr format="reference" name="vpiIconPageIndicatorStyle"/><attr format="reference" name="vpiLinePageIndicatorStyle"/><attr format="reference" name="vpiTitlePageIndicatorStyle"/><attr format="reference" name="vpiTabPageIndicatorStyle"/><attr format="reference" name="vpiUnderlinePageIndicatorStyle"/></declare-styleable>
+    <declare-styleable name="ViewPagerIndicator"><attr format="reference" name="vpiCirclePageIndicatorStyle"/><attr format="reference" name="vpiIconPageIndicatorStyle"/><attr format="reference" name="vpiLinePageIndicatorStyle"/><attr format="reference" name="vpiTitlePageIndicatorStyle"/><attr format="reference" name="vpiTabPageIndicatorStyle"/><attr format="reference" name="vpiUnderlinePageIndicatorStyle"/><attr name="visible_tab_count"/></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
     <declare-styleable name="drop_down_list_attr"><attr format="boolean" name="isDropDownStyle"/><attr format="boolean" name="isOnBottomStyle"/><attr format="boolean" name="isAutoLoadOnBottom"/></declare-styleable>
     <declare-styleable name="wheelview"><attr name="gravity">
@@ -552,6 +559,8 @@
     <dimen name="indicator_corner_radius">12dp</dimen>
     <dimen name="indicator_internal_padding">4dp</dimen>
     <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="info_enterprise_size">14sp</dimen>
+    <dimen name="info_name_size">16sp</dimen>
     <dimen name="main_leftmark">100dip</dimen>
     <dimen name="margin_chat_activity">5dp</dimen>
     <dimen name="message_wh">75dip</dimen>
@@ -703,6 +712,7 @@
     <string name="action_settings">设置</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="app">应用中心</string>
     <string name="app_name">园林企业管理平台</string>
     <string name="app_notaccesswifi">暂无网络连接</string>
     <string name="app_picker_name">Applications</string>
@@ -739,6 +749,7 @@
     <string name="check_connection">无可用网络连接，请检查网络设置！</string>
     <string name="click_login">点击登录</string>
     <string name="close">关闭</string>
+    <string name="compressing">数据处理中</string>
     <string name="contents_contact">Contact info</string>
     <string name="contents_email">Email address</string>
     <string name="contents_location">Geographic coordinates</string>
@@ -769,7 +780,7 @@
     <string name="hc_work">工作台</string>
     <string name="hc_xiangmu">应用</string>
     <string name="hc_xiangmuguanl">项目管理</string>
-    <string name="hc_xinxi">消息</string>
+    <string name="hc_xinxi">message</string>
     <string name="hello_world">Hello world!</string>
     <string name="hint_default_amount">默认数量为9</string>
     <string name="history_clear_one_history_text">Clear</string>
@@ -779,16 +790,19 @@
     <string name="history_empty_detail">No barcode scans have been recorded</string>
     <string name="history_send">Send history</string>
     <string name="history_title">History</string>
-    <string name="home_exit">再按一次退出^_^</string>
+    <string name="home_exit">press again to exit</string>
     <string name="image_content">图片</string>
-    <string name="login">登 录</string>
-    <string name="login_exit">注销</string>
-    <string name="login_msg_hint">亲，你还没有登录^_^</string>
-    <string name="login_pass_find">忘记密码</string>
-    <string name="login_pass_hint">密码</string>
-    <string name="login_pass_quick">注册账号</string>
+    <string name="login">login</string>
+    <string name="login_exit">logout</string>
+    <string name="login_msg_hint">not login yet</string>
+    <string name="login_pass_find">forget password</string>
+    <string name="login_pass_hint">password</string>
+    <string name="login_pass_quick">register</string>
+    <string name="login_phone">phone number</string>
+    <string name="login_reset_password">forget password</string>
     <string name="login_toservice">登录享受更贴心的定制服务</string>
     <string name="login_user">用户名</string>
+    <string name="login_user_phone">用户名/手机号</string>
     <string name="max_select_amount">最大选择数量</string>
     <string name="menu_encode_mecard">Use MECARD</string>
     <string name="menu_encode_vcard">Use vCard</string>
@@ -891,11 +905,13 @@
     <string name="pull_to_refresh_refreshing_label">正在载入…</string>
     <string name="pull_to_refresh_release_label">放开以刷新…</string>
     <string name="register_code">验  证</string>
+    <string name="register_confirm_pass">确认密码</string>
     <string name="register_echo_pass">请输入密码</string>
     <string name="register_echo_phone">请输入手机号</string>
     <string name="register_echo_repeat_pass">再次输入密码</string>
-    <string name="register_finish">注册完成</string>
+    <string name="register_finish">注册</string>
     <string name="register_get_code">获取验证码</string>
+    <string name="register_hint_pass">6-16个字符</string>
     <string name="register_hint_protocol">我已阅读并接受</string>
     <string name="register_hint_protocol_click">溯源用户协议</string>
     <string name="register_sender_code">重发验证码</string>
@@ -950,6 +966,7 @@
     <string name="viewfinderview_status_text1">将二维码/条码放入取景框内</string>
     <string name="viewfinderview_status_text2">即可自动扫描</string>
     <string name="wifi_changing_network">Requesting connection to network\u2026</string>
+    <string name="workshow">信息展示</string>
     <string name="wrong_connection">无法连接到服务器，请检查网络设置！</string>
     <string name="wrong_location">定位失败</string>
     <string name="xlistview_footer_hint_normal">查看更多</string>
@@ -1039,7 +1056,7 @@
         <item name="android:windowBackground">@color/app_bg</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

@@ -1,11 +1,15 @@
 [
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\hong_coupon_right.png",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\hong_coupon_right.png"
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab01.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab01.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\account_ic_oauth_baidu.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\account_ic_oauth_baidu.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\hong_coupon_right.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\hong_coupon_right.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\search_clear_pressed.png",
@@ -18,6 +22,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\switch_btn_slipper.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\switch_btn_slipper.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab32.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab32.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ease_record_animate_10.png",
@@ -72,6 +80,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\ease_record_animate_11.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab02.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab02.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\textfield_multiline_activated_holo_light.9.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\textfield_multiline_activated_holo_light.9.png"
     },
@@ -120,6 +132,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\ease_record_animate_12.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab31.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab31.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\btn_back_press.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\btn_back_press.png"
     },
@@ -144,6 +160,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\content_top_click.9.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab42.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab42.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\coupon_right.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\coupon_right.png"
     },
@@ -154,6 +174,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\umeng_update_btn_check_on_holo_light.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\umeng_update_btn_check_on_holo_light.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab12.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab12.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_img.png",
@@ -212,8 +236,16 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\content_middle_out.9.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab21.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab21.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ease_record_animate_03.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\ease_record_animate_03.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab22.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab22.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\logout_click.9.png",
@@ -224,12 +256,20 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\textfield_multiline_focused_holo_light.9.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab11.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab11.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\textfield_disabled_holo_light.9.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\textfield_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\home_tab41.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable-hdpi\\home_tab41.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\textfield_disabled_focused_holo_light.9.png",

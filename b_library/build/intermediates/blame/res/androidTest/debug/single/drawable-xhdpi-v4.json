@@ -56,6 +56,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_mian.png"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\view_loading_ball.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\view_loading_ball.png"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
     },

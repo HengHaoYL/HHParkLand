@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:fillViewport="true"
     android:orientation="vertical"
     android:scrollbars="none">
@@ -14,179 +13,185 @@
 
         <include layout="@layout/include_projecttop" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@color/white"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="项目名称"
-                android:textSize="@dimen/gj_d" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
 
-            <TextView
-                android:id="@+id/tv_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textSize="@dimen/gj_d" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="项目名称"
+                    android:textSize="@dimen/gj_d" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="人员类型"
-                android:textSize="@dimen/gj_d" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
 
-            <TextView
-                android:id="@+id/tv_personnelType"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textSize="@dimen/gj_d" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="人员类型"
+                    android:textSize="@dimen/gj_d" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
+                <TextView
+                    android:id="@+id/tv_personnelType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="工作岗位"
-                android:textSize="@dimen/gj_d" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
 
-            <TextView
-                android:id="@+id/tv_workPost"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textSize="@dimen/gj_d" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="工作岗位"
+                    android:textSize="@dimen/gj_d" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
+                <TextView
+                    android:id="@+id/tv_workPost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="姓名"
-                android:textSize="@dimen/gj_d" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
 
-            <TextView
-                android:id="@+id/tv_psName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textSize="@dimen/gj_d" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="姓名"
+                    android:textSize="@dimen/gj_d" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
+                <TextView
+                    android:id="@+id/tv_psName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="身份证号"
-                android:textSize="@dimen/gj_d" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
 
-            <TextView
-                android:id="@+id/tv_psIdcard"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textSize="@dimen/gj_d" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="身份证号"
+                    android:textSize="@dimen/gj_d" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
+                <TextView
+                    android:id="@+id/tv_psIdcard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="联系电话"
-                android:textSize="@dimen/gj_d" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
 
-            <TextView
-                android:id="@+id/tv_psTel"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textSize="@dimen/gj_d" />
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="联系电话"
+                    android:textSize="@dimen/gj_d" />
+
+                <TextView
+                    android:id="@+id/tv_psTel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
         </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
     </LinearLayout>
 
 </ScrollView>

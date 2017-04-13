@@ -7,11 +7,11 @@ import butterknife.ButterKnife.Finder;
 public class ProjectGHFSubmitActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectGHFSubmitActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624167, "field 'etEpName'");
+    view = finder.findRequiredView(source, 2131624174, "field 'etEpName'");
     target.etEpName = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624168, "field 'etEpAdd'");
+    view = finder.findRequiredView(source, 2131624175, "field 'etEpAdd'");
     target.etEpAdd = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624165, "field 'tvEpDate' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624172, "field 'tvEpDate' and method 'onClick'");
     target.tvEpDate = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -21,9 +21,9 @@ public class ProjectGHFSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624169, "field 'etEpTel'");
+    view = finder.findRequiredView(source, 2131624176, "field 'etEpTel'");
     target.etEpTel = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624170, "field 'tvHehong' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624177, "field 'tvHehong' and method 'onClick'");
     target.tvHehong = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -33,7 +33,7 @@ public class ProjectGHFSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624171, "field 'tvJianyan' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624178, "field 'tvJianyan' and method 'onClick'");
     target.tvJianyan = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -43,7 +43,7 @@ public class ProjectGHFSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624148, "field 'tvSubmit' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624156, "field 'tvSubmit' and method 'onClick'");
     target.tvSubmit = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {

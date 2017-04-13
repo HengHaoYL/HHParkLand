@@ -7,24 +7,21 @@ import butterknife.ButterKnife.Finder;
 public class ProjectSBDataDesActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectSBDataDesActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624515, "field 'tvTitle'");
-    target.tvTitle = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624151, "field 'tvName'");
+    view = finder.findRequiredView(source, 2131624161, "field 'tvName'");
     target.tvName = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624223, "field 'tvSbName'");
+    view = finder.findRequiredView(source, 2131624224, "field 'tvSbName'");
     target.tvSbName = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624224, "field 'tvSbSpec'");
+    view = finder.findRequiredView(source, 2131624225, "field 'tvSbSpec'");
     target.tvSbSpec = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624225, "field 'tvSbNum'");
+    view = finder.findRequiredView(source, 2131624226, "field 'tvSbNum'");
     target.tvSbNum = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624226, "field 'tvSbPurpose'");
+    view = finder.findRequiredView(source, 2131624227, "field 'tvSbPurpose'");
     target.tvSbPurpose = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624227, "field 'tvSbSource'");
+    view = finder.findRequiredView(source, 2131624228, "field 'tvSbSource'");
     target.tvSbSource = (android.widget.TextView) view;
   }
 
   public static void reset(com.henghao.parkland.activity.projectmanage.ProjectSBDataDesActivity target) {
-    target.tvTitle = null;
     target.tvName = null;
     target.tvSbName = null;
     target.tvSbSpec = null;

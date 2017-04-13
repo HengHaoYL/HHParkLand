@@ -7,13 +7,13 @@ import butterknife.ButterKnife.Finder;
 public class ProjectGXBYSubmitActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectGXBYSubmitActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624174, "field 'tvGxName'");
+    view = finder.findRequiredView(source, 2131624180, "field 'tvGxName'");
     target.tvGxName = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624179, "field 'etGxProcedure'");
+    view = finder.findRequiredView(source, 2131624185, "field 'etGxProcedure'");
     target.etGxProcedure = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624185, "field 'etWorkPost'");
+    view = finder.findRequiredView(source, 2131624191, "field 'etWorkPost'");
     target.etWorkPost = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624178, "field 'tvGxTime' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624184, "field 'tvGxTime' and method 'onClick'");
     target.tvGxTime = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -23,7 +23,7 @@ public class ProjectGXBYSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624186, "field 'tvUploadImage' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624192, "field 'tvUploadImage' and method 'onClick'");
     target.tvUploadImage = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -33,7 +33,7 @@ public class ProjectGXBYSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624148, "field 'tvSubmit' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624156, "field 'tvSubmit' and method 'onClick'");
     target.tvSubmit = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -43,9 +43,9 @@ public class ProjectGXBYSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624180, "field 'rgPersonnelType'");
+    view = finder.findRequiredView(source, 2131624186, "field 'rgPersonnelType'");
     target.rgPersonnelType = (android.widget.RadioGroup) view;
-    view = finder.findRequiredView(source, 2131624176, "field 'tvPersonnelType' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624182, "field 'tvPersonnelType' and method 'onClick'");
     target.tvPersonnelType = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {

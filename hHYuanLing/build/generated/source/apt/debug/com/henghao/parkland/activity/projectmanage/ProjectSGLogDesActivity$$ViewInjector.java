@@ -7,11 +7,9 @@ import butterknife.ButterKnife.Finder;
 public class ProjectSGLogDesActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectSGLogDesActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624515, "field 'tvTitle'");
-    target.tvTitle = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624151, "field 'tvName'");
+    view = finder.findRequiredView(source, 2131624161, "field 'tvName'");
     target.tvName = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624069, "field 'tvDates'");
+    view = finder.findRequiredView(source, 2131624068, "field 'tvDates'");
     target.tvDates = (android.widget.TextView) view;
     view = finder.findRequiredView(source, 2131624243, "field 'tvProactContent'");
     target.tvProactContent = (android.widget.TextView) view;
@@ -26,7 +24,6 @@ public class ProjectSGLogDesActivity$$ViewInjector {
   }
 
   public static void reset(com.henghao.parkland.activity.projectmanage.ProjectSGLogDesActivity target) {
-    target.tvTitle = null;
     target.tvName = null;
     target.tvDates = null;
     target.tvProactContent = null;

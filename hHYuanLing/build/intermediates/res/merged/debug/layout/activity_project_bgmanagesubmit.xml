@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:fillViewport="true"
     android:orientation="vertical"
     android:scrollbars="none">
@@ -15,84 +14,92 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@color/white"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="确认方"
-                android:textSize="@dimen/gj_d" />
-
-
-            <Spinner
-                android:id="@+id/sp_confirmingParty"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/padding_big" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="变更时间"
-                android:textSize="@dimen/gj_d" />
-
-            <TextView
-                android:id="@+id/tv_times"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:drawablePadding="@dimen/padding_normal"
-                android:drawableRight="@drawable/icon_calendar"
-                android:padding="@dimen/padding_big"
-                android:textSize="@dimen/gj_d" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="确认方"
+                    android:textSize="@dimen/gj_d" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <Spinner
+                    android:id="@+id/sp_confirmingParty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/padding_big" />
 
-            <TextView
-                android:layout_width="100dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="变更依据"
-                android:textSize="@dimen/gj_d" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_files"
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableRight="@drawable/icon_photo"
-                android:padding="@dimen/padding_big"
-                android:textSize="@dimen/gj_d" />
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="变更时间"
+                    android:textSize="@dimen/gj_d" />
+
+                <TextView
+                    android:id="@+id/tv_times"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawablePadding="@dimen/padding_normal"
+                    android:drawableRight="@drawable/icon_add"
+                    android:padding="@dimen/padding_big"
+                    android:textSize="@dimen/gj_d" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="变更依据"
+                    android:textSize="@dimen/gj_d" />
+
+                <TextView
+                    android:id="@+id/tv_files"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/icon_add"
+                    android:padding="@dimen/padding_big"
+                    android:textSize="@dimen/gj_d" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
         </LinearLayout>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
 
         <TextView
             android:id="@+id/tv_submit"

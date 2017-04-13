@@ -62,9 +62,9 @@
         android:name="com.henghao.parkland.FMApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/icon_logo"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme.NoActionBar" >
 
         <!-- 启动页 -->
         <activity
@@ -83,7 +83,8 @@
             android:name="com.henghao.parkland.activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
 
@@ -125,18 +126,44 @@
             android:name="com.henghao.parkland.activity.GuideActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
+        <!-- 签到页面 -->
         <activity
             android:name="com.henghao.parkland.activity.QiandaoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
+        <!-- 签到提交页面 -->
         <activity
             android:name="com.henghao.parkland.activity.QiandaoSubmitActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
-
         <!-- 测试View -->
         <activity
             android:name="com.henghao.parkland.activity.ViewTestActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!-- 设备租赁详情页面 -->
+        <activity
+            android:name="com.henghao.parkland.activity.workshow.EquipmentLeasingDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 苗木信息详情页面 -->
+        <activity
+            android:name="com.henghao.parkland.activity.workshow.SeedlingDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 招标信息详情页面 -->
+        <activity
+            android:name="com.henghao.parkland.activity.workshow.BidDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 人员招聘详情页面 -->
+        <activity
+            android:name="com.henghao.parkland.activity.workshow.RecruitDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -147,11 +174,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 养护主页面 -->
-        <activity
-            android:name="com.henghao.parkland.activity.YanghuMainActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 养护管理界面 -->
         <activity
             android:name="com.henghao.parkland.activity.YhManageActivity"
@@ -171,17 +193,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 项目管理界面 -->
-        <activity
-            android:name="com.henghao.parkland.activity.projectmanage.ProjectActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 工作备忘添加 -->
-        <activity
-            android:name="com.henghao.parkland.activity.projectmanage.ProjectWorkBWAddActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 监理日志 -->
         <activity
             android:name="com.henghao.parkland.activity.projectmanage.ProjectSpvLogActivity"
@@ -201,29 +213,9 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工备忘添加 -->
-        <activity
-            android:name="com.henghao.parkland.activity.projectmanage.ProjectSGBWAddActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工备忘 -->
-        <activity
-            android:name="com.henghao.parkland.activity.projectmanage.ProjectSGBWActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工资料添加 -->
-        <activity
-            android:name="com.henghao.parkland.activity.projectmanage.ProjectSGMaterialAddActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 施工材料 -->
-        <activity
-            android:name="com.henghao.parkland.activity.projectmanage.ProjectSGMaterialActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="com.henghao.parkland.activity.YHDataActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -412,16 +404,6 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="com.henghao.parkland.activity.projectmanage.ProjectXckcActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="com.henghao.parkland.activity.projectmanage.ProjectXckcSubmitActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 变更管理 -->
         <activity
             android:name="com.henghao.parkland.activity.projectmanage.ProjectBGManageActivity"
@@ -464,6 +446,18 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 现场勘查 -->
+        <activity
+            android:name="com.henghao.parkland.activity.projectmanage.ProjectXckcActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 现场勘查提交 -->
+        <activity
+            android:name="com.henghao.parkland.activity.projectmanage.ProjectXckcSubmitActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 项目信息详细 -->
         <activity
             android:name="com.henghao.parkland.activity.projectmanage.ProjectInfoDesActivity"
@@ -488,6 +482,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 技术交底 -->
         <activity
             android:name="com.henghao.parkland.activity.projectmanage.ProjectTechnologDesActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -505,6 +500,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 进度申报 -->
         <activity
             android:name="com.henghao.parkland.activity.projectmanage.ProjectDeclareDesActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -549,6 +545,8 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="Gr4Rq0Yl84nFIXH9lfNa5VkSKOKpEb1L" />
+
+        <activity android:name="com.henghao.parkland.activity.DebugSettingActivity" />
     </application>
 
 </manifest>

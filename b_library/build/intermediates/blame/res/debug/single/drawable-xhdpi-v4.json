@@ -12,12 +12,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\drawable-xhdpi\\capture_back.png"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_focused_holo.9.png",
-        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\drawable-xhdpi\\vpi__tab_selected_focused_holo.9.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\drawable-xhdpi\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_focused_holo.9.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\drawable-xhdpi\\vpi__tab_selected_focused_holo.9.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ab_share_pack_holo_light.9.png",
@@ -86,6 +86,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\scan_mask.png",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\drawable-xhdpi\\scan_mask.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\view_loading_ball.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\src\\main\\res\\drawable-xhdpi\\view_loading_ball.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\loading_mian.png",

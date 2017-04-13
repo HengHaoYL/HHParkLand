@@ -90,8 +90,10 @@
     <string name="login_pass_find">忘记密码</string>
     <string name="login_pass_hint">密码</string>
     <string name="login_pass_quick">注册账号</string>
+    <string name="login_phone">手机号</string>
+    <string name="login_reset_password">忘记密码</string>
     <string name="login_toservice">登录享受更贴心的定制服务</string>
-    <string name="login_user">用户名</string>
+    <string name="login_user_phone">用户名</string>
     <string name="menu_encode_mecard">Use MECARD</string>
     <string name="menu_encode_vcard">Use vCard</string>
     <string name="menu_help">Help</string>
@@ -178,7 +180,7 @@
     <string name="register_echo_pass">请输入密码</string>
     <string name="register_echo_phone">请输入手机号</string>
     <string name="register_echo_repeat_pass">再次输入密码</string>
-    <string name="register_finish">注册完成</string>
+    <string name="register_finish">注册</string>
     <string name="register_get_code">获取验证码</string>
     <string name="register_hint_protocol">我已阅读并接受</string>
     <string name="register_hint_protocol_click">溯源用户协议</string>

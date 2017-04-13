@@ -7,9 +7,9 @@ import butterknife.ButterKnife.Finder;
 public class ProjectBGManageSubmitActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectBGManageSubmitActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624155, "field 'spConfirmingParty'");
+    view = finder.findRequiredView(source, 2131624164, "field 'spConfirmingParty'");
     target.spConfirmingParty = (android.widget.Spinner) view;
-    view = finder.findRequiredView(source, 2131624153, "field 'tvTimes' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624163, "field 'tvTimes' and method 'onClick'");
     target.tvTimes = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -19,7 +19,7 @@ public class ProjectBGManageSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624156, "field 'tvFiles' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624165, "field 'tvFiles' and method 'onClick'");
     target.tvFiles = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -29,7 +29,7 @@ public class ProjectBGManageSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624148, "field 'tvSubmit' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624156, "field 'tvSubmit' and method 'onClick'");
     target.tvSubmit = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {

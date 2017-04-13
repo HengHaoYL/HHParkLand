@@ -8,12 +8,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\btn_selector.xml",
-        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_selector.xml"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_edit_text_material.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\btn_selector.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_selector.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_tab_indicator_material.xml",

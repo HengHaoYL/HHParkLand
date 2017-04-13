@@ -7,15 +7,15 @@ import butterknife.ButterKnife.Finder;
 public class ProjectSBDataSubmitActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectSBDataSubmitActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624228, "field 'etSbName'");
+    view = finder.findRequiredView(source, 2131624229, "field 'etSbName'");
     target.etSbName = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624229, "field 'etSbSpec'");
+    view = finder.findRequiredView(source, 2131624230, "field 'etSbSpec'");
     target.etSbSpec = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624230, "field 'etSbNum'");
+    view = finder.findRequiredView(source, 2131624231, "field 'etSbNum'");
     target.etSbNum = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624231, "field 'etSbPurpose'");
+    view = finder.findRequiredView(source, 2131624232, "field 'etSbPurpose'");
     target.etSbPurpose = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624148, "field 'tvSubmit' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624156, "field 'tvSubmit' and method 'onClick'");
     target.tvSubmit = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -25,7 +25,7 @@ public class ProjectSBDataSubmitActivity$$ViewInjector {
           target.onClick();
         }
       });
-    view = finder.findRequiredView(source, 2131624232, "field 'rgSbSource'");
+    view = finder.findRequiredView(source, 2131624233, "field 'rgSbSource'");
     target.rgSbSource = (android.widget.RadioGroup) view;
   }
 

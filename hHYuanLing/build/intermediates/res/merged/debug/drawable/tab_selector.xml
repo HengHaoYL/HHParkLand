@@ -11,20 +11,20 @@
     
 <!--     按下状态 -->
 <!--     <item android:state_pressed="true" android:color="@color/red"/> -->
-    
-    
-    <item android:state_checked="true" android:state_window_focused="false"  
-          android:color="@color/tab_text_sel" />  
-    <item android:state_checked="false" android:state_window_focused="false"  
-          android:color="@color/tab_text_nonr" />  
-    <item android:state_checked="true" android:state_pressed="true"  
-          android:color="@color/tab_text_sel" />  
+
+
+    <item android:state_checked="true" android:state_window_focused="false"
+          android:color="@color/tab_text_sel" />
+    <item android:state_checked="false" android:state_window_focused="false"
+          android:color="@color/tab_text_nonr" />
+    <item android:state_checked="true" android:state_pressed="true"
+          android:color="@color/tab_text_sel" />
     <item android:state_checked="false" android:state_pressed="true"
-          android:color="@color/tab_text_sel" />  
-    <item android:state_checked="true" android:state_focused="true"  
-          android:color="@color/tab_text_sel" />  
-    <item android:state_checked="false" android:state_focused="true"  
-          android:color="@color/tab_text_sel" />  
-    <item android:state_checked="false" android:color="@color/tab_text_nonr" />  
-    <item android:state_checked="true" android:color="@color/tab_text_sel" />  
+          android:color="@color/tab_text_sel" />
+    <item android:state_checked="true" android:state_focused="true"
+          android:color="@color/tab_text_sel" />
+    <item android:state_checked="false" android:state_focused="true"
+          android:color="@color/tab_text_sel" />
+    <item android:state_checked="false" android:color="@color/tab_text_nonr" />
+    <item android:state_checked="true" android:color="@color/tab_text_sel" />
 </selector>

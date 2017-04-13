@@ -72,12 +72,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\HHParkLand\\b_library\\unspecified\\res\\drawable-mdpi-v4\\ic_launcher.png"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_rotate.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\HHParkLand\\b_library\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",

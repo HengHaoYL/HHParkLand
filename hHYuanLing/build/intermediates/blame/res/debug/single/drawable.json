@@ -8,6 +8,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_blue_botton.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\shape_blue_botton.xml"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
@@ -32,10 +36,6 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\umeng_update_title_bg.xml"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_greencircleframe.xml",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\btn_greencircleframe.xml"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
     },
@@ -56,6 +56,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ratingbar_material.xml"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_gh_botton.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\shape_gh_botton.xml"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\umeng_update_wifi_disable.png",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\umeng_update_wifi_disable.png"
     },
@@ -66,10 +70,6 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
-    },
-    {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_mall.xml",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\selector_mall.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_home.xml",
@@ -108,12 +108,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\umeng_update_button_ok_bg_focused.xml"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\dialog_bg.xml",
-        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\HHParkLand\\b_library\\unspecified\\res\\drawable\\dialog_bg.xml"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_xiangmuguanlsecond.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\selector_xiangmuguanlsecond.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\dialog_bg.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\HHParkLand\\b_library\\unspecified\\res\\drawable\\dialog_bg.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
@@ -134,6 +134,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\content_item_top.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\content_item_top.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_yellow_botton.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\shape_yellow_botton.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\common_tabbg.xml",
@@ -184,6 +188,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\shape_main_imageview.xml"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_showpw.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\selector_showpw.xml"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\umeng_update_button_ok_bg_tap.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\umeng_update_button_ok_bg_tap.xml"
     },
@@ -218,6 +226,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_pwd_pay_right.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\HHParkLand\\b_library\\unspecified\\res\\drawable\\btn_pwd_pay_right.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\tel_shape.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\tel_shape.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_xiangmufirst.xml",
@@ -262,6 +274,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_tile_bg.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_textview.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\selector_textview.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
@@ -332,6 +348,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comment.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\shape_comment.xml"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\toggle_btn.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\toggle_btn.xml"
     },
@@ -350,6 +370,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\umeng_update_button_cancel_bg_normal.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\umeng_update_button_cancel_bg_normal.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_bg_loading.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\shape_bg_loading.xml"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\list_selector.xml",
@@ -458,6 +482,10 @@
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\editext_shape.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\editext_shape.xml"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\home_tab01.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\drawable\\home_tab01.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\drawable\\cursor_shape.xml",

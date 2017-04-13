@@ -1,97 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ecf0f1" >
+    android:orientation="vertical">
+
 
     <LinearLayout
-        android:id="@+id/ll_layoutone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:orientation="vertical" >
+        android:layout_marginTop="@dimen/padding_normal"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/line" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="10dp" >
-
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:src="@drawable/icon_time_qiandao" />
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="签到时间："
-                android:textColor="#a9b7b7"
-                android:textSize="12sp" />
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_big"
+                android:text="签到时间"
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_time_qiandaosubmit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="13:00"
-                android:textColor="#000000"
-                android:textSize="12sp" />
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:text="14:00"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
+
         </LinearLayout>
 
-        <RelativeLayout
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp" >
-
-            <ImageView
-                android:id="@+id/img_marker_qiandao"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_alignTop="@+id/tv_didian"
-                android:src="@drawable/icon_marker_qiandao" />
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_didian"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@+id/img_marker_qiandao"
-                android:text="签到地点："
-                android:textColor="#a9b7b7"
-                android:textSize="12sp" />
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_big"
+                android:text="当前企业"
+                android:textSize="@dimen/gj_d" />
+
+            <TextView
+                android:id="@+id/tv_company_qiandaosubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:text="贵州恒昊软件科技有限公司"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_big"
+                android:text="签到地址"
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_address_qiandaosubmit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_toRightOf="@+id/tv_didian"
-                android:text="贵州省建设学校(南校区)，贵州省贵阳市观山湖区金岭社区服务中心白云大道"
-                android:textColor="#000000"
-                android:textSize="12sp" />
-        </RelativeLayout>
+                android:background="@null"
+                android:padding="@dimen/padding_big"
+                android:text="当前地址"
+                android:textColor="@color/text_color_c"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/line" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_layouttwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_layoutone"
-        android:layout_marginTop="10dp"
         android:background="#ffffff"
         android:orientation="vertical"
-        android:padding="10dp" >
+        android:padding="10dp">
 
         <EditText
             android:id="@+id/et_note_qiandao"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#ffffff"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_comment"
             android:gravity="top"
-            android:hint="请填写签到备注"
+            android:hint="备注"
+            android:minHeight="140dp"
+            android:padding="@dimen/padding_normal"
+            android:textColorHint="@color/text_color_c"
             android:textSize="16sp" />
 
         <ImageView
@@ -104,45 +138,16 @@
             android:visibility="gone" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_layoutthree"
+    <TextView
+        android:id="@+id/btn_submit_qiandaosubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_layouttwo"
-        android:layout_marginTop="10dp"
-        android:background="#ffffff"
-        android:orientation="horizontal"
-        android:padding="20dp" >
+        android:layout_margin="@dimen/padding_big"
+        android:background="@drawable/btn_bluecircleframe"
+        android:gravity="center"
+        android:padding="@dimen/padding_big"
+        android:text="签到"
+        android:textColor="@color/white"
+        android:textSize="@dimen/gj_d" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="当前企业："
-            android:textColor="#a9b7b7"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/tv_company_qiandaosubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="贵州恒昊科技软件有限公司"
-            android:textColor="#000000"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center" >
-
-        <Button
-            android:id="@+id/btn_submit_qiandaosubmit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:text="提交"
-            android:textColor="@color/header" />
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

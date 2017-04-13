@@ -8,6 +8,10 @@
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\menu\\ease_chat.xml"
     },
     {
+        "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\menu\\main_menu.xml",
+        "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\menu\\main_menu.xml"
+    },
+    {
         "merged": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\res\\merged\\debug\\menu\\iso.xml",
         "source": "D:\\Studio_Project\\HHParkLand\\hHYuanLing\\src\\main\\res\\menu\\iso.xml"
     }

@@ -2,508 +2,283 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\baidumapapi_map_v4_1_1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="930064f0a91ff20ceb8dd4504b7dadec5aabea82">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\baidumapapi_map_v4_1_1_38bd7a9c4b69ab6faf2f66e852478834504e3bf0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_bf02cc24c71fcd8165b08a1a0440ac3cf355a88a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\晏琦云\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\okio-1.6.0_01f64ac087fb807e1f7054002a55e0bf6be44889.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_d061929e11f1962921e526b4314b47411692b3c6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_27689f313c62f7b0cf1aa2ff9b19ef6154ffa2c9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\HHParkLand\b_library\unspecified\jars\libs\core-3.1.1-SNAPSHOT.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d959c5883fc95c19c90945728a852e925c11f5eb">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\core-3.1.1-SNAPSHOT_75f653c06d714fc8525b9feb1cd98666830bdb24.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\晏琦云\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\5.1.1\b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8\butterknife-5.1.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\butterknife-5.1.1_ae394dab0ed13c8f8d485c77ac7bdc6eb2ada9a7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_7fdd1509909d826166567051124b9ac6040a3d17.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_d3ffe12752282776a7de851b81516948237c1e5f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b0172893572b137ef0295dd695293c37a1c2b724">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\instant-run_e98d5cf71fc760a29684f44356c25029775091d3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\SDK\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_1cfd546983820f460b005cb3083348890cd00c72.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_7a425d693a1fa189024efa2fb3940e0b6eff1d97.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\gson-2.2.4_5e9a2da84161f342d279baaf9d7315c3c6c5923a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\晏琦云\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.6.0\212387a39088ecd3daff8e3bfc3bdc4123e33c67\okhttp-2.6.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="212387a39088ecd3daff8e3bfc3bdc4123e33c67">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\okhttp-2.6.0_1e3ccb7a267333cf9d2cc9c496934461b611da9d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_f59c46fc0ef394c2edb52249250d6ce018a0dd57.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\pushservice-4.5.3.48.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="77392fd69a14d333856f98ef6074643844cb7f61">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\pushservice-4.5.3.48_7a507606ee8cea79789a8b5608f16770bc9ec6a5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\baidumapapi_base_v4_1_1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="00cd7d6a741c6a922c9cf7b0db52a357ebf12cdb">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\baidumapapi_base_v4_1_1_dd6bc3e34cf51c4ff4559e4ea50496c828971502.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="fffd91491b4826b6d527ad8eef8d00dfffd88268">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\instant-run-bootstrap_4cfcb8259c940cc12bbcc819485b4ea9d47bb8f4.jar" />
+        sha1="2f0a6714b7814e2e8427f1e44a7739b6d3c7a6ca">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_4cfcb8259c940cc12bbcc819485b4ea9d47bb8f4\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_824c2dccff88238cc6855848e5db8f682abfec2e.jar" />
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_d061929e11f1962921e526b4314b47411692b3c6\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\jxl.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\晏琦云\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\5.1.1\b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8\butterknife-5.1.1.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="955fa72ef2e3d5a45db59d84802401f75bc973a5">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\jxl_648aea6b021164c560608511f538e1b825aaecae.jar" />
+        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-5.1.1_ae394dab0ed13c8f8d485c77ac7bdc6eb2ada9a7\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa3c333709868041d5c4957bedab9e087a26c52d">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_e98d5cf71fc760a29684f44356c25029775091d3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\baidumapapi_map_v4_1_1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="930064f0a91ff20ceb8dd4504b7dadec5aabea82">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\2\baidumapapi_map_v4_1_1_38bd7a9c4b69ab6faf2f66e852478834504e3bf0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\HHParkLand\b_library\unspecified\jars\libs\core-3.1.1-SNAPSHOT.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d959c5883fc95c19c90945728a852e925c11f5eb">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\8\core-3.1.1-SNAPSHOT_75f653c06d714fc8525b9feb1cd98666830bdb24\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.1_7fdd1509909d826166567051124b9ac6040a3d17\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\baidumapapi_base_v4_1_1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="00cd7d6a741c6a922c9cf7b0db52a357ebf12cdb">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\2\baidumapapi_base_v4_1_1_dd6bc3e34cf51c4ff4559e4ea50496c828971502\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\晏琦云\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.6.0\212387a39088ecd3daff8e3bfc3bdc4123e33c67\okhttp-2.6.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="212387a39088ecd3daff8e3bfc3bdc4123e33c67">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-2.6.0_1e3ccb7a267333cf9d2cc9c496934461b611da9d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_27689f313c62f7b0cf1aa2ff9b19ef6154ffa2c9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\id.zelory\compressor\1.0.4\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3a724d5d031884220bae4a255f6d2763cd0ebdc4">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\id.zelory-compressor-1.0.4_fcc61ab2923eb488c183ecc4d5933a2c7582569b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.0.1_f59c46fc0ef394c2edb52249250d6ce018a0dd57\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.2.4_5e9a2da84161f342d279baaf9d7315c3c6c5923a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.1_6d9bf46522e8a18ff0526978c54599e9d3938f50\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\pushservice-4.5.3.48.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="77392fd69a14d333856f98ef6074643844cb7f61">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\pushservice-4.5.3.48_7a507606ee8cea79789a8b5608f16770bc9ec6a5.jar" />
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\2\pushservice-4.5.3.48_7a507606ee8cea79789a8b5608f16770bc9ec6a5\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_d642be9662d9ca2151af66b13236dd1d5ccf5836.jar" />
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_d642be9662d9ca2151af66b13236dd1d5ccf5836\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_6d63695abbaf2ce8cb8ccb09d9eec7404246c47e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\locSDK_6.13.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2cdb37444b41b42e1ce5a8a27e5d3c22e1c57479">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\locSDK_6.13_7f5948ff124949d9d8c9e3c716c58be917a592e9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_6d9bf46522e8a18ff0526978c54599e9d3938f50.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f83b00041ecfba705603fec40363416c7de69719">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_f1f850a896ab4836cbaf33d7fb4807ad93816b64.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_65638cd36e865778f1d5bac6b14efad2241048ab.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_4a440787e3696c0ef2d854080ddeaf8bd067dba7.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\HHParkLand\b_library\unspecified\jars\libs\picasso-2.5.2.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="4be4b04501b974e1be142024285f925b7ad9ff88">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\picasso-2.5.2_070a316b62669db6b99c557b018b46624636aedc.jar" />
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\8\picasso-2.5.2_070a316b62669db6b99c557b018b46624636aedc\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\晏琦云\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\5.1.1\b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8\butterknife-5.1.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\butterknife-5.1.1_ae394dab0ed13c8f8d485c77ac7bdc6eb2ada9a7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        is-multidex="true"
+        jar="C:\Users\晏琦云\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.1.6\2586312cd2b8a511e4c6236736f5a039fc0f2273\rxjava-1.1.6.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_824c2dccff88238cc6855848e5db8f682abfec2e.jar" />
+        sha1="2586312cd2b8a511e4c6236736f5a039fc0f2273">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\rxjava-1.1.6_04c9e1c5985f568dd04aa6bd77c4c83e68a070fc\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\HHParkLand\b_library\unspecified\jars\libs\core-3.1.1-SNAPSHOT.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="d959c5883fc95c19c90945728a852e925c11f5eb">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\core-3.1.1-SNAPSHOT_75f653c06d714fc8525b9feb1cd98666830bdb24.jar" />
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.1_4a440787e3696c0ef2d854080ddeaf8bd067dba7\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
         jar="C:\Users\晏琦云\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\okio-1.6.0_01f64ac087fb807e1f7054002a55e0bf6be44889.jar" />
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.6.0_01f64ac087fb807e1f7054002a55e0bf6be44889\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_d061929e11f1962921e526b4314b47411692b3c6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\HHParkLand\b_library\unspecified\jars\libs\library-2.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f086e018e187da53a1432c188023c86d1fa3ff73">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\library-2.4.0_00a78218333783d6b0dcf69ce4dc6acb10025757.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\baidumapapi_map_v4_1_1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="930064f0a91ff20ceb8dd4504b7dadec5aabea82">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\baidumapapi_map_v4_1_1_38bd7a9c4b69ab6faf2f66e852478834504e3bf0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_bf02cc24c71fcd8165b08a1a0440ac3cf355a88a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f83b00041ecfba705603fec40363416c7de69719">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_f1f850a896ab4836cbaf33d7fb4807ad93816b64.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_d3ffe12752282776a7de851b81516948237c1e5f.jar" />
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_d3ffe12752282776a7de851b81516948237c1e5f\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_27689f313c62f7b0cf1aa2ff9b19ef6154ffa2c9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_f59c46fc0ef394c2edb52249250d6ce018a0dd57.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\jxl.jar"
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="955fa72ef2e3d5a45db59d84802401f75bc973a5">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\jxl_648aea6b021164c560608511f538e1b825aaecae.jar" />
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.1_bf02cc24c71fcd8165b08a1a0440ac3cf355a88a\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_7fdd1509909d826166567051124b9ac6040a3d17.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\晏琦云\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.6.0\212387a39088ecd3daff8e3bfc3bdc4123e33c67\okhttp-2.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="212387a39088ecd3daff8e3bfc3bdc4123e33c67">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\okhttp-2.6.0_1e3ccb7a267333cf9d2cc9c496934461b611da9d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\SDK\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\HHParkLand\b_library\unspecified\jars\libs\library-2.4.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_1cfd546983820f460b005cb3083348890cd00c72.jar" />
+        sha1="f086e018e187da53a1432c188023c86d1fa3ff73">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\8\library-2.4.0_00a78218333783d6b0dcf69ce4dc6acb10025757\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\gson-2.2.4_5e9a2da84161f342d279baaf9d7315c3c6c5923a.jar" />
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_f1f850a896ab4836cbaf33d7fb4807ad93816b64\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_7a425d693a1fa189024efa2fb3940e0b6eff1d97.jar" />
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.1_7a425d693a1fa189024efa2fb3940e0b6eff1d97\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\baidumapapi_base_v4_1_1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="D:\SDK\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="00cd7d6a741c6a922c9cf7b0db52a357ebf12cdb">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\baidumapapi_base_v4_1_1_dd6bc3e34cf51c4ff4559e4ea50496c828971502.jar" />
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_1cfd546983820f460b005cb3083348890cd00c72\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_824c2dccff88238cc6855848e5db8f682abfec2e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\jxl.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="955fa72ef2e3d5a45db59d84802401f75bc973a5">
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\2\jxl_648aea6b021164c560608511f538e1b825aaecae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_65638cd36e865778f1d5bac6b14efad2241048ab.jar" />
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_65638cd36e865778f1d5bac6b14efad2241048ab\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_d642be9662d9ca2151af66b13236dd1d5ccf5836.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_6d9bf46522e8a18ff0526978c54599e9d3938f50.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\Studio_Project\HHParkLand\hHYuanLing\libs\locSDK_6.13.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="2cdb37444b41b42e1ce5a8a27e5d3c22e1c57479">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\locSDK_6.13_7f5948ff124949d9d8c9e3c716c58be917a592e9.jar" />
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\2\locSDK_6.13_7f5948ff124949d9d8c9e3c716c58be917a592e9\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_6d63695abbaf2ce8cb8ccb09d9eec7404246c47e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\HHParkLand\b_library\unspecified\jars\libs\library-2.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f086e018e187da53a1432c188023c86d1fa3ff73">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\library-2.4.0_00a78218333783d6b0dcf69ce4dc6acb10025757.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\HHParkLand\b_library\unspecified\jars\libs\picasso-2.5.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4be4b04501b974e1be142024285f925b7ad9ff88">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\picasso-2.5.2_070a316b62669db6b99c557b018b46624636aedc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
-        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_4a440787e3696c0ef2d854080ddeaf8bd067dba7.jar" />
+        <dex dex="D:\Studio_Project\HHParkLand\hHYuanLing\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_6d63695abbaf2ce8cb8ccb09d9eec7404246c47e\classes.dex" />
     </item>
 
 </items>

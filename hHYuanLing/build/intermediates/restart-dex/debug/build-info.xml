@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="armeabi-v7a,armeabi"
-    api-level="19"
-    density="xxhdpi"
+    abi="arm64-v8a,armeabi-v7a,armeabi"
+    api-level="22"
+    density="hdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="77860206035940"
+    timestamp="1062860775260753"
     token="-2688314428420569926"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="4006" />
+        duration="4438" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="370" />
+        duration="5009" />
     <task
         name="verifier"
-        duration="36" />
+        duration="1806" />
 
     <artifact
         location="D:\Studio_Project\HHParkLand\hHYuanLing\build\outputs\apk\hHYuanLing-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="77860206035940"
+        timestamp="1062860775260753"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="D:\Studio_Project\HHParkLand\hHYuanLing\build\outputs\apk\hHYuanLing-debug.apk"

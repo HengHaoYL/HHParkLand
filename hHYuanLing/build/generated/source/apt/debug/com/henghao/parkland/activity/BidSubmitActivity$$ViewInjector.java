@@ -7,19 +7,19 @@ import butterknife.ButterKnife.Finder;
 public class BidSubmitActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.BidSubmitActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624065, "field 'etCompanyName'");
+    view = finder.findRequiredView(source, 2131624064, "field 'etCompanyName'");
     target.etCompanyName = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624066, "field 'etCompanyAdd'");
+    view = finder.findRequiredView(source, 2131624065, "field 'etCompanyAdd'");
     target.etCompanyAdd = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624067, "field 'etContacts'");
+    view = finder.findRequiredView(source, 2131624066, "field 'etContacts'");
     target.etContacts = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624068, "field 'etTel'");
+    view = finder.findRequiredView(source, 2131624067, "field 'etTel'");
     target.etTel = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624069, "field 'tvDates'");
+    view = finder.findRequiredView(source, 2131624068, "field 'tvDates'");
     target.tvDates = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624201, "field 'etXmAdd'");
+    view = finder.findRequiredView(source, 2131624205, "field 'etXmAdd'");
     target.etXmAdd = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624070, "field 'btnSubmitProjectinfo' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624069, "field 'btnSubmitProjectinfo' and method 'onClick'");
     target.btnSubmitProjectinfo = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {

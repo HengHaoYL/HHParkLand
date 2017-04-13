@@ -7,17 +7,17 @@ import butterknife.ButterKnife.Finder;
 public class ProjectInfoSubmitActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectInfoSubmitActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624194, "field 'etXmName'");
+    view = finder.findRequiredView(source, 2131624198, "field 'etXmName'");
     target.etXmName = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624198, "field 'etXmPerson'");
+    view = finder.findRequiredView(source, 2131624202, "field 'etXmPerson'");
     target.etXmPerson = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624199, "field 'etXmContact'");
+    view = finder.findRequiredView(source, 2131624203, "field 'etXmContact'");
     target.etXmContact = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624200, "field 'etXmPersonNum'");
+    view = finder.findRequiredView(source, 2131624204, "field 'etXmPersonNum'");
     target.etXmPersonNum = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624201, "field 'etXmAdd'");
+    view = finder.findRequiredView(source, 2131624205, "field 'etXmAdd'");
     target.etXmAdd = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624070, "field 'btnSubmit' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624069, "field 'btnSubmit' and method 'onClick'");
     target.btnSubmit = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -27,9 +27,9 @@ public class ProjectInfoSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624195, "field 'etConstructionUnit'");
+    view = finder.findRequiredView(source, 2131624199, "field 'etConstructionUnit'");
     target.etConstructionUnit = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624196, "field 'tvStartTime' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624200, "field 'tvStartTime' and method 'onClick'");
     target.tvStartTime = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -39,7 +39,7 @@ public class ProjectInfoSubmitActivity$$ViewInjector {
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131624197, "field 'tvCompletionTime' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624201, "field 'tvCompletionTime' and method 'onClick'");
     target.tvCompletionTime = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {

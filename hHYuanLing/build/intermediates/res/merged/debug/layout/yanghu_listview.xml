@@ -9,6 +9,6 @@
         android:id="@+id/common_list"
         android:layout_width="250dip"
         android:layout_height="250dip"
-        android:background="@color/white"></com.benefit.buy.library.views.NoScrollListView>
+        android:background="@color/white" />
 
 </ScrollView>

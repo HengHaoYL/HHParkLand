@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
@@ -44,7 +43,7 @@
         android:background="@color/line" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tv_myproject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_big"
@@ -95,5 +94,10 @@
         android:text="我的备忘"
         android:textColor="@color/text_color_b"
         android:textSize="@dimen/gj_d" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dip"
+        android:background="@color/line" />
 
 </LinearLayout>

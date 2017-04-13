@@ -20,12 +20,12 @@
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\scan_history_normal.png"
     },
     {
-        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\scan_corner_top_right.png",
-        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\scan_corner_top_right.png"
-    },
-    {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\scan_corner_bottom_right.png",
         "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\scan_corner_bottom_right.png"
+    },
+    {
+        "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\scan_corner_top_right.png",
+        "source": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\scan_corner_top_right.png"
     },
     {
         "merged": "D:\\Studio_Project\\HHParkLand\\b_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\scan_photo_normal.png",

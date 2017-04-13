@@ -14,7 +14,8 @@
         android:layout_marginBottom="@dimen/padding_normal"
         android:layout_marginTop="@dimen/padding_normal"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <View
             android:layout_width="0dip"
@@ -38,7 +39,9 @@
 
     <!-- 左右滑动图片布局 -->
 
-    <include layout="@layout/common_viewpages" />
+    <include
+        layout="@layout/common_viewpages"
+        android:visibility="gone" />
 
     <!-- 信息展示列表 -->
 
@@ -48,7 +51,7 @@
         android:layout_height="wrap_content"
         android:divider="@color/white"
         android:dividerHeight="0dip"
-        android:visibility="gone"></com.benefit.buy.library.views.NoScrollListView>
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,6 +69,7 @@
             android:background="@color/line" />
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/padding_normal"

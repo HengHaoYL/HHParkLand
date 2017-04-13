@@ -7,13 +7,13 @@ import butterknife.ButterKnife.Finder;
 public class ProjectTeamSubmitActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectTeamSubmitActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624292, "field 'etPsName'");
+    view = finder.findRequiredView(source, 2131624289, "field 'etPsName'");
     target.etPsName = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624293, "field 'etPsIdcard'");
+    view = finder.findRequiredView(source, 2131624290, "field 'etPsIdcard'");
     target.etPsIdcard = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624294, "field 'etPsTel'");
+    view = finder.findRequiredView(source, 2131624291, "field 'etPsTel'");
     target.etPsTel = (android.widget.EditText) view;
-    view = finder.findRequiredView(source, 2131624148, "field 'tvSubmit' and method 'onClick'");
+    view = finder.findRequiredView(source, 2131624156, "field 'tvSubmit' and method 'onClick'");
     target.tvSubmit = (android.widget.TextView) view;
     view.setOnClickListener(
       new android.view.View.OnClickListener() {
@@ -23,9 +23,9 @@ public class ProjectTeamSubmitActivity$$ViewInjector {
           target.onClick();
         }
       });
-    view = finder.findRequiredView(source, 2131624185, "field 'etWorkPost'");
+    view = finder.findRequiredView(source, 2131624191, "field 'etWorkPost'");
     target.etWorkPost = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624176, "field 'tvPersonnelType'");
+    view = finder.findRequiredView(source, 2131624182, "field 'tvPersonnelType'");
     target.tvPersonnelType = (android.widget.TextView) view;
   }
 

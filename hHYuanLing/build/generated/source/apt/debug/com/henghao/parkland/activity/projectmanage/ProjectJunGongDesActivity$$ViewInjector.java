@@ -7,20 +7,17 @@ import butterknife.ButterKnife.Finder;
 public class ProjectJunGongDesActivity$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.activity.projectmanage.ProjectJunGongDesActivity target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624515, "field 'tvTitle'");
-    target.tvTitle = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624204, "field 'tvProjectName'");
+    view = finder.findRequiredView(source, 2131624207, "field 'tvProjectName'");
     target.tvProjectName = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624069, "field 'tvDates'");
+    view = finder.findRequiredView(source, 2131624068, "field 'tvDates'");
     target.tvDates = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624205, "field 'tvInspectionPersonnel'");
+    view = finder.findRequiredView(source, 2131624208, "field 'tvInspectionPersonnel'");
     target.tvInspectionPersonnel = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624154, "field 'gridView'");
+    view = finder.findRequiredView(source, 2131624092, "field 'gridView'");
     target.gridView = (com.benefit.buy.library.views.NoScrollGridView) view;
   }
 
   public static void reset(com.henghao.parkland.activity.projectmanage.ProjectJunGongDesActivity target) {
-    target.tvTitle = null;
     target.tvProjectName = null;
     target.tvDates = null;
     target.tvInspectionPersonnel = null;

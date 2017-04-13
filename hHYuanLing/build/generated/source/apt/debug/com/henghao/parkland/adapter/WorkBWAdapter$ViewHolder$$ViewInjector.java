@@ -7,11 +7,11 @@ import butterknife.ButterKnife.Finder;
 public class WorkBWAdapter$ViewHolder$$ViewInjector {
   public static void inject(Finder finder, final com.henghao.parkland.adapter.WorkBWAdapter.ViewHolder target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131624552, "field 'tvStartTime'");
+    view = finder.findRequiredView(source, 2131624554, "field 'tvStartTime'");
     target.tvStartTime = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624553, "field 'tvEndTime'");
+    view = finder.findRequiredView(source, 2131624555, "field 'tvEndTime'");
     target.tvEndTime = (android.widget.TextView) view;
-    view = finder.findRequiredView(source, 2131624550, "field 'tvWorkContent'");
+    view = finder.findRequiredView(source, 2131624552, "field 'tvWorkContent'");
     target.tvWorkContent = (android.widget.TextView) view;
   }
 
