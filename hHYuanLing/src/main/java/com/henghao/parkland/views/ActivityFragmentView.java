@@ -177,10 +177,14 @@ public class ActivityFragmentView extends LinearLayout {
     public void viewLoading(int visibility, String text) {
         if (visibility == VISIBLE) {
             dialogLoading.show();
-            dialogLoading.setText(text);
+            setLoadingText(text);
         } else {
             dialogLoading.dismiss();
         }
+    }
+
+    public void setLoadingText(String text) {
+        dialogLoading.setText(text);
     }
 
     public View getViewMain() {

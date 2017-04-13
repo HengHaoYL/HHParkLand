@@ -90,6 +90,9 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
                     mActivityFragmentView.viewLoading(View.GONE);
                     requestData();
                     break;
+                case FileUtils.COMPRESS_PROGRESS://压缩进度
+                    mActivityFragmentView.setLoadingText(getString(R.string.compressing) + " " + msg.arg1 + "/" + msg.arg2);
+                    break;
             }
         }
     };

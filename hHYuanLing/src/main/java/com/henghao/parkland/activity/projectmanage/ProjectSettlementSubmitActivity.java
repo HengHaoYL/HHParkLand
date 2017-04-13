@@ -65,6 +65,9 @@ public class ProjectSettlementSubmitActivity extends ActivityFragmentSupport {
                     mActivityFragmentView.viewLoading(View.GONE);
                     request();
                     break;
+                case FileUtils.COMPRESS_PROGRESS://压缩进度
+                    mActivityFragmentView.setLoadingText(getString(R.string.compressing) + " " + msg.arg1 + "/" + msg.arg2);
+                    break;
             }
         }
     };

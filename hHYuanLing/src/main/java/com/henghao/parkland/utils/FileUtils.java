@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -158,6 +159,10 @@ public class FileUtils {
         Thread thread = new Thread() {
             @Override
             public void run() {
+                int count = 0, progress = 0;
+                for (List<File> files : filesArray) {
+                    count += files.size();
+                }
                 for (List<File> files : filesArray) {
                     List<File> tempList = new ArrayList<>();
                     Compressor compressor = new Compressor.Builder(context)
@@ -169,7 +174,7 @@ public class FileUtils {
                     for (int i = 0; i < files.size(); i++) {
                         File file = files.get(i);
                         Log.i("Compress", "压缩前, file→" + file.getAbsolutePath() + ", size→" + file.length());
-                        while (file.length() >= 1048576L) {
+                        if (file.length() >= 1048576L) {
                             try {
                                 file = compressor.compressToFile(file);
                             } catch (Exception e) {
@@ -180,12 +185,24 @@ public class FileUtils {
                         }
                         Log.i("Compress", "压缩后" + file.length());
                         tempList.add(file);
+                        progress++;
+                        Message msg = new Message();
+                        msg.what = COMPRESS_PROGRESS;
+                        msg.arg1 = progress;
+                        msg.arg2 = count;
+                        handler.sendMessage(msg);
                     }
                     files.clear();
                     files.addAll(tempList);
                 }
-                //发送压缩完成消息
-                handler.sendEmptyMessage(COMPRESS_FINISH);
+                try {
+                    sleep(1000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    //发送压缩完成消息
+                    handler.sendEmptyMessage(COMPRESS_FINISH);
+                }
             }
         };
         thread.start();
@@ -193,4 +210,5 @@ public class FileUtils {
     }
 
     public static final int COMPRESS_FINISH = 100;
+    public static final int COMPRESS_PROGRESS = 101;
 }
