@@ -1,7 +1,0 @@
-#Thu Apr 13 16:14:26 CST 2017
-base.0=D\:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_e98d5cf71fc760a29684f44356c25029775091d3
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=D\:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4cfcb8259c940cc12bbcc819485b4ea9d47bb8f4\\classes.dex
-base.1=D\:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4cfcb8259c940cc12bbcc819485b4ea9d47bb8f4
-file.0=D\:\\Studio_Project\\HHParkLand\\hHYuanLing\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_e98d5cf71fc760a29684f44356c25029775091d3\\classes.dex
