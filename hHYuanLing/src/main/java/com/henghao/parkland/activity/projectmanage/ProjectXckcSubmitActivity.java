@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -255,6 +256,7 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
                             File file = new File(filePath);
                             mFileList.add(file);
                         }
+                        Log.i("mFileList", String.valueOf(mFileList.size()));
                         tv_photo.setText("图片名：" + fileNames.toString());
                         //                        this.mBitmapUtils.display(this.mUserHeaderImageView, headerImg);
                     }

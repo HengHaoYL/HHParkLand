@@ -298,6 +298,7 @@ public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
                             File file = new File(filePath);
                             mFileList1.add(file);
                         }
+                        Log.i("mFileList1", String.valueOf(mFileList1.size()));
                         tvHehong.setText("图片名：" + fileNames.toString());
                         //                        this.mBitmapUtils.display(this.mUserHeaderImageView, headerImg);
                     }
@@ -314,6 +315,7 @@ public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
                             File file = new File(filePath);
                             mFileList2.add(file);
                         }
+                        Log.i("mFileList2", String.valueOf(mFileList2.size()));
                         tvJianyan.setText("图片名：" + fileNames.toString());
                         //                        this.mBitmapUtils.display(this.mUserHeaderImageView, headerImg);
                     }

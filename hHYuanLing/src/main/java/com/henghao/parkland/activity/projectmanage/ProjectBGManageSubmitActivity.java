@@ -265,6 +265,7 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
                             File file = new File(filePath);
                             mFileList.add(file);
                         }
+                        Log.i("mFileList", String.valueOf(mFileList.size()));
                         tvFiles.setText("图片名：" + fileNames.toString());
                         //                        this.mBitmapUtils.display(this.mUserHeaderImageView, headerImg);
                     }

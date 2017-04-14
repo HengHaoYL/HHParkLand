@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -218,6 +219,7 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
                 if ((resultCode == Activity.RESULT_OK) || (resultCode == Activity.RESULT_CANCELED)) {
                     this.mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
                     if (!ToolsKit.isEmpty(this.mSelectPath)) {
+                        mFileList.clear();
                         List<String> imgNames = new ArrayList<>();
                         for (String filePath : mSelectPath) {
                             String imageName = getImageName(filePath);
@@ -225,6 +227,7 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
                             File file = new File(filePath);
                             mFileList.add(file);
                         }
+                        Log.i("mFileList", String.valueOf(mFileList.size()));
                         tv_photo.setText("图片名：" + imgNames.toString());
                     }
                 }

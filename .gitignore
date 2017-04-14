@@ -4,8 +4,6 @@
 /build/
 /hHYuanLing/build/
 /x_library/build/
-/HHParkLand.iml
-/hHYuanLing/hHYuanLing.iml
-/x_library/x_library.iml
 /local.properties
-/HHYuanLing.iml
+*.iml
+b_library/build/

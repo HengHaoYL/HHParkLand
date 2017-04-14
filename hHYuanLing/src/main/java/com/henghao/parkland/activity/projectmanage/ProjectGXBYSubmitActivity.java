@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -351,6 +352,7 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
                             File file = new File(filePath);
                             mFileList.add(file);
                         }
+                        Log.i("mFileList", String.valueOf(mFileList.size()));
                         tvUploadImage.setText("图片名：" + fileNames.toString());
                         //                        this.mBitmapUtils.display(this.mUserHeaderImageView, headerImg);
                     }
