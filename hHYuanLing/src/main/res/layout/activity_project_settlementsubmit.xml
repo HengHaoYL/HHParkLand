@@ -42,7 +42,7 @@
                     android:background="@null"
                     android:drawablePadding="@dimen/padding_normal"
                     android:drawableRight="@drawable/icon_add"
-                    android:hint="请选择图片"
+                    android:hint="请选择日期"
                     android:padding="@dimen/padding_big"
                     android:textColorHint="@color/line"
                     android:textSize="@dimen/gj_d" />
