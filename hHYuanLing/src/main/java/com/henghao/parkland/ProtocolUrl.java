@@ -31,13 +31,13 @@ public class ProtocolUrl {
     static {
         if (BuildConfig.DEBUG) {
             // 测试地址/192.168.1.12
-            ROOT_URL = "http://172.16.13.101:8080/YL_BigData";
+            ROOT_URL = "http://172.16.13.101:8080/Garden";
             //172.16.13.101:8080/login/az?username=?&password=?
             /*ROOT_URL = "http://safe.higdata.com/Java_Nfc/";*/
 //			ROOT_URL = "http://192.168.1.12/Java_Nfc";
         } else {
             // 生产地址
-            ROOT_URL = "http://221.13.13.134:2218/YL_BigData";
+            ROOT_URL = "http://221.13.13.134:2218/Garden";
         }
     }
 
