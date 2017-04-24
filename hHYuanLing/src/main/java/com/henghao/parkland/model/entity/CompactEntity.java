@@ -1,18 +1,18 @@
 package com.henghao.parkland.model.entity;
 
 import com.google.gson.annotations.Expose;
-import com.henghao.parkland.model.IdEntity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * GhCompact entity. 景观类合同实体类
+ * CompactEntity entity. 合同实体类
  *
  * @author 严彬荣
  */
-public class CompactEntity extends IdEntity {
+public class CompactEntity implements Serializable {
     /**
-     * bid:6,
+     * id:6,
      * checking:"正在审核",
      * compactId:"50cbe8cceded46e48b8395d35d34a8b2",
      * dates:"2017-04-21 11:02",
@@ -28,7 +28,7 @@ public class CompactEntity extends IdEntity {
      */
     private boolean isChecked;//是否被选中
     @Expose
-    private Integer bid;// 表ID
+    private Integer id;// 表ID
     @Expose
     private String compactId; // 合同存档编号
     @Expose
@@ -52,12 +52,12 @@ public class CompactEntity extends IdEntity {
         isChecked = checked;
     }
 
-    public Integer getBid() {
-        return bid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBid(Integer bid) {
-        this.bid = bid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCompactId() {

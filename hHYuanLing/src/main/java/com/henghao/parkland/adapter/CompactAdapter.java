@@ -25,7 +25,7 @@ import butterknife.InjectView;
 
 /**
  * Created by 晏琦云 on 2017/4/21.
- * 合同管理
+ * 合同适配器
  */
 
 public class CompactAdapter extends ArrayAdapter<CompactEntity> {
@@ -104,10 +104,10 @@ public class CompactAdapter extends ArrayAdapter<CompactEntity> {
             public void onClick(View v) {
                 if (entity.isChecked()) {
                     entity.setChecked(false);
-                    callBack.removeId(entity.getBid());
+                    callBack.removeId(entity.getId());
                 } else {
                     entity.setChecked(true);
-                    callBack.addId(entity.getBid());
+                    callBack.addId(entity.getId());
                 }
                 callBack.setChecked();
                 notifyDataSetChanged();
@@ -127,10 +127,10 @@ public class CompactAdapter extends ArrayAdapter<CompactEntity> {
                      */
                     if (entity.isChecked()) {
                         entity.setChecked(false);
-                        callBack.removeId(entity.getBid());
+                        callBack.removeId(entity.getId());
                     } else {
                         entity.setChecked(true);
-                        callBack.addId(entity.getBid());
+                        callBack.addId(entity.getId());
                     }
                     callBack.setChecked();
                     notifyDataSetChanged();

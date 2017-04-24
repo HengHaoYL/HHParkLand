@@ -167,7 +167,7 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
                     itemID.clear();
                     for (CompactEntity entity : data) {
                         entity.setChecked(true);
-                        addId(entity.getBid());
+                        addId(entity.getId());
                     }
                 } else {
                     itemID.clear();
@@ -406,7 +406,7 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
         List<Integer> idList = new ArrayList<Integer>();
         for (CompactEntity entity : data) {
             if (entity.isChecked()) {
-                idList.add(entity.getBid());
+                idList.add(entity.getId());
             }
         }
         return idList;
@@ -421,7 +421,7 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
          * 在List中找到与id相同的索引
          */
         for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).getBid() == id) {
+            if (data.get(i).getId() == id) {
                 index = i;
             }
         }
