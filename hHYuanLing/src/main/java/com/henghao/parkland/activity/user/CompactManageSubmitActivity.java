@@ -61,6 +61,7 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
     private ArrayList<String> mSelectPath;//被选中的合同图片地址集合
     private ArrayList<File> mFileList = new ArrayList<>();//被选中的合同图片
     private File mFile;//被选中的合同文件
+    private String URL;//网络请求地址
 
     private Handler handler = new Handler() {
         @Override
@@ -138,9 +139,31 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
     }
 
     /**
+     * 设置网络访问地址
+     */
+    private void setURL() {
+        String mType = tvGenre.getText().toString().trim();
+        switch (mType) {
+            case "园林类":
+                URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEGARDENCOMPACT;
+                break;
+            case "建设类":
+                URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEBUILDCOMPACT;
+                break;
+            case "园林工程类":
+                URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEENGINEERINGCOMPACT;
+                break;
+            case "景观类":
+                URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVELANDSCAPECOMPACT;
+                break;
+        }
+    }
+
+    /**
      * 访问网络
      */
     private void requestNetwork() {
+        setURL();
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         MultipartBuilder multipartBuilder = new MultipartBuilder();
@@ -153,7 +176,7 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
         }
         multipartBuilder.addFormDataPart("file", mFile.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), mFile));//合同文件
         RequestBody requestBody = multipartBuilder.build();
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEBUILDCOMPACT).build();
+        Request request = builder.post(requestBody).url(URL).build();
         mActivityFragmentView.viewLoading(View.VISIBLE);
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
@@ -274,7 +297,7 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
         return url.substring(url.lastIndexOf("/") + 1);
     }
 
-    private String[] suffixEnable = {".txt", ".doc", ".docx", ".rtf", ".pdf"};
+    private String[] suffixEnable = {".doc", ".docx", ".pdf"};
 
     private boolean checkFile(String path) {
         for (String suffix : suffixEnable)

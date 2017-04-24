@@ -462,14 +462,44 @@ public class ProtocolUrl {
      * 合同管理
      **************************/
     /**
+     * 园林类合同查询
+     */
+    public static final String COMPACT_QUERYGARDENCOMPACT = "compact/queryGardenCompact";
+
+    /**
      * 建设类合同查询
      */
     public static final String COMPACT_QUERYBUILDCOMPACT = "compact/queryBuildCompact";
 
     /**
+     * 园林工程类合同查询
+     */
+    public static final String COMPACT_QUERYENGINEERINGCOMPACT = "compact/queryEngineeringCompact";
+
+    /**
+     * 景观类合同查询
+     */
+    public static final String COMPACT_QUERYLANDSCAPECOMPACT = "compact/queryLandscapeCompact";
+
+    /**
+     * 园林类合同录入
+     */
+    public static final String COMPACT_SAVEGARDENCOMPACT = "compact/saveGardenCompact";
+
+    /**
      * 建设类合同录入
      */
     public static final String COMPACT_SAVEBUILDCOMPACT = "compact/saveBuildCompact";
+
+    /**
+     * 园林工程类合同录入
+     */
+    public static final String COMPACT_SAVEENGINEERINGCOMPACT = "compact/saveEngineeringCompact";
+
+    /**
+     * 景观类合同录入
+     */
+    public static final String COMPACT_SAVELANDSCAPECOMPACT = "compact/saveLandscapeCompact";
 
     /************************ 合同管理 end **************************/
 

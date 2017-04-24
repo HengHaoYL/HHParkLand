@@ -94,6 +94,17 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
         tvDates.setText(mEntity.getDates());
         tvGenre.setText(mEntity.getGenre());
         tvFileName.setText(getFileName(mEntity.getDocument()));
+        switch (mEntity.getChecking()) {
+            case "正在审核":
+                tvChecking.setTextColor(getContext().getResources().getColor(R.color.orange));
+                break;
+            case "审核通过":
+                tvChecking.setTextColor(getContext().getResources().getColor(R.color.green));
+                break;
+            case "审核未通过":
+                tvChecking.setTextColor(getContext().getResources().getColor(R.color.red));
+                break;
+        }
     }
 
     private String getFileName(String filePath) {

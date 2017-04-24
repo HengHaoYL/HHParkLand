@@ -86,6 +86,17 @@ public class CompactAdapter extends ArrayAdapter<CompactEntity> {
         holder.tvGenre.setText(getItem(position).getGenre());
         holder.tvDates.setText(getItem(position).getDates());
         holder.tvChecking.setText(getItem(position).getChecking());
+        switch (getItem(position).getChecking()) {
+            case "正在审核":
+                holder.tvChecking.setTextColor(getContext().getResources().getColor(R.color.orange));
+                break;
+            case "审核通过":
+                holder.tvChecking.setTextColor(getContext().getResources().getColor(R.color.green));
+                break;
+            case "审核未通过":
+                holder.tvChecking.setTextColor(getContext().getResources().getColor(R.color.red));
+                break;
+        }
         mBitmapUtils.display(holder.ivImg, entity.getPictureId() + entity.getUrl().get(0));
         viewClick(holder, convertView, position);
         holder.checkBox.setOnClickListener(new View.OnClickListener() {

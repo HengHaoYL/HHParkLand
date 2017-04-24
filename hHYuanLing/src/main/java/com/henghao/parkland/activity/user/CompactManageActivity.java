@@ -197,14 +197,20 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
         mProtocol.addResponseListener(this);
         switch (indexOfSelect) {
             case 0://园林类
+                mProtocol.queryGardenCompact(getLoginUid());
+                mActivityFragmentView.viewLoading(View.VISIBLE);
                 break;
             case 1://建设类合同
                 mProtocol.queryBuildCompact(getLoginUid());
                 mActivityFragmentView.viewLoading(View.VISIBLE);
                 break;
             case 2://园林工程类
+                mProtocol.queryEngineeringCompact(getLoginUid());
+                mActivityFragmentView.viewLoading(View.VISIBLE);
                 break;
             case 3://景观类
+                mProtocol.queryLandscapeCompact(getLoginUid());
+                mActivityFragmentView.viewLoading(View.VISIBLE);
                 break;
         }
 
@@ -213,8 +219,11 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        //查询建设类合同
-        if (url.endsWith(ProtocolUrl.COMPACT_QUERYBUILDCOMPACT)) {
+        //查询园林类合同、建设类合同、园林工程类合同、景观类合同
+        if (url.endsWith(ProtocolUrl.COMPACT_QUERYGARDENCOMPACT) ||
+                url.endsWith(ProtocolUrl.COMPACT_QUERYBUILDCOMPACT) ||
+                url.endsWith(ProtocolUrl.COMPACT_QUERYENGINEERINGCOMPACT) ||
+                url.endsWith(ProtocolUrl.COMPACT_QUERYLANDSCAPECOMPACT)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mEntity = (BaseEntity) jo;
                 if (mEntity.getStatus() > 0) {

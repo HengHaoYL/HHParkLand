@@ -60,6 +60,23 @@ public class ProjectSecProtocol extends BaseModel {
     }
 
     /**
+     * 查询园林类合同
+     *
+     * @param uid
+     */
+    public void queryGardenCompact(String uid) {
+        try {
+            String url = ProtocolUrl.COMPACT_QUERYGARDENCOMPACT;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 查询建设类合同
      *
      * @param uid
@@ -67,6 +84,40 @@ public class ProjectSecProtocol extends BaseModel {
     public void queryBuildCompact(String uid) {
         try {
             String url = ProtocolUrl.COMPACT_QUERYBUILDCOMPACT;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 查询园林工程类合同
+     *
+     * @param uid
+     */
+    public void queryEngineeringCompact(String uid) {
+        try {
+            String url = ProtocolUrl.COMPACT_QUERYENGINEERINGCOMPACT;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 查询景观类合同
+     *
+     * @param uid
+     */
+    public void queryLandscapeCompact(String uid) {
+        try {
+            String url = ProtocolUrl.COMPACT_QUERYLANDSCAPECOMPACT;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
             this.mBeeCallback.url(url).type(String.class).params(params);
@@ -140,16 +191,19 @@ public class ProjectSecProtocol extends BaseModel {
                     // 现场勘查
                     ProjectSecProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
-                if (url.endsWith(ProtocolUrl.COMPACT_QUERYBUILDCOMPACT)) {
-                    // 建设类合同
-                    ProjectSecProtocol.this.OnMessageResponse(url, mBaseEntity, status);
-                }
                 if (url.endsWith(ProtocolUrl.PROJECT_QUERY_MYLOCUSMSG)) {
                     // 我的轨迹
                     Type type = new TypeToken<List<MyWorkerEntity>>() {
                     }.getType();
                     List<MyWorkerEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectSecProtocol.this.OnMessageResponse(url, homeData, status);
+                }
+                if (url.endsWith(ProtocolUrl.COMPACT_QUERYGARDENCOMPACT) ||
+                        url.endsWith(ProtocolUrl.COMPACT_QUERYBUILDCOMPACT) ||
+                        url.endsWith(ProtocolUrl.COMPACT_QUERYENGINEERINGCOMPACT) ||
+                        url.endsWith(ProtocolUrl.COMPACT_QUERYLANDSCAPECOMPACT)) {
+                    // 园林类合同、建设类合同、园林工程类合同、景观类合同
+                    ProjectSecProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
 
             } catch (Exception e) {

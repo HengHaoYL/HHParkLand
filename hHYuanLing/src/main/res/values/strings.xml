@@ -40,6 +40,9 @@
     <string name="click_login">点击登录</string>
     <string name="login_user_phone">用户名/手机号</string>
     <string name="login_phone">phone number</string>
+    <string name="login_contact">contact name</string>
+    <string name="login_email">Email</string>
+    <string name="login_IDCard">legal PersonID card</string>
     <string name="login_user">用户名</string>
     <string name="login_pass_hint">password</string>
     <string name="login_pass_find">forget password</string>
@@ -52,11 +55,16 @@
     <string name="user_hint_protocol_error">请勾选用户协议</string>
     <string name="register_get_code">获取验证码</string>
     <string name="register_echo_phone">请输入手机号</string>
+    <string name="register_echo_contact">请输入联系人姓名</string>
+    <string name="register_echo_email">请输入邮箱</string>
+    <string name="register_echo_IDCard">请输入身份证号</string>
     <string name="next">下一步</string>
     <string name="register_code">验  证</string>
+    <string name="register_confirm_pic">身份证</string>
     <string name="register_confirm_pass">确认密码</string>
     <string name="register_echo_pass">请输入密码</string>
     <string name="register_hint_pass">6-16个字符</string>
+    <string name="register_hint_pic">请上传身份证正反照</string>
     <string name="register_echo_repeat_pass">再次输入密码</string>
     <string name="register_finish">注册</string>
     <string name="account_exit">退出登录</string>

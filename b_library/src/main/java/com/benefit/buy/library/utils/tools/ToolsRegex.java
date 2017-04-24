@@ -6,15 +6,19 @@ import java.util.regex.Pattern;
 public class ToolsRegex {
 
     /**
+     * 邮箱Pattern
+     */
+    public static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$");
+
+    /**
      * 车牌号码Pattern
      */
-    public static final Pattern PLATE_NUMBER_PATTERN = Pattern
-            .compile("^[\u0391-\uFFE5]{1}[a-zA-Z0-9]{6}$");
+    public static final Pattern PLATE_NUMBER_PATTERN = Pattern.compile("^[\u0391-\uFFE5]{1}[a-zA-Z0-9]{6}$");
 
     /**
      * 证件号码Pattern
      */
-    public static final Pattern ID_CODE_PATTERN = Pattern.compile("^[a-zA-Z0-9]+$");
+    public static final Pattern ID_CODE_PATTERN = Pattern.compile("(^\\d{15}$)|(^\\d{17}([0-9]|X)$)");
 
     /**
      * 编码Pattern
@@ -51,6 +55,18 @@ public class ToolsRegex {
 
     /**
      * 车牌号码是否正确
+     *
+     * @param s
+     * @return
+     */
+    public static boolean isEmail(String s) {
+        Matcher m = EMAIL_PATTERN.matcher(s);
+        return m.matches();
+    }
+
+    /**
+     * 车牌号码是否正确
+     *
      * @param s
      * @return
      */
@@ -61,6 +77,7 @@ public class ToolsRegex {
 
     /**
      * 证件号码是否正确
+     *
      * @param s
      * @return
      */
@@ -71,6 +88,7 @@ public class ToolsRegex {
 
     /**
      * 编码是否正确
+     *
      * @param s
      * @return
      */
@@ -81,6 +99,7 @@ public class ToolsRegex {
 
     /**
      * 固话编码是否正确
+     *
      * @param s
      * @return
      */
@@ -91,6 +110,7 @@ public class ToolsRegex {
 
     /**
      * 手机号码判断
+     *
      * @param text
      * @return
      * @see [类、类#方法、类#成员]
@@ -109,8 +129,10 @@ public class ToolsRegex {
     //        Matcher m = MOBILE_NUMBER_PATTERN.matcher(s);
     //        return m.matches();
     //    }
+
     /**
      * 邮政编码是否正确
+     *
      * @param s
      * @return
      */
@@ -121,6 +143,7 @@ public class ToolsRegex {
 
     /**
      * 面积是否正确
+     *
      * @param s
      * @return
      */
@@ -131,6 +154,7 @@ public class ToolsRegex {
 
     /**
      * 银行账号否正确
+     *
      * @param s
      * @return
      */

@@ -117,7 +117,7 @@ public class LoginProtocol extends BaseModel {
                     LoginProtocol.this.OnMessageResponse(url, loginEntity, status);
                 }
                 if (url.endsWith(ProtocolUrl.APP_REG)) {
-                    // 登录
+                    // 注册
                     LoginProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
 
