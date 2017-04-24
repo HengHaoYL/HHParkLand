@@ -154,6 +154,11 @@ public class ProtocolUrl {
     public static final String DELETE_SUPPLIER = "/projectManage/delete/supplier";
 
     /**
+     * 我的轨迹删除
+     */
+    public static final String DELETE_MYLOCUS = "/projectManage/delete/mylocus";
+
+    /**
      * 变更管理删除
      */
     public static final String DELETE_ALTERATION = "/projectManage/delete/alteration";
@@ -452,6 +457,21 @@ public class ProtocolUrl {
     public static final String RELEASE_QUERYRECRUIT = "release/queryRecruit";
 
     /************************ 工作台 end **************************/
+
+    /************************
+     * 合同管理
+     **************************/
+    /**
+     * 建设类合同查询
+     */
+    public static final String COMPACT_QUERYBUILDCOMPACT = "compact/queryBuildCompact";
+
+    /**
+     * 建设类合同录入
+     */
+    public static final String COMPACT_SAVEBUILDCOMPACT = "compact/saveBuildCompact";
+
+    /************************ 合同管理 end **************************/
 
     /**
      * 上传错误日志到服务器

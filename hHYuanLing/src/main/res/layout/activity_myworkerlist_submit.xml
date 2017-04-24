@@ -52,7 +52,7 @@
                 android:layout_width="100dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
-                android:text="内容"
+                android:text="工作内容"
                 android:textSize="@dimen/gj_d" />
 
             <EditText
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:drawableRight="@drawable/icon_datatime"
+                android:drawableRight="@drawable/icon_add"
                 android:hint="请选择日期"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"

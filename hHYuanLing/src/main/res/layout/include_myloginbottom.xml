@@ -100,4 +100,23 @@
         android:layout_height="1dip"
         android:background="@color/line" />
 
+    <TextView
+        android:id="@+id/tv_compactmanage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_listback"
+        android:drawableLeft="@drawable/icon_htmanage"
+        android:drawablePadding="@dimen/padding_small"
+        android:drawableRight="@drawable/arrow_right"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_big"
+        android:text="合同管理"
+        android:textColor="@color/text_color_b"
+        android:textSize="@dimen/gj_d" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dip"
+        android:background="@color/line" />
+
 </LinearLayout>

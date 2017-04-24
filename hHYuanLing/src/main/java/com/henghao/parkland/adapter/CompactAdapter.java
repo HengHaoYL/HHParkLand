@@ -7,14 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.user.MyWorkerListDesActivity;
+import com.henghao.parkland.activity.user.CompactManageDesActivity;
 import com.henghao.parkland.callback.MyCallBack;
-import com.henghao.parkland.model.entity.MyWorkerEntity;
+import com.henghao.parkland.model.entity.CompactEntity;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
@@ -23,15 +24,11 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * 我的工作轨迹〈一句话功能简述〉 〈功能详细描述〉
- *
- * @author zhangxianwen
- * @version HDMNV100R001, 2015年12月21日
- * @see [相关类/方法]
- * @since [产品/模块版本]
+ * Created by 晏琦云 on 2017/4/21.
+ * 合同管理
  */
-public class MyWorkerListAdapter extends ArrayAdapter<MyWorkerEntity> {
 
+public class CompactAdapter extends ArrayAdapter<CompactEntity> {
     private final LayoutInflater inflater;
 
     private final BitmapUtils mBitmapUtils;
@@ -42,8 +39,8 @@ public class MyWorkerListAdapter extends ArrayAdapter<MyWorkerEntity> {
 
     private MyCallBack callBack;
 
-    public MyWorkerListAdapter(ActivityFragmentSupport activityFragment, List<MyWorkerEntity> mList, MyCallBack callBack) {
-        super(activityFragment, R.layout.item_projectmanager, mList);
+    public CompactAdapter(ActivityFragmentSupport activityFragment, List<CompactEntity> mList, MyCallBack callBack) {
+        super(activityFragment, R.layout.list_item_compact, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
         this.mBitmapUtils = new BitmapUtils(activityFragment, Constant.CACHE_DIR_PATH);
@@ -68,10 +65,10 @@ public class MyWorkerListAdapter extends ArrayAdapter<MyWorkerEntity> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final MyWorkerEntity entity = getItem(position);
+        final CompactEntity entity = getItem(position);
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = this.inflater.inflate(R.layout.item_projectmanager, null);
+            convertView = inflater.inflate(R.layout.list_item_compact, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
@@ -86,34 +83,30 @@ public class MyWorkerListAdapter extends ArrayAdapter<MyWorkerEntity> {
             holder.checkBox.setVisibility(View.GONE);
         }
         holder.checkBox.setChecked(entity.isChecked());
-        holder.tvTitle.setText(entity.getWorkType());
-        holder.tvTime.setText(entity.getDates());
-        holder.tvName.setText(entity.getPersonnel());
+        holder.tvGenre.setText(getItem(position).getGenre());
+        holder.tvDates.setText(getItem(position).getDates());
+        holder.tvChecking.setText(getItem(position).getChecking());
+        mBitmapUtils.display(holder.ivImg, entity.getPictureId() + entity.getUrl().get(0));
         viewClick(holder, convertView, position);
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (entity.isChecked()) {
                     entity.setChecked(false);
-                    callBack.removeId(entity.getMid());
+                    callBack.removeId(entity.getBid());
                 } else {
                     entity.setChecked(true);
-                    callBack.addId(entity.getMid());
+                    callBack.addId(entity.getBid());
                 }
                 callBack.setChecked();
                 notifyDataSetChanged();
             }
         });
-       /*if( holder.tv_data.getLineCount()<=2){
-           holder.image_arraw.setVisibility(View.INVISIBLE);
-       }else {
-           holder.image_arraw.setVisibility(View.VISIBLE);
-       }*/
         return convertView;
     }
 
-    private void viewClick(final ViewHolder holder, View convertView, int position) {
-        final MyWorkerEntity entity = getItem(position);
+    private void viewClick(ViewHolder mHodlerView, View convertView, final int position) {
+        final CompactEntity entity = getItem(position);
         if (showCheckBox) {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -123,10 +116,10 @@ public class MyWorkerListAdapter extends ArrayAdapter<MyWorkerEntity> {
                      */
                     if (entity.isChecked()) {
                         entity.setChecked(false);
-                        callBack.removeId(entity.getMid());
+                        callBack.removeId(entity.getBid());
                     } else {
                         entity.setChecked(true);
-                        callBack.addId(entity.getMid());
+                        callBack.addId(entity.getBid());
                     }
                     callBack.setChecked();
                     notifyDataSetChanged();
@@ -137,7 +130,7 @@ public class MyWorkerListAdapter extends ArrayAdapter<MyWorkerEntity> {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent();
-                    intent.setClass(mActivityFragmentSupport, MyWorkerListDesActivity.class);
+                    intent.setClass(mActivityFragmentSupport, CompactManageDesActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(Constant.INTNET_DATA, entity);
                     intent.putExtra("bundle", bundle);
@@ -147,16 +140,17 @@ public class MyWorkerListAdapter extends ArrayAdapter<MyWorkerEntity> {
         }
     }
 
-
     static class ViewHolder {
         @InjectView(R.id.checkBox)
         CheckBox checkBox;
-        @InjectView(R.id.tv_name)
-        TextView tvName;
-        @InjectView(R.id.tv_title)
-        TextView tvTitle;
-        @InjectView(R.id.tv_time)
-        TextView tvTime;
+        @InjectView(R.id.tv_genre)
+        TextView tvGenre;
+        @InjectView(R.id.tv_checking)
+        TextView tvChecking;
+        @InjectView(R.id.tv_dates)
+        TextView tvDates;
+        @InjectView(R.id.iv_Img)
+        ImageView ivImg;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

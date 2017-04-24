@@ -29,9 +29,9 @@ import java.util.List;
 
 
 /**
- * 我的轨迹
+ * 我的轨迹提交页面
  */
-public class MyWorkerActivity extends ActivityFragmentSupport {
+public class MyWorkerListSubmitActivity extends ActivityFragmentSupport {
 
 
     @ViewInject(R.id.tv_select)
@@ -57,7 +57,7 @@ public class MyWorkerActivity extends ActivityFragmentSupport {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        mActivityFragmentView.viewMain(R.layout.activity_my_worker);
+        mActivityFragmentView.viewMain(R.layout.activity_myworkerlist_submit);
         mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         mActivityFragmentView.viewEmptyGone();
         mActivityFragmentView.viewLoading(View.GONE);
@@ -88,7 +88,7 @@ public class MyWorkerActivity extends ActivityFragmentSupport {
         mList.add("工作任务");
         mList.add("工作安排");
         mList.add("我的计划");
-        CommonListStringAdapter mListStringAdapter = new CommonListStringAdapter(MyWorkerActivity.this, mList);
+        CommonListStringAdapter mListStringAdapter = new CommonListStringAdapter(MyWorkerListSubmitActivity.this, mList);
         mListView.setAdapter(mListStringAdapter);
         mListStringAdapter.notifyDataSetChanged();
         this.popupWindowHelper = new PopupWindowHelper(this.popView);

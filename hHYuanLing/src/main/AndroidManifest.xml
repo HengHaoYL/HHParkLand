@@ -85,8 +85,8 @@
             android:name=".activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
 
@@ -103,19 +103,43 @@
             android:name=".activity.user.LoginAndRegActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
+        <!-- activity 合同管理 -->
+        <activity
+            android:name=".activity.user.CompactManageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- activity 合同管理录入 -->
+        <activity
+            android:name=".activity.user.CompactManageSubmitActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- activity 合同管理详情 -->
+        <activity
+            android:name=".activity.user.CompactManageDesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- activity 设置 -->
         <activity
             android:name=".activity.user.SettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
+        <!-- activity 我的工作轨迹提交 -->
+        <activity
+            android:name=".activity.user.MyWorkerListSubmitActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- activity 我的工作轨迹 -->
         <activity
-            android:name=".activity.user.MyWorkerActivity"
+            android:name=".activity.user.MyWorkerListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
-        <!-- activity 我的工作轨迹列表 -->
+        <!-- activity 我的工作轨迹详情 -->
         <activity
-            android:name=".activity.user.MyWorkerListActivity"
+            android:name=".activity.user.MyWorkerListDesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
         <!-- activity 巡检界面 -->

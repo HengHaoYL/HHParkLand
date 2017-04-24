@@ -15,12 +15,16 @@ import android.content.Context;
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.utils.tools.ToolsKit;
+import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.model.ascyn.BaseModel;
 import com.henghao.parkland.model.ascyn.BeeCallback;
 import com.henghao.parkland.model.entity.BaseEntity;
+import com.henghao.parkland.model.entity.MyWorkerEntity;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,6 +44,7 @@ public class ProjectSecProtocol extends BaseModel {
 
     /**
      * 查询 现场勘查情况
+     *
      * @param uid
      */
     public void queryXCKC(String uid) {
@@ -53,11 +58,30 @@ public class ProjectSecProtocol extends BaseModel {
             e.printStackTrace();
         }
     }
+
     /**
-     * 提交 我的轨迹
+     * 查询建设类合同
+     *
      * @param uid
      */
-    public void saveMylocusMsg(String uid,String personnel,String details,String dates,String workType) {
+    public void queryBuildCompact(String uid) {
+        try {
+            String url = ProtocolUrl.COMPACT_QUERYBUILDCOMPACT;
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("uid", uid);
+            this.mBeeCallback.url(url).type(String.class).params(params);
+            this.aq.ajax(this.mBeeCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 提交 我的轨迹
+     *
+     * @param uid
+     */
+    public void saveMylocusMsg(String uid, String personnel, String details, String dates, String workType) {
         try {
             String url = ProtocolUrl.PROJECT_SAVE_MYLOCUSMSG;
             Map<String, Object> params = new HashMap<String, Object>();
@@ -72,8 +96,10 @@ public class ProjectSecProtocol extends BaseModel {
             e.printStackTrace();
         }
     }
+
     /**
      * 查询 我的轨迹
+     *
      * @param uid
      */
     public void queryMylocusMsg(String uid) {
@@ -110,12 +136,20 @@ public class ProjectSecProtocol extends BaseModel {
                     return;
                 }
                 /**** end ****/
-                if (url.endsWith(ProtocolUrl.PROJECT_QUERYXCKC) || url.endsWith(ProtocolUrl.PROJECT_QUERY_MYLOCUSMSG)) {
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERYXCKC)) {
                     // 现场勘查
-                   /* Type type = new TypeToken<List<ProjectXcKcEntity>>() {
-                    }.getType();
-                    List<ProjectXcKcEntity> homeData = ToolsJson.parseObjecta(data, type);*/
                     ProjectSecProtocol.this.OnMessageResponse(url, mBaseEntity, status);
+                }
+                if (url.endsWith(ProtocolUrl.COMPACT_QUERYBUILDCOMPACT)) {
+                    // 建设类合同
+                    ProjectSecProtocol.this.OnMessageResponse(url, mBaseEntity, status);
+                }
+                if (url.endsWith(ProtocolUrl.PROJECT_QUERY_MYLOCUSMSG)) {
+                    // 我的轨迹
+                    Type type = new TypeToken<List<MyWorkerEntity>>() {
+                    }.getType();
+                    List<MyWorkerEntity> homeData = ToolsJson.parseObjecta(data, type);
+                    ProjectSecProtocol.this.OnMessageResponse(url, homeData, status);
                 }
 
             } catch (Exception e) {

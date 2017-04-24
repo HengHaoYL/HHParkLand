@@ -10,6 +10,7 @@ import com.henghao.parkland.model.IdEntity;
 public class MyWorkerEntity extends IdEntity {
 
     /**
+     * 表主键：int mid
      * 用户编号：int uid
      * 人员：String personnel
      * 工作内容：String details
@@ -17,7 +18,9 @@ public class MyWorkerEntity extends IdEntity {
      * 工作类型：String workType	POST	uid：用户编号
      * 时间精确到分钟
      */
-
+    private boolean isChecked;//是否被选中
+    @Expose
+    private int mid;//表主键
     @Expose
     private String personnel;
 
@@ -29,6 +32,22 @@ public class MyWorkerEntity extends IdEntity {
 
     @Expose
     private String workType;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getMid() {
+        return mid;
+    }
+
+    public void setMid(int mid) {
+        this.mid = mid;
+    }
 
     public String getPersonnel() {
         return personnel;

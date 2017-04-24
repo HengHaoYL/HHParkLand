@@ -20,11 +20,11 @@ import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.adapter.MyWorkerListAdapter;
+import com.henghao.parkland.adapter.CompactAdapter;
 import com.henghao.parkland.callback.MyCallBack;
 import com.henghao.parkland.model.entity.BaseEntity;
+import com.henghao.parkland.model.entity.CompactEntity;
 import com.henghao.parkland.model.entity.DeleteEntity;
-import com.henghao.parkland.model.entity.MyWorkerEntity;
 import com.henghao.parkland.model.protocol.ProjectSecProtocol;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -46,27 +46,39 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * 我的轨迹展示列表
+ * Created by 晏琦云 on 2017/4/21.
+ * 合同管理展示页面
  */
-public class MyWorkerListActivity extends ActivityFragmentSupport implements MyCallBack {
+public class CompactManageActivity extends ActivityFragmentSupport implements MyCallBack {
 
-
-    @InjectView(R.id.lv_myworkerlist)
-    XListView mXlistView;
     @InjectView(R.id.layout_bottom)
     LinearLayout layoutBottom;
+    @InjectView(R.id.lv_compact_manage)
+    XListView mXlistView;
+
+    private String mType;//被选中的合同类型
+    private static int indexOfSelect;//选中的板块 0园林类 1建设类 2园林工程类 3景观类
 
     private CheckBox checkBox;//全选/多选
     private TextView tvEdit;//编辑
     private List<Integer> itemID;//被选中的item ID集合
 
-    private List<MyWorkerEntity> mData;
-    private MyWorkerListAdapter mAdapter;
+    private List<CompactEntity> data;
+    private CompactAdapter mAdapter;
+
+    /**
+     * 设置选中的index
+     *
+     * @param index
+     */
+    public static void setIndexOfSelect(int index) {
+        indexOfSelect = index;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_myworkerlist);
+        this.mActivityFragmentView.viewMain(R.layout.activity_compact_manage);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
@@ -80,10 +92,24 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
     @Override
     public void initWidget() {
         super.initWidget();
+        switch (indexOfSelect) {
+            case 0:
+                mType = "园林类";
+                break;
+            case 1:
+                mType = "建设类";
+                break;
+            case 2:
+                mType = "园林工程类";
+                break;
+            case 3:
+                mType = "景观类";
+                break;
+        }
         mActivityFragmentView.viewMainGone();
         initWithBar();
         initWithCenterBar();
-        mCenterTextView.setText("我的轨迹");
+        mCenterTextView.setText("合同管理");
         initWithRightBar();
         mRightTextView.setVisibility(View.VISIBLE);
         mRightTextView.setText("添加");
@@ -95,7 +121,8 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
                     return;
                 }
                 Intent intent = new Intent();
-                intent.setClass(MyWorkerListActivity.this, MyWorkerListSubmitActivity.class);
+                intent.putExtra("Type", mType);
+                intent.setClass(CompactManageActivity.this, CompactManageSubmitActivity.class);
                 startActivity(intent);
             }
         });
@@ -110,8 +137,8 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
         tvEdit = (TextView) HeaderView.findViewById(R.id.tv_edit);
         mXlistView.addHeaderView(HeaderView);
         tvEdit.setVisibility(View.VISIBLE);
-        mData = new ArrayList<>();
-        mAdapter = new MyWorkerListAdapter(this, mData, this);
+        data = new ArrayList<>();
+        mAdapter = new CompactAdapter(this, data, this);
         mXlistView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
         tvEdit.setOnClickListener(new View.OnClickListener() {
@@ -138,13 +165,13 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
             public void onClick(View v) {
                 if (checkBox.isChecked()) {
                     itemID.clear();
-                    for (MyWorkerEntity entity : mData) {
+                    for (CompactEntity entity : data) {
                         entity.setChecked(true);
-                        addId(entity.getMid());
+                        addId(entity.getBid());
                     }
                 } else {
                     itemID.clear();
-                    for (MyWorkerEntity entity : mData) {
+                    for (CompactEntity entity : data) {
                         entity.setChecked(false);
                     }
                 }
@@ -168,24 +195,48 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
          */
         ProjectSecProtocol mProtocol = new ProjectSecProtocol(this);
         mProtocol.addResponseListener(this);
-        mProtocol.queryMylocusMsg(getLoginUid());
-        mActivityFragmentView.viewLoading(View.VISIBLE);
+        switch (indexOfSelect) {
+            case 0://园林类
+                break;
+            case 1://建设类合同
+                mProtocol.queryBuildCompact(getLoginUid());
+                mActivityFragmentView.viewLoading(View.VISIBLE);
+                break;
+            case 2://园林工程类
+                break;
+            case 3://景观类
+                break;
+        }
+
     }
 
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.PROJECT_QUERY_MYLOCUSMSG)) {
+        //查询建设类合同
+        if (url.endsWith(ProtocolUrl.COMPACT_QUERYBUILDCOMPACT)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mEntity = (BaseEntity) jo;
-                mActivityFragmentView.viewMainGone();
-                return;
-            } else if (jo instanceof List) {
-                mActivityFragmentView.viewEmptyGone();
-                List<MyWorkerEntity> homeData = (List<MyWorkerEntity>) jo;
-                mData.clear();
-                mData.addAll(homeData);
-                mAdapter.notifyDataSetChanged();
+                if (mEntity.getStatus() > 0) {
+                    mActivityFragmentView.viewMainGone();
+                    return;
+                } else {
+                    mActivityFragmentView.viewEmptyGone();
+                    String jsonStr = ToolsJson.toJson(mEntity.getData());
+                    Type type = new TypeToken<List<CompactEntity>>() {
+                    }.getType();
+                    data.clear();
+                    List<CompactEntity> homeData = ToolsJson.parseObjecta(jsonStr, type);
+                    String topPath = mEntity.getPath();//图片、文件下载URL头部地址
+                    for (CompactEntity entity : homeData) {
+                        entity.setPictureId(topPath);
+                        entity.setCompactId(topPath);
+                        data.add(entity);
+                    }
+                    mAdapter.notifyDataSetChanged();
+                    mXlistView.setAdapter(mAdapter);
+                    return;
+                }
             }
         }
     }
@@ -246,7 +297,7 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
         Gson gson = new Gson();
         String parameter = gson.toJson(entity);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), parameter);
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.DELETE_MYLOCUS).build();
+        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.DELETE_HSRESULT).build();
         mActivityFragmentView.viewLoading(View.VISIBLE);
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
@@ -288,7 +339,7 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
                             /**
                              * 全部删除之后
                              */
-                            if (mData.size() == 0) {
+                            if (data.size() == 0) {
                                 mActivityFragmentView.viewMainGone();
                             }
                         }
@@ -330,7 +381,7 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
     @Override
     public void setChecked() {
         int size = itemID.size();
-        if (size == mData.size()) {
+        if (size == data.size()) {
             checkBox.setChecked(true);
         } else {
             checkBox.setChecked(false);
@@ -344,9 +395,9 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
      */
     public List<Integer> getIdList() {
         List<Integer> idList = new ArrayList<Integer>();
-        for (MyWorkerEntity entity : mData) {
+        for (CompactEntity entity : data) {
             if (entity.isChecked()) {
-                idList.add(entity.getMid());
+                idList.add(entity.getBid());
             }
         }
         return idList;
@@ -360,12 +411,12 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
         /**
          * 在List中找到与id相同的索引
          */
-        for (int i = 0; i < mData.size(); i++) {
-            if (mData.get(i).getMid() == id) {
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).getBid() == id) {
                 index = i;
             }
         }
-        mData.remove(index);
+        data.remove(index);
     }
 
     /**
@@ -374,7 +425,7 @@ public class MyWorkerListActivity extends ActivityFragmentSupport implements MyC
      * @return
      */
     private boolean isItemChecked() {
-        for (MyWorkerEntity entity : mData) {
+        for (CompactEntity entity : data) {
             if (entity.isChecked()) {
                 return true;
             }

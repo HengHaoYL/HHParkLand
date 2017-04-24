@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.henghao.parkland.R;
 import com.henghao.parkland.activity.DebugSettingActivity;
 import com.henghao.parkland.activity.QiandaoActivity;
 import com.henghao.parkland.activity.projectmanage.ProjectInfoActivity;
+import com.henghao.parkland.activity.user.CompactManageActivity;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.activity.user.MyWorkerListActivity;
 import com.henghao.parkland.activity.user.SettingActivity;
@@ -122,9 +124,9 @@ public class MyLoginFragment extends FragmentSupport {
         }
     }
 
-    @OnClick({R.id.tv_login, R.id.ll_updatename, R.id.image_setting, R.id.tv_myworker, R.id.tv_qiandao, R.id.tv_myproject})
+    @OnClick({R.id.tv_login, R.id.ll_updatename, R.id.image_setting, R.id.tv_myworker, R.id.tv_qiandao, R.id.tv_myproject, R.id.tv_compactmanage})
     private void viewClick(View v) {
-        Intent intent = new Intent();
+        final Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.tv_login:
                 if (isLogin()) {
@@ -165,7 +167,25 @@ public class MyLoginFragment extends FragmentSupport {
                 intent.setClass(mActivity, ProjectInfoActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.tv_compactmanage:
+                //合同管理
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+                builder.setIcon(R.drawable.icon_select);
+                builder.setTitle("请选择合同类型");
+                String[] data = {"园林类", "建设类", "园林工程类", "景观类"};
+                builder.setItems(data, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        CompactManageActivity.setIndexOfSelect(which);
+                        intent.setClass(mActivity, CompactManageActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                break;
         }
+
     }
 
 

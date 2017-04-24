@@ -48,9 +48,9 @@
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/padding_big"
-            android:paddingRight="@dimen/padding_big"
-            android:src="@drawable/icon_setting" />
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:src="@drawable/home_liebiao" />
 
         <ImageView
             android:id="@+id/image_share"
