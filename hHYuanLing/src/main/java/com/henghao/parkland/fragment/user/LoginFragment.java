@@ -76,7 +76,7 @@ public class LoginFragment extends FragmentSupport {
 
     private void initData() {
         mLeftImageView = (ImageView) getActivity().findViewById(R.id.bar_left_img);
-        mLeftImageView.setImageDrawable(getResources().getDrawable(R.drawable.btn_blackback));
+        mLeftImageView.setImageDrawable(getResources().getDrawable(R.drawable.btn_back));
         mCenterTextView = (TextView) getActivity().findViewById(R.id.bar_center_title);
         mCenterTextView.setText("登录");
     }

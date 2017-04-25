@@ -12,18 +12,19 @@ import java.util.ArrayList;
  */
 public class CompactEntity implements Serializable {
     /**
-     * id:6,
-     * checking:"正在审核",
-     * compactId:"50cbe8cceded46e48b8395d35d34a8b2",
-     * dates:"2017-04-21 11:02",
-     * document:"/gardenFile/compact/buildCompact/document/2017042111/5a8db089eb63495ba15ed652c5ca9f19.docx",
+     * checking:"审核未通过",
+     * comment:"清晰度未达标准",
+     * compactId:"2b238c9ee9c546c3a6355d515b671b9f",
+     * dates:"2017-04-25 10:18",
+     * document:"/gardenFile/compact/buildCompact/document/2017042510/5f6ff32f41be4ff082b53a808363c758.docx",
      * genre:"建设类",
-     * isNo:0,
-     * pictureId:"7dfb4336562d41fa9d4cff26dd7391b0",
-     * uid:"123",
+     * id:13,
      * url:-[
-     * 0:"/gardenFile/compact/buildCompact/img/2017042111020607521102060752/413ff5e85a504e01b27001c69e4a86eb.JPG",
-     * 1:"/gardenFile/compact/buildCompact/img/2017042111020607521102060752/9867d6f0758346908642c9d3c8e93d6f.jpg"
+     * 0:"/gardenFile/compact/buildCompact/img/2017042510180508101018050810/d7f90aca270e4410a9c9978b356494b2.jpeg",
+     * 1:"/gardenFile/compact/buildCompact/img/2017042510180508101018050810/353d4473c3f1431285dd3656c84e94c8.jpeg",
+     * 2:"/gardenFile/compact/buildCompact/img/2017042510180508101018050810/ffa51b3cbc9e4107b273a12b42b35fcd.jpeg",
+     * 3:"/gardenFile/compact/buildCompact/img/2017042510180508101018050810/7c643cea360d41fb8e4ffaeac39c7f73.jpeg",
+     * 4:"/gardenFile/compact/buildCompact/img/2017042510180508101018050810/91c65d9d8633447280a9f504b7dba984.jpeg"
      * ]
      */
     private boolean isChecked;//是否被选中
@@ -40,9 +41,19 @@ public class CompactEntity implements Serializable {
     @Expose
     private String dates;   // 录入时间
     @Expose
+    private String comment;   // 备注信息
+    @Expose
     private String checking;    //审核状态
     @Expose
     private ArrayList<String> url;    // 图片路径集合
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public boolean isChecked() {
         return isChecked;

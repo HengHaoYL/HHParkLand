@@ -501,6 +501,26 @@ public class ProtocolUrl {
      */
     public static final String COMPACT_SAVELANDSCAPECOMPACT = "compact/saveLandscapeCompact";
 
+    /**
+     * 园林类合同删除
+     */
+    public static final String DELETECOMPACT_GARDEN = "deleteCompact/garden";
+
+    /**
+     * 建设类合同删除
+     */
+    public static final String DELETECOMPACT_BUILD = "deleteCompact/build";
+
+    /**
+     * 园林工程类合同删除
+     */
+    public static final String DELETECOMPACT_ENGINEERING = "deleteCompact/engineering";
+
+    /**
+     * 景观类合同删除
+     */
+    public static final String DELETECOMPACT_LANDSCAPE = "deleteCompact/landscape";
+
     /************************ 合同管理 end **************************/
 
     /**

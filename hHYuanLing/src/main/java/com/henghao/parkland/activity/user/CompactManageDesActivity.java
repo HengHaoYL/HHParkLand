@@ -3,6 +3,7 @@ package com.henghao.parkland.activity.user;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +52,10 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
     @InjectView(R.id.gridView)
     NoScrollGridView gridView;
     CommonGridViewAdapter mAdapter;
+    @InjectView(R.id.tv_comment)
+    TextView tvComment;
+    @InjectView(R.id.ll_comment)
+    LinearLayout llComment;
     private CompactEntity mEntity;
 
     @Override
@@ -96,12 +101,16 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
         tvFileName.setText(getFileName(mEntity.getDocument()));
         switch (mEntity.getChecking()) {
             case "正在审核":
+                llComment.setVisibility(View.GONE);
                 tvChecking.setTextColor(getContext().getResources().getColor(R.color.orange));
                 break;
             case "审核通过":
+                llComment.setVisibility(View.GONE);
                 tvChecking.setTextColor(getContext().getResources().getColor(R.color.green));
                 break;
             case "审核未通过":
+                llComment.setVisibility(View.VISIBLE);
+                tvComment.setText(mEntity.getComment());
                 tvChecking.setTextColor(getContext().getResources().getColor(R.color.red));
                 break;
         }
@@ -158,7 +167,7 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
                         @Override
                         public void run() {
                             mActivityFragmentView.viewLoading(View.GONE);
-                            Toast.makeText(context, "文件下载成功！" + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+                            msg("文件下载成功！" + file.getAbsolutePath());
                         }
                     });
                 }

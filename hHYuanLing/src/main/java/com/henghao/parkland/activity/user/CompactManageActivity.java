@@ -273,7 +273,7 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
                             entity.setId(id);
                             deleteArray.add(entity);
                         }
-                        deleteInfo(deleteArray);//请求网络，删除信息
+                        deleteInfo(deleteArray, indexOfSelect);//请求网络，删除信息
                     }
                 });
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -300,13 +300,28 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
      *
      * @param entity
      */
-    private void deleteInfo(List<DeleteEntity> entity) {
+    private void deleteInfo(List<DeleteEntity> entity, int index) {
+        String url = "";
+        switch (index) {
+            case 0:
+                url = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DELETECOMPACT_GARDEN;
+                break;
+            case 1:
+                url = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DELETECOMPACT_BUILD;
+                break;
+            case 2:
+                url = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DELETECOMPACT_ENGINEERING;
+                break;
+            case 3:
+                url = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DELETECOMPACT_LANDSCAPE;
+                break;
+        }
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         Gson gson = new Gson();
         String parameter = gson.toJson(entity);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), parameter);
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.DELETE_HSRESULT).build();
+        Request request = builder.post(requestBody).url(url).build();
         mActivityFragmentView.viewLoading(View.VISIBLE);
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
@@ -332,7 +347,7 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(context, baseEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                            msg(baseEntity.getMsg());
                             mActivityFragmentView.viewLoading(View.GONE);
                             /**
                              * 刷新界面
