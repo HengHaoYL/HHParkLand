@@ -194,41 +194,49 @@ public class RegisterFragment extends FragmentSupport {
         mActivityFragmentView.viewLoading(View.VISIBLE);
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Request request, IOException e) {
-                Log.e(TAG, "onFailure: " + e.getMessage());
-                e.printStackTrace();
-                mActivityFragmentView.viewLoading(View.GONE);
-            }
+                         @Override
+                         public void onFailure(Request request, IOException e) {
+                             Log.e(TAG, "onFailure: " + e.getMessage());
+                             e.printStackTrace();
+                             mActivityFragmentView.viewLoading(View.GONE);
+                         }
 
-            @Override
-            public void onResponse(Response response) throws IOException {
-                String content = response.body().string();
-                try {
-                    Type type = new TypeToken<BaseEntity>() {
-                    }.getType();
-                    final BaseEntity mEntity = ToolsJson.parseObjecta(content, type);
-                    final int status = mEntity.getStatus();
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mActivityFragmentView.viewLoading(View.GONE);
-                            mActivity.msg(mEntity.getMsg());
-                            /**
-                             * 注册成功
-                             */
-                            if (status == 0) {
-                                clearData();
-                                LoginAndRegActivity loginAndRegActivity = (LoginAndRegActivity) getActivity();
-                                loginAndRegActivity.setLoginFragment();
-                            }
-                        }
-                    });
-                } catch (JsonSyntaxException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+                         @Override
+                         public void onResponse(Response response) throws IOException {
+                             String content = response.body().string();
+                             try {
+                                 Type type = new TypeToken<BaseEntity>() {
+                                 }.getType();
+                                 final BaseEntity mEntity = ToolsJson.parseObjecta(content, type);
+                                 final int status = mEntity.getStatus();
+                                 getActivity().runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         mActivityFragmentView.viewLoading(View.GONE);
+                                         mActivity.msg(mEntity.getMsg());
+                                         /**
+                                          * 注册成功
+                                          */
+                                         if (status == 0) {
+                                             clearData();
+                                             LoginAndRegActivity loginAndRegActivity = (LoginAndRegActivity) getActivity();
+                                             loginAndRegActivity.setLoginFragment();
+                                         }
+                                     }
+                                 });
+                             } catch (JsonSyntaxException e) {
+                                 getActivity().runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         mActivityFragmentView.viewLoading(View.GONE);
+                                     }
+                                 });
+                                 e.printStackTrace();
+                             }
+                         }
+                     }
+
+        );
     }
 
     private boolean checkData() {
