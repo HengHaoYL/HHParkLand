@@ -7,7 +7,8 @@
 
     <uses-sdk
         android:minSdkVersion="10"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="21"
+        tools:overrideLibrary="net.zombie_sama.imagepainter" />
 
     <!-- 判断是否联网操作权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -571,8 +572,10 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="Gr4Rq0Yl84nFIXH9lfNa5VkSKOKpEb1L" />
-
-        <activity android:name=".activity.DebugSettingActivity"></activity>
+        <!-- 调试Activity -->
+        <activity android:name=".activity.DebugSettingActivity" />
+        <!-- 图片签名Activity -->
+        <activity android:name=".activity.ImageSignActivity" />
     </application>
 
 </manifest>
