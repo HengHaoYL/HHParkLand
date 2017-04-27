@@ -148,6 +148,19 @@ public class FileUtils {
 //    }
 
     /**
+     * 返回SD卡路径
+     */
+    public static String getSDPath() {
+        File sdDir = null;
+        boolean sdCardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+        if (sdCardExist) {
+            sdDir = Environment.getExternalStorageDirectory();
+        }
+        assert sdDir != null;
+        return sdDir.toString();
+    }
+
+    /**
      * 压缩List中的图片，方法运行在子线程，压缩完成后会发送 what = {@value COMPRESS_FINISH} 到传入的 {@link Handler}
      *
      * @param filesArray 文件list数组

@@ -1,7 +1,6 @@
 package com.henghao.parkland.activity.user;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +13,7 @@ import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.CommonGridViewAdapter;
 import com.henghao.parkland.model.entity.CompactEntity;
+import com.henghao.parkland.utils.FileUtils;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import id.zelory.compressor.FileUtil;
 
 import static com.henghao.parkland.activity.projectmanage.ProjectMoneyActivity.makeDir;
 
@@ -131,7 +132,7 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
      */
     private void downloadFile() {
         mActivityFragmentView.viewLoading(View.VISIBLE);
-        String sdPath = getSDPath();
+        String sdPath = FileUtils.getSDPath();
         if (!ToolsKit.isEmpty(sdPath)) {
             final File parentfile = new File(sdPath + "/ParKLand/Compact/");
             makeDir(parentfile);
@@ -175,21 +176,5 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
         } else {
             Toast.makeText(context, "您当前没有SD卡，请插入SD卡后进行操作！", Toast.LENGTH_SHORT).show();
         }
-
-    }
-
-    /**
-     * 返回SD卡路径
-     *
-     * @return
-     */
-    public String getSDPath() {
-        File sdDir = null;
-        boolean sdCardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
-        if (sdCardExist) {
-            sdDir = Environment.getExternalStorageDirectory();
-        }
-        String dir = sdDir.toString();
-        return dir;
     }
 }

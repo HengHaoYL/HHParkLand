@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.SeekBar;
 
 import com.henghao.parkland.R;
+import com.henghao.parkland.utils.FileUtils;
 
 
 import net.zombie_sama.imagepainter.PaintableImageView;
@@ -18,6 +19,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -32,7 +34,8 @@ public class ImageSignActivity extends AppCompatActivity {
     PaintableImageView piv;
 
     private File fileSrc;
-    private List<Bitmap> bitmapCacheList;
+    private List<Bitmap> bitmapCacheList = new ArrayList<>();
+    private int cacheSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +45,42 @@ public class ImageSignActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         fileSrc = (File) intent.getExtras().get("file");
+        cacheSize = intent.getIntExtra("cacheSize", 10);
         assert fileSrc != null;
-        piv.setImageBitmap(BitmapFactory.decodeFile(fileSrc.getAbsolutePath()));
+        Bitmap bitmap = BitmapFactory.decodeFile(fileSrc.getAbsolutePath());
+        bitmapCacheList.add(bitmap.copy(bitmap.getConfig(), false));
+        piv.setImageBitmap(bitmap);
         piv.setOnDrawDoneListener(new PaintableImageView.OnDrawDoneListener() {
             @Override
             public void onDrawDone(Bitmap bitmap) {
                 saveCache(bitmap);
             }
         });
+        seekBar.setProgress((int) (piv.getPaintStrokeWidth() - 1));
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                piv.setPaintStrokeWidth(seekBar.getProgress() + 1);
+            }
+        });
     }
 
     private void saveCache(Bitmap bitmap) {
-        if (bitmapCacheList.size() > 10) {
-            bitmapCacheList.remove(10);
+        if (bitmapCacheList.size() > 11) {
+            bitmapCacheList.remove(11);
             saveCache(bitmap);
         } else {
-            bitmapCacheList.add(bitmap);
+            bitmapCacheList.add(0, bitmap.copy(bitmap.getConfig(), false));
         }
     }
 
@@ -66,15 +89,20 @@ public class ImageSignActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_commit:
                 File file = toFile(piv.getResult());
-                Intent intent = new Intent();
-                intent.putExtra("file", file);
-                setResult(RESULT_OK, intent);
+                if (file != null) {
+                    Intent intent = new Intent();
+                    intent.putExtra("file", file);
+                    intent.putExtra("src", fileSrc);
+                    setResult(RESULT_OK, intent);
+                } else {
+                    setResult(-2);
+                }
                 finish();
                 break;
             case R.id.btn_back:
                 if (bitmapCacheList.size() >= 2) {
                     bitmapCacheList.remove(0);
-                    piv.setImageBitmap(bitmapCacheList.get(0));
+                    piv.setImageBitmap(bitmapCacheList.get(0),false);
                 }
                 break;
             case R.id.btn_reset:
@@ -84,15 +112,28 @@ public class ImageSignActivity extends AppCompatActivity {
     }
 
     private File toFile(Bitmap bitmap) {
-        String path = fileSrc.getAbsolutePath().substring(0, fileSrc.getAbsolutePath().lastIndexOf(".")) + "_edit.jpg";
-        File file = new File(path);
+        String filesName = fileSrc.toString().substring(0, fileSrc.getAbsolutePath().lastIndexOf("."));
+        String suffix = fileSrc.toString().substring(fileSrc.getAbsolutePath().lastIndexOf("."));
+        String hashName = "";
+        for (char c : filesName.toCharArray()) {
+            hashName += Integer.toHexString(c);
+        }
+        File file = new File(FileUtils.getSDPath() + "/ParKLand/cache/SignedImage/" + hashName + suffix);
+        Log.d("ImageSignActivity", file.getAbsolutePath());
         try {
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+                File tmp = new File(file.getParent() + ".nomedia/");
+                if (!tmp.exists()) tmp.mkdirs();
+            }
+            file.createNewFile();
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
             bos.flush();
             bos.close();
         } catch (IOException e) {
             Log.e("ImageSignActivity", "bitmap转换失败", e);
+            return null;
         }
         return file;
     }

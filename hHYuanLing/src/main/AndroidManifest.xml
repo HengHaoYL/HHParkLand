@@ -575,7 +575,10 @@
         <!-- 调试Activity -->
         <activity android:name=".activity.DebugSettingActivity" />
         <!-- 图片签名Activity -->
-        <activity android:name=".activity.ImageSignActivity" />
+        <activity
+            android:name=".activity.ImageSignActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
