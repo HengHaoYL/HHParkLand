@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.henghao.parkland.R;
 import com.henghao.parkland.utils.FileUtils;
@@ -45,6 +46,10 @@ public class ImageSignActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         fileSrc = (File) intent.getExtras().get("file");
+        if (fileSrc == null || !fileSrc.exists()) {
+            Toast.makeText(this, "文件加载失败", Toast.LENGTH_SHORT).show();
+            finish();
+        }
         cacheSize = intent.getIntExtra("cacheSize", 10);
         assert fileSrc != null;
         Bitmap bitmap = BitmapFactory.decodeFile(fileSrc.getAbsolutePath());
@@ -102,7 +107,7 @@ public class ImageSignActivity extends AppCompatActivity {
             case R.id.btn_back:
                 if (bitmapCacheList.size() >= 2) {
                     bitmapCacheList.remove(0);
-                    piv.setImageBitmap(bitmapCacheList.get(0),false);
+                    piv.setImageBitmap(bitmapCacheList.get(0), false);
                 }
                 break;
             case R.id.btn_reset:

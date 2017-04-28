@@ -299,6 +299,7 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
                 }
                 names += ((File) data.getSerializableExtra("src")).getName() + " ";
                 tvPic.setText(names);
+
             }
         }
     }
