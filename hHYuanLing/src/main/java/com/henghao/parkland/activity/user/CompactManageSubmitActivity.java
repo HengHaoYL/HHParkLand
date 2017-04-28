@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -17,7 +16,6 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.ImageSignActivity;
 import com.henghao.parkland.utils.FileUtils;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -55,16 +53,14 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
     TextView tvDocument;
     @InjectView(R.id.tv_submit)
     TextView tvSubmit;
-    private static final String TAG = "ProjectGHFSubmitActivit";
 
+    private static final String TAG = "ProjectGHFSubmitActivit";
     private static final int REQUEST_HETONG = 0x00;//合同请求
     private static final int REQUEST_FILE = 0x1001;//选择文件请求
-    private static final int REQUEST_SIGN = 0x1002;//签名请求
 
     private ArrayList<String> mSelectPath;//被选中的合同图片地址集合
     private ArrayList<File> mFileList = new ArrayList<>();//被选中的合同图片
     private File mFile;//被选中的合同文件
-    private String names;
     private String URL;//网络请求地址
 
     private Handler handler = new Handler() {
@@ -241,12 +237,13 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
     private void addPic(int request) {
         // 查看session是否过期
         // int selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
-        int selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
+        int selectedMode = MultiImageSelectorActivity.MODE_MULTI;
+        int maxNum = 9;
         Intent picIntent = new Intent(this, MultiImageSelectorActivity.class);
         // 是否显示拍摄图片
         picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
         // 最大可选择图片数量
-        picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, 1);
+        picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, maxNum);
         // 选择模式
         picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, selectedMode);
         // 默认选择
@@ -267,10 +264,17 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
                 if ((resultCode == Activity.RESULT_OK) || (resultCode == Activity.RESULT_CANCELED)) {
                     this.mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
                     if (!ToolsKit.isEmpty(this.mSelectPath)) {
-                        Intent signIntent = new Intent(CompactManageSubmitActivity.this, ImageSignActivity.class);
-                        String srcName = new File(mSelectPath.get(0)).getName();
-                        signIntent.putExtra("file", new File(mSelectPath.get(0)));
-                        startActivityForResult(signIntent, REQUEST_SIGN);
+                        List<String> fileNames = new ArrayList<>();
+                        mFileList.clear();
+                        for (String filePath : mSelectPath) {
+                            String imageName = getImageName(filePath);
+                            fileNames.add(imageName);
+                            File file = new File(filePath);
+                            mFileList.add(file);
+                        }
+                        Log.i("mFileList1", String.valueOf(mFileList.size()));
+                        tvPic.setText("图片名：" + fileNames.toString());
+                        //                        this.mBitmapUtils.display(this.mUserHeaderImageView, headerImg);
                     }
                 }
             }
@@ -285,20 +289,6 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
                     mFile = new File(path);
                     tvDocument.setText("文件名：" + mFile.getName());
                 }
-            }
-            if (requestCode == REQUEST_SIGN) {
-                if (resultCode != RESULT_OK) {
-                    Toast.makeText(context, "文件保存失败", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                File result = (File) data.getSerializableExtra("file");
-                if (mFileList.contains(result)) return;
-                mFileList.add(result);
-                if (TextUtils.isEmpty(tvPic.getText().toString().trim())) {
-                    names = "图片名：";
-                }
-                names += ((File) data.getSerializableExtra("src")).getName() + " ";
-                tvPic.setText(names);
             }
         }
     }

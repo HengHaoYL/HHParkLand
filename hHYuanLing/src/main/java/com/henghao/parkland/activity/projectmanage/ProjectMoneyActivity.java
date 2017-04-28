@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,9 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
 
     private ProjectMoneyAdapter mMoneyAdapter;
 
+    @ViewInject(R.id.btn_export)
+    private Button btnExport;
+
     private List<SGWalletEntity> mList = new ArrayList<>();
 
     @Override
@@ -79,16 +83,21 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         mActivityFragmentView.viewMainGone();
         initWithBar();
         initWithRightBar();
-        mRightTextView.setText("导出EXCEL");
+        mRightTextView.setText("添加");
+        mRightTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "未实现", Toast.LENGTH_SHORT).show();
+            }
+        });
         initWithCenterBar();
         mCenterTextView.setText("施工钱包");
         mXlistview.setXListViewListener(this);
+
         initView();
         mMoneyAdapter = new ProjectMoneyAdapter(this);
-        /**
-         * 下载文件
-         */
-        mRightTextView.setOnClickListener(new View.OnClickListener() {
+        //下载文件
+        btnExport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String sdPath = getSDPath();
