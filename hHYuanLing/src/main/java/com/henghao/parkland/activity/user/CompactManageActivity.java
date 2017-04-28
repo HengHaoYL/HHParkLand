@@ -94,16 +94,16 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
         super.initWidget();
         switch (indexOfSelect) {
             case 0:
-                mType = "园林类";
+                mType = "园林绿化";
                 break;
             case 1:
-                mType = "建设类";
+                mType = "施工建设";
                 break;
             case 2:
-                mType = "园林工程类";
+                mType = "园林工程";
                 break;
             case 3:
-                mType = "景观类";
+                mType = "景观风景";
                 break;
         }
         mActivityFragmentView.viewMainGone();

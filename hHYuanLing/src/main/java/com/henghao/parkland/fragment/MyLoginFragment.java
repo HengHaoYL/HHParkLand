@@ -172,7 +172,7 @@ public class MyLoginFragment extends FragmentSupport {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
                 builder.setIcon(R.drawable.icon_select);
                 builder.setTitle("请选择合同类型");
-                String[] data = {"园林类", "建设类", "园林工程类", "景观类"};
+                String[] data = {"园林绿化", "施工建设", "园林工程", "景观风景"};
                 builder.setItems(data, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
