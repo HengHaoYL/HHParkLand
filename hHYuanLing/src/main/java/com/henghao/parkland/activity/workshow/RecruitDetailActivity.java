@@ -32,6 +32,8 @@ public class RecruitDetailActivity extends ActivityFragmentSupport {
     TextView tvTel;
     @InjectView(R.id.tv_detail)
     TextView tvDetail;
+    @InjectView(R.id.tv_companyAdress)
+    TextView tvCompanyAdress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class RecruitDetailActivity extends ActivityFragmentSupport {
         Bundle bundle = getIntent().getBundleExtra("bundle");
         RecruitEntity mEntity = (RecruitEntity) bundle.getSerializable(Constant.INTNET_DATA);
         tvCompanyName.setText(mEntity.getCompanyName());
+        tvCompanyAdress.setText(mEntity.getCompanyAdress());
         tvContact.setText(mEntity.getContact());
         tvDates.setText(mEntity.getDates());
         tvDetail.setText(mEntity.getDetail());

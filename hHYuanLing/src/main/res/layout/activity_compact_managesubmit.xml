@@ -27,6 +27,35 @@
                     android:layout_width="120dip"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_big"
+                    android:text="项目名称"
+                    android:textSize="@dimen/gj_d" />
+
+                <EditText
+                    android:id="@+id/et_projectName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="请输入项目名称"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textColorHint="@color/line"
+                    android:textSize="@dimen/gj_d" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dip"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
                     android:text="合同类型"
                     android:textSize="@dimen/gj_d" />
 

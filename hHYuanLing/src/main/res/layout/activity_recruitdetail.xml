@@ -43,6 +43,15 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_companyAdress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/padding_normal"
+                android:text="企业地址"
+                android:textColor="@color/text_color_b"
+                android:textSize="12sp" />
+
+            <TextView
                 android:id="@+id/tv_workingAdress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

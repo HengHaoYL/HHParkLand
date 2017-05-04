@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,8 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
 //    TextView tvDocument;
     @InjectView(R.id.tv_submit)
     TextView tvSubmit;
+    @InjectView(R.id.et_projectName)
+    EditText etProjectName;
 
     private static final String TAG = "ProjectGHFSubmitActivit";
     private static final int REQUEST_HETONG = 0x00;//合同请求
@@ -168,6 +171,7 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
         MultipartBuilder multipartBuilder = new MultipartBuilder();
         multipartBuilder.type(MultipartBuilder.FORM)//
                 .addFormDataPart("uid", getLoginUid())//用户ID
+                .addFormDataPart("projectName", etProjectName.getText().toString().trim())//项目名称
                 .addFormDataPart("genre", tvGenre.getText().toString().trim())//合同类型
                 .build();
         for (File file : mFileList) {
@@ -219,6 +223,11 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
      * @return
      */
     private boolean checkData() {
+        if (ToolsKit.isEmpty(etProjectName.getText().toString().trim())) {
+            msg("请输入项目名称！");
+            etProjectName.requestFocus();
+            return false;
+        }
         if (ToolsKit.isEmpty(tvPic.getText().toString().trim())) {
             msg("请选择合同图片！");
             return false;

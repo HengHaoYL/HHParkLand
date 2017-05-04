@@ -17,6 +17,9 @@ public class RecruitEntity extends IdEntity {
     // 企业名称
     @Expose
     private String companyName;
+    // 企业地址
+    @Expose
+    private String companyAdress;
     // 工作地点
     @Expose
     private String workingAdress;
@@ -32,6 +35,14 @@ public class RecruitEntity extends IdEntity {
     // 招聘详情
     @Expose
     private String detail;
+
+    public String getCompanyAdress() {
+        return companyAdress;
+    }
+
+    public void setCompanyAdress(String companyAdress) {
+        this.companyAdress = companyAdress;
+    }
 
     public String getPosition() {
         return position;

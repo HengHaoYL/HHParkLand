@@ -31,6 +31,8 @@ public class CompactEntity implements Serializable {
     @Expose
     private Integer id;// 表ID
     @Expose
+    private String projectName; // 项目名称
+    @Expose
     private String compactId; // 合同存档编号
     @Expose
     private String pictureId;  // 合同图片编号
@@ -46,6 +48,14 @@ public class CompactEntity implements Serializable {
     private String checking;    //审核状态
     @Expose
     private ArrayList<String> url;    // 图片路径集合
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
     public String getComment() {
         return comment;
