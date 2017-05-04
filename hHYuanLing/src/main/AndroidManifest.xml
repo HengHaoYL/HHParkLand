@@ -8,7 +8,7 @@
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="21"
-        tools:overrideLibrary="net.zombie_sama.imagepainter" />
+        tools:overrideLibrary="net.zombie_sama.imagepainter, net.zombie_sama.okhttphelper" />
 
     <!-- 判断是否联网操作权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

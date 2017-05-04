@@ -24,8 +24,6 @@ import com.henghao.parkland.adapter.ProjectMoneyAdapter;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.SGWalletEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
-import com.henghao.parkland.utils.network.NetworkController;
-import com.henghao.parkland.utils.network.callback.StringCallback;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.squareup.okhttp.Call;
@@ -36,6 +34,9 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
+
+import net.zombie_sama.okhttphelper.NetworkController;
+import net.zombie_sama.okhttphelper.callback.StringCallback;
 
 import org.json.JSONException;
 

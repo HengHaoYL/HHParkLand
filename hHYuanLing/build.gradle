@@ -28,7 +28,8 @@ dependencies {
     compile 'id.zelory:compressor:1.0.4'
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.squareup.okhttp:okhttp:2.6.0'
+    compile 'com.squareup.okhttp:okhttp-ws:2.7.5'
     compile 'com.jakewharton:butterknife:5.1.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.squareup.okhttp:okhttp-ws:2.7.5'
+    compile project(':okhttphelper')
 }

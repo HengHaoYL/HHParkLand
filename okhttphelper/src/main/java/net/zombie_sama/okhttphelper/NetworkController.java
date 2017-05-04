@@ -1,12 +1,10 @@
-package com.henghao.parkland.utils.network;
+package net.zombie_sama.okhttphelper;
 
-import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import com.henghao.parkland.utils.network.callback.BaseCallback;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -14,6 +12,8 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
+
+import net.zombie_sama.okhttphelper.callback.BaseCallback;
 
 import java.io.IOException;
 import java.util.Map;
@@ -92,7 +92,7 @@ public class NetworkController {
                 } else {
                     String eMessage = response.body().string();
                     response.body().close();
-                    Data data = new Data(baseCallback, response.request(), new RequestException(eMessage), response.code());
+                    Data data = new Data(baseCallback, response.request(), new RuntimeException(eMessage), response.code());
                     Message msg = new Message();
                     msg.what = RESULT_FAILURE;
                     msg.obj = data;

@@ -1,3 +1,3 @@
-include ':x_library'
+include ':x_library', ':okhttphelper'
 include ':b_library'
 include ':hHYuanLing'
