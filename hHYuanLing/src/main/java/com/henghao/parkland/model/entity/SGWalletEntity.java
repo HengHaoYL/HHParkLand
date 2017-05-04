@@ -10,37 +10,67 @@ import com.henghao.parkland.model.IdEntity;
 
 public class SGWalletEntity extends IdEntity {
     /*
-        expend:0,
-        inputs:15,
-        money:15,
-        transactionTime:"2017-02-21 09:58",
-    */
+    "wid": 4,
+    "uid": "a41f453a7bb84b398af7a409c202783b",
+    "money": 333,
+    "types": 1,
+    "comment": "333",
+    "transactionTime": "2017-05-04 14:45",
+    "isNo": 0
+     */
     @Expose
-    private double expend;//支出
-
+    private int wid;
     @Expose
-    private double inputs;//收入
-
+    private String uid;
+    @Expose
+    private int types;
+    @Expose
+    private double money;
+    @Expose
+    private String comment;
     @Expose
     private String transactionTime;//交易时间
-
     @Expose
-    private double money;//总金额
+    private int isNo;//是否不显示
 
-    public double getExpend() {
-        return expend;
+    public int getWid() {
+        return wid;
     }
 
-    public void setExpend(double expend) {
-        this.expend = expend;
+    public void setWid(int wid) {
+        this.wid = wid;
     }
 
-    public double getInputs() {
-        return inputs;
+    public String getUid() {
+        return uid;
     }
 
-    public void setInputs(double inputs) {
-        this.inputs = inputs;
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public int getTypes() {
+        return types;
+    }
+
+    public void setTypes(int types) {
+        this.types = types;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getTransactionTime() {
@@ -51,11 +81,11 @@ public class SGWalletEntity extends IdEntity {
         this.transactionTime = transactionTime;
     }
 
-    public double getMoney() {
-        return money;
+    public int getIsNo() {
+        return isNo;
     }
 
-    public void setMoney(double money) {
-        this.money = money;
+    public void setIsNo(int isNo) {
+        this.isNo = isNo;
     }
 }

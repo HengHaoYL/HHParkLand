@@ -75,14 +75,14 @@ public class ProjectMoneyAdapter extends BaseAdapter {
         }
         SGWalletEntity entity = mList.get(position);
         mHodlerView.tv_date.setText(entity.getTransactionTime());
-        if (entity.getExpend() > 0) {
+        if (entity.getTypes() == 1) {
             mHodlerView.tv_context.setText("支出");
             mHodlerView.tv_money.setTextColor(Color.RED);
-            mHodlerView.tv_money.setText(entity.getExpend() + "");
-        } else if (entity.getInputs() > 0) {
+            mHodlerView.tv_money.setText(entity.getMoney() + "");
+        } else if (entity.getTypes() == 0) {
             mHodlerView.tv_context.setText("收入");
             mHodlerView.tv_money.setTextColor(Color.GREEN);
-            mHodlerView.tv_money.setText(entity.getInputs() + "");
+            mHodlerView.tv_money.setText(entity.getMoney() + "");
         } else {
             mHodlerView.tv_context.setText("初始化");
             mHodlerView.tv_money.setText("0.0");

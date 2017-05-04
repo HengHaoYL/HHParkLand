@@ -18,6 +18,7 @@
             android:background="@color/line" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/tv_total_money"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

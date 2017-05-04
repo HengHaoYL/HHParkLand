@@ -48,6 +48,7 @@
                 android:layout_weight="1"
                 android:background="#ffffff"
                 android:ellipsize="middle"
+                android:hint="请输入关键字"
                 android:singleLine="true"
                 android:textSize="@dimen/gj_d" />
 

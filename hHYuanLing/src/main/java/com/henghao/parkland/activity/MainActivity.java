@@ -117,7 +117,7 @@ public class MainActivity extends ActivityFragmentSupport {
         mActivityFragmentView.getNavitionBarView().setVisibility(View.GONE);
         if (BuildConfig.DEBUG) {
             SharedPreferences sp = getSharedPreferences("DebugSetting", MODE_PRIVATE);
-            ProtocolUrl.ROOT_URL = sp.getString(DebugSettingActivity.KEY_HOST, "http://172.16.13.112:8080/Garden");
+            ProtocolUrl.ROOT_URL = sp.getString(DebugSettingActivity.KEY_HOST, ProtocolUrl.ROOT_URL);
         }
 
     }

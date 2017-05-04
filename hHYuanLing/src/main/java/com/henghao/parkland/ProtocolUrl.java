@@ -31,8 +31,7 @@ public class ProtocolUrl {
     static {
         if (BuildConfig.DEBUG) {
             // 测试地址/192.168.1.12
-            ROOT_URL = "http://172.16.13.112:8080/Garden";
-            //172.16.13.101:8080/login/az?username=?&password=?
+            ROOT_URL = "http://172.16.13.113:8080/Garden";
             /*ROOT_URL = "http://safe.higdata.com/Java_Nfc/";*/
 //			ROOT_URL = "http://192.168.1.12/Java_Nfc";
         } else {
@@ -47,7 +46,7 @@ public class ProtocolUrl {
     public static final String USER = "user/";
 
     /**
-     * 用户登录172.16.13.101:8080/YL_BigData/login?username=?&password=?
+     * 用户登录
      */
     public static String APP_LOGIN = "login";
 
@@ -222,7 +221,10 @@ public class ProtocolUrl {
      * 施工钱包Excel下载
      */
     public static final String DOWNLOAD_WALLETEXCEL = "download/walletExcel";
-
+    /**
+     * 施工钱包提交
+     */
+    public static final String WALLETE_SUBMIT = "/projectManage/saveWalletMsg";
     /**
      * 开工报告文件下载
      */
