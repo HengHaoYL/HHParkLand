@@ -51,7 +51,7 @@ public class ProjectMoneyAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public SGWalletEntity getItem(int position) {
         return mList.get(position);
     }
 
@@ -67,7 +67,7 @@ public class ProjectMoneyAdapter extends BaseAdapter {
             mHodlerView = new HodlerView();
             convertView = this.inflater.inflate(R.layout.item_poject_money, null);
             mHodlerView.tv_date = (TextView) convertView.findViewById(R.id.tv_data);
-            mHodlerView.tv_money = (TextView) convertView.findViewById(R.id.tv_money);
+            mHodlerView.tv_money = (TextView) convertView.findViewById(R.id.tv_value);
             mHodlerView.tv_context = (TextView) convertView.findViewById(R.id.tv_context);
             convertView.setTag(mHodlerView);
         } else {

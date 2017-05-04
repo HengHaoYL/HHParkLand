@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -42,6 +43,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,7 +68,9 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
     private EditText etValue;
     private EditText etComment;
     private Call call;
-
+    private static final int TYPE_INIT = -1;
+    private static final int TYPE_INCOME = 0;
+    private static final int TYPE_COST = 1;
     private List<SGWalletEntity> mList = new ArrayList<>();
 
     @Override
@@ -127,6 +131,43 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         mMoneyAdapter = new ProjectMoneyAdapter(this);
         mMoneyAdapter.setData(mList);
         mXlistview.setAdapter(mMoneyAdapter);
+        mXlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                position -= 2;
+                SGWalletEntity entity = mMoneyAdapter.getItem(position);
+                if (entity.getTypes() == TYPE_INIT) {
+                    return;
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("记录详情");
+                View dialogView = View.inflate(context, R.layout.dialog_money_detail, null);
+                TextView tvDate = (TextView) dialogView.findViewById(R.id.tv_date);
+                TextView tvType = (TextView) dialogView.findViewById(R.id.tv_type);
+                TextView tvValue = (TextView) dialogView.findViewById(R.id.tv_value);
+                TextView tvComment = (TextView) dialogView.findViewById(R.id.tv_comment);
+                tvDate.setText(entity.getTransactionTime());
+                String type = "初始化";
+                String prefix = "";
+                switch (entity.getTypes()) {
+                    case TYPE_INCOME:
+                        type = "收入";
+                        prefix = "+";
+                        break;
+                    case TYPE_COST:
+                        type = "支出";
+                        prefix = "-";
+                        break;
+                }
+                tvType.setText(type);
+                DecimalFormat format = new DecimalFormat(".##");
+                tvValue.setText(prefix + format.format(entity.getMoney()));
+                tvComment.setText(entity.getComment());
+                builder.setView(dialogView);
+                builder.setPositiveButton("确定", null);
+                builder.create().show();
+            }
+        });
         initView();
         //下载文件
         btnExport.setOnClickListener(new View.OnClickListener() {
@@ -148,13 +189,13 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         Map<String, Object> params = new HashMap<>();
         params.put("uid", getLoginUid());
         params.put("money", Double.valueOf(etValue.getText().toString()));
-        int type = -1;
+        int type = TYPE_INIT;
         switch (rgType.getCheckedRadioButtonId()) {
             case R.id.rb_income:
-                type = 0;
+                type = TYPE_INCOME;
                 break;
             case R.id.rb_cost:
-                type = 1;
+                type = TYPE_COST;
                 break;
         }
         params.put("types", type);

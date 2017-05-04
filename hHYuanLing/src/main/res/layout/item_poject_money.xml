@@ -41,7 +41,7 @@
             android:background="@color/line" />
 
         <TextView
-            android:id="@+id/tv_money"
+            android:id="@+id/tv_value"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="2"
