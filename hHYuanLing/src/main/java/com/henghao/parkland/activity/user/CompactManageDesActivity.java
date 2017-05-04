@@ -55,6 +55,8 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
     TextView tvComment;
     @InjectView(R.id.ll_comment)
     LinearLayout llComment;
+    @InjectView(R.id.tv_projectName)
+    TextView tvProjectName;
     private CompactEntity mEntity;
 
     @Override
@@ -94,6 +96,7 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
         }
         mAdapter = new CommonGridViewAdapter(this, data);
         gridView.setAdapter(mAdapter);
+        tvProjectName.setText(mEntity.getProjectName());
         tvChecking.setText(mEntity.getChecking());
         tvDates.setText(mEntity.getDates());
         tvGenre.setText(mEntity.getGenre());

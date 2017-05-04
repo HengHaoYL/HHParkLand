@@ -83,6 +83,7 @@ public class CompactAdapter extends ArrayAdapter<CompactEntity> {
             holder.checkBox.setVisibility(View.GONE);
         }
         holder.checkBox.setChecked(entity.isChecked());
+        holder.tvProjectName.setText(getItem(position).getProjectName());
         holder.tvGenre.setText(getItem(position).getGenre());
         holder.tvDates.setText(getItem(position).getDates());
         holder.tvChecking.setText(getItem(position).getChecking());
@@ -154,6 +155,8 @@ public class CompactAdapter extends ArrayAdapter<CompactEntity> {
     static class ViewHolder {
         @InjectView(R.id.checkBox)
         CheckBox checkBox;
+        @InjectView(R.id.tv_projectName)
+        TextView tvProjectName;
         @InjectView(R.id.tv_genre)
         TextView tvGenre;
         @InjectView(R.id.tv_checking)
