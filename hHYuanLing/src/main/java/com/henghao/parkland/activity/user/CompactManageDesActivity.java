@@ -28,8 +28,6 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
-import id.zelory.compressor.FileUtil;
 
 import static com.henghao.parkland.activity.projectmanage.ProjectMoneyActivity.makeDir;
 
@@ -46,10 +44,10 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
     TextView tvChecking;
     @InjectView(R.id.tv_dates)
     TextView tvDates;
-    @InjectView(R.id.tv_fileName)
-    TextView tvFileName;
-    @InjectView(R.id.tv_download)
-    TextView tvDownload;
+    //    @InjectView(R.id.tv_fileName)
+//    TextView tvFileName;
+//    @InjectView(R.id.tv_download)
+//    TextView tvDownload;
     @InjectView(R.id.gridView)
     NoScrollGridView gridView;
     CommonGridViewAdapter mAdapter;
@@ -99,7 +97,7 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
         tvChecking.setText(mEntity.getChecking());
         tvDates.setText(mEntity.getDates());
         tvGenre.setText(mEntity.getGenre());
-        tvFileName.setText(getFileName(mEntity.getDocument()));
+//        tvFileName.setText(getFileName(mEntity.getDocument()));
         switch (mEntity.getChecking()) {
             case "正在审核":
                 llComment.setVisibility(View.GONE);
@@ -122,10 +120,10 @@ public class CompactManageDesActivity extends ActivityFragmentSupport {
     }
 
 
-    @OnClick(R.id.tv_download)
-    public void onClick() {
-        downloadFile();
-    }
+//    @OnClick(R.id.tv_download)
+//    public void onClick() {
+//        downloadFile();
+//    }
 
     /**
      * 下载文件

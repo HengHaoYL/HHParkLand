@@ -146,7 +146,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="100dp"
@@ -168,7 +169,8 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dip"
-                android:background="@color/line" />
+                android:background="@color/line"
+                android:visibility="gone" />
         </LinearLayout>
 
 
@@ -182,12 +184,14 @@
             android:padding="@dimen/padding_big"
             android:text="文件下载"
             android:textColor="@color/white"
-            android:textSize="@dimen/gj_d" />
+            android:textSize="@dimen/gj_d"
+            android:visibility="gone" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dip"
-            android:background="@color/line" />
+            android:background="@color/line"
+            android:visibility="gone" />
 
         <com.benefit.buy.library.views.NoScrollGridView
             android:id="@+id/gridView"

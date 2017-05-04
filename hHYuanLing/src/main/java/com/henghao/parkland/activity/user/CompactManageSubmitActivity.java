@@ -2,7 +2,6 @@ package com.henghao.parkland.activity.user;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -49,18 +48,18 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
     TextView tvGenre;
     @InjectView(R.id.tv_pic)
     TextView tvPic;
-    @InjectView(R.id.tv_document)
-    TextView tvDocument;
+    //    @InjectView(R.id.tv_document)
+//    TextView tvDocument;
     @InjectView(R.id.tv_submit)
     TextView tvSubmit;
 
     private static final String TAG = "ProjectGHFSubmitActivit";
     private static final int REQUEST_HETONG = 0x00;//合同请求
-    private static final int REQUEST_FILE = 0x1001;//选择文件请求
+//    private static final int REQUEST_FILE = 0x1001;//选择文件请求
 
     private ArrayList<String> mSelectPath;//被选中的合同图片地址集合
     private ArrayList<File> mFileList = new ArrayList<>();//被选中的合同图片
-    private File mFile;//被选中的合同文件
+    //    private File mFile;//被选中的合同文件
     private String URL;//网络请求地址
 
     private Handler handler = new Handler() {
@@ -109,15 +108,15 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
         super.initData();
     }
 
-    @OnClick({R.id.tv_pic, R.id.tv_document, R.id.tv_submit})
+    @OnClick({R.id.tv_pic, R.id.tv_submit})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_pic:
                 addPic(REQUEST_HETONG);
                 break;
-            case R.id.tv_document:
-                showFileChooser();
-                break;
+//            case R.id.tv_document:
+//                showFileChooser();
+//                break;
             case R.id.tv_submit:
                 if (checkData()) {
                     mActivityFragmentView.viewLoading(View.VISIBLE, getString(R.string.compressing));
@@ -127,16 +126,16 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
         }
     }
 
-    private void showFileChooser() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("*/*");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        try {
-            startActivityForResult(Intent.createChooser(intent, "Select a File to Upload"), REQUEST_FILE);
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(this, "Please install a File Manager.", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    private void showFileChooser() {
+//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//        intent.setType("*/*");
+//        intent.addCategory(Intent.CATEGORY_OPENABLE);
+//        try {
+//            startActivityForResult(Intent.createChooser(intent, "Select a File to Upload"), REQUEST_FILE);
+//        } catch (android.content.ActivityNotFoundException ex) {
+//            Toast.makeText(this, "Please install a File Manager.", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     /**
      * 设置网络访问地址
@@ -144,16 +143,16 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
     private void setURL() {
         String mType = tvGenre.getText().toString().trim();
         switch (mType) {
-            case "园林类":
+            case "园林绿化":
                 URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEGARDENCOMPACT;
                 break;
-            case "建设类":
+            case "施工建设":
                 URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEBUILDCOMPACT;
                 break;
-            case "园林工程类":
+            case "园林工程":
                 URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEENGINEERINGCOMPACT;
                 break;
-            case "景观类":
+            case "景观风景":
                 URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVELANDSCAPECOMPACT;
                 break;
         }
@@ -174,7 +173,7 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart("files", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//合同图片
         }
-        multipartBuilder.addFormDataPart("file", mFile.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), mFile));//合同文件
+//        multipartBuilder.addFormDataPart("file", mFile.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), mFile));//合同文件
         RequestBody requestBody = multipartBuilder.build();
         Request request = builder.post(requestBody).url(URL).build();
         mActivityFragmentView.viewLoading(View.VISIBLE);
@@ -224,10 +223,10 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
             msg("请选择合同图片！");
             return false;
         }
-        if (ToolsKit.isEmpty(tvDocument.getText().toString().trim())) {
-            msg("请选择合同文件！");
-            return false;
-        }
+//        if (ToolsKit.isEmpty(tvDocument.getText().toString().trim())) {
+//            msg("请选择合同文件！");
+//            return false;
+//        }
         return true;
     }
 
@@ -278,18 +277,18 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
                     }
                 }
             }
-            if (requestCode == REQUEST_FILE) {
-                if (resultCode == RESULT_OK) {
-                    // Get the Uri of the selected file
-                    Uri uri = data.getData();
-                    String path = FileUtils.getPath(this, uri);
-                    if (!checkFile(path)) {
-                        Toast.makeText(context, "文件格式不正确", Toast.LENGTH_SHORT).show();
-                    }
-                    mFile = new File(path);
-                    tvDocument.setText("文件名：" + mFile.getName());
-                }
-            }
+//            if (requestCode == REQUEST_FILE) {
+//                if (resultCode == RESULT_OK) {
+//                    // Get the Uri of the selected file
+//                    Uri uri = data.getData();
+//                    String path = FileUtils.getPath(this, uri);
+//                    if (!checkFile(path)) {
+//                        Toast.makeText(context, "文件格式不正确", Toast.LENGTH_SHORT).show();
+//                    }
+//                    mFile = new File(path);
+//                    tvDocument.setText("文件名：" + mFile.getName());
+//                }
+//            }
         }
     }
 
@@ -297,11 +296,11 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
         return url.substring(url.lastIndexOf("/") + 1);
     }
 
-    private String[] suffixEnable = {".doc", ".docx", ".pdf"};
-
-    private boolean checkFile(String path) {
-        for (String suffix : suffixEnable)
-            if (path.endsWith(suffix)) return true;
-        return false;
-    }
+//    private String[] suffixEnable = {".doc", ".docx", ".pdf"};
+//
+//    private boolean checkFile(String path) {
+//        for (String suffix : suffixEnable)
+//            if (path.endsWith(suffix)) return true;
+//        return false;
+//    }
 }
