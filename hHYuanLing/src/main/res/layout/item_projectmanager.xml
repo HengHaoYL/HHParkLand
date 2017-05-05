@@ -44,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_normal"
+                android:maxLines="2"
                 android:text="信息"
                 android:textColor="@color/text_color_b"
                 android:textSize="@dimen/info_enterprise_size" />

@@ -352,5 +352,9 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         return dir;
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (!call.isCanceled()) call.cancel();
+    }
 }

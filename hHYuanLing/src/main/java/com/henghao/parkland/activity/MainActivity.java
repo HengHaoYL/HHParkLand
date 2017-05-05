@@ -64,7 +64,6 @@ public class MainActivity extends ActivityFragmentSupport {
         if (this.tabAdapter != null) {
             this.tabAdapter.remove();
         }
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.mActivityFragmentView.viewMain(R.layout.activity_main);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();

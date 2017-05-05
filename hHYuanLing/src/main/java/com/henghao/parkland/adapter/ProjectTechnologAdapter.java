@@ -86,7 +86,7 @@ public class ProjectTechnologAdapter extends ArrayAdapter<ProjectTechnologEntity
             holder.checkBox.setVisibility(View.GONE);
         }
         holder.checkBox.setChecked(entity.isChecked());
-        holder.tvTitle.setText(entity.getContent());
+        holder.tvTitle.setText(entity.getSites());
         holder.tvName.setText(entity.getName());
         holder.tvTime.setText(entity.getDates());
         viewClick(holder, convertView, position);

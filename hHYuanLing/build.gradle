@@ -6,8 +6,8 @@ android {
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.henghao.parkland"
-        minSdkVersion 10
-        targetSdkVersion 19
+        minSdkVersion 15
+        targetSdkVersion 25
     }
 
     buildTypes {

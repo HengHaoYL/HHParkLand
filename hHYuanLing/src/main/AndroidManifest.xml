@@ -5,11 +5,6 @@
     android:versionCode="2"
     android:versionName="1.0.1">
 
-    <uses-sdk
-        android:minSdkVersion="10"
-        android:targetSdkVersion="21"
-        tools:overrideLibrary="net.zombie_sama.imagepainter, net.zombie_sama.okhttphelper" />
-
     <!-- 判断是否联网操作权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 联网操作权限 -->
@@ -66,7 +61,7 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme.NoActionBar"
+        android:theme="@style/AppTheme"
         tools:replace="android:icon, android:theme">
 
         <!-- 启动页 -->
