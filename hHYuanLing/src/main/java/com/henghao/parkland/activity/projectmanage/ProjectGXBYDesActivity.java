@@ -33,6 +33,8 @@ public class ProjectGXBYDesActivity extends ActivityFragmentSupport {
     TextView tvGxTime;
     @InjectView(R.id.gridView)
     GridView gridView;
+    @InjectView(R.id.tv_receiver)
+    TextView tvReceiver;
 
     CommonGridViewAdapter mAdapter;
 
@@ -77,6 +79,7 @@ public class ProjectGXBYDesActivity extends ActivityFragmentSupport {
         tvGxProcedure.setText(mEntity.getGxProcedure());
         tvGxTime.setText(mEntity.getGxTime());
         tvPersonnelType.setText(mEntity.getPersonnelType());
+        tvReceiver.setText(mEntity.getReceiver());
         tvWorkPost.setText(mEntity.getWorkPost());
     }
 }

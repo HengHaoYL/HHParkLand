@@ -21,9 +21,12 @@ public class ProjectGXBYEntity extends IdEntity {
     // 工序名称
     @Expose
     private String gxProcedure;
-    // 交接者
+    // 人员类型
     @Expose
     private String personnelType;
+    //交接者
+    @Expose
+    private String receiver;
     // 工作岗位
     @Expose
     private String workPost;
@@ -74,6 +77,14 @@ public class ProjectGXBYEntity extends IdEntity {
 
     public void setPersonnelType(String personnelType) {
         this.personnelType = personnelType;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
     public String getWorkPost() {

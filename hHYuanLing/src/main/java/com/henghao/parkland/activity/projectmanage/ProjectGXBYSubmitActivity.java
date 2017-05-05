@@ -74,8 +74,8 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
     private PopupWindowHelper popupWindowHelper;
 
     private static final int REQUEST_IMAGE = 0x00;
-    private String select_str = "施工员";//默认选中的人员类型
-    private String personnelType;//交接者
+    private String personnelType = "施工员";//默认选中的人员类型
+    private String receiver;//交接者
     private ArrayList<String> mSelectPath;
     private ArrayList<File> mFileList = new ArrayList<>();
     private List<String> sgPersons;//施工员
@@ -146,13 +146,13 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_one://施工员
-                        select_str = "施工员";
+                        personnelType = "施工员";
                         break;
                     case R.id.rb_two://监理员
-                        select_str = "监理员";
+                        personnelType = "监理员";
                         break;
                     case R.id.rb_three://管理员
-                        select_str = "管理员";
+                        personnelType = "管理员";
                         break;
                 }
                 tvPersonnelType.setText("");
@@ -177,7 +177,7 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 String whatSelect = mList.get(arg2);
                 tvPersonnelType.setText(whatSelect);
-                personnelType = whatSelect;
+                receiver = whatSelect;
                 popupWindowHelper.dismiss();
             }
         });
@@ -190,11 +190,11 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
                 getDialogTime("请选择日期");
                 break;
             case R.id.tv_personnelType:
-                if (select_str.equals("施工员")) {
+                if (personnelType.equals("施工员")) {
                     getPersonnel(sgPersons);
-                } else if (select_str.equals("监理员")) {
+                } else if (personnelType.equals("监理员")) {
                     getPersonnel(jlPersons);
-                } else if (select_str.equals("管理员")) {
+                } else if (personnelType.equals("管理员")) {
                     getPersonnel(glPersons);
                 }
                 popupWindowHelper.showFromBottom(view);
@@ -204,7 +204,7 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
                 break;
             case R.id.tv_submit:
                 if (checkData()) {
-                    mActivityFragmentView.viewLoading(View.VISIBLE,getString(R.string.compressing));
+                    mActivityFragmentView.viewLoading(View.VISIBLE, getString(R.string.compressing));
                     FileUtils.compressImagesFromList(context, handler, mFileList);
                 }
                 break;
@@ -269,6 +269,7 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("gxName", gxName)
                 .addFormDataPart("gxProcedure", gxProcedure)
                 .addFormDataPart("personnelType", personnelType)
+                .addFormDataPart("receiver", receiver)
                 .addFormDataPart("workPost", workPost)
                 .addFormDataPart("gxTime", gxTime);
         for (File file : mFileList) {
