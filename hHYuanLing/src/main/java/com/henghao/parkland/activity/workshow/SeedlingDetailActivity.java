@@ -64,7 +64,7 @@ public class SeedlingDetailActivity extends ActivityFragmentSupport {
         super.initWidget();
         initWithBar();
         initWithCenterBar();
-        mCenterTextView.setText("设备租赁");
+        mCenterTextView.setText("苗木信息");
     }
 
     @Override
