@@ -355,6 +355,10 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (!call.isCanceled()) call.cancel();
+        if (call != null) {
+            if (!call.isCanceled()) {
+                call.cancel();
+            }
+        }
     }
 }

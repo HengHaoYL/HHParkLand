@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:ems="8"
+                android:maxEms="8"
                 android:singleLine="true"
                 android:text="江苏约93万招投标信息"
                 android:textColor="#2C4000"
@@ -43,15 +43,15 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/padding_normal"
                 android:ellipsize="end"
-                android:ems="10"
                 android:lines="3"
+                android:maxEms="10"
                 android:text="江苏约93万招投标信息"
                 android:textColor="@color/text_color_b"
                 android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
