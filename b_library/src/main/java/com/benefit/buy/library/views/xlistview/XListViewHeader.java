@@ -24,8 +24,6 @@ public class XListViewHeader extends LinearLayout {
 
     private LinearLayout mContainer;
 
-    private ImageView mArrowImageView;
-
     private ProgressBar mProgressBar;
 
     private TextView mHintTextView;
@@ -66,7 +64,6 @@ public class XListViewHeader extends LinearLayout {
         mContainer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.xlistview_header, null);
         addView(mContainer, lp);
         setGravity(Gravity.BOTTOM);
-        mArrowImageView = (ImageView) findViewById(R.id.xlistview_header_arrow);
         mHintTextView = (TextView) findViewById(R.id.xlistview_header_hint_textview);
         mProgressBar = (ProgressBar) findViewById(R.id.xlistview_header_progressbar);
         mRotateUpAnim = new RotateAnimation(0.0f, -180.0f, Animation.RELATIVE_TO_SELF, 0.5f,
@@ -85,12 +82,10 @@ public class XListViewHeader extends LinearLayout {
         }
         if (state == STATE_REFRESHING) { // 显示进度
             //            mArrowImageView.clearAnimation();
-            mArrowImageView.setVisibility(View.INVISIBLE);
             mProgressBar.setVisibility(View.VISIBLE);
         }
         else { // 显示箭头图片
-            mArrowImageView.setVisibility(View.VISIBLE);
-            mProgressBar.setVisibility(View.INVISIBLE);
+            mProgressBar.setVisibility(View.VISIBLE);
         }
         switch (state) {
             case STATE_NORMAL:

@@ -33,7 +33,7 @@
             android:layout_height="30dip"
             android:layout_gravity="center"
             android:indeterminate="false"
-            android:indeterminateDrawable="@anim/progress_bar_anim"
+            android:indeterminateDrawable="@drawable/progress_bar_anim"
             android:visibility="visible" />
     </FrameLayout>
 
