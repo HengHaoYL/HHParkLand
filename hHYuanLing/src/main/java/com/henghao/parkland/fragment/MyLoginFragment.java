@@ -87,16 +87,19 @@ public class MyLoginFragment extends FragmentSupport {
     }
 
     /**
-     * 设置HOST按钮
+     * 设置调试界面
      */
     private void initButton() {
-        Button bt = (Button) mActivityFragmentView.findViewById(R.id.bt_set_host);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), DebugSettingActivity.class));
-            }
-        });
+        if (BuildConfig.DEBUG) {
+            Button bt = (Button) mActivityFragmentView.findViewById(R.id.bt_set_host);
+            bt.setVisibility(View.VISIBLE);
+            bt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), DebugSettingActivity.class));
+                }
+            });
+        }
     }
 
     private void initData() {
