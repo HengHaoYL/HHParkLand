@@ -13,9 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.benefit.buy.library.R;
@@ -24,7 +22,7 @@ public class XListViewHeader extends LinearLayout {
 
     private LinearLayout mContainer;
 
-    private ProgressBar mProgressBar;
+    private View icon;
 
     private TextView mHintTextView;
 
@@ -65,7 +63,7 @@ public class XListViewHeader extends LinearLayout {
         addView(mContainer, lp);
         setGravity(Gravity.BOTTOM);
         mHintTextView = (TextView) findViewById(R.id.xlistview_header_hint_textview);
-        mProgressBar = (ProgressBar) findViewById(R.id.xlistview_header_progressbar);
+        icon = findViewById(R.id.xlistview_header_progressbar);
         mRotateUpAnim = new RotateAnimation(0.0f, -180.0f, Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
         mRotateUpAnim.setDuration(ROTATE_ANIM_DURATION);
@@ -82,10 +80,9 @@ public class XListViewHeader extends LinearLayout {
         }
         if (state == STATE_REFRESHING) { // 显示进度
             //            mArrowImageView.clearAnimation();
-            mProgressBar.setVisibility(View.VISIBLE);
-        }
-        else { // 显示箭头图片
-            mProgressBar.setVisibility(View.VISIBLE);
+            icon.setVisibility(View.VISIBLE);
+        } else { // 显示箭头图片
+            icon.setVisibility(View.VISIBLE);
         }
         switch (state) {
             case STATE_NORMAL:
