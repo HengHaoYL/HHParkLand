@@ -133,6 +133,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         mXlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position <= 1) return;
                 position -= 2;
                 SGWalletEntity entity = mMoneyAdapter.getItem(position);
                 if (entity.getTypes() == TYPE_INIT) {
