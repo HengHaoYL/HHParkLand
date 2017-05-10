@@ -13,6 +13,7 @@ import com.henghao.parkland.R;
 import com.henghao.parkland.model.entity.SGWalletEntity;
 import com.lidroid.xutils.BitmapUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public class ProjectMoneyAdapter extends BaseAdapter {
 
     private final ActivityFragmentSupport mActivityFragmentSupport;
 
-    private List<SGWalletEntity> mList;
+    private List<SGWalletEntity> mList = new ArrayList<>();
 
     public ProjectMoneyAdapter(ActivityFragmentSupport activityFragment) {
         this.mActivityFragmentSupport = activityFragment;
@@ -42,7 +43,8 @@ public class ProjectMoneyAdapter extends BaseAdapter {
     }
 
     public void setData(List<SGWalletEntity> data) {
-        this.mList = data;
+        if (mList.size() != 0) mList.clear();
+        mList.addAll(data);
     }
 
     @Override

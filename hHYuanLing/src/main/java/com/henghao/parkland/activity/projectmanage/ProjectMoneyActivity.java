@@ -72,7 +72,6 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
     private static final int TYPE_INIT = -1;
     private static final int TYPE_INCOME = 0;
     private static final int TYPE_COST = 1;
-    private List<SGWalletEntity> mList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +129,6 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         mXlistview.setXListViewListener(this);
 
         mMoneyAdapter = new ProjectMoneyAdapter(this);
-        mMoneyAdapter.setData(mList);
         mXlistview.setAdapter(mMoneyAdapter);
         mXlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -306,7 +304,6 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
 
     @Override
     public void onRefresh() {
-        mList.clear();
         requestData();
     }
 
@@ -327,8 +324,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
                 mActivityFragmentView.viewEmptyGone();
                 mRightTextView.setVisibility(View.VISIBLE);
                 List<SGWalletEntity> data = (List<SGWalletEntity>) jo;
-                mList.addAll(data);
-                mXlistview.setAdapter(mMoneyAdapter);
+                mMoneyAdapter.setData(data);
                 mMoneyAdapter.notifyDataSetChanged();
 //                tv_total_money.setText("总金额：" + money + "元");
             }
