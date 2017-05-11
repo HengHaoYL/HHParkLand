@@ -101,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="园林大数据溯源云平台"
+                    android:text="园林企业平台"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/gj_f"
                     android:typeface="monospace" />
@@ -112,7 +112,7 @@
                     android:layout_marginTop="@dimen/padding_normal"
                     android:textColor="@color/text_color_b"
                     android:visibility="visible"
-                    android:text="贵州恒昊软件科技有限公司 "
+                    android:text="贵州恒昊慧筑大数据有限公司"
                     android:textSize="@dimen/gj_b" />
             </LinearLayout>
         </RelativeLayout>
