@@ -36,7 +36,7 @@ public class ProtocolUrl {
 //			ROOT_URL = "http://192.168.1.12/Java_Nfc";
         } else {
             // 生产地址
-            ROOT_URL = "http://221.13.13.134:2218/Garden";
+            ROOT_URL = "http://222.85.156.43:81/Garden";
         }
     }
 

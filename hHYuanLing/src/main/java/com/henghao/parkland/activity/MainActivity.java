@@ -3,14 +3,18 @@ package com.henghao.parkland.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.benefit.buy.library.utils.NSLog;
 import com.benefit.buy.library.views.ToastView;
@@ -27,6 +31,7 @@ import com.henghao.parkland.fragment.MyLoginFragment;
 import com.henghao.parkland.fragment.WorkShowFragment;
 import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.HCMenuEntity;
+import com.henghao.parkland.utils.PermissionUtil;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
@@ -42,20 +47,13 @@ public class MainActivity extends ActivityFragmentSupport {
 
     @ViewInject(R.id.tabs_rg)
     private RadioGroup rgs;
-
     @ViewInject(R.id.tab_top)
     public View mTabLinearLayout;
-
     private boolean isExit = false;
-
     private ToastView mToastView;
-
     public List<FragmentSupport> fragments = new ArrayList<FragmentSupport>();
-
     private List<HCMenuEntity> menuLists;
-
     private final boolean ready = true; // 是否获取nfc信息
-
     private FragmentTabAdapter tabAdapter;
 
     @Override
@@ -108,6 +106,28 @@ public class MainActivity extends ActivityFragmentSupport {
             }
         });
         initData();
+        //Android 6.0 以上需动态请求权限
+        if (Build.VERSION.SDK_INT >= 23) handlePermission();
+    }
+
+    private void handlePermission() {
+        String[] permissions = PermissionUtil.checkPermissions(getContext());
+        if (permissions.length != 0) {
+            requestPermissions(permissions, 100);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 100) {
+            for (int result : grantResults) {
+                if (result == PackageManager.PERMISSION_DENIED) {
+                    Toast.makeText(context, "您需要同意全部权限才能正常使用本软件", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+        }
     }
 
     @Override

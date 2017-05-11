@@ -24,42 +24,42 @@
     <!-- 常用view高度 -->
     <dimen name="view_btn_height">46dp</dimen>
     <dimen name="view_height">48dp</dimen>
-    <dimen name="message_wh">75dip</dimen>
-    <dimen name="view_listview">160dip</dimen>
-    <dimen name="view_popwindow">200dip</dimen>
-    <dimen name="view_high">260dip</dimen>
-    <dimen name="viewheader_hieght">55dip</dimen>
-    <dimen name="view_edit">66dip</dimen>
+    <dimen name="message_wh">75dp</dimen>
+    <dimen name="view_listview">160dp</dimen>
+    <dimen name="view_popwindow">200dp</dimen>
+    <dimen name="view_high">260dp</dimen>
+    <dimen name="viewheader_hieght">55dp</dimen>
+    <dimen name="view_edit">66dp</dimen>
     <!-- 界面高度 -->
-    <dimen name="view_height_">24dip</dimen>
-    <dimen name="view_height_a">28dip</dimen>
-    <dimen name="view_height_b">34dip</dimen>
-    <dimen name="view_height_c">40dip</dimen>
-    <dimen name="view_height_d">54dip</dimen>
+    <dimen name="view_height_">24dp</dimen>
+    <dimen name="view_height_a">28dp</dimen>
+    <dimen name="view_height_b">34dp</dimen>
+    <dimen name="view_height_c">40dp</dimen>
+    <dimen name="view_height_d">54dp</dimen>
 
     <!-- 意见反馈 -->
-    <dimen name="opinions_edit_height">100dip</dimen>
-    <dimen name="cart_item_top_height">40dip</dimen>
+    <dimen name="opinions_edit_height">100dp</dimen>
+    <dimen name="cart_item_top_height">40dp</dimen>
 
     <!-- 按钮大小 -->
-    <dimen name="btn_height_lucky">32dip</dimen>
-    <dimen name="btn_height_myfitment">48dip</dimen>
-    <dimen name="btn_width">80dip</dimen>
-    <dimen name="btn_width_applycode">120dip</dimen>
-    <dimen name="btn_height">30dip</dimen>
+    <dimen name="btn_height_lucky">32dp</dimen>
+    <dimen name="btn_height_myfitment">48dp</dimen>
+    <dimen name="btn_width">80dp</dimen>
+    <dimen name="btn_width_applycode">120dp</dimen>
+    <dimen name="btn_height">30dp</dimen>
 
     <!-- ToggleButton -->
-    <dimen name="togglebutton_w">20dip</dimen>
+    <dimen name="togglebutton_w">20dp</dimen>
 
     <!-- 公司商标 -->
-    <dimen name="fitment_mark">80dip</dimen>
-    <dimen name="fitment_smallmark">60dip</dimen>
-    <dimen name="main_leftmark">100dip</dimen>
+    <dimen name="fitment_mark">80dp</dimen>
+    <dimen name="fitment_smallmark">60dp</dimen>
+    <dimen name="main_leftmark">100dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="view_mytop">248dip</dimen>
+    <dimen name="view_mytop">248dp</dimen>
     <dimen name="info_name_size">16sp</dimen>
     <dimen name="info_enterprise_size">14sp</dimen>
 
