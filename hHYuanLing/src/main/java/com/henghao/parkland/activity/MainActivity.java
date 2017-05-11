@@ -123,7 +123,7 @@ public class MainActivity extends ActivityFragmentSupport {
         if (requestCode == 100) {
             for (int result : grantResults) {
                 if (result == PackageManager.PERMISSION_DENIED) {
-                    Toast.makeText(context, "您需要同意全部权限才能正常使用本软件", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "您需要同意全部权限才能正常使用本软件", Toast.LENGTH_LONG).show();
                     return;
                 }
             }
