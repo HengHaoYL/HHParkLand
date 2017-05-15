@@ -6,11 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -21,7 +18,6 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
-import com.henghao.parkland.adapter.CommonListStringAdapter;
 import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.utils.PopupWindowHelper;
@@ -66,8 +62,8 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
     TextView tvSubmit;
     @InjectView(R.id.rg_personnelType)
     RadioGroup rgPersonnelType;
-    @InjectView(R.id.tv_personnelType)
-    TextView tvPersonnelType;
+    @InjectView(R.id.et_personnelType)
+    EditText etPersonnelType;
 
     private View popView;
 
@@ -75,13 +71,8 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
 
     private static final int REQUEST_IMAGE = 0x00;
     private String personnelType = "施工员";//默认选中的人员类型
-    private String receiver;//交接者
     private ArrayList<String> mSelectPath;
     private ArrayList<File> mFileList = new ArrayList<>();
-    private List<String> sgPersons;//施工员
-    private List<String> jlPersons;//监理员
-    private List<String> glPersons;//管理员
-    private LayoutInflater inflater;
 
     private Handler handler = new Handler() {
         @Override
@@ -126,17 +117,6 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
     @Override
     public void initData() {
         super.initData();
-        /**
-         * 初始化数据
-         */
-        sgPersons = new ArrayList<>();
-        jlPersons = new ArrayList<>();
-        glPersons = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            sgPersons.add("施工员" + i);
-            jlPersons.add("监理员" + i);
-            glPersons.add("管理员" + i);
-        }
         ((RadioButton) rgPersonnelType.getChildAt(0)).setChecked(true);
         /**
          * 单选框监听事件
@@ -155,49 +135,15 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
                         personnelType = "管理员";
                         break;
                 }
-                tvPersonnelType.setText("");
             }
         });
     }
 
-    /**
-     * 交接者选项
-     */
-    private void getPersonnel(final List<String> mList) {
-        inflater = LayoutInflater.from(this);
-        this.popView = inflater.inflate(R.layout.common_android_listview, null);
-        ListView mListView = (ListView) this.popView.findViewById(R.id.mlistview);
-        CommonListStringAdapter mListStringAdapter = new CommonListStringAdapter(ProjectGXBYSubmitActivity.this, mList);
-        mListView.setAdapter(mListStringAdapter);
-        mListStringAdapter.notifyDataSetChanged();
-        this.popupWindowHelper = new PopupWindowHelper(this.popView);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                String whatSelect = mList.get(arg2);
-                tvPersonnelType.setText(whatSelect);
-                receiver = whatSelect;
-                popupWindowHelper.dismiss();
-            }
-        });
-    }
-
-    @OnClick({R.id.tv_gxTime, R.id.tv_uploadImage, R.id.tv_submit, R.id.tv_personnelType})
+    @OnClick({R.id.tv_gxTime, R.id.tv_uploadImage, R.id.tv_submit})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_gxTime:
                 getDialogTime("请选择日期");
-                break;
-            case R.id.tv_personnelType:
-                if (personnelType.equals("施工员")) {
-                    getPersonnel(sgPersons);
-                } else if (personnelType.equals("监理员")) {
-                    getPersonnel(jlPersons);
-                } else if (personnelType.equals("管理员")) {
-                    getPersonnel(glPersons);
-                }
-                popupWindowHelper.showFromBottom(view);
                 break;
             case R.id.tv_uploadImage:
                 addPic();
@@ -217,8 +163,9 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
             etGxProcedure.requestFocus();
             return false;
         }
-        if (ToolsKit.isEmpty(tvPersonnelType.getText().toString().trim())) {
-            msg("请选择交接者");
+        if (ToolsKit.isEmpty(etPersonnelType.getText().toString().trim())) {
+            msg("交接者不能为空！");
+            etPersonnelType.requestFocus();
             return false;
         }
         if (ToolsKit.isEmpty(etWorkPost.getText().toString().trim())) {
@@ -258,6 +205,7 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
         String gxProcedure = etGxProcedure.getText().toString().trim();//工序名称
         String workPost = etWorkPost.getText().toString().trim();//工作岗位
         String gxTime = tvGxTime.getText().toString().trim();//施工日期
+        String receiver = etPersonnelType.getText().toString().trim();//交接者
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         String UID = getLoginUid();
