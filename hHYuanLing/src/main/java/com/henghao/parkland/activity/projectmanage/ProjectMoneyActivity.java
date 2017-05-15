@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +46,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -185,22 +185,38 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         });
     }
 
-    private void doSubmit() {
-        Map<String, Object> params = new HashMap<>();
-        params.put("uid", getLoginUid());
-        params.put("money", Double.valueOf(etValue.getText().toString()));
-        int type = TYPE_INIT;
-        switch (rgType.getCheckedRadioButtonId()) {
-            case R.id.rb_income:
-                type = TYPE_INCOME;
-                break;
-            case R.id.rb_cost:
-                type = TYPE_COST;
-                break;
+    /**
+     * 检测数据合法性
+     *
+     * @return
+     */
+    private boolean checkData() {
+        if (ToolsKit.isEmpty(etValue.getText().toString().trim())) {
+            msg("请输入金额");
+            etValue.requestFocus();
+            return false;
         }
-        params.put("types", type);
-        params.put("comment", etComment.getText().toString().trim());
-        call = NetworkController.doRequest(ProtocolUrl.ROOT_URL + ProtocolUrl.WALLETE_SUBMIT, submitCallback, params);
+        return true;
+    }
+
+    private void doSubmit() {
+        if (checkData()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("uid", getLoginUid());
+            params.put("money", Double.valueOf(etValue.getText().toString()));
+            int type = TYPE_INIT;
+            switch (rgType.getCheckedRadioButtonId()) {
+                case R.id.rb_income:
+                    type = TYPE_INCOME;
+                    break;
+                case R.id.rb_cost:
+                    type = TYPE_COST;
+                    break;
+            }
+            params.put("types", type);
+            params.put("comment", etComment.getText().toString().trim());
+            call = NetworkController.doRequest(ProtocolUrl.ROOT_URL + ProtocolUrl.WALLETE_SUBMIT, submitCallback, params);
+        }
     }
 
     private StringCallback submitCallback = new StringCallback() {
@@ -290,6 +306,10 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         View HeaderView = LayoutInflater.from(this).inflate(R.layout.include_poject_money, mXlistview, false);
         tv_total_money = (TextView) HeaderView.findViewById(R.id.tv_total_money);
         mXlistview.addHeaderView(HeaderView);
+        /**
+         * 默认选中-------收入
+         */
+        ((RadioButton) (rgType.getChildAt(0))).setChecked(true);
         /**
          * 访问网络数据
          */

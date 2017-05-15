@@ -167,7 +167,6 @@ public class GuanhuActivity extends ActivityFragmentSupport {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_submit_guanhu:
-                mActivityFragmentView.viewLoading(View.VISIBLE);
                 yhWorker = etYhWorkder.getText().toString().trim();
                 yhDetails = etYhDetails.getText().toString().trim();
                 yhComment = etComment.getText().toString().trim();
@@ -185,6 +184,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                 /**
                  * 访问网络，提交数据
                  */
+                mActivityFragmentView.viewLoading(View.VISIBLE);
                 OkHttpClient okHttpClient = new OkHttpClient();
                 Request.Builder builder = new Request.Builder();
                 FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();

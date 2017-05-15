@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     android:padding="8dp">
 
@@ -30,14 +31,23 @@
         android:id="@+id/et_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:background="@drawable/editext_shape"
         android:hint="金额"
         android:inputType="numberDecimal"
-        android:lines="1" />
+        android:lines="1"
+        android:padding="@dimen/padding_big"
+        android:textColor="@color/text_color_c"
+        android:textColorHint="@color/line" />
 
     <EditText
         android:id="@+id/et_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="备注" />
+        android:layout_marginTop="@dimen/padding_normal"
+        android:background="@drawable/editext_shape"
+        android:hint="备注"
+        android:padding="@dimen/padding_big"
+        android:textColor="@color/text_color_c"
+        android:textColorHint="@color/line" />
 </LinearLayout>

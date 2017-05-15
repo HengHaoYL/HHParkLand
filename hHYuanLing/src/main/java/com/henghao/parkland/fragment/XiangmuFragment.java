@@ -1,7 +1,6 @@
 package com.henghao.parkland.fragment;
 
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -15,7 +14,6 @@ import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.henghao.parkland.Constant;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectFirstAdapter;
@@ -254,8 +252,7 @@ public class XiangmuFragment extends FragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Constant.SHARED_SET, 0);
-        String UID = sharedPreferences.getString(Constant.USERID, "");
+        String UID = mActivity.getLoginUid();
         if (UID != null) requestBodyBuilder.add("uid", UID);
         RequestBody requestBody = requestBodyBuilder.build();
         Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_QUERYPROJECTMSG).build();

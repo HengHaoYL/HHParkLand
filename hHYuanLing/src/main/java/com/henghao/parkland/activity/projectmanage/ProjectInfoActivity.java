@@ -22,6 +22,7 @@ import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectInfoAdapter;
 import com.henghao.parkland.callback.MyCallBack;
+import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.DeleteEntity;
 import com.henghao.parkland.model.entity.ProjectInfoEntity;
@@ -278,6 +279,12 @@ public class ProjectInfoActivity extends ActivityFragmentSupport implements MyCa
                         public void run() {
                             Toast.makeText(context, baseEntity.getMsg(), Toast.LENGTH_SHORT).show();
                             mActivityFragmentView.viewLoading(View.GONE);
+                            /**
+                             * 删除成功之后，则项目信息列表减少了一个，所以索引要随之-1
+                             */
+                            if (XiangmuFragment.mInfoEntity != null) {
+                                XiangmuFragment.index -= 1;
+                            }
                             /**
                              * 刷新界面
                              */
