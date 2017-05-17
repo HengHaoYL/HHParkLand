@@ -61,33 +61,6 @@ public class LoginProtocol extends BaseModel {
         }
     }
 
-    /**
-     * 注册
-     *
-     * @param userName 用户名
-     * @param password 密码
-     * @param phone    手机号
-     * @param utid     用户类型（普通用户默认为1）
-     */
-    public void reg_user(String userName, String password, String phone, String utid) {
-        try {
-            String url = ProtocolUrl.APP_REG;
-            Map<String, Object> params = new HashMap<String, Object>();
-            params.put("username", userName);
-            params.put("password", password);
-            params.put("tel", phone);
-            params.put("utid", utid);
-            /*String str = ToolsKit.getParams(params);
-            String paramVal = ToolsSecret.encode(str);
-			HashMap<String, String> postParams = new HashMap<String, String>();
-			postParams.put("params", paramVal);*/
-            this.mBeeCallback.url(url).type(String.class).params(params);
-            this.aq.ajax(this.mBeeCallback);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private final BeeCallback<String> mBeeCallback = new BeeCallback<String>() {
 
         @Override

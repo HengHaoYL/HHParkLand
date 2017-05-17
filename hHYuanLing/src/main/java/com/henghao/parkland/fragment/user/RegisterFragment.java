@@ -12,14 +12,15 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
 import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.benefit.buy.library.utils.tools.ToolsRegex;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
@@ -29,22 +30,16 @@ import com.henghao.parkland.utils.FileUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.MultipartBuilder;
-import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
-import org.json.JSONException;
+import net.zombie_sama.okhttphelper.OkHttpController;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 我的注册〈一句话功能简述〉 〈功能详细描述〉
@@ -176,68 +171,50 @@ public class RegisterFragment extends FragmentSupport {
         String IDCard = login_IDCard.getText().toString().trim();//身份证
         String email = login_email.getText().toString().trim();//邮箱
         String pwd = login_pass.getText().toString().trim();//密码
-        OkHttpClient okHttpClient = new OkHttpClient();
-        Request.Builder builder = new Request.Builder();
-        MultipartBuilder multipartBuilder = new MultipartBuilder();
-        multipartBuilder.type(MultipartBuilder.FORM)//
-                .addFormDataPart("username", userName)//用户名
-                .addFormDataPart("tel", phone)//手机号
-                .addFormDataPart("contact", contact)//姓名
-                .addFormDataPart("legalPersonIDcard", IDCard)//身份证
-                .addFormDataPart("email", email)//邮箱
-                .addFormDataPart("password", pwd);//密码
+        Map<String, Object> params = new HashMap<>();
+        params.put("username", userName);//用户名
+        params.put("tel", phone);//手机号
+        params.put("contact", contact);//姓名
+        params.put("legalPersonIDcard", IDCard);//身份证
+        params.put("email", email);//邮箱
+        params.put("password", pwd);//密码
+        Map<String, File> files = new HashMap<>();
         for (File file : mFileList) {
-            multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//身份证图片
+            files.put(file.getName(), file);
         }
-        RequestBody requestBody = multipartBuilder.build();
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.APP_REG).build();
-        mActivityFragmentView.viewLoading(View.VISIBLE);
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
-                         @Override
-                         public void onFailure(Request request, IOException e) {
-                             Log.e(TAG, "onFailure: " + e.getMessage());
-                             e.printStackTrace();
-                             mActivityFragmentView.viewLoading(View.GONE);
-                         }
-
-                         @Override
-                         public void onResponse(Response response) throws IOException {
-                             String content = response.body().string();
-                             try {
-                                 Type type = new TypeToken<BaseEntity>() {
-                                 }.getType();
-                                 final BaseEntity mEntity = ToolsJson.parseObjecta(content, type);
-                                 final int status = mEntity.getStatus();
-                                 getActivity().runOnUiThread(new Runnable() {
-                                     @Override
-                                     public void run() {
-                                         mActivityFragmentView.viewLoading(View.GONE);
-                                         mActivity.msg(mEntity.getMsg());
-                                         /**
-                                          * 注册成功
-                                          */
-                                         if (status == 0) {
-                                             clearData();
-                                             LoginAndRegActivity loginAndRegActivity = (LoginAndRegActivity) getActivity();
-                                             loginAndRegActivity.setLoginFragment();
-                                         }
-                                     }
-                                 });
-                             } catch (JsonSyntaxException e) {
-                                 getActivity().runOnUiThread(new Runnable() {
-                                     @Override
-                                     public void run() {
-                                         mActivityFragmentView.viewLoading(View.GONE);
-                                     }
-                                 });
-                                 e.printStackTrace();
-                             }
-                         }
-                     }
-
-        );
+        OkHttpController.doRequest(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.APP_REG, params, files, registerCallback);
     }
+
+    private DefaultCallback registerCallback = new DefaultCallback() {
+        @Override
+        public void onFailure(Request request, Exception e, int code) {
+            Log.e(TAG, "onFailure: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            String content = response;
+            if (BuildConfig.DEBUG) Log.d(TAG, "result: " + content);
+            try {
+                Type type = new TypeToken<BaseEntity>() {
+                }.getType();
+                final BaseEntity mEntity = ToolsJson.parseObjecta(content, type);
+                final int status = mEntity.getStatus();
+                mActivity.msg(mEntity.getMsg());
+                //注册成功
+                if (status == 0) {
+                    clearData();
+                    LoginAndRegActivity loginAndRegActivity = (LoginAndRegActivity) getActivity();
+                    loginAndRegActivity.setLoginFragment();
+                }
+            } catch (JsonSyntaxException e) {
+                Log.e(TAG, "e:" + e);
+                Toast.makeText(mActivity, "数据拉取失败，请稍后再试", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    };
 
     private boolean checkData() {
         if (ToolsKit.isEmpty(login_user.getText().toString().trim())) {
@@ -293,24 +270,6 @@ public class RegisterFragment extends FragmentSupport {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
-        super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.APP_REG)) {
-            BaseEntity mBaseEntity = (BaseEntity) jo;
-            mActivity.msg(mBaseEntity.getMsg());
-            int result_status = mBaseEntity.getStatus();
-            /**
-             * 注册成功
-             */
-            if (result_status == 0) {
-                clearData();
-                LoginAndRegActivity loginAndRegActivity = (LoginAndRegActivity) getActivity();
-                loginAndRegActivity.setLoginFragment();
-            }
-        }
     }
 
     /**

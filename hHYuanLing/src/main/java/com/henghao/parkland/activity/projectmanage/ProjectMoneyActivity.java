@@ -36,7 +36,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
-import net.zombie_sama.okhttphelper.NetworkController;
+import net.zombie_sama.okhttphelper.OkHttpController;
 import net.zombie_sama.okhttphelper.callback.StringCallback;
 
 import org.json.JSONException;
@@ -215,7 +215,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
             }
             params.put("types", type);
             params.put("comment", etComment.getText().toString().trim());
-            call = NetworkController.doRequest(ProtocolUrl.ROOT_URL + ProtocolUrl.WALLETE_SUBMIT, submitCallback, params);
+            call = OkHttpController.doRequest(ProtocolUrl.ROOT_URL + ProtocolUrl.WALLETE_SUBMIT, params, submitCallback);
         }
     }
 

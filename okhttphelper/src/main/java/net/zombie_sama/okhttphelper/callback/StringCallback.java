@@ -8,8 +8,8 @@ public abstract class StringCallback extends BaseCallback<String> {
 
     @Override
     public String parseResponse(Response response) throws IOException {
-        String result = response.body().toString();
+        String result = response.body().string();
         response.body().close();
-        return null;
+        return result;
     }
 }

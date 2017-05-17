@@ -32,8 +32,9 @@ public class ProtocolUrl {
         if (BuildConfig.DEBUG) {
             // 测试地址/192.168.1.12
             ROOT_URL = "http://172.16.13.113:8080/Garden";
-            /*ROOT_URL = "http://safe.higdata.com/Java_Nfc/";*/
-//			ROOT_URL = "http://192.168.1.12/Java_Nfc";
+//            ROOT_URL = "http://222.85.156.43:81/Garden";
+//            ROOT_URL = "http://safe.higdata.com/Java_Nfc/";
+//			  ROOT_URL = "http://192.168.1.12/Java_Nfc";
         } else {
             // 生产地址
             ROOT_URL = "http://222.85.156.43:81/Garden";

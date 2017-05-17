@@ -15,6 +15,8 @@ import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.exception.CustomExceptionHandler;
 import com.henghao.parkland.service.ReConnectService;
 
+import net.zombie_sama.okhttphelper.OkHttpController;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,6 +47,7 @@ public class FMApplication extends Application {
         instance = this;
         // 注意该方法要再setContentView方法之前实现
         SDKInitializer.initialize(this);
+        OkHttpController.initClient();
         appException();
     }
 

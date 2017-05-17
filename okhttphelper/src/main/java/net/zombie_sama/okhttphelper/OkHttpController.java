@@ -8,6 +8,8 @@ import android.util.Log;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
@@ -15,11 +17,13 @@ import com.squareup.okhttp.Response;
 
 import net.zombie_sama.okhttphelper.callback.BaseCallback;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-public class NetworkController {
+public class OkHttpController {
     private static OkHttpClient client;
+    private static boolean initialized = false;
     private static Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
@@ -39,17 +43,25 @@ public class NetworkController {
     private static final int RESULT_FAILURE = 0;
     private static final int RESULT_SUCCESS = 1;
 
-    public static synchronized OkHttpClient getClientInstance() {
-        if (client == null) {
-            client = new OkHttpClient();
-        }
+    public static void initClient() {
+        client = new OkHttpClient();
+        initialized = true;
+    }
+
+    private static synchronized OkHttpClient getClientInstance() {
         return client;
     }
 
-    public static RequestBody buildBody(Map<String, Object> params) {
-        FormEncodingBuilder builder = new FormEncodingBuilder();
+    public static RequestBody buildBody(Map<String, Object> params, Map<String, File> files) {
+        MultipartBuilder builder = new MultipartBuilder();
         for (String key : params.keySet()) {
-            builder.add(key, String.valueOf(params.get(key)));
+            builder.addFormDataPart(key, String.valueOf(params.get(key)));
+        }
+        if (files.size() != 0) {
+            for (String key : files.keySet()) {
+                File file = files.get(key);
+                builder.addFormDataPart(key, file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+            }
         }
         return builder.build();
     }
@@ -102,12 +114,36 @@ public class NetworkController {
         };
     }
 
-    public static Call doRequest(String url, BaseCallback callback, Map<String, Object> params) {
-        RequestBody body = buildBody(params);
+    /**
+     * 提交一个请求
+     *
+     * @param url      请求url
+     * @param params   请求参数
+     * @param callback 请求回调
+     * @return 请求Call
+     */
+    public static Call doRequest(String url, Map<String, Object> params, BaseCallback callback) {
+        return doRequest(url, params, null, callback);
+    }
+
+    /**
+     * 提交一个带文件的请求
+     *
+     * @param url      请求url
+     * @param params   请求参数
+     * @param files    要上传的文件
+     * @param callback 请求回调
+     * @return 请求Call
+     */
+    public static Call doRequest(String url, Map<String, Object> params, Map<String, File> files, BaseCallback callback) {
+        if (!initialized) {
+            throw new RuntimeException("Client has not been initialize. Call OkHttpController.initClient() in your Application.");
+        }
+        RequestBody body = buildBody(params, files);
         Request request = buildRequest(url, body, "POST");
         Call call = buildCall(getClientInstance(), request);
         callback.onStart();
-        Log.i("NetworkController", "doRequest: url = " + url + " params = " + params.toString());
+        Log.i("OkHttpController", "doRequest: url = " + url + " params = " + params.toString());
         return enqueue(call, buildCallback(callback));
     }
 
