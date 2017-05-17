@@ -64,10 +64,10 @@ public class AppFragment extends FragmentSupport {
         mEntity4.setName("园林协会");
         mList.add(mEntity4);
         //第五个
-        AppGridEntity mEntity5 = new AppGridEntity();
-        mEntity5.setImageId(R.drawable.app_five);
-        mEntity5.setName("资质申请");
-        mList.add(mEntity5);
+//        AppGridEntity mEntity5 = new AppGridEntity();
+//        mEntity5.setImageId(R.drawable.app_five);
+//        mEntity5.setName("资质申请");
+//        mList.add(mEntity5);
 //        //第六个
 //        AppGridEntity mEntity6 = new AppGridEntity();
 //        mEntity6.setImageId(R.drawable.app_six);
@@ -79,10 +79,10 @@ public class AppFragment extends FragmentSupport {
 //        mEntity6.setName("社区");
 //        mList.add(mEntity6);
         //第七个
-        AppGridEntity mEntity7 = new AppGridEntity();
-        mEntity7.setImageId(R.drawable.app_seven);
-        mEntity7.setName("园林资讯");
-        mList.add(mEntity7);
+//        AppGridEntity mEntity7 = new AppGridEntity();
+//        mEntity7.setImageId(R.drawable.app_seven);
+//        mEntity7.setName("园林资讯");
+//        mList.add(mEntity7);
         AppGridAdapter maAdapter = new AppGridAdapter(this.mActivity, mList);
         this.gridview.setAdapter(maAdapter);
         maAdapter.notifyDataSetChanged();

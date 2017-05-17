@@ -59,14 +59,15 @@
                 android:text="当前企业"
                 android:textSize="@dimen/gj_d" />
 
-            <TextView
-                android:id="@+id/tv_company_qiandao"
+            <EditText
+                android:id="@+id/et_company_qiandao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:hint="请输入文字"
                 android:padding="@dimen/padding_big"
-                android:text="贵州恒昊软件科技有限公司"
                 android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>

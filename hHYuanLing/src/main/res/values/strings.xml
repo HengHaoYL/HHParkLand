@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">园林企业管理平台</string>
+    <string name="app_name">园林企业平台</string>
     <!-- 共有的 -->
     <string name="back">返回</string>
     <string name="home_exit">press again to exit</string>

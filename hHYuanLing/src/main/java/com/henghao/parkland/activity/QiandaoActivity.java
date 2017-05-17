@@ -6,6 +6,7 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,8 +69,8 @@ public class QiandaoActivity extends ActivityFragmentSupport {
     /**
      * 当前企业
      */
-    @ViewInject(R.id.tv_company_qiandao)
-    private TextView tv_company_qiandao;
+    @ViewInject(R.id.et_company_qiandao)
+    private EditText et_company_qiandao;
     /**
      * 签到的地点
      */
@@ -123,7 +124,12 @@ public class QiandaoActivity extends ActivityFragmentSupport {
             case R.id.img_qiandao:
                 String time = this.tv_hourminute_qiandao.getText().toString();// 签到时间
                 String address = this.tv_place_qiandao.getText().toString(); // 签到地址
-                String company = this.tv_company_qiandao.getText().toString();// 当前企业
+                String company = this.et_company_qiandao.getText().toString();// 当前企业
+                if (ToolsKit.isEmpty(company)) {
+                    msg("请输入当前企业！");
+                    et_company_qiandao.requestFocus();
+                    return;
+                }
                 if (ToolsKit.isEmpty(addrStr)) {
                     Toast.makeText(QiandaoActivity.this, "当前没有定位，请定位后再签到！", Toast.LENGTH_SHORT).show();
                     return;
