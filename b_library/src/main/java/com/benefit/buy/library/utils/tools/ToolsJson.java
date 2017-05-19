@@ -18,6 +18,7 @@ import com.google.gson.JsonSyntaxException;
 
 /**
  * 〈一句话功能简述〉 〈功能详细描述〉
+ *
  * @author qinyulun
  * @version HDMNV100R001, 2014-7-22
  * @see [相关类/方法]
@@ -26,6 +27,10 @@ import com.google.gson.JsonSyntaxException;
 public class ToolsJson {
 
     private static GsonBuilder gsonb = new GsonBuilder();
+
+    public static Gson getGsonInstance() {
+        return gsonb.create();
+    }
 
     public static <T> T parseObjecta(String jsonData, Type fooType) throws JsonSyntaxException {
         gsonb.excludeFieldsWithoutExposeAnnotation();

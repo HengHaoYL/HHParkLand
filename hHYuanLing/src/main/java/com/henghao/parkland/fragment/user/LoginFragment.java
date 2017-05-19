@@ -2,8 +2,10 @@ package com.henghao.parkland.fragment.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +13,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.benefit.buy.library.http.query.callback.AjaxStatus;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.benefit.buy.library.utils.tools.ToolsKit;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.Constant;
-import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.MainActivity;
 import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.UserLoginEntity;
-import com.henghao.parkland.model.protocol.LoginProtocol;
+import com.henghao.parkland.model.protocol.Requester;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
-
-import org.json.JSONException;
+import com.squareup.okhttp.Request;
 
 /**
  * 我的登录〈一句话功能简述〉 〈功能详细描述〉
@@ -37,6 +39,7 @@ import org.json.JSONException;
  */
 public class LoginFragment extends FragmentSupport {
 
+    private static final String TAG = "LoginFragment";
     @ViewInject(R.id.login_pass_quick)
     private TextView login_pass_quick;
 
@@ -87,16 +90,11 @@ public class LoginFragment extends FragmentSupport {
 
     @OnClick({R.id.tv_login, R.id.iv_eye_login, R.id.login_reset_password})
     public void viewClick(View v) {
-        Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.tv_login:
                 //登录
-                if (checkData()) {
-                    LoginProtocol mLoginProtocol = new LoginProtocol(mActivity);
-                    mLoginProtocol.addResponseListener(this);
-                    mLoginProtocol.login(login_user.getText().toString().trim(), login_pass.getText().toString().trim(), String.valueOf(1));
-                    mActivityFragmentView.viewLoading(View.VISIBLE);
-                }
+                if (checkData())
+                    Requester.login(login_user.getText().toString().trim(), login_pass.getText().toString().trim(), String.valueOf(1), loginCallback);
                 break;
             case R.id.iv_eye_login:
                 boolean isSelected = iv_eye_login.isSelected();
@@ -127,22 +125,32 @@ public class LoginFragment extends FragmentSupport {
         return true;
     }
 
-    @Override
-    public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
-        super.OnMessageResponse(url, jo, status);
-        if (url.endsWith(ProtocolUrl.APP_LOGIN)) {
-            if (jo instanceof BaseEntity) {
-                BaseEntity base = (BaseEntity) jo;
-                mActivity.msg(base.getMsg());
+    private DefaultCallback loginCallback = new DefaultCallback() {
+        @Override
+        public void onFailure(Request request, Exception e, int code) {
+
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            if (BuildConfig.DEBUG) Log.d("LoginFragment", response);
+            JSONObject jo = JSON.parseObject(response);
+            String data = jo.getString("data");
+            if (TextUtils.isEmpty(data)) {
+                mActivity.msg(jo.getString("result"));
                 return;
             }
-            UserLoginEntity userLogin = (UserLoginEntity) jo;
-            mActivity.getLoginUserSharedPre().edit().putString(Constant.USERID, userLogin.getUid()).putString(Constant.USERNAME, userLogin.getUsername()).putString(Constant.USERPHONE, userLogin.getTel()).commit();
-            Intent intent = new Intent();
-            intent.setClass(mActivity, MainActivity.class);
-            startActivity(intent);
-            mActivity.onBackPressed();
+            try {
+                UserLoginEntity userLogin = JSON.parseObject(data, UserLoginEntity.class);
+                mActivity.getLoginUserSharedPre().edit().putString(Constant.USERID, userLogin.getUid()).putString(Constant.USERNAME, userLogin.getUsername()).putString(Constant.USERPHONE, userLogin.getTel()).apply();
+                Intent intent = new Intent();
+                intent.setClass(mActivity, MainActivity.class);
+                startActivity(intent);
+                mActivity.onBackPressed();
+            } catch (Exception e) {
+                e.printStackTrace();
+                mActivity.msg("登录失败，请稍后重试");
+            }
         }
-    }
-
+    };
 }

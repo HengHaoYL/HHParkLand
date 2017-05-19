@@ -54,10 +54,12 @@ public class OkHttpController {
 
     public static RequestBody buildBody(Map<String, Object> params, Map<String, File> files) {
         MultipartBuilder builder = new MultipartBuilder();
-        for (String key : params.keySet()) {
-            builder.addFormDataPart(key, String.valueOf(params.get(key)));
+        if (params != null) {
+            for (String key : params.keySet()) {
+                builder.addFormDataPart(key, String.valueOf(params.get(key)));
+            }
         }
-        if (files.size() != 0) {
+        if (files != null) {
             for (String key : files.keySet()) {
                 File file = files.get(key);
                 builder.addFormDataPart(key, file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));

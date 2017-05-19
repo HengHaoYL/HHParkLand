@@ -26,6 +26,7 @@ import com.henghao.parkland.R;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.model.entity.BaseEntity;
+import com.henghao.parkland.model.protocol.Requester;
 import com.henghao.parkland.utils.FileUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -171,20 +172,12 @@ public class RegisterFragment extends FragmentSupport {
         String IDCard = login_IDCard.getText().toString().trim();//身份证
         String email = login_email.getText().toString().trim();//邮箱
         String pwd = login_pass.getText().toString().trim();//密码
-        Map<String, Object> params = new HashMap<>();
-        params.put("username", userName);//用户名
-        params.put("tel", phone);//手机号
-        params.put("contact", contact);//姓名
-        params.put("legalPersonIDcard", IDCard);//身份证
-        params.put("email", email);//邮箱
-        params.put("password", pwd);//密码
-        Map<String, File> files = new HashMap<>();
-        for (File file : mFileList) {
-            files.put(file.getName(), file);
-        }
-        OkHttpController.doRequest(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.APP_REG, params, files, registerCallback);
+
+        //提交请求
+        Requester.register(userName, pwd, phone, contact, IDCard, email, mFileList, registerCallback);
     }
 
+    //请求回调
     private DefaultCallback registerCallback = new DefaultCallback() {
         @Override
         public void onFailure(Request request, Exception e, int code) {

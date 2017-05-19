@@ -198,7 +198,7 @@ public class FragmentSupport extends Fragment implements BusinessResponse {
         return this.object;
     }
 
-    protected abstract class DefaultCallback extends StringCallback {
+    public abstract class DefaultCallback extends StringCallback {
         @Override
         public void onStart() {
             mActivityFragmentView.viewLoading(View.VISIBLE);
