@@ -43,10 +43,6 @@ public class OkHttpController {
         }
     };
 
-    private static synchronized OkHttpClient getClientInstance() {
-        return client;
-    }
-
     /**
      * 构建请求体
      *
@@ -162,7 +158,7 @@ public class OkHttpController {
         }
         RequestBody body = buildBody(params, files);
         Request request = buildRequest(url, body, "POST");
-        Call call = buildCall(getClientInstance(), request);
+        Call call = buildCall(client, request);
         callback.onStart();
         Log.i("OkHttpController", "doRequest: url = " + url + " params = " + params.toString());
         call.enqueue(buildCallback(callback));
