@@ -1,11 +1,11 @@
-package com.henghao.parkland.model.protocol;
+package com.henghao.parkland.utils;
 
 import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.ProtocolUrl;
 import com.squareup.okhttp.Call;
 
-import net.zombie_sama.okhttphelper.OkHttpController;
-import net.zombie_sama.okhttphelper.callback.BaseCallback;
+import com.higdata.okhttphelper.OkHttpController;
+import com.higdata.okhttphelper.callback.BaseCallback;
 
 import java.io.File;
 import java.util.HashMap;

@@ -36,8 +36,8 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
-import net.zombie_sama.okhttphelper.OkHttpController;
-import net.zombie_sama.okhttphelper.callback.StringCallback;
+import com.higdata.okhttphelper.OkHttpController;
+import com.higdata.okhttphelper.callback.StringCallback;
 
 import org.json.JSONException;
 

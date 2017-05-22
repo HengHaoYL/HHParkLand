@@ -27,9 +27,8 @@ import com.henghao.parkland.R;
 import com.henghao.parkland.model.ascyn.BusinessResponse;
 import com.henghao.parkland.views.ActivityFragmentView;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.squareup.okhttp.Request;
 
-import net.zombie_sama.okhttphelper.callback.StringCallback;
+import com.higdata.okhttphelper.callback.StringCallback;
 
 import org.json.JSONException;
 

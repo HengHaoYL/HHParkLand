@@ -21,26 +21,21 @@ import com.benefit.buy.library.utils.tools.ToolsRegex;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.BuildConfig;
-import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.model.entity.BaseEntity;
-import com.henghao.parkland.model.protocol.Requester;
+import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.utils.FileUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.squareup.okhttp.Request;
 
-import net.zombie_sama.okhttphelper.OkHttpController;
-
 import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 我的注册〈一句话功能简述〉 〈功能详细描述〉
