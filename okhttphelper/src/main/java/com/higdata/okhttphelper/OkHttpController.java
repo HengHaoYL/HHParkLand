@@ -22,15 +22,21 @@ import java.util.Map;
 @SuppressWarnings("WeakerAccess")
 public class OkHttpController {
     private static OkHttpClient client;
-    private static final int RESULT_FAILURE = 0;
-    private static final int RESULT_SUCCESS = 1;
+    private static final int RESULT_START = 0;
+    private static final int RESULT_FAILURE = 1;
+    private static final int RESULT_SUCCESS = 2;
 
-    //主线程handler
+    /**
+     * 主线程handler
+     */
     private static Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             Data data = (Data) msg.obj;
             switch (msg.what) {
+                case RESULT_START:
+                    data.baseCallback.onStart();
+                    break;
                 case RESULT_FAILURE:
                     data.baseCallback.onFailure(data.request, data.e, data.code);
                     break;
@@ -101,7 +107,7 @@ public class OkHttpController {
      * @param baseCallback 回调
      * @return OkHttp回调
      */
-    private static Callback buildCallback(final BaseCallback baseCallback) {
+    public static Callback buildCallback(final BaseCallback baseCallback) {
         return new Callback() {
             @Override
             public void onFailure(final Request request, final IOException e) {
@@ -153,16 +159,28 @@ public class OkHttpController {
      * @return 请求Call
      */
     public static Call doRequest(String url, Map<String, Object> params, Map<String, File> files, BaseCallback callback) {
+        Log.i("OkHttpController", "doRequest: url = " + url + " params = " + params.toString());
+        getClientInstance();
+        RequestBody body = buildBody(params, files);
+        Request request = buildRequest(url, body, "POST");
+        Data data = new Data();
+        data.baseCallback = callback;
+        Message msg = new Message();
+        msg.what = RESULT_START;
+        msg.obj = data;
+        handler.sendMessage(msg);
+        Call call = buildCall(client, request);
+        call.enqueue(buildCallback(callback));
+        return call;
+    }
+
+    /**
+     * 获取Client单例
+     */
+    private static synchronized void getClientInstance() {
         if (client == null) {
             client = new OkHttpClient();
         }
-        RequestBody body = buildBody(params, files);
-        Request request = buildRequest(url, body, "POST");
-        Call call = buildCall(client, request);
-        callback.onStart();
-        Log.i("OkHttpController", "doRequest: url = " + url + " params = " + params.toString());
-        call.enqueue(buildCallback(callback));
-        return call;
     }
 
     /**
@@ -174,6 +192,9 @@ public class OkHttpController {
         Exception e;
         Object result;
         int code;
+
+        Data() {
+        }
 
         Data(BaseCallback baseCallback, Object result) {
             this.baseCallback = baseCallback;
