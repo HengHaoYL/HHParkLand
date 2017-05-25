@@ -13,9 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.views.FlowRadioGroup;
+import com.higdata.okhttphelper.OkHttpController;
+import com.higdata.okhttphelper.callback.StringCallback;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -28,6 +32,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -187,83 +193,60 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                  * 访问网络，提交数据
                  */
                 mActivityFragmentView.viewLoading(View.VISIBLE);
-                OkHttpClient okHttpClient = new OkHttpClient();
-                Request.Builder builder = new Request.Builder();
-                FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
-                /**
-                 * 封装请求参数到requestBodyBuilder中，构建requestBody
-                 */
-                requestBodyBuilder.add("yid", String.valueOf(yid));
-                requestBodyBuilder.add("uid", getLoginUid());
-                requestBodyBuilder.add("treeId", treeId);
-                requestBodyBuilder.add("yhSite", yhSite);
-                requestBodyBuilder.add("yhWorker", yhWorker);
-                requestBodyBuilder.add("yhDetails", yhDetails);
-                requestBodyBuilder.add("yhTime", yhTime);
-                requestBodyBuilder.add("yhQuestion", yhQuestion);
-                requestBodyBuilder.add("yhClean", yhClean);
-                requestBodyBuilder.add("treeGrowup", treeGrowup);
-                requestBodyBuilder.add("yhComment", yhComment);
-                RequestBody requestBody = requestBodyBuilder.build();
-                Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.SAVEGHMANAGEMSG).build();
-                /**
-                 * 封装request
-                 */
-                Call call = okHttpClient.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Request request, IOException e) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                mActivityFragmentView.viewLoading(View.GONE);
-                                Toast.makeText(GuanhuActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onResponse(Response response) throws IOException {
-                        String result_str = response.body().string();
-                        Log.i(TAG, "onResponse: " + result_str);
-                        try {
-                            JSONObject jsonObject = new JSONObject(result_str);
-                            int status = jsonObject.getInt("status");//错误代码 0 正确 1 错误
-                            if (status == 0) {
-                                final String result = jsonObject.getString("result");
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        mActivityFragmentView.viewLoading(View.GONE);
-                                        Toast.makeText(GuanhuActivity.this, result, Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                finish();
-                            } else {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        mActivityFragmentView.viewLoading(View.GONE);
-                                        Toast.makeText(GuanhuActivity.this, "添加失败，请重试！", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        } catch (JSONException e) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mActivityFragmentView.viewLoading(View.GONE);
-                                    Toast.makeText(GuanhuActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                Map<String, Object> params = new HashMap<>();
+                params.put("yid", String.valueOf(yid));
+                params.put("uid", getLoginUid());
+                params.put("treeId", treeId);
+                params.put("yhSite", yhSite);
+                params.put("yhWorker", yhWorker);
+                params.put("yhDetails", yhDetails);
+                params.put("yhTime", yhTime);
+                params.put("yhQuestion", yhQuestion);
+                params.put("yhClean", yhClean);
+                params.put("treeGrowup", treeGrowup);
+                params.put("yhComment", yhComment);
+                OkHttpController.doRequest(Requester.getRequestURL(ProtocolUrl.SAVEGHMANAGEMSG), params, callback);
                 break;
             case R.id.btn_cancel_guanhu:
                 finish();
                 break;
         }
     }
+
+    private StringCallback callback = new StringCallback() {
+        @Override
+        public void onStart() {
+            mActivityFragmentView.viewLoading(View.VISIBLE);
+        }
+
+        @Override
+        public void onFinish() {
+            mActivityFragmentView.viewLoading(View.GONE);
+        }
+
+        @Override
+        public void onFailure(Request request, Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "code:" + code, e);
+            Toast.makeText(GuanhuActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            if (BuildConfig.DEBUG) Log.i(TAG, "onResponse: " + response);
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                int status = jsonObject.getInt("status");//错误代码 0 正确 1 错误
+                if (status == 0) {
+                    final String result = jsonObject.getString("result");
+                    Toast.makeText(GuanhuActivity.this, result, Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(GuanhuActivity.this, "添加失败，请重试！", Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+                Toast.makeText(GuanhuActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+    };
 }

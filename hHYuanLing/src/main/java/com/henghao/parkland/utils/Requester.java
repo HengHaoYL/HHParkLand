@@ -16,6 +16,7 @@ import java.util.Map;
  * 请求管理类，将所有网络请求写入此类以方便维护
  */
 
+@SuppressWarnings("WeakerAccess")
 public class Requester {
 
     public static final String HOST_DEBUG =
@@ -76,8 +77,10 @@ public class Requester {
      * @param url 接口url
      * @return 请求url
      */
-    private static String getRequestURL(String url) {
+    public static String getRequestURL(String url) {
+        String separator = "/";
         String host = BuildConfig.DEBUG ? HOST_DEBUG : HOST_RELEASE;
-        return String.format("%s/%s", host, url);
+        if (!url.startsWith(separator)) url = "/" + url;
+        return String.format("%s%s", host, url);
     }
 }
