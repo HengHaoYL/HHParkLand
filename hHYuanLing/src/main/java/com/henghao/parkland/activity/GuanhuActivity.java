@@ -189,23 +189,20 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                 if (yhComment.equals("") || yhComment == null) {
                     yhComment = "无";
                 }
-                /**
-                 * 访问网络，提交数据
-                 */
-                mActivityFragmentView.viewLoading(View.VISIBLE);
-                Map<String, Object> params = new HashMap<>();
-                params.put("yid", String.valueOf(yid));
-                params.put("uid", getLoginUid());
-                params.put("treeId", treeId);
-                params.put("yhSite", yhSite);
-                params.put("yhWorker", yhWorker);
-                params.put("yhDetails", yhDetails);
-                params.put("yhTime", yhTime);
-                params.put("yhQuestion", yhQuestion);
-                params.put("yhClean", yhClean);
-                params.put("treeGrowup", treeGrowup);
-                params.put("yhComment", yhComment);
-                OkHttpController.doRequest(Requester.getRequestURL(ProtocolUrl.SAVEGHMANAGEMSG), params, callback);
+                //访问网络，提交数据
+                Requester.guanhuSubmit(
+                        String.valueOf(yid),
+                        getLoginUid(),
+                        treeId,
+                        yhSite,
+                        yhWorker,
+                        yhDetails,
+                        yhTime,
+                        yhQuestion,
+                        yhClean,
+                        treeGrowup,
+                        yhComment,
+                        callback);
                 break;
             case R.id.btn_cancel_guanhu:
                 finish();

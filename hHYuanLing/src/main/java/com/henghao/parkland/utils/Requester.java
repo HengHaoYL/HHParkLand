@@ -19,11 +19,7 @@ import java.util.Map;
 @SuppressWarnings("WeakerAccess")
 public class Requester {
 
-    public static final String HOST_DEBUG =
-            "http://172.16.13.113:8080/Garden";
-    //        "http://222.85.156.43:81/Garden";
-    //        "http://safe.higdata.com/Java_Nfc/";
-    //        "http://192.168.1.12/Java_Nfc";
+    public static final String HOST_DEBUG = "http://172.16.13.113:8080/Garden";
     public static final String HOST_RELEASE = "http://222.85.156.43:81/Garden";
 
     /**
@@ -37,7 +33,7 @@ public class Requester {
      * @param email             邮箱
      * @param images            身份证正反面
      * @param callback          回调
-     * @return Call
+     * @return {@link Call}
      */
     public static Call register(String userName, String password, String tel, String contact, String legalPersonIDcard, String email, List<File> images, BaseCallback callback) {
         Map<String, Object> params = new HashMap<>();
@@ -61,7 +57,7 @@ public class Requester {
      * @param password 密码
      * @param utid     utid
      * @param callback 回调
-     * @return Call
+     * @return {@link Call}
      */
     public static Call login(String username, String password, String utid, BaseCallback callback) {
         Map<String, Object> params = new HashMap<String, Object>();
@@ -69,6 +65,39 @@ public class Requester {
         params.put("password", password);
         params.put("utid", utid);
         return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_LOGIN), params, callback);
+    }
+
+    /**
+     * 管护信息填写
+     *
+     * @param yid        养护信息ID
+     * @param uid        uid
+     * @param treeId     植物二维码
+     * @param yhSite     养护地点
+     * @param yhWorker   养护人员
+     * @param yhDetails  养护内容
+     * @param yhTime     养护时间
+     * @param yhQuestion 问题发现
+     * @param yhClean    陆地保洁情况
+     * @param treeGrowup 植物长势
+     * @param yhComment  备注信息
+     * @param callback   回调
+     * @return {@link Call}
+     */
+    public static Call guanhuSubmit(String yid, String uid, String treeId, String yhSite, String yhWorker, String yhDetails, String yhTime, String yhQuestion, String yhClean, String treeGrowup, String yhComment, BaseCallback callback) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("yid", yid);
+        params.put("uid", uid);
+        params.put("treeId", treeId);
+        params.put("yhSite", yhSite);
+        params.put("yhWorker", yhWorker);
+        params.put("yhDetails", yhDetails);
+        params.put("yhTime", yhTime);
+        params.put("yhQuestion", yhQuestion);
+        params.put("yhClean", yhClean);
+        params.put("treeGrowup", treeGrowup);
+        params.put("yhComment", yhComment);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.SAVEGHMANAGEMSG), params, callback);
     }
 
     /**
