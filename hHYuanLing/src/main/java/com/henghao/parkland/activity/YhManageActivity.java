@@ -19,26 +19,20 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.BuildConfig;
-import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.YhAdapter;
 import com.henghao.parkland.model.entity.YhBean;
 import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.views.dialog.DialogList;
 import com.henghao.parkland.views.dialog.DialogYanghu;
-import com.higdata.okhttphelper.callback.BaseCallback;
 import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 import com.zbar.lib.zxing.CaptureActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
