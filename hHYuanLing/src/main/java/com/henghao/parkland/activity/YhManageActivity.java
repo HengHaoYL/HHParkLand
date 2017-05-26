@@ -18,18 +18,19 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.YhAdapter;
 import com.henghao.parkland.model.entity.YhBean;
+import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.views.dialog.DialogList;
 import com.henghao.parkland.views.dialog.DialogYanghu;
+import com.higdata.okhttphelper.callback.BaseCallback;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 import com.zbar.lib.zxing.CaptureActivity;
 
@@ -73,14 +74,13 @@ public class YhManageActivity extends ActivityFragmentSupport {
     /**
      * 网络访问相关
      */
-    private OkHttpClient okHttpClient;
     private static final String TAG = "YhManageActivity";
 
     private String[] state_array = {"施肥", "浇水", "除草", "除虫", "修枝", "防风防汛", "防寒防冻", "防日灼", "扶正", "补栽"};//养护状态选项
     private ArrayAdapter<String> state_Adapter;
     private String str_state;//养护状态
     private DialogYanghu dialogYanghu;
-    private Request request;
+    private Call queryCall;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,12 +107,6 @@ public class YhManageActivity extends ActivityFragmentSupport {
         setLocationOption(); // 设置定位参数
         locationClient.start(); // 开始定位
 
-        okHttpClient = new OkHttpClient();
-        Request.Builder builder = new Request.Builder();
-        FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
-        requestBodyBuilder.add("uid", getLoginUid());
-        RequestBody requestBody = requestBodyBuilder.build();
-        request = builder.url(ProtocolUrl.ROOT_URL + ProtocolUrl.QUERYYGSTATUSMSG).post(requestBody).build();
         /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -128,45 +122,29 @@ public class YhManageActivity extends ActivityFragmentSupport {
     }
 
 
-    private void getDataReq(Request request) {
-        /**
-         * 封装request
-         */
-        Call call = okHttpClient.newCall(request);
-        this.mActivityFragmentView.viewLoading(View.VISIBLE);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Request request, IOException e) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mActivityFragmentView.viewMainGone();
-                        mActivityFragmentView.viewLoading(View.GONE);
-                        Toast.makeText(YhManageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(Response response) throws IOException {
-                final String str_result = response.body().string();//请求网络返回结果
-                Log.i(TAG, "onResponse: " + str_result);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        dataList = parseJson(str_result);
-                        Collections.reverse(dataList);
-                        mActivityFragmentView.viewLoading(View.GONE);
-                        if (dataList.size() != 0) {
-                            mActivityFragmentView.viewEmptyGone();
-                            adapter = new YhAdapter(dataList, YhManageActivity.this);
-                            listView.setAdapter(adapter);
-                        }
-                    }
-                });
-            }
-        });
+    private void getDataReq() {
+        queryCall = Requester.yhManageQueryList(getLoginUid(), listCallback);
     }
+
+    private DefaultCallback listCallback = new DefaultCallback() {
+        @Override
+        public void onFailure(Request request, Exception e, int code) {
+            mActivityFragmentView.viewMainGone();
+            Toast.makeText(YhManageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            Log.i(TAG, "onResponse: " + response);
+            dataList = parseJson(response);
+            Collections.reverse(dataList);
+            if (dataList.size() != 0) {
+                mActivityFragmentView.viewEmptyGone();
+                adapter = new YhAdapter(dataList, YhManageActivity.this);
+                listView.setAdapter(adapter);
+            }
+        }
+    };
 
     @Override
     public void initData() {
@@ -340,6 +318,9 @@ public class YhManageActivity extends ActivityFragmentSupport {
         // 退出时销毁定位
         this.locationClient.stop();
         super.onDestroy();
+        if (queryCall != null && !queryCall.isCanceled()) {
+            queryCall.cancel();
+        }
     }
 
     @Override
@@ -352,7 +333,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
     public void onResume() {
         super.onResume();
         this.locationClient.start(); // 开始定位
-        getDataReq(request);
+        getDataReq();
     }
 
 
@@ -369,65 +350,8 @@ public class YhManageActivity extends ActivityFragmentSupport {
                 }
                 Bundle bundle = data.getExtras();
                 // 显示扫描到的内容
-                final String content = bundle.getString("result");
-//                Bitmap bitmap = data.getParcelableExtra(DECODED_BITMAP_KEY);//二维码照片
-                okHttpClient = new OkHttpClient();
-                Request.Builder builder = new Request.Builder();
-                //查询二维码ID
-                Request request = builder.url(ProtocolUrl.ROOT_URL + ProtocolUrl.QUERYTREEMSGBYID + "?treeId=" + content).get().build();
-                //把request封装
-                Call call = okHttpClient.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Request request, IOException e) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(YhManageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onResponse(Response response) throws IOException {
-                        String result_str = response.body().string();
-                        Log.i(TAG, "onResponse: " + result_str);
-                        try {
-                            JSONObject jsonObject = new JSONObject(result_str);
-                            int status = jsonObject.getInt("status");
-                            if (status > 0) {
-                                final String result = jsonObject.getString("result");
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(YhManageActivity.this, result, Toast.LENGTH_SHORT).show();
-                                        return;
-                                    }
-                                });
-                            } else {
-                                //获取养护时间
-                                Date date = new Date(System.currentTimeMillis());
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                                String time_format = dateFormat.format(date);//格式化时间
-                                //跳转到植物养护信息界面
-                                Intent intent = new Intent(YhManageActivity.this, MaintenanceActivity.class);
-                                intent.putExtra("treeId", content);
-                                intent.putExtra("yhStatusname", str_state);
-                                intent.putExtra("yhStatustime", time_format);
-                                intent.putExtra("yhStatussite", addrStr);
-                                startActivity(intent);
-                            }
-                        } catch (JSONException e) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(YhManageActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                content = bundle.getString("result");
+                Requester.yhManageQueryId(content, idCallback);
             }
         } else if (requestCode == REQUEST_CODE_TREEMESSAGE && resultCode == RESULT_OK) {
             if (data != null) {
@@ -448,4 +372,41 @@ public class YhManageActivity extends ActivityFragmentSupport {
             }
         }
     }
+
+    private String content;
+    private DefaultCallback idCallback = new DefaultCallback() {
+        @Override
+        public void onFailure(Request request, Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure", e);
+            Toast.makeText(YhManageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: " + response);
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                int status = jsonObject.getInt("status");
+                if (status > 0) {
+                    final String result = jsonObject.getString("result");
+                    Toast.makeText(YhManageActivity.this, result, Toast.LENGTH_SHORT).show();
+                } else {
+                    //获取养护时间
+                    Date date = new Date(System.currentTimeMillis());
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                    String time_format = dateFormat.format(date);//格式化时间
+                    //跳转到植物养护信息界面
+                    Intent intent = new Intent(YhManageActivity.this, MaintenanceActivity.class);
+                    intent.putExtra("treeId", content);
+                    intent.putExtra("yhStatusname", str_state);
+                    intent.putExtra("yhStatustime", time_format);
+                    intent.putExtra("yhStatussite", addrStr);
+                    startActivity(intent);
+                }
+            } catch (JSONException e) {
+                Toast.makeText(YhManageActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+    };
 }

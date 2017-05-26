@@ -170,4 +170,30 @@ public class Requester {
         params.put("treeTime", treeTime);
         return OkHttpController.doRequest(getRequestURL(ProtocolUrl.SAVETREE), params, callback);
     }
+
+    /**
+     * 查询养护管理信息
+     *
+     * @param uid      uid
+     * @param callback 回调
+     * @return {@link Call}
+     */
+    public static Call yhManageQueryList(String uid, BaseCallback callback) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("uid", uid);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.QUERYYGSTATUSMSG), params, callback);
+    }
+
+    /**
+     * 根据ID查询植物是否录入
+     *
+     * @param treeId   植物二维码
+     * @param callback 回调
+     * @return {@link Call}
+     */
+    public static Call yhManageQueryId(String treeId, BaseCallback callback) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("treeId", treeId);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.QUERYTREEMSGBYID), params, callback);
+    }
 }
