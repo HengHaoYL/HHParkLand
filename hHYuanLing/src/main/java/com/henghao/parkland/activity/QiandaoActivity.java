@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,23 +21,18 @@ import com.baidu.mapapi.map.BitmapDescriptor;
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
-import com.henghao.parkland.ProtocolUrl;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.R;
 import com.henghao.parkland.model.entity.BaseEntity;
+import com.henghao.parkland.utils.Requester;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -99,6 +95,7 @@ public class QiandaoActivity extends ActivityFragmentSupport {
     private double latitude;//纬度
     private double longitude;//经度
     private String addrStr;//当前地理位置
+    private Call call;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -249,58 +246,34 @@ public class QiandaoActivity extends ActivityFragmentSupport {
      * 查询当天签到次数
      */
     private void queryNumber() {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        Request.Builder builder = new Request.Builder();
-        FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
-        requestBodyBuilder.add("uid", getLoginUid());
-        RequestBody requestBody = requestBodyBuilder.build();
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.APP_NUMBEROFQIANDAO).build();
-        mActivityFragmentView.viewLoading(View.VISIBLE);
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Request request, IOException e) {
-                e.printStackTrace();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mActivityFragmentView.viewLoading(View.GONE);
-                        Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+        call = Requester.qiandaoQuery(getLoginUid(), callback);
 
-            @Override
-            public void onResponse(Response response) throws IOException {
-                try {
-                    JSONObject jsonObject = new JSONObject(response.body().string());
-                    count = jsonObject.getInt("data");
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (count == 0) {
-                                img_confirm_qiandao.setVisibility(View.GONE);
-                                tv_state_qiandao.setText("今日你还未签到");
-                            } else {
-                                img_confirm_qiandao.setVisibility(View.VISIBLE);
-                                tv_state_qiandao.setText("今日你已签到" + count + "次");
-                            }
-                            mActivityFragmentView.viewLoading(View.GONE);
-                        }
-                    });
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mActivityFragmentView.viewLoading(View.GONE);
-                            Toast.makeText(context, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            }
-        });
     }
+
+    private DefaultCallback callback = new DefaultCallback() {
+        @Override
+        public void onFailure(Request request, Exception e, int code) {
+            Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                count = jsonObject.getInt("data");
+                if (count == 0) {
+                    img_confirm_qiandao.setVisibility(View.GONE);
+                    tv_state_qiandao.setText("今日你还未签到");
+                } else {
+                    img_confirm_qiandao.setVisibility(View.VISIBLE);
+                    tv_state_qiandao.setText("今日你已签到" + count + "次");
+                }
+            } catch (JSONException e) {
+                if (BuildConfig.DEBUG) Log.e("onSuccess", "签到查询失败", e);
+                Toast.makeText(context, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
     /*
      * (non-Javadoc)
@@ -308,23 +281,17 @@ public class QiandaoActivity extends ActivityFragmentSupport {
      */
     @Override
     public void initData() {
-        /**
-         * 定位
-         */
+        // 定位
         this.locationClient = new LocationClient(getApplicationContext()); // 实例化LocationClient类
         this.locationClient.registerLocationListener(this.myListener); // 注册监听函数
         this.setLocationOption(); // 设置定位参数
         this.locationClient.start(); // 开始定位
-        /**
-         * 设置签到时间（年月日）
-         */
+        // 设置签到时间（年月日）
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
         String time = dateFormat.format(date);
         this.tv_time_qiandao.setText(time);
-        /**
-         * 设置签到具体时间（时、分）
-         */
+        // 设置签到具体时间（时、分）
         dateFormat = new SimpleDateFormat("HH:mm");
         time = dateFormat.format(date);
         this.tv_hourminute_qiandao.setText(time);
@@ -336,6 +303,9 @@ public class QiandaoActivity extends ActivityFragmentSupport {
         // 退出时销毁定位
         this.locationClient.stop();
         super.onDestroy();
+        if (call != null && !call.isCanceled()) {
+            call.cancel();
+        }
     }
 
     @Override

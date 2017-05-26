@@ -26,6 +26,7 @@ import com.henghao.parkland.utils.Requester;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Request;
 
 /**
@@ -53,6 +54,7 @@ public class LoginFragment extends FragmentSupport {
 
     @ViewInject(R.id.iv_eye_login)
     private ImageView iv_eye_login;
+    private Call loginCall;
 
     public static FragmentSupport newInstance(Object obj) {
         LoginFragment fragment = new LoginFragment();
@@ -93,7 +95,7 @@ public class LoginFragment extends FragmentSupport {
             case R.id.tv_login:
                 //登录
                 if (checkData())
-                    Requester.login(login_user.getText().toString().trim(), login_pass.getText().toString().trim(), String.valueOf(1), loginCallback);
+                    loginCall = Requester.login(login_user.getText().toString().trim(), login_pass.getText().toString().trim(), String.valueOf(1), loginCallback);
                 break;
             case R.id.iv_eye_login:
                 boolean isSelected = iv_eye_login.isSelected();
@@ -152,4 +154,12 @@ public class LoginFragment extends FragmentSupport {
             }
         }
     };
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (loginCall != null && !loginCall.isCanceled()) {
+            loginCall.cancel();
+        }
+    }
 }

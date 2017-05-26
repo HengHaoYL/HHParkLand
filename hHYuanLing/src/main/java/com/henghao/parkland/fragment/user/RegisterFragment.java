@@ -30,6 +30,7 @@ import com.henghao.parkland.utils.FileUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Request;
 
 import java.io.File;
@@ -91,6 +92,7 @@ public class RegisterFragment extends FragmentSupport {
     private static final int REQUEST_IMAGE = 0x00;
     private ArrayList<String> mSelectPath;//图片地址
     private List<File> mFileList;//图片文件
+    private Call registerCall;
 
     private static final String TAG = "RegisterFragment";
 
@@ -169,7 +171,7 @@ public class RegisterFragment extends FragmentSupport {
         String pwd = login_pass.getText().toString().trim();//密码
 
         //提交请求
-        Requester.register(userName, pwd, phone, contact, IDCard, email, mFileList, registerCallback);
+        registerCall = Requester.register(userName, pwd, phone, contact, IDCard, email, mFileList, registerCallback);
     }
 
     //请求回调
@@ -314,6 +316,14 @@ public class RegisterFragment extends FragmentSupport {
                     }
                 }
             }
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (registerCall != null && !registerCall.isCanceled()) {
+            registerCall.cancel();
         }
     }
 }

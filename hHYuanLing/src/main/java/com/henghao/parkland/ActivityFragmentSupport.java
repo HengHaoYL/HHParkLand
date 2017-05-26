@@ -45,6 +45,7 @@ import com.benefit.buy.library.views.dialog.FlippingLoadingDialog;
 import com.henghao.parkland.model.ascyn.BusinessResponse;
 import com.henghao.parkland.service.ReConnectService;
 import com.henghao.parkland.views.ActivityFragmentView;
+import com.higdata.okhttphelper.callback.StringCallback;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import org.json.JSONException;
@@ -666,5 +667,20 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
                 finish();
             }
         }, 1200);
+    }
+
+    /**
+     * 默认
+     */
+    public abstract class DefaultCallback extends StringCallback {
+        @Override
+        public void onStart() {
+            mActivityFragmentView.viewLoading(View.VISIBLE);
+        }
+
+        @Override
+        public void onFinish() {
+            mActivityFragmentView.viewLoading(View.GONE);
+        }
     }
 }

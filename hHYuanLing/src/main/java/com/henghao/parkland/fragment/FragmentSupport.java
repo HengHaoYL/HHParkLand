@@ -29,8 +29,12 @@ import com.henghao.parkland.views.ActivityFragmentView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import com.higdata.okhttphelper.callback.StringCallback;
+import com.squareup.okhttp.Call;
 
 import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * fragment 父类〈一句话功能简述〉 〈功能详细描述〉

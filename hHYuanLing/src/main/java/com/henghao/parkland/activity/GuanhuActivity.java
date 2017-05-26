@@ -14,26 +14,14 @@ import android.widget.Toast;
 
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.BuildConfig;
-import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.views.FlowRadioGroup;
-import com.higdata.okhttphelper.OkHttpController;
-import com.higdata.okhttphelper.callback.StringCallback;
 import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -80,7 +68,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
     private String treeGrowup = "好";//植物长势
     private String yhComment;//备注信息
     private static final String TAG = "GuanhuActivity";
-
+    private Call call;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -190,7 +178,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
                     yhComment = "无";
                 }
                 //访问网络，提交数据
-                Requester.guanhuSubmit(
+                call = Requester.guanhuSubmit(
                         String.valueOf(yid),
                         getLoginUid(),
                         treeId,
@@ -210,17 +198,7 @@ public class GuanhuActivity extends ActivityFragmentSupport {
         }
     }
 
-    private StringCallback callback = new StringCallback() {
-        @Override
-        public void onStart() {
-            mActivityFragmentView.viewLoading(View.VISIBLE);
-        }
-
-        @Override
-        public void onFinish() {
-            mActivityFragmentView.viewLoading(View.GONE);
-        }
-
+    private DefaultCallback callback = new DefaultCallback() {
         @Override
         public void onFailure(Request request, Exception e, int code) {
             if (BuildConfig.DEBUG) Log.e(TAG, "code:" + code, e);
@@ -246,4 +224,12 @@ public class GuanhuActivity extends ActivityFragmentSupport {
             }
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (call != null && !call.isCanceled()) {
+            call.cancel();
+        }
+    }
 }

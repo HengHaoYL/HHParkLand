@@ -9,20 +9,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henghao.parkland.ActivityFragmentSupport;
-import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
+import com.henghao.parkland.utils.Requester;
 import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -52,11 +45,11 @@ public class MaintenanceActivity extends ActivityFragmentSupport {
     /**
      * 网络访问相关
      */
-    private OkHttpClient okHttpClient;
     private String treeId;//二维码扫描内容
     private String yhStatusname;//养护状态
     private String yhStatustime;//养护时间
     private String yhStatussite;//养护地点
+    private Call call;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,61 +90,42 @@ public class MaintenanceActivity extends ActivityFragmentSupport {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_confirm_maintenance:
-                /**
-                 * 访问网络
-                 */
-                okHttpClient = new OkHttpClient();
-                Request.Builder builder = new Request.Builder();
-                FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
-                RequestBody requestBody = requestBodyBuilder.add("treeId", treeId)//植物编号
-                        .add("yhStatusname", yhStatusname)//养护状态
-                        .add("yhStatustime", yhStatustime)//养护时间
-                        .add("yhStatussite", yhStatussite)//养护地点
-                        .add("uid", getLoginUid())//用户ID
-                        .build();
-                Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.SAVESTATUSMSG).build();
-                Call call = okHttpClient.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Request request, IOException e) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(MaintenanceActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onResponse(Response response) throws IOException {
-                        String result = response.body().string();
-                        Log.i(TAG, "onResponse: " + result);
-                        try {
-                            JSONObject jsonObject = new JSONObject(result);
-                            final String result_str = jsonObject.getString("result");
-                            Log.i(TAG, "onResponse: " + result_str);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(MaintenanceActivity.this, result_str, Toast.LENGTH_SHORT).show();
-                                    finish();
-                                }
-                            });
-                        } catch (JSONException e) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(MaintenanceActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                // 访问网络
+                call = Requester.maintenanceSubmit(treeId, yhStatusname, yhStatustime, yhStatussite, getLoginUid(), callback);
                 break;
             case R.id.btn_cancel_maintenance:
                 finish();
                 break;
+        }
+    }
+
+    private DefaultCallback callback = new DefaultCallback() {
+        @Override
+        public void onFailure(Request request, Exception e, int code) {
+            Toast.makeText(MaintenanceActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            Log.i(TAG, "onResponse: " + response);
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                final String result_str = jsonObject.getString("result");
+                Log.i(TAG, "onResponse: " + result_str);
+                Toast.makeText(MaintenanceActivity.this, result_str, Toast.LENGTH_SHORT).show();
+                finish();
+            } catch (JSONException e) {
+                Toast.makeText(MaintenanceActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (call != null && !call.isCanceled()) {
+            call.cancel();
         }
     }
 }
