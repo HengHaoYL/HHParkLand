@@ -147,4 +147,27 @@ public class Requester {
         params.put("uid", uid);
         return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_NUMBEROFQIANDAO), params, callback);
     }
+
+    /**
+     * 提交植物信息
+     *
+     * @param treeId            植物二维码
+     * @param treeName          植物名称
+     * @param treeUse           植物用途
+     * @param treeSpecification 植物规格
+     * @param treeSite          种植地点
+     * @param treeTime          录入时间
+     * @param callback          回调
+     * @return {@link Call}
+     */
+    public static Call treeSumit(String treeId, String treeName, String treeUse, String treeSpecification, String treeSite, String treeTime, BaseCallback callback) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("treeId", treeId);
+        params.put("treeName", treeName);
+        params.put("treeUse", treeUse);
+        params.put("treeSpecification", treeSpecification);
+        params.put("treeSite", treeSite);
+        params.put("treeTime", treeTime);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.SAVETREE), params, callback);
+    }
 }

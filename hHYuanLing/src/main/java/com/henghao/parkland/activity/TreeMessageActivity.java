@@ -11,20 +11,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henghao.parkland.ActivityFragmentSupport;
-import com.henghao.parkland.ProtocolUrl;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.R;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.OkHttpClient;
+import com.henghao.parkland.utils.Requester;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -127,74 +121,41 @@ public class TreeMessageActivity extends ActivityFragmentSupport {
                     etTreeSpecification.requestFocus();
                     return;
                 }
-                /**
-                 * 访问网络
-                 */
-                OkHttpClient okHttpClient = new OkHttpClient();
-                Request.Builder builder = new Request.Builder();
-                FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
-                requestBodyBuilder.add("treeId", treeId);
-                requestBodyBuilder.add("treeName", treeName);
-                requestBodyBuilder.add("treeUse", treeUse);
-                requestBodyBuilder.add("treeSpecification", treeSpecification);
-                requestBodyBuilder.add("treeSite", treeSite);
-                requestBodyBuilder.add("treeTime", treeTime);
-                RequestBody requestBody = requestBodyBuilder.build();
-                Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.SAVETREE).build();
-                Call call = okHttpClient.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Request request, IOException e) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(TreeMessageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onResponse(Response response) throws IOException {
-                        String str_result = response.body().string();//访问网络返回的数据
-                        Log.i(TAG, "onResponse: " + str_result);
-                        /**
-                         * 解析返回的json字符串
-                         */
-                        try {
-                            JSONObject jsonObject = new JSONObject(str_result);
-                            final String result = jsonObject.getString("result");
-                            int status = jsonObject.getInt("status");//错误代码 0 正确 1 错误
-                            if (status == 0) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(TreeMessageActivity.this, result, Toast.LENGTH_SHORT).show();
-                                        finish();
-                                    }
-                                });
-                            } else {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(TreeMessageActivity.this, result, Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        } catch (JSONException e) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(TreeMessageActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                //访问网络
+                Requester.treeSumit(treeId, treeName, treeUse, treeSpecification, treeSite, treeTime, callback);
                 break;
             case R.id.btn_cancel_treemessage:
                 finish();
                 break;
         }
     }
+
+    private DefaultCallback callback = new DefaultCallback() {
+        @Override
+        public void onFailure(Request request, Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure", e);
+            Toast.makeText(TreeMessageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: " + response);
+            Log.i(TAG, "onResponse: " + response);
+            // 解析返回的json字符串
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                final String result = jsonObject.getString("result");
+                int status = jsonObject.getInt("status");//错误代码 0 正确 1 错误
+                if (status == 0) {
+                    Toast.makeText(TreeMessageActivity.this, result, Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(TreeMessageActivity.this, result, Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+                Toast.makeText(TreeMessageActivity.this, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+    };
 }
