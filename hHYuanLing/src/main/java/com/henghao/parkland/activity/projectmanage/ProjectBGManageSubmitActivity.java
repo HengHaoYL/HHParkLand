@@ -146,7 +146,6 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
             public void onFailure(Request request, Exception e, int code) {
                 Log.e(TAG, "onFailure: " + e.getMessage());
                 e.printStackTrace();
-                mActivityFragmentView.viewLoading(View.GONE);
                 msg("网络请求错误！");
             }
 
@@ -155,7 +154,6 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     final String result = jsonObject.getString("result");
-                    mActivityFragmentView.viewLoading(View.GONE);
                     Toast.makeText(ProjectBGManageSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
                     finish();
                 } catch (JSONException e) {

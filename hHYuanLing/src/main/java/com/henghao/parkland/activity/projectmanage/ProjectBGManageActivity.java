@@ -249,7 +249,6 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
             @Override
             public void onFailure(Request request, Exception e, int code) {
                 e.printStackTrace();
-                mActivityFragmentView.viewLoading(View.GONE);
                 Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
             }
 
@@ -260,7 +259,6 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
                 try {
                     final BaseEntity baseEntity = ToolsJson.parseObjecta(response, type);
                     Toast.makeText(context, baseEntity.getMsg(), Toast.LENGTH_SHORT).show();
-                    mActivityFragmentView.viewLoading(View.GONE);
                     // 刷新界面
                     itemID.clear();
                     // 如果全选按钮被选中，将全选按钮选中状态取消
@@ -275,7 +273,6 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
                         mActivityFragmentView.viewMainGone();
                     }
                 } catch (JsonSyntaxException e) {
-                    mActivityFragmentView.viewLoading(View.GONE);
                     Toast.makeText(context, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }

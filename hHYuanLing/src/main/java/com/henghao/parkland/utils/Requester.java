@@ -243,4 +243,26 @@ public class Requester {
         String json = JSON.toJSONString(dataList);
         return OkHttpController.doJsonRequest(getRequestURL(ProtocolUrl.DELETE_DECLARATION), json, callback);
     }
+
+    /**
+     * 进度申报提交
+     *
+     * @param dates    时间
+     * @param uid      uid
+     * @param pid      项目ID
+     * @param files    申报文件
+     * @param callback 回调
+     * @return {@link Call}
+     */
+    public static Call declareSubmit(String dates, String uid, String pid, List<File> files, BaseCallback callback) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("dates", dates);
+        params.put("uid", uid);
+        params.put("pid", pid);
+        Map<String, File> fileMap = new HashMap<>();
+        for (File file : files) {
+            fileMap.put(file.getName(), file);
+        }
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.PROJECT_SAVEJDSB), params, fileMap, callback);
+    }
 }

@@ -13,28 +13,21 @@ import android.widget.Toast;
 import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
-import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.utils.FileUtils;
+import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.MultipartBuilder;
-import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +65,7 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
             }
         }
     };
+    private Call submitCall;
 
 
     @Override
@@ -144,42 +138,20 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
     }
 
     private void submit() {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        Request.Builder builder = new Request.Builder();
         int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
-        MultipartBuilder multipartBuilder = new MultipartBuilder();
-        multipartBuilder.type(MultipartBuilder.FORM)//
-                .addFormDataPart("dates", mData)
-                .addFormDataPart("uid", getLoginUid())//用户ID
-                .addFormDataPart("pid", String.valueOf(PID));//项目信息ID
-        for (File file : mFileList) {
-            multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//图片
-        }
-        RequestBody requestBody = multipartBuilder.build();
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_SAVEJDSB).build();
-        mActivityFragmentView.viewLoading(View.VISIBLE);
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
+        submitCall = Requester.declareSubmit(mData, getLoginUid(), String.valueOf(PID), mFileList, new DefaultCallback() {
             @Override
-            public void onFailure(Request request, IOException e) {
+            public void onFailure(Request request, Exception e, int code) {
                 e.printStackTrace();
-                mActivityFragmentView.viewLoading(View.GONE);
                 msg("网络请求错误！");
             }
 
             @Override
-            public void onResponse(Response response) throws IOException {
-                String content = response.body().string();
+            public void onSuccess(String response) {
                 try {
-                    JSONObject jsonObject = new JSONObject(content);
+                    JSONObject jsonObject = new JSONObject(response);
                     final String result = jsonObject.getString("result");
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mActivityFragmentView.viewLoading(View.GONE);
-                            Toast.makeText(ProjectDeclareSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    Toast.makeText(ProjectDeclareSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
                     finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -237,5 +209,13 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
 
     private String getImageName(String url) {
         return url.substring(url.lastIndexOf("/") + 1);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (submitCall != null && !submitCall.isCanceled()) {
+            submitCall.cancel();
+        }
     }
 }
