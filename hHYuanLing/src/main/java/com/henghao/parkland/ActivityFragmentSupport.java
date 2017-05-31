@@ -670,7 +670,7 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
     }
 
     /**
-     * 默认
+     * 实现了加载提示的默认回调
      */
     public abstract class DefaultCallback extends StringCallback {
         @Override

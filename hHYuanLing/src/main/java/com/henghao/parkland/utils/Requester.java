@@ -4,11 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.model.entity.DeleteEntity;
-import com.higdata.okhttphelper.callback.StringCallback;
-import com.squareup.okhttp.Call;
-
 import com.higdata.okhttphelper.OkHttpController;
 import com.higdata.okhttphelper.callback.BaseCallback;
+import com.squareup.okhttp.Call;
 
 import java.io.File;
 import java.util.HashMap;
@@ -208,5 +206,29 @@ public class Requester {
     public static Call changeManageDeleteInfo(List<DeleteEntity> dataList, BaseCallback callback) {
         String json = JSON.toJSONString(dataList);
         return OkHttpController.doJsonRequest(getRequestURL(ProtocolUrl.DELETE_ALTERATION), json, callback);
+    }
+
+    /**
+     * 提交变更管理条目
+     *
+     * @param uid             uid
+     * @param pid             项目信息ID
+     * @param confirmingParty 确认方
+     * @param times           变更时间
+     * @param files           变更依据
+     * @param callback        回调
+     * @return {@link Call}
+     */
+    public static Call changeManageSubmit(String uid, String pid, String confirmingParty, String times, List<File> files, BaseCallback callback) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("uid", uid);
+        params.put("pid", pid);
+        params.put("confirmingParty", confirmingParty);
+        params.put("times", times);
+        Map<String, File> fileMap = new HashMap<>();
+        for (File file : files) {
+            fileMap.put(file.getName(), file);
+        }
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.PROJECT_SAVEALTERATIONMSG), params, fileMap, callback);
     }
 }

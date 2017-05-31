@@ -16,25 +16,18 @@ import android.widget.Toast;
 import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
-import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.utils.FileUtils;
+import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.MultipartBuilder;
-import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +55,7 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
     private ArrayList<String> mSelectPath;
     private ArrayList<File> mFileList = new ArrayList<>();
     private static final String TAG = "ProjectBGManageSubmitAc";
+    private Call submitCall;
 
     private Handler handler = new Handler() {
         @Override
@@ -144,50 +138,25 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
      * 提交信息
      */
     private void submit() {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        Request.Builder builder = new Request.Builder();
-        MultipartBuilder multipartBuilder = new MultipartBuilder();
-        String times = tvTimes.getText().toString().trim();//变更时间
         int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
-        multipartBuilder.type(MultipartBuilder.FORM)//
-                .addFormDataPart("uid", getLoginUid())//用户ID
-                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
-                .addFormDataPart("confirmingParty", confirmingParty)//
-                .addFormDataPart("times", times);//
-        for (File file : mFileList) {
-            multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//变更依据图片
-        }
-        RequestBody requestBody = multipartBuilder.build();
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_SAVEALTERATIONMSG).build();
-        mActivityFragmentView.viewLoading(View.VISIBLE);
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
+        String times = tvTimes.getText().toString().trim();//变更时间
+        submitCall = Requester.changeManageSubmit(getLoginUid(), String.valueOf(PID), confirmingParty, times, mFileList, new DefaultCallback() {
+
             @Override
-            public void onFailure(Request request, IOException e) {
+            public void onFailure(Request request, Exception e, int code) {
                 Log.e(TAG, "onFailure: " + e.getMessage());
                 e.printStackTrace();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mActivityFragmentView.viewLoading(View.GONE);
-                        msg("网络请求错误！");
-                    }
-                });
+                mActivityFragmentView.viewLoading(View.GONE);
+                msg("网络请求错误！");
             }
 
             @Override
-            public void onResponse(Response response) throws IOException {
-                String content = response.body().string();
+            public void onSuccess(String response) {
                 try {
-                    JSONObject jsonObject = new JSONObject(content);
+                    JSONObject jsonObject = new JSONObject(response);
                     final String result = jsonObject.getString("result");
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mActivityFragmentView.viewLoading(View.GONE);
-                            Toast.makeText(ProjectBGManageSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    mActivityFragmentView.viewLoading(View.GONE);
+                    Toast.makeText(ProjectBGManageSubmitActivity.this, result, Toast.LENGTH_SHORT).show();
                     finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -276,5 +245,13 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
 
     private String getImageName(String url) {
         return url.substring(url.lastIndexOf("/") + 1);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (submitCall != null && !submitCall.isCanceled()) {
+            submitCall.cancel();
+        }
     }
 }

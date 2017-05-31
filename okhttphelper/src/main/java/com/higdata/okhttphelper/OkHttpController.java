@@ -40,13 +40,14 @@ public class OkHttpController {
                     break;
                 case RESULT_FAILURE:
                     data.baseCallback.onFailure(data.request, data.e, data.code);
+                    data.baseCallback.onFinish();
                     break;
                 case RESULT_SUCCESS:
                     //noinspection unchecked
                     data.baseCallback.onSuccess(data.result);
+                    data.baseCallback.onFinish();
                     break;
             }
-            data.baseCallback.onFinish();
         }
     };
 
