@@ -75,6 +75,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
     private String str_state;//养护状态
     private DialogYanghu dialogYanghu;
     private Call queryCall;
+    private Call idCall;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -315,6 +316,9 @@ public class YhManageActivity extends ActivityFragmentSupport {
         if (queryCall != null && !queryCall.isCanceled()) {
             queryCall.cancel();
         }
+        if (idCall != null && !idCall.isCanceled()) {
+            idCall.cancel();
+        }
     }
 
     @Override
@@ -345,7 +349,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
                 Bundle bundle = data.getExtras();
                 // 显示扫描到的内容
                 content = bundle.getString("result");
-                Requester.yhManageQueryId(content, idCallback);
+                idCall = Requester.yhManageQueryId(content, idCallback);
             }
         } else if (requestCode == REQUEST_CODE_TREEMESSAGE && resultCode == RESULT_OK) {
             if (data != null) {

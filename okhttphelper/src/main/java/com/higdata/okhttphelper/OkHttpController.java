@@ -3,6 +3,7 @@ package com.higdata.okhttphelper;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.higdata.okhttphelper.callback.BaseCallback;
@@ -19,7 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "UnnecessaryLocalVariable"})
 public class OkHttpController {
     private static OkHttpClient client;
     private static final int RESULT_START = 0;
@@ -72,6 +73,11 @@ public class OkHttpController {
         return builder.build();
     }
 
+    public static RequestBody buildJsonBody(String jsonString) {
+        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), jsonString);
+        return body;
+    }
+
     /**
      * 构建请求
      *
@@ -95,7 +101,7 @@ public class OkHttpController {
      *
      * @param mClient OkHttp客户端
      * @param request 请求
-     * @return Call
+     * @return {@link Call}
      */
     public static Call buildCall(OkHttpClient mClient, Request request) {
         return mClient.newCall(request);
@@ -143,7 +149,7 @@ public class OkHttpController {
      * @param url      请求url
      * @param params   请求参数
      * @param callback 请求回调
-     * @return 请求Call
+     * @return {@link Call}
      */
     public static Call doRequest(String url, Map<String, Object> params, BaseCallback callback) {
         return doRequest(url, params, null, callback);
@@ -156,12 +162,36 @@ public class OkHttpController {
      * @param params   请求参数
      * @param files    要上传的文件
      * @param callback 请求回调
-     * @return 请求Call
+     * @return {@link Call}
      */
     public static Call doRequest(String url, Map<String, Object> params, Map<String, File> files, BaseCallback callback) {
         Log.i("OkHttpController", "doRequest: url = " + url + " params = " + params.toString());
         getClientInstance();
         RequestBody body = buildBody(params, files);
+        Request request = buildRequest(url, body, "POST");
+        Data data = new Data();
+        data.baseCallback = callback;
+        Message msg = new Message();
+        msg.what = RESULT_START;
+        msg.obj = data;
+        handler.sendMessage(msg);
+        Call call = buildCall(client, request);
+        call.enqueue(buildCallback(callback));
+        return call;
+    }
+
+    /**
+     * 提交Json请求
+     *
+     * @param url        请求url
+     * @param jsonString Json数据
+     * @param callback   回调
+     * @return {@link Call}
+     */
+    public static Call doJsonRequest(String url, String jsonString, BaseCallback callback) {
+        Log.i("OkHttpController", "doRequest: url = " + url + " params = " + jsonString);
+        getClientInstance();
+        RequestBody body = buildJsonBody(jsonString);
         Request request = buildRequest(url, body, "POST");
         Data data = new Data();
         data.baseCallback = callback;

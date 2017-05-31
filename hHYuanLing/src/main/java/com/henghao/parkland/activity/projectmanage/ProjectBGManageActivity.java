@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.views.xlistview.XListView;
-import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ActivityFragmentSupport;
@@ -27,17 +26,12 @@ import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.DeleteEntity;
 import com.henghao.parkland.model.entity.ProjectBGManageEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
+import com.henghao.parkland.utils.Requester;
 import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,10 +53,9 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
     private CheckBox checkBox;//全选/多选
     private TextView tvEdit;//编辑
     private List<Integer> itemID;//被选中的item ID集合
-
     private ProjectBGManageAdapter mAdapter;
-
     private List<ProjectBGManageEntity> data;
+    private Call deleteCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,9 +160,7 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
         mAdapter.hideCheckBox();
         mAdapter.notifyDataSetChanged();
         layoutBottom.setVisibility(View.GONE);
-        /**
-         * 访问网络
-         */
+        // 访问网络
         ProjectProtocol mProtocol = new ProjectProtocol(this);
         mProtocol.addResponseListener(this);
         mProtocol.queryAlterationMsg(getLoginUid());
@@ -184,7 +175,6 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
                 BaseEntity mData = (BaseEntity) jo;
                 if (mData.getStatus() > 0) {
                     mActivityFragmentView.viewMainGone();
-                    return;
                 } else {
                     mActivityFragmentView.viewEmptyGone();
                     String jsonStr = ToolsJson.toJson(mData.getData());
@@ -255,66 +245,38 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
      * @param entity
      */
     private void deleteInfo(List<DeleteEntity> entity) {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        Request.Builder builder = new Request.Builder();
-        Gson gson = new Gson();
-        String parameter = gson.toJson(entity);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), parameter);
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + ProtocolUrl.DELETE_ALTERATION).build();
-        mActivityFragmentView.viewLoading(View.VISIBLE);
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
+        deleteCall = Requester.changeManageDeleteInfo(entity, new DefaultCallback() {
             @Override
-            public void onFailure(Request request, IOException e) {
+            public void onFailure(Request request, Exception e, int code) {
                 e.printStackTrace();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mActivityFragmentView.viewLoading(View.GONE);
-                        Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                mActivityFragmentView.viewLoading(View.GONE);
+                Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onResponse(Response response) throws IOException {
-                String result_str = response.body().string();
+            public void onSuccess(String response) {
                 Type type = new TypeToken<BaseEntity>() {
                 }.getType();
                 try {
-                    final BaseEntity baseEntity = ToolsJson.parseObjecta(result_str, type);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(context, baseEntity.getMsg(), Toast.LENGTH_SHORT).show();
-                            mActivityFragmentView.viewLoading(View.GONE);
-                            /**
-                             * 刷新界面
-                             */
-                            itemID.clear();
-                            // 如果全选按钮被选中，将全选按钮选中状态取消
-                            checkBox.setChecked(false);
-                            List<Integer> idList = getIdList();
-                            for (int id : idList) {
-                                removeList(id);
-                            }
-                            mAdapter.notifyDataSetChanged();
-                            /**
-                             * 全部删除之后
-                             */
-                            if (data.size() == 0) {
-                                mActivityFragmentView.viewMainGone();
-                            }
-                        }
-                    });
+                    final BaseEntity baseEntity = ToolsJson.parseObjecta(response, type);
+                    Toast.makeText(context, baseEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                    mActivityFragmentView.viewLoading(View.GONE);
+                    // 刷新界面
+                    itemID.clear();
+                    // 如果全选按钮被选中，将全选按钮选中状态取消
+                    checkBox.setChecked(false);
+                    List<Integer> idList = getIdList();
+                    for (int id : idList) {
+                        removeList(id);
+                    }
+                    mAdapter.notifyDataSetChanged();
+                    // 全部删除之后
+                    if (data.size() == 0) {
+                        mActivityFragmentView.viewMainGone();
+                    }
                 } catch (JsonSyntaxException e) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mActivityFragmentView.viewLoading(View.GONE);
-                            Toast.makeText(context, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    mActivityFragmentView.viewLoading(View.GONE);
+                    Toast.makeText(context, "服务器错误，请稍后重试！", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
@@ -323,15 +285,13 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
 
     @Override
     public void addId(int id) {
-        itemID.add(new Integer(id));
+        itemID.add(id);
     }
 
     @Override
     public void removeId(int id) {
         int index = 0;
-        /**
-         * 在List中找到与id相同的索引
-         */
+        // 在List中找到与id相同的索引
         for (int i = 0; i < itemID.size(); i++) {
             if (itemID.get(i) == id) {
                 index = i;
@@ -371,9 +331,7 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
      */
     public void removeList(int id) {
         int index = 0;
-        /**
-         * 在List中找到与id相同的索引
-         */
+        // 在List中找到与id相同的索引
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).getAid() == id) {
                 index = i;
@@ -394,6 +352,14 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
             }
         }
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (deleteCall != null && !deleteCall.isCanceled()) {
+            deleteCall.cancel();
+        }
     }
 }
 

@@ -1,7 +1,9 @@
 package com.henghao.parkland.utils;
 
+import com.alibaba.fastjson.JSON;
 import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.ProtocolUrl;
+import com.henghao.parkland.model.entity.DeleteEntity;
 import com.higdata.okhttphelper.callback.StringCallback;
 import com.squareup.okhttp.Call;
 
@@ -14,9 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 请求管理类，将所有网络请求写入此类以方便维护
+ * 请求管理class，将所有网络请求写入此类以方便维护
  */
-
 @SuppressWarnings("WeakerAccess")
 public class Requester {
 
@@ -181,7 +182,7 @@ public class Requester {
     public static Call yhManageQueryList(String uid, BaseCallback callback) {
         Map<String, Object> params = new HashMap<>();
         params.put("uid", uid);
-        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.QUERYYGSTATUSMSG), params, callback);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.DELETE_ALTERATION), params, callback);
     }
 
     /**
@@ -195,5 +196,17 @@ public class Requester {
         Map<String, Object> params = new HashMap<>();
         params.put("treeId", treeId);
         return OkHttpController.doRequest(getRequestURL(ProtocolUrl.QUERYTREEMSGBYID), params, callback);
+    }
+
+    /**
+     * 删除变更管理条目
+     *
+     * @param dataList 要删除的条目List
+     * @param callback 回调
+     * @return {@link Call}
+     */
+    public static Call changeManageDeleteInfo(List<DeleteEntity> dataList, BaseCallback callback) {
+        String json = JSON.toJSONString(dataList);
+        return OkHttpController.doJsonRequest(getRequestURL(ProtocolUrl.DELETE_ALTERATION), json, callback);
     }
 }
