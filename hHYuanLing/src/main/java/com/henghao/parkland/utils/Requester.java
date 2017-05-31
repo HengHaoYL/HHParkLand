@@ -231,4 +231,16 @@ public class Requester {
         }
         return OkHttpController.doRequest(getRequestURL(ProtocolUrl.PROJECT_SAVEALTERATIONMSG), params, fileMap, callback);
     }
+
+    /**
+     * 删除进度申报条目
+     *
+     * @param dataList 要删除的条目List
+     * @param callback 回调
+     * @return {@link Call}
+     */
+    public static Call declareDeleteInfo(List<DeleteEntity> dataList, BaseCallback callback) {
+        String json = JSON.toJSONString(dataList);
+        return OkHttpController.doJsonRequest(getRequestURL(ProtocolUrl.DELETE_DECLARATION), json, callback);
+    }
 }
