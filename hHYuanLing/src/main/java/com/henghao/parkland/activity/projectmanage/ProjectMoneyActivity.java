@@ -19,25 +19,18 @@ import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.benefit.buy.library.views.xlistview.XListView;
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectMoneyAdapter;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.SGWalletEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.Headers;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
-
+import com.henghao.parkland.utils.Requester;
 import com.higdata.okhttphelper.OkHttpController;
 import com.higdata.okhttphelper.callback.StringCallback;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 import org.json.JSONException;
 
@@ -49,6 +42,14 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 /**
@@ -231,8 +232,10 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
         }
 
         @Override
-        public void onFailure(Request request, Exception e, int code) {
-            Log.e(TAG, "onFailure: code = " + code, e);
+        public void onFailure(Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
+            e.printStackTrace();
+            Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -254,15 +257,15 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
          */
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
-        FormEncodingBuilder requestBodyBuilder = new FormEncodingBuilder();
+        FormBody.Builder requestBodyBuilder = new FormBody.Builder();
         requestBodyBuilder.add("uid", getLoginUid());
-        RequestBody requestBody = requestBodyBuilder.build();
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DOWNLOAD_WALLETEXCEL).build();
+        FormBody requestBody = requestBodyBuilder.build();
+        Request request = builder.post(requestBody).url(Requester.getRequestURL(ProtocolUrl.DOWNLOAD_WALLETEXCEL)).build();
         Call call = okHttpClient.newCall(request);
         mActivityFragmentView.viewLoading(View.VISIBLE);
         call.enqueue(new Callback() {
             @Override
-            public void onFailure(Request request, IOException e) {
+            public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
                 runOnUiThread(new Runnable() {
                     @Override
@@ -274,7 +277,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
             }
 
             @Override
-            public void onResponse(Response response) throws IOException {
+            public void onResponse(Call call, Response response) throws IOException {
                 InputStream inputStream = response.body().byteStream();
                 Headers headers = response.headers();
                 for (int i = 0; i < headers.size(); i++) {
@@ -353,8 +356,8 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
     }
 
     public static void makeDir(File dir) {
-        if (!dir.getParentFile().exists()) {
-            makeDir(dir.getParentFile());
+        if (!dir.exists()) {
+            dir.mkdirs();
         }
         dir.mkdir();
     }

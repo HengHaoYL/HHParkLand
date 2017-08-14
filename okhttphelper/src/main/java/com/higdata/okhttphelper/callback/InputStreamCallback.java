@@ -7,19 +7,19 @@ import okhttp3.Response;
 /**
  * 请求基类 {@link BaseCallback} 的抽象实现
  */
-public abstract class StringCallback extends BaseCallback<String> {
+public abstract class InputStreamCallback extends BaseCallback<byte[]> {
 
     /**
-     * 将响应结果解析为字符串
+     * 将响应结果解析为输入流数据
      *
      * @param response 响应
      * @return 响应结果
      * @throws IOException 解析失败时抛出错误
      */
     @Override
-    public String parseResponse(Response response) throws IOException {
-        String result = response.body().string();
-        response.body().close();
-        return result;
+    public byte[] parseResponse(Response response) throws IOException {
+        byte[] bytes = response.body().bytes();
+        response.close();
+        return bytes;
     }
 }

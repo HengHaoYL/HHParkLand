@@ -1,11 +1,8 @@
 package com.higdata.okhttphelper.callback;
 
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import okhttp3.Response;
 
 /**
  * 响应回调的基类
@@ -37,11 +34,10 @@ public abstract class BaseCallback<T> {
     /**
      * 请求回调，执行在请求发生错误或服务器返回错误时
      *
-     * @param request 请求实体
-     * @param e       发生的错误
-     * @param code    响应码/错误码
+     * @param e    发生的错误
+     * @param code 响应码/错误码
      */
-    public abstract void onFailure(Request request, Exception e, int code);
+    public abstract void onFailure(Exception e, int code);
 
     /**
      * 请求回调，执行在请求成功后

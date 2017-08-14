@@ -77,10 +77,12 @@ public class SeedlingAdapter extends BaseAdapter {
         SeedlingEntity entity = mList.get(position);
         holder.tvAddress.setText(entity.getAddress());
         holder.tvContent.setText(entity.getContent());
-        holder.tvDates.setText(entity.getDates());
+        holder.tvDate.setText(entity.getDate());
         holder.tvSupplier.setText(entity.getSupplier());
         holder.tvTitleName.setText(entity.getTitleName());
-        mBitmapUtils.display(holder.imageview, entity.getFilesId() + entity.getUrl().get(0));
+        if (entity.getPicture() != null) {
+            mBitmapUtils.display(holder.imageview, entity.getPicture().get(0));
+        }
         viewClick(holder, convertView, position);
         return convertView;
     }
@@ -111,8 +113,8 @@ public class SeedlingAdapter extends BaseAdapter {
         TextView tvAddress;
         @InjectView(R.id.tv_supplier)
         TextView tvSupplier;
-        @InjectView(R.id.tv_dates)
-        TextView tvDates;
+        @InjectView(R.id.tv_date)
+        TextView tvDate;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

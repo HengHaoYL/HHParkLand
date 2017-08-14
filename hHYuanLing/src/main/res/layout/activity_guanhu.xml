@@ -131,6 +131,7 @@
                     android:layout_height="40dp"
                     android:layout_weight="5"
                     android:background="@drawable/editext_shape"
+                    android:gravity="center_vertical"
                     android:hint="请输入内容"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
@@ -163,11 +164,78 @@
                     android:layout_height="40dp"
                     android:layout_weight="5"
                     android:background="@drawable/editext_shape"
+                    android:gravity="center_vertical"
                     android:hint="请输入内容"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:textColorHint="@color/line"
                     android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="@dimen/padding_big"
+                    android:text="养护前："
+                    android:textSize="@dimen/gj_d" />
+
+                <TextView
+                    android:id="@+id/tv_yhbefore"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:drawableRight="@drawable/icon_add"
+                    android:hint="请选择图片"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textColorHint="@color/line"
+                    android:textSize="@dimen/gj_d" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="@dimen/padding_big"
+                    android:text="养护后："
+                    android:textSize="@dimen/gj_d" />
+
+                <TextView
+                    android:id="@+id/tv_yhafter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:drawableRight="@drawable/icon_add"
+                    android:hint="请选择图片"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textColorHint="@color/line"
+                    android:textSize="@dimen/gj_d" />
+
+
             </LinearLayout>
 
             <View

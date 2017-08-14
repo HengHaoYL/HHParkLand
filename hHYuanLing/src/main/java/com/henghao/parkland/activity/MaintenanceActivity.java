@@ -9,10 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.R;
 import com.henghao.parkland.utils.Requester;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,6 +19,7 @@ import org.json.JSONObject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 
 /**
@@ -101,8 +101,10 @@ public class MaintenanceActivity extends ActivityFragmentSupport {
 
     private DefaultCallback callback = new DefaultCallback() {
         @Override
-        public void onFailure(Request request, Exception e, int code) {
-            Toast.makeText(MaintenanceActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        public void onFailure(Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
+            e.printStackTrace();
+            Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
         }
 
         @Override

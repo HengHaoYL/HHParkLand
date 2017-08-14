@@ -27,15 +27,20 @@ import java.io.Serializable;
 public class BaseEntity implements Serializable {
 
     @Expose
-    @SerializedName("result")
+    @SerializedName("path")
+    private String path;
+
+    @Expose
+    @SerializedName("msg")
     private String msg;
 
     @Expose
     @SerializedName("status")
     private int status;
+
     @Expose
-    @SerializedName("path")
-    private String path;
+    @SerializedName("errorCode")
+    private int errorCode;
 
     @Expose
     @SerializedName("data")
@@ -49,12 +54,12 @@ public class BaseEntity implements Serializable {
         this.msg = msg;
     }
 
-    public int getStatus() {
-        return status;
+    public int getErrorCode() {
+        return errorCode;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
     }
 
     public Object getData() {
@@ -63,6 +68,14 @@ public class BaseEntity implements Serializable {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getPath() {

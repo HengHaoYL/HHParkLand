@@ -21,7 +21,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.benefit.buy.library.R;
 
@@ -325,7 +324,7 @@ public class XListView extends ListView implements OnScrollListener {
                     if (mEnablePullLoad && (mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) && !mPullLoading) {
                         startLoadMore();
                     } else if (!mEnablePullLoad) {
-                        Toast.makeText(context, "到底了......", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "到底了......", Toast.LENGTH_SHORT).show();
                     }
                     resetFooterHeight();
                 }

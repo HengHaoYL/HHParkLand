@@ -19,7 +19,6 @@ import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.model.ascyn.BaseModel;
 import com.henghao.parkland.model.ascyn.BeeCallback;
 import com.henghao.parkland.model.entity.BaseEntity;
-import com.henghao.parkland.model.entity.YHDataEntity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -82,8 +81,7 @@ public class YHDataProtocol extends BaseModel {
                 }
                 /**** end ****/
                 if (url.endsWith(ProtocolUrl.APP_GHMANAGEMSGBYID)) {
-                    YHDataEntity dataYH = ToolsJson.parseObjecta(data, YHDataEntity.class);
-                    YHDataProtocol.this.OnMessageResponse(url, dataYH, status);
+                    YHDataProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
 
 

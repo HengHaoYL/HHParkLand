@@ -14,7 +14,7 @@ import android.os.Environment;
 
 /**
  * 〈一句话功能简述〉 〈功能详细描述〉
- * 
+ *
  * @author zhangxianwen
  * @version HDMNV100R001, 2015-4-20
  * @see [相关类/方法]
@@ -107,14 +107,24 @@ public class Constant {
 	 */
 	public static final String USERID = "userId";
 
+	/**
+	 * 用户名
+	 */
 	public static final String USERNAME = "user_name";
 
-	public static final String USERPHONE = "user_login";
+	/**
+	 * 用户联系电话
+	 */
+	public static final String USERPHONE = "user_phone";
+
+	/**
+	 * 用户实体
+	 */
+	public static final String USER = "user";
 
 	public static final String USERIMG = "user_image";
 
 	public static final String USERSTATE = "user_state";
-
 	/**
 	 * 传递Title
 	 */

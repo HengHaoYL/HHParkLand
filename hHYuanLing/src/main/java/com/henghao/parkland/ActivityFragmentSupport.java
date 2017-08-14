@@ -42,13 +42,19 @@ import android.widget.TextView;
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsFile;
 import com.benefit.buy.library.views.dialog.FlippingLoadingDialog;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.model.ascyn.BusinessResponse;
+import com.henghao.parkland.model.entity.UserLoginEntity;
 import com.henghao.parkland.service.ReConnectService;
 import com.henghao.parkland.views.ActivityFragmentView;
 import com.higdata.okhttphelper.callback.StringCallback;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import org.json.JSONException;
+
+import java.lang.reflect.Type;
 
 
 /**
@@ -488,7 +494,7 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
     }
 
     @Override
-    public String getLoginUser() {
+    public String getLoginUserName() {
         return this.mSharedPreferences.getString(Constant.USERNAME, null);
     }
 
@@ -505,6 +511,23 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
     @Override
     public String getLoginUserPhone() {
         return this.mSharedPreferences.getString(Constant.USERPHONE, null);
+    }
+
+    @Override
+    public UserLoginEntity getLoginUser() {
+        String jsonStr = this.mSharedPreferences.getString(Constant.USER, null);
+        if (jsonStr != null) {
+            try {
+                Gson gson = new Gson();
+                Type type = new TypeToken<UserLoginEntity>() {
+                }.getType();
+                UserLoginEntity entity = gson.fromJson(jsonStr, type);
+                return entity;
+            } catch (JsonSyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     @Override

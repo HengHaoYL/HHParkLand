@@ -6,12 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.henghao.parkland.R;
-import com.henghao.parkland.activity.GuanhuActivity;
-import com.henghao.parkland.activity.YHDataActivity;
+import com.henghao.parkland.activity.GuanhuSubmitActivity;
+import com.henghao.parkland.activity.GuanhuDataActivity;
 import com.henghao.parkland.model.entity.YhBean;
 
 import java.util.List;
@@ -83,7 +82,7 @@ public class YhAdapter extends BaseAdapter {
             public void onClick(View v) {
                 if (bean.getIsNo() != null) {
                     if (bean.getIsNo() == 1) {
-                        Intent intent = new Intent(context, YHDataActivity.class);
+                        Intent intent = new Intent(context, GuanhuDataActivity.class);
                         intent.putExtra("yid", bean.getId());//养护信息ID
                         intent.putExtra("treeId", bean.getTreeId());//植物二维码
                         context.startActivity(intent);
@@ -94,7 +93,7 @@ public class YhAdapter extends BaseAdapter {
         viewHolder.btnWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, GuanhuActivity.class);
+                Intent intent = new Intent(context, GuanhuSubmitActivity.class);
                 intent.putExtra("yid", bean.getId());//养护信息ID
                 intent.putExtra("treeId", bean.getTreeId());//植物二维码
                 intent.putExtra("yhSite", bean.getYhStatussite());//养护地点

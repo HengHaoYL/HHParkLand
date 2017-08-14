@@ -95,7 +95,7 @@ public class ProjectInfoActivity extends ActivityFragmentSupport implements MyCa
                 /**
                  * 如果未登录，请先登录
                  */
-                if (getLoginUser() == null) {
+                if (getLoginUserName() == null) {
                     msg("请先登录！");
                     return;
                 }

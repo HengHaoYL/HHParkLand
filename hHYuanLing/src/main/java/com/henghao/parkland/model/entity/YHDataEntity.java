@@ -9,17 +9,29 @@ import com.henghao.parkland.model.IdEntity;
  */
 
 public class YHDataEntity extends IdEntity {
-    /*"gid":3,
-            "treeId":"m280DWBfovMCdH-1",
-            "yhSite":"中国贵州省贵阳市乌当区G75(兰海高速)",
-            "yhWorker":"无",
-            "yhDetails":"无",
-            "yhTime":"2017-02-19 14:48",
-            "yhQuestion":"无",
-            "yhClean":"好",
-            "treeGrowup":"好",
-            "yhComment":"无"*/
+    /**
+     * gid:7,
+     * nowfile:"/gardenFile/yhmanager/img/f3ff92cf81b842fa9e24e17df01b58cc.jpg",
+     * oldfile:"/gardenFile/yhmanager/img/96bc3d30e7a143d1bc3dc09062988401.jpg",
+     * treeGrowup:"好",
+     * treeId:"70jObZ42mJqulC-1",
+     * uid:"e7e94b164d25450499560f4731809b40",
+     * yhClean:"好",
+     * yhComment:"无",
+     * yhDetails:"施肥",
+     * yhQuestion:"无",
+     * yhSite:"中国贵州省贵阳市乌当区G210(包南线)",
+     * yhTime:"2017-06-26 16:26",
+     * yhWorker:"老严"
+     */
 
+    @Expose
+    @SerializedName("nowfile")
+    private String nowfile;
+
+    @Expose
+    @SerializedName("oldfile")
+    private String oldfile;
 
     @Expose
     @SerializedName("treeGrowup")
@@ -56,6 +68,22 @@ public class YHDataEntity extends IdEntity {
     @Expose
     @SerializedName("yhComment")
     private String yhComment;
+
+    public String getNowfile() {
+        return nowfile;
+    }
+
+    public void setNowfile(String nowfile) {
+        this.nowfile = nowfile;
+    }
+
+    public String getOldfile() {
+        return oldfile;
+    }
+
+    public void setOldfile(String oldfile) {
+        this.oldfile = oldfile;
+    }
 
     public String getTreeId() {
         return treeId;

@@ -92,7 +92,7 @@ public class ProjectSettlementActivity extends ActivityFragmentSupport implement
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getLoginUser() == null) {
+                if (getLoginUserName() == null) {
                     msg("请先登录！");
                     return;
                 }

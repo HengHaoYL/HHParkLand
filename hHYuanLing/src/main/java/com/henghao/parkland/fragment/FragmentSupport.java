@@ -26,15 +26,11 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.R;
 import com.henghao.parkland.model.ascyn.BusinessResponse;
 import com.henghao.parkland.views.ActivityFragmentView;
+import com.higdata.okhttphelper.callback.InputStreamCallback;
+import com.higdata.okhttphelper.callback.StringCallback;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
-import com.higdata.okhttphelper.callback.StringCallback;
-import com.squareup.okhttp.Call;
-
 import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * fragment 父类〈一句话功能简述〉 〈功能详细描述〉
@@ -202,6 +198,18 @@ public class FragmentSupport extends Fragment implements BusinessResponse {
     }
 
     public abstract class DefaultCallback extends StringCallback {
+        @Override
+        public void onStart() {
+            mActivityFragmentView.viewLoading(View.VISIBLE);
+        }
+
+        @Override
+        public void onFinish() {
+            mActivityFragmentView.viewLoading(View.GONE);
+        }
+    }
+
+    public abstract class InputStreamDefaultCallback extends InputStreamCallback {
         @Override
         public void onStart() {
             mActivityFragmentView.viewLoading(View.VISIBLE);

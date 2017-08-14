@@ -9,7 +9,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.CommonGridViewAdapter;
-import com.henghao.parkland.model.entity.EquipmentLeasingEntity;
+import com.henghao.parkland.model.entity.EquipmentEntity;
 
 import java.util.ArrayList;
 
@@ -21,13 +21,15 @@ import butterknife.InjectView;
  * 工作台设备租赁信息展示
  */
 
-public class EquipmentLeasingDetailActivity extends ActivityFragmentSupport {
+public class EquipmentDetailActivity extends ActivityFragmentSupport {
     @InjectView(R.id.tv_titleName)
     TextView tvTitleName;
-    @InjectView(R.id.tv_contacts)
-    TextView tvContacts;
-    @InjectView(R.id.tv_dates)
-    TextView tvDates;
+    @InjectView(R.id.tv_contact)
+    TextView tvContact;
+    @InjectView(R.id.tv_date)
+    TextView tvDate;
+    @InjectView(R.id.tv_time)
+    TextView tvTime;
     @InjectView(R.id.tv_tel)
     TextView tvTel;
     @InjectView(R.id.tv_content)
@@ -63,20 +65,16 @@ public class EquipmentLeasingDetailActivity extends ActivityFragmentSupport {
     public void initData() {
         super.initData();
         Bundle bundle = getIntent().getBundleExtra("bundle");
-        EquipmentLeasingEntity mEntity = (EquipmentLeasingEntity) bundle.getSerializable(Constant.INTNET_DATA);
-        /**
-         * 拼接图片URL地址
-         */
-        ArrayList<String> data = new ArrayList<>();
-        ArrayList<String> urls = mEntity.getUrl();
-        for (String url : urls) {
-            data.add(mEntity.getFilesId() + url);
+        EquipmentEntity mEntity = (EquipmentEntity) bundle.getSerializable(Constant.INTNET_DATA);
+        ArrayList<String> urls = mEntity.getPicture();
+        mAdapter = new CommonGridViewAdapter(this, urls);
+        if (urls != null) {
+            gridView.setAdapter(mAdapter);
         }
-        mAdapter = new CommonGridViewAdapter(this, data);
-        gridView.setAdapter(mAdapter);
-        tvContacts.setText(mEntity.getContacts());
+        tvContact.setText(mEntity.getContact());
         tvContent.setText(mEntity.getContent());
-        tvDates.setText(mEntity.getDates());
+        tvDate.setText(mEntity.getDate());
+        tvTime.setText(mEntity.getTime());
         tvTel.setText(mEntity.getTel());
         tvTitleName.setText(mEntity.getTitleName());
     }

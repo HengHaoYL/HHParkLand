@@ -14,7 +14,6 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.R;
 import com.henghao.parkland.utils.Requester;
-import com.squareup.okhttp.Request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,6 +24,7 @@ import java.util.Date;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 
 /**
@@ -57,6 +57,7 @@ public class TreeMessageActivity extends ActivityFragmentSupport {
     private String treeSite;//种植地点
     private String treeTime;//录入时间
     private static final String TAG = "TreeMessageActivity";
+    private Call call;
 
 
     @Override
@@ -122,7 +123,7 @@ public class TreeMessageActivity extends ActivityFragmentSupport {
                     return;
                 }
                 //访问网络
-                Requester.treeSumit(treeId, treeName, treeUse, treeSpecification, treeSite, treeTime, callback);
+                call = Requester.treeSumit(treeId, treeName, treeUse, treeSpecification, treeSite, treeTime, callback);
                 break;
             case R.id.btn_cancel_treemessage:
                 finish();
@@ -132,9 +133,10 @@ public class TreeMessageActivity extends ActivityFragmentSupport {
 
     private DefaultCallback callback = new DefaultCallback() {
         @Override
-        public void onFailure(Request request, Exception e, int code) {
-            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure", e);
-            Toast.makeText(TreeMessageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        public void onFailure(Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
+            e.printStackTrace();
+            Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -158,4 +160,12 @@ public class TreeMessageActivity extends ActivityFragmentSupport {
             }
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (call != null && !call.isCanceled()) {
+            call.cancel();
+        }
+    }
 }

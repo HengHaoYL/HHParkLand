@@ -36,7 +36,7 @@
     <string name="hc_my">我的</string>
 
     <!-- 登录 -->
-    <string name="login">login</string>
+    <string name="login">登录</string>
     <string name="click_login">点击登录</string>
     <string name="login_user_phone">username/phone number</string>
     <string name="login_phone">phone number</string>
@@ -59,6 +59,7 @@
     <string name="register_echo_email">请输入邮箱</string>
     <string name="register_echo_IDCard">请输入身份证号</string>
     <string name="next">下一步</string>
+    <string name="login_auth_code">验证码</string>
     <string name="register_code">验  证</string>
     <string name="register_confirm_pic">身份证</string>
     <string name="register_confirm_pass">确认密码</string>

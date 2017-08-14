@@ -14,8 +14,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.EditText;
 
+import com.henghao.parkland.model.entity.UserLoginEntity;
+
 /**
  * 公用的activity接口〈一句话功能简述〉 〈功能详细描述〉
+ *
  * @author qyl
  * @version HDMNV100R001, 2015-4-20
  * @see [相关类/方法]
@@ -25,6 +28,7 @@ public interface IActivitySupport {
 
     /**
      * 获取Application.〈一句话功能简述〉 〈功能详细描述〉
+     *
      * @return
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -33,6 +37,7 @@ public interface IActivitySupport {
 
     /**
      * 终止服务. 〈一句话功能简述〉 〈功能详细描述〉
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
@@ -40,6 +45,7 @@ public interface IActivitySupport {
 
     /**
      * 开启服务.
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
@@ -47,6 +53,7 @@ public interface IActivitySupport {
 
     /**
      * 校验网络-如果没有网络就弹出设置,并返回true.
+     *
      * @return
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -55,6 +62,7 @@ public interface IActivitySupport {
 
     /**
      * 校验网络-如果没有网络就返回true.
+     *
      * @return
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -63,6 +71,7 @@ public interface IActivitySupport {
 
     /**
      * 退出应用.
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
@@ -70,6 +79,7 @@ public interface IActivitySupport {
 
     /**
      * 判断GPS是否已经开启.
+     *
      * @return
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -78,6 +88,7 @@ public interface IActivitySupport {
 
     /**
      * 判断基站是否已经开启.
+     *
      * @return
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -86,6 +97,7 @@ public interface IActivitySupport {
 
     /**
      * 检查内存卡.
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
@@ -93,6 +105,7 @@ public interface IActivitySupport {
 
     /**
      * 返回当前Activity上下文.
+     *
      * @return
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -101,6 +114,7 @@ public interface IActivitySupport {
 
     /**
      * 获取当前登录用户的SharedPreferences配置.
+     *
      * @return
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -108,15 +122,8 @@ public interface IActivitySupport {
     public SharedPreferences getLoginUserSharedPre();
 
     /**
-     * 取得用户信息 〈一句话功能简述〉 〈功能详细描述〉
-     * @return
-     * @see [类、类#方法、类#成员]
-     * @since [产品/模块版本]
-     */
-    public String getLoginUser();
-
-    /**
      * 关闭键盘 〈一句话功能简述〉 〈功能详细描述〉
+     *
      * @param mEdit
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
@@ -125,6 +132,7 @@ public interface IActivitySupport {
 
     /**
      * 关闭键盘 〈一句话功能简述〉 〈功能详细描述〉
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
@@ -132,6 +140,7 @@ public interface IActivitySupport {
 
     /**
      * 初始化控件
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
@@ -139,14 +148,42 @@ public interface IActivitySupport {
 
     /**
      * 初始化数据
+     *
      * @see [类、类#方法、类#成员]
      * @since [产品/模块版本]
      */
     public void initData();
 
+    /**
+     * 取得用户编号
+     *
+     * @return
+     */
     String getLoginUid();
 
+    /**
+     * 取得用户名 〈一句话功能简述〉 〈功能详细描述〉
+     *
+     * @return
+     * @see [类、类#方法、类#成员]
+     * @since [产品/模块版本]
+     */
+    public String getLoginUserName();
+
+    /**
+     * 取得用户联系电话
+     *
+     * @return
+     */
     String getLoginUserPhone();
 
     String getLoginState();
+
+    /**
+     * 取得用户实体
+     *
+     * @return
+     */
+    UserLoginEntity getLoginUser();
+
 }

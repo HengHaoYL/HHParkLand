@@ -25,16 +25,10 @@ public class ProtocolUrl {
      */
     public static String ROOT_URL = "";
 
-    private static boolean isURL = true;
-//    private static boolean isURL = false;
-
     static {
         if (BuildConfig.DEBUG) {
-            // 测试地址/192.168.1.12
-            ROOT_URL = "http://172.16.13.113:8080/Garden";
-//            ROOT_URL = "http://222.85.156.43:81/Garden";
-//            ROOT_URL = "http://safe.higdata.com/Java_Nfc/";
-//			  ROOT_URL = "http://192.168.1.12/Java_Nfc";
+            // 测试地址/172.16.13.113
+            ROOT_URL = "http://172.16.13.113";
         } else {
             // 生产地址
             ROOT_URL = "http://222.85.156.43:81/Garden";
@@ -49,13 +43,17 @@ public class ProtocolUrl {
     /**
      * 用户登录
      */
-    public static String APP_LOGIN = "login";
+    public static String APP_LOGIN = "yldsj/login";
 
     public static String APP_GET_NFCBYID = "login";
     /**
      * 用户注册
      */
     public static String APP_REG = "register";
+    /**
+     * 用户注册
+     */
+    public static String AUTHCODE = "yldsj/authCode";
 
     /************************ 用户相关 end **************************/
 
@@ -440,14 +438,14 @@ public class ProtocolUrl {
      **************************/
 
     /**
-     * 设备租赁信息查询
+     * 设备租赁查询
      */
-    public static final String RELEASE_QUERYEQUIPMENTLEASING = "release/queryEquipmentLeasing";
+    public static final String FIND_EQUIPMENT = "yldsj/xqfb/find/equipment";
 
     /**
      * 苗木信息查询
      */
-    public static final String RELEASE_QUERYSEEDLINGMESSAGE = "release/querySeedlingmessage";
+    public static final String FIND_SEEDLING = "yldsj/xqfb/find/seedling";
 
     /**
      * 招标信息查询
@@ -457,7 +455,12 @@ public class ProtocolUrl {
     /**
      * 人员招聘查询
      */
-    public static final String RELEASE_QUERYRECRUIT = "release/queryRecruit";
+    public static final String FIND_RECRUIT = "yldsj/xqfb/find/recruit";
+
+    /**
+     * 人员招聘查询
+     */
+    public static final String FIND_BID = "yldsj/xqfb/find/bid";
 
     /************************ 工作台 end **************************/
 
@@ -465,64 +468,49 @@ public class ProtocolUrl {
      * 合同管理
      **************************/
     /**
-     * 园林类合同查询
+     * 商务合同查询
      */
     public static final String COMPACT_QUERYGARDENCOMPACT = "compact/queryGardenCompact";
 
     /**
-     * 建设类合同查询
+     * 劳务合同查询
      */
     public static final String COMPACT_QUERYBUILDCOMPACT = "compact/queryBuildCompact";
 
     /**
-     * 园林工程类合同查询
+     * 授权合同查询
      */
     public static final String COMPACT_QUERYENGINEERINGCOMPACT = "compact/queryEngineeringCompact";
 
     /**
-     * 景观类合同查询
-     */
-    public static final String COMPACT_QUERYLANDSCAPECOMPACT = "compact/queryLandscapeCompact";
-
-    /**
-     * 园林类合同录入
+     * 商务合同录入
      */
     public static final String COMPACT_SAVEGARDENCOMPACT = "compact/saveGardenCompact";
 
     /**
-     * 建设类合同录入
+     * 劳务合同录入
      */
     public static final String COMPACT_SAVEBUILDCOMPACT = "compact/saveBuildCompact";
 
     /**
-     * 园林工程类合同录入
+     * 授权合同录入
      */
     public static final String COMPACT_SAVEENGINEERINGCOMPACT = "compact/saveEngineeringCompact";
 
     /**
-     * 景观类合同录入
-     */
-    public static final String COMPACT_SAVELANDSCAPECOMPACT = "compact/saveLandscapeCompact";
-
-    /**
-     * 园林类合同删除
+     * 商务合同删除
      */
     public static final String DELETECOMPACT_GARDEN = "deleteCompact/garden";
 
     /**
-     * 建设类合同删除
+     * 劳务合同删除
      */
     public static final String DELETECOMPACT_BUILD = "deleteCompact/build";
 
     /**
-     * 园林工程类合同删除
+     * 授权合同删除
      */
     public static final String DELETECOMPACT_ENGINEERING = "deleteCompact/engineering";
-
-    /**
-     * 景观类合同删除
-     */
-    public static final String DELETECOMPACT_LANDSCAPE = "deleteCompact/landscape";
 
     /************************ 合同管理 end **************************/
 

@@ -1,25 +1,54 @@
 package com.henghao.parkland.model.entity;
 
 import com.google.gson.annotations.Expose;
-import com.henghao.parkland.model.IdEntity;
+import com.google.gson.annotations.SerializedName;
 
-public class UserLoginEntity extends IdEntity {
+import java.io.Serializable;
+import java.util.List;
 
-    /*"uid":1,
-            "username":"user1",
-            "password":"1234",
-            "tel":"12345678977"*/
+public class UserLoginEntity implements Serializable {
+    /**
+     * uid : 用户编号
+     * name : 姓名
+     * userName : 用户名
+     * tel : 联系方式
+     * email : e邮箱
+     * sex : 性别（0：男 1：女）
+     * date : 注册时间
+     * idCard : 身份证号
+     * picture : 身份证图片
+     * deptId : 部门编号
+     */
     @Expose
+    @SerializedName("uid")
     private String uid;
-
     @Expose
-    private String username;
-
+    @SerializedName("name")
+    private String name;
     @Expose
-    private String password;
-
+    @SerializedName("userName")
+    private String userName;
     @Expose
+    @SerializedName("tel")
     private String tel;
+    @Expose
+    @SerializedName("email")
+    private String email;
+    @Expose
+    @SerializedName("sex")
+    private int sex;
+    @Expose
+    @SerializedName("date")
+    private String date;
+    @Expose
+    @SerializedName("idCard")
+    private String idCard;
+    @Expose
+    @SerializedName("deptId")
+    private String deptId;
+    @Expose
+    @SerializedName("picture")
+    private List<String> picture;
 
     public String getUid() {
         return uid;
@@ -27,6 +56,22 @@ public class UserLoginEntity extends IdEntity {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getTel() {
@@ -37,19 +82,51 @@ public class UserLoginEntity extends IdEntity {
         this.tel = tel;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public int getSex() {
+        return sex;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public String getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
+    }
+
+    public List<String> getPicture() {
+        return picture;
+    }
+
+    public void setPicture(List<String> picture) {
+        this.picture = picture;
     }
 }

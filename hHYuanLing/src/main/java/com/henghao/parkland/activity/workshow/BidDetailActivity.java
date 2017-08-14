@@ -21,10 +21,12 @@ public class BidDetailActivity extends ActivityFragmentSupport {
 
     @InjectView(R.id.tv_titleName)
     TextView tvTitleName;
-    @InjectView(R.id.tv_contacts)
-    TextView tvContacts;
-    @InjectView(R.id.tv_dates)
-    TextView tvDates;
+    @InjectView(R.id.tv_contact)
+    TextView tvContact;
+    @InjectView(R.id.tv_date)
+    TextView tvDate;
+    @InjectView(R.id.tv_time)
+    TextView tvTime;
     @InjectView(R.id.tv_tel)
     TextView tvTel;
     @InjectView(R.id.tv_content)
@@ -57,9 +59,10 @@ public class BidDetailActivity extends ActivityFragmentSupport {
         super.initData();
         Bundle bundle = getIntent().getBundleExtra("bundle");
         BidEntity mEntity = (BidEntity) bundle.getSerializable(Constant.INTNET_DATA);
-        tvContacts.setText(mEntity.getContacts());
+        tvContact.setText(mEntity.getContact());
         tvContent.setText(mEntity.getContent());
-        tvDates.setText(mEntity.getDates());
+        tvDate.setText(mEntity.getDate());
+        tvTime.setText(mEntity.getTime());
         tvTel.setText(mEntity.getTel());
         tvTitleName.setText(mEntity.getTitleName());
     }

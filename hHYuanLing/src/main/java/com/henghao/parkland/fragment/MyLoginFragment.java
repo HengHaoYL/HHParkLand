@@ -113,7 +113,7 @@ public class MyLoginFragment extends FragmentSupport {
 
     public void onResume() {
         super.onResume();
-        String Uid = mActivity.getLoginUser();
+        String Uid = mActivity.getLoginUserName();
         if (ToolsKit.isEmpty(Uid)) {
             //未登录
             tv_userName.setText("点击登录更精彩");
@@ -121,7 +121,7 @@ public class MyLoginFragment extends FragmentSupport {
             tv_login.setText("登录");
         } else {
             //已登录
-            tv_userName.setText(mActivity.getLoginUser());
+            tv_userName.setText(mActivity.getLoginUserName());
             tv_userPhone.setText(mActivity.getLoginUserPhone());
             tv_login.setText("注销");
         }
@@ -175,7 +175,7 @@ public class MyLoginFragment extends FragmentSupport {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
                 builder.setIcon(R.drawable.icon_select);
                 builder.setTitle("请选择合同类型");
-                String[] data = {"园林绿化", "施工建设", "园林工程", "景观风景"};
+                String[] data = {"商务合同", "劳务合同", "授权合同"};
                 builder.setItems(data, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -193,7 +193,7 @@ public class MyLoginFragment extends FragmentSupport {
 
 
     private boolean isLogin() {
-        if (!ToolsKit.isEmpty(mActivity.getLoginUser())) {
+        if (!ToolsKit.isEmpty(mActivity.getLoginUserName())) {
             return true;
         }
         return false;

@@ -94,16 +94,13 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
         super.initWidget();
         switch (indexOfSelect) {
             case 0:
-                mType = "园林绿化";
+                mType = "商务合同";
                 break;
             case 1:
-                mType = "施工建设";
+                mType = "劳务合同";
                 break;
             case 2:
-                mType = "园林工程";
-                break;
-            case 3:
-                mType = "景观风景";
+                mType = "授权合同";
                 break;
         }
         mActivityFragmentView.viewMainGone();
@@ -116,7 +113,7 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getLoginUser() == null) {
+                if (getLoginUserName() == null) {
                     msg("请先登录！");
                     return;
                 }
@@ -196,20 +193,16 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
         ProjectSecProtocol mProtocol = new ProjectSecProtocol(this);
         mProtocol.addResponseListener(this);
         switch (indexOfSelect) {
-            case 0://园林类
+            case 0://商务合同
                 mProtocol.queryGardenCompact(getLoginUid());
                 mActivityFragmentView.viewLoading(View.VISIBLE);
                 break;
-            case 1://建设类合同
+            case 1://劳务合同
                 mProtocol.queryBuildCompact(getLoginUid());
                 mActivityFragmentView.viewLoading(View.VISIBLE);
                 break;
-            case 2://园林工程类
+            case 2://授权合同
                 mProtocol.queryEngineeringCompact(getLoginUid());
-                mActivityFragmentView.viewLoading(View.VISIBLE);
-                break;
-            case 3://景观类
-                mProtocol.queryLandscapeCompact(getLoginUid());
                 mActivityFragmentView.viewLoading(View.VISIBLE);
                 break;
         }
@@ -219,11 +212,10 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
     @Override
     public void OnMessageResponse(String url, Object jo, AjaxStatus status) throws JSONException {
         super.OnMessageResponse(url, jo, status);
-        //查询园林类合同、建设类合同、园林工程类合同、景观类合同
+        //查询商务合同, 劳务合同, 授权合同
         if (url.endsWith(ProtocolUrl.COMPACT_QUERYGARDENCOMPACT) ||
                 url.endsWith(ProtocolUrl.COMPACT_QUERYBUILDCOMPACT) ||
-                url.endsWith(ProtocolUrl.COMPACT_QUERYENGINEERINGCOMPACT) ||
-                url.endsWith(ProtocolUrl.COMPACT_QUERYLANDSCAPECOMPACT)) {
+                url.endsWith(ProtocolUrl.COMPACT_QUERYENGINEERINGCOMPACT)) {
             if (jo instanceof BaseEntity) {
                 BaseEntity mEntity = (BaseEntity) jo;
                 if (mEntity.getStatus() > 0) {
@@ -311,9 +303,6 @@ public class CompactManageActivity extends ActivityFragmentSupport implements My
                 break;
             case 2:
                 url = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DELETECOMPACT_ENGINEERING;
-                break;
-            case 3:
-                url = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.DELETECOMPACT_LANDSCAPE;
                 break;
         }
         OkHttpClient okHttpClient = new OkHttpClient();

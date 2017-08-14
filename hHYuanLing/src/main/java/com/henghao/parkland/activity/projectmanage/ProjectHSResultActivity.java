@@ -91,7 +91,7 @@ public class ProjectHSResultActivity extends ActivityFragmentSupport implements 
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getLoginUser() == null) {
+                if (getLoginUserName() == null) {
                     msg("请先登录！");
                     return;
                 }

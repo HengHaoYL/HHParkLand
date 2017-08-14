@@ -25,18 +25,18 @@ import com.henghao.parkland.R;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.model.entity.BaseEntity;
-import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.utils.FileUtils;
+import com.henghao.parkland.utils.Requester;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Request;
 
 import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * 我的注册〈一句话功能简述〉 〈功能详细描述〉
@@ -177,9 +177,10 @@ public class RegisterFragment extends FragmentSupport {
     //请求回调
     private DefaultCallback registerCallback = new DefaultCallback() {
         @Override
-        public void onFailure(Request request, Exception e, int code) {
-            Log.e(TAG, "onFailure: " + e.getMessage());
+        public void onFailure(Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
             e.printStackTrace();
+            Toast.makeText(mActivity, "网络访问错误！", Toast.LENGTH_SHORT).show();
         }
 
         @Override

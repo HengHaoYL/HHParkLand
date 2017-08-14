@@ -6,20 +6,20 @@ import android.os.Message;
 import android.util.Log;
 
 import com.higdata.okhttphelper.callback.BaseCallback;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.MultipartBuilder;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-@SuppressWarnings({"WeakerAccess", "UnnecessaryLocalVariable"})
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class OkHttpController {
     private static OkHttpClient client;
     private static final int RESULT_START = 0;
@@ -38,7 +38,7 @@ public class OkHttpController {
                     data.baseCallback.onStart();
                     break;
                 case RESULT_FAILURE:
-                    data.baseCallback.onFailure(data.request, data.e, data.code);
+                    data.baseCallback.onFailure(data.e, data.code);
                     data.baseCallback.onFinish();
                     break;
                 case RESULT_SUCCESS:
@@ -58,7 +58,7 @@ public class OkHttpController {
      * @return 请求体
      */
     public static RequestBody buildBody(Map<String, Object> params, Map<String, File> files) {
-        MultipartBuilder builder = new MultipartBuilder();
+        MultipartBody.Builder builder = new MultipartBody.Builder();
         if (params != null) {
             for (String key : params.keySet()) {
                 builder.addFormDataPart(key, String.valueOf(params.get(key)));
@@ -73,6 +73,12 @@ public class OkHttpController {
         return builder.build();
     }
 
+    /**
+     * 构建Json字符串的请求体
+     *
+     * @param jsonString
+     * @return
+     */
     public static RequestBody buildJsonBody(String jsonString) {
         RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), jsonString);
         return body;
@@ -86,9 +92,14 @@ public class OkHttpController {
      * @param method 请求方法
      * @return 请求
      */
-    public static Request buildRequest(String url, RequestBody body, String method) {
-        @SuppressWarnings("UnnecessaryLocalVariable")
-        Request request = new Request.Builder()
+    public static Request buildRequest(String url, RequestBody body, String method, Map<String, String> headers) {
+        Request.Builder requestBuilder = new Request.Builder();
+        if (headers != null) {
+            for (String header : headers.keySet()) {
+                requestBuilder.addHeader(header, headers.get(header));
+            }
+        }
+        Request request = requestBuilder
                 .url(url)
                 .method(method, body)
                 .build();
@@ -116,25 +127,25 @@ public class OkHttpController {
     public static Callback buildCallback(final BaseCallback baseCallback) {
         return new Callback() {
             @Override
-            public void onFailure(final Request request, final IOException e) {
-                Message msg = new Message();
+            public void onFailure(Call call, IOException e) {
+                Message msg = Message.obtain();
                 msg.what = RESULT_FAILURE;
-                msg.obj = new Data(baseCallback, request, e, -1);
+                msg.obj = new Data(baseCallback, e, -1);
                 handler.sendMessage(msg);
             }
 
             @Override
-            public void onResponse(final Response response) throws IOException {
+            public void onResponse(Call call, Response response) throws IOException {
                 if (response.code() == 200) {
-                    Message msg = new Message();
+                    Message msg = Message.obtain();
                     msg.what = RESULT_SUCCESS;
                     msg.obj = new Data(baseCallback, baseCallback.parseResponse(response));
                     handler.sendMessage(msg);
                 } else {
                     String eMessage = response.body().string();
                     response.body().close();
-                    Data data = new Data(baseCallback, response.request(), new RuntimeException(eMessage), response.code());
-                    Message msg = new Message();
+                    Data data = new Data(baseCallback, new RuntimeException(eMessage), response.code());
+                    Message msg = Message.obtain();
                     msg.what = RESULT_FAILURE;
                     msg.obj = data;
                     handler.sendMessage(msg);
@@ -144,16 +155,40 @@ public class OkHttpController {
     }
 
     /**
-     * 提交一个请求
+     * 提交一个Form表单请求
      *
      * @param url      请求url
      * @param params   请求参数
+     * @param headers  请求头
      * @param callback 请求回调
      * @return {@link Call}
      */
-    public static Call doRequest(String url, Map<String, Object> params, BaseCallback callback) {
-        return doRequest(url, params, null, callback);
+    public static Call doRequest(String url, Map<String, Object> params, Map<String, String> headers, BaseCallback callback) {
+        return doRequest(url, params, null, headers, callback);
     }
+
+    /**
+     * 提交无参数的GET请求
+     *
+     * @param url      请求url
+     * @param callback 请求回调
+     * @param headers  请求头
+     * @return {@link Call}
+     */
+    public static Call doRequest(String url, Map<String, String> headers, BaseCallback callback) {
+        getClientInstance();
+        Request request = buildRequest(url, null, "GET", headers);
+        Data data = new Data();
+        data.baseCallback = callback;
+        Message msg = new Message();
+        msg.what = RESULT_START;
+        msg.obj = data;
+        handler.sendMessage(msg);
+        Call call = buildCall(client, request);
+        call.enqueue(buildCallback(callback));
+        return call;
+    }
+
 
     /**
      * 提交一个带文件的请求
@@ -161,14 +196,17 @@ public class OkHttpController {
      * @param url      请求url
      * @param params   请求参数
      * @param files    要上传的文件
+     * @param headers  请求头
      * @param callback 请求回调
      * @return {@link Call}
      */
-    public static Call doRequest(String url, Map<String, Object> params, Map<String, File> files, BaseCallback callback) {
-        Log.i("OkHttpController", "doRequest: url = " + url + " params = " + params.toString());
+    public static Call doRequest(String url, Map<String, Object> params, Map<String, File> files, Map<String, String> headers, BaseCallback callback) {
+        if (params != null) {
+            Log.i("OkHttpController", "doRequest: url = " + url + " params = " + params.toString());
+        }
         getClientInstance();
         RequestBody body = buildBody(params, files);
-        Request request = buildRequest(url, body, "POST");
+        Request request = buildRequest(url, body, "POST", headers);
         Data data = new Data();
         data.baseCallback = callback;
         Message msg = new Message();
@@ -185,14 +223,15 @@ public class OkHttpController {
      *
      * @param url        请求url
      * @param jsonString Json数据
+     * @param headers    请求头
      * @param callback   回调
      * @return {@link Call}
      */
-    public static Call doJsonRequest(String url, String jsonString, BaseCallback callback) {
+    public static Call doJsonRequest(String url, String jsonString, Map<String, String> headers, BaseCallback callback) {
         Log.i("OkHttpController", "doRequest: url = " + url + " params = " + jsonString);
         getClientInstance();
         RequestBody body = buildJsonBody(jsonString);
-        Request request = buildRequest(url, body, "POST");
+        Request request = buildRequest(url, body, "POST", headers);
         Data data = new Data();
         data.baseCallback = callback;
         Message msg = new Message();
@@ -218,7 +257,6 @@ public class OkHttpController {
      */
     private static class Data {
         BaseCallback baseCallback;
-        Request request;
         Exception e;
         Object result;
         int code;
@@ -231,9 +269,8 @@ public class OkHttpController {
             this.result = result;
         }
 
-        Data(BaseCallback baseCallback, Request request, Exception e, int code) {
+        Data(BaseCallback baseCallback, Exception e, int code) {
             this.baseCallback = baseCallback;
-            this.request = request;
             this.e = e;
             this.code = code;
         }

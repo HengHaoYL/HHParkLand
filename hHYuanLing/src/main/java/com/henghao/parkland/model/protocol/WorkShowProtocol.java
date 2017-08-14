@@ -11,7 +11,6 @@ import com.henghao.parkland.model.ascyn.BaseModel;
 import com.henghao.parkland.model.ascyn.BeeCallback;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.model.entity.BidEntity;
-import com.henghao.parkland.model.entity.RecruitEntity;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -23,58 +22,6 @@ import java.util.List;
 public class WorkShowProtocol extends BaseModel {
     public WorkShowProtocol(Context context) {
         super(context);
-    }
-
-    /**
-     * 查询设备租赁
-     */
-    public void queryEquipmentLeasing() {
-        try {
-            String url = ProtocolUrl.RELEASE_QUERYEQUIPMENTLEASING;
-            this.mBeeCallback.url(url).type(String.class);
-            this.aq.ajax(this.mBeeCallback);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 查询苗木信息
-     */
-    public void querySeedlingmessage() {
-        try {
-            String url = ProtocolUrl.RELEASE_QUERYSEEDLINGMESSAGE;
-            this.mBeeCallback.url(url).type(String.class);
-            this.aq.ajax(this.mBeeCallback);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 查询招标信息
-     */
-    public void queryBid() {
-        try {
-            String url = ProtocolUrl.RELEASE_QUERYBID;
-            this.mBeeCallback.url(url).type(String.class);
-            this.aq.ajax(this.mBeeCallback);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 查询人员招聘
-     */
-    public void queryRecruit() {
-        try {
-            String url = ProtocolUrl.RELEASE_QUERYRECRUIT;
-            this.mBeeCallback.url(url).type(String.class);
-            this.aq.ajax(this.mBeeCallback);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private final BeeCallback<String> mBeeCallback = new BeeCallback<String>() {
@@ -98,26 +45,11 @@ public class WorkShowProtocol extends BaseModel {
                     return;
                 }
                 /**** end ****/
-                if (url.endsWith(ProtocolUrl.RELEASE_QUERYEQUIPMENTLEASING)) {
-                    // 查询设备租赁
-                    WorkShowProtocol.this.OnMessageResponse(url, mBaseEntity, status);
-                }
-                if (url.endsWith(ProtocolUrl.RELEASE_QUERYSEEDLINGMESSAGE)) {
-                    // 查询苗木信息
-                    WorkShowProtocol.this.OnMessageResponse(url, mBaseEntity, status);
-                }
                 if (url.endsWith(ProtocolUrl.RELEASE_QUERYBID)) {
                     // 查询招标信息
                     Type type = new TypeToken<List<BidEntity>>() {
                     }.getType();
                     List<BidEntity> homeData = ToolsJson.parseObjecta(data, type);
-                    WorkShowProtocol.this.OnMessageResponse(url, homeData, status);
-                }
-                if (url.endsWith(ProtocolUrl.RELEASE_QUERYRECRUIT)) {
-                    // 查询人员招聘
-                    Type type = new TypeToken<List<RecruitEntity>>() {
-                    }.getType();
-                    List<RecruitEntity> homeData = ToolsJson.parseObjecta(data, type);
                     WorkShowProtocol.this.OnMessageResponse(url, homeData, status);
                 }
             } catch (Exception e) {

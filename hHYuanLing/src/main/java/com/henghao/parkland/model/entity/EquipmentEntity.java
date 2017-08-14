@@ -4,40 +4,35 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.henghao.parkland.model.IdEntity;
 
+import java.util.ArrayList;
+
 /**
  * Created by 晏琦云 on 2017/8/10.
- * 招标信息实体
- * "bid":           数据id,
+ * 设备租赁实体
+ * "eid":           数据id,
  * "titleName":     标题名称,
  * "content":       内容,
+ * "date":          发布日期,
+ * "time":          发布时间,
  * "contact":       联系人,
  * "tel":           联系方式,
- * "date":          发布日期,
- * "time":          发布时间
+ * "picture":       文件
  */
-public class BidEntity extends IdEntity {
 
-    // 数据id
+public class EquipmentEntity extends IdEntity {
+    //数据id
     @Expose
-    @SerializedName("bid")
-    private int bid;
-    // 标题名称
+    @SerializedName("eid")
+    private int eid;
+    //标题名称
     @Expose
     @SerializedName("titleName")
     private String titleName;
-    // 内容
+    //内容
     @Expose
     @SerializedName("content")
     private String content;
-    // 联系人
-    @Expose
-    @SerializedName("contact")
-    private String contact;
-    // 联系方式
-    @Expose
-    @SerializedName("tel")
-    private String tel;
-    // 发布日期
+    //发布日期
     @Expose
     @SerializedName("date")
     private String date;
@@ -45,13 +40,25 @@ public class BidEntity extends IdEntity {
     @Expose
     @SerializedName("time")
     private String time;
+    //联系人
+    @Expose
+    @SerializedName("contact")
+    private String contact;
+    //联系方式
+    @Expose
+    @SerializedName("tel")
+    private String tel;
+    //文件
+    @Expose
+    @SerializedName("picture")
+    private ArrayList<String> picture;
 
-    public int getBid() {
-        return bid;
+    public int getEid() {
+        return eid;
     }
 
-    public void setBid(int bid) {
-        this.bid = bid;
+    public void setEid(int eid) {
+        this.eid = eid;
     }
 
     public String getTitleName() {
@@ -70,6 +77,22 @@ public class BidEntity extends IdEntity {
         this.content = content;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public String getContact() {
         return contact;
     }
@@ -86,19 +109,11 @@ public class BidEntity extends IdEntity {
         this.tel = tel;
     }
 
-    public String getDate() {
-        return date;
+    public ArrayList<String> getPicture() {
+        return picture;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setPicture(ArrayList<String> picture) {
+        this.picture = picture;
     }
 }

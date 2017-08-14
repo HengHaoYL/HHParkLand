@@ -167,7 +167,7 @@
 
         <!-- 设备租赁详情页面 -->
         <activity
-            android:name=".activity.workshow.EquipmentLeasingDetailActivity"
+            android:name=".activity.workshow.EquipmentDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -204,7 +204,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!-- 管护信息填写界面 -->
         <activity
-            android:name=".activity.GuanhuActivity"
+            android:name=".activity.GuanhuSubmitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -239,7 +239,7 @@
         <!-- 施工资料添加 -->
         <!-- 施工材料 -->
         <activity
-            android:name=".activity.YHDataActivity"
+            android:name=".activity.GuanhuDataActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />

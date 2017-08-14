@@ -20,6 +20,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+
 /**
  * 工作台招标信息展示〈一句话功能简述〉 〈功能详细描述〉
  *
@@ -55,9 +56,9 @@ public class BidAdapter extends ArrayAdapter<BidEntity> {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tvContacts.setText(getItem(position).getContacts());
+        holder.tvContact.setText(getItem(position).getContact());
         holder.tvContent.setText(getItem(position).getContent());
-        holder.tvDates.setText(getItem(position).getDates());
+        holder.tvDate.setText(getItem(position).getDate());
         holder.tvTel.setText(getItem(position).getTel());
         holder.tvTitleName.setText(getItem(position).getTitleName());
         viewClick(holder, convertView, position);
@@ -79,17 +80,18 @@ public class BidAdapter extends ArrayAdapter<BidEntity> {
         });
     }
 
+
     static class ViewHolder {
         @InjectView(R.id.tv_titleName)
         TextView tvTitleName;
         @InjectView(R.id.tv_content)
         TextView tvContent;
-        @InjectView(R.id.tv_contacts)
-        TextView tvContacts;
+        @InjectView(R.id.tv_contact)
+        TextView tvContact;
         @InjectView(R.id.tv_tel)
         TextView tvTel;
-        @InjectView(R.id.tv_dates)
-        TextView tvDates;
+        @InjectView(R.id.tv_date)
+        TextView tvDate;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

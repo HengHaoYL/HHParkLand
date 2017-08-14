@@ -27,14 +27,14 @@ import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.utils.Requester;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import okhttp3.Call;
 
 
 /**
@@ -48,6 +48,8 @@ import java.util.Date;
 public class QiandaoActivity extends ActivityFragmentSupport {
 
     private static int QIANDAO_REQUEST = 100;
+
+    private static final String TAG = "QiandaoActivity";
 
     private int count = 0;// 签到次数
 
@@ -252,7 +254,9 @@ public class QiandaoActivity extends ActivityFragmentSupport {
 
     private DefaultCallback callback = new DefaultCallback() {
         @Override
-        public void onFailure(Request request, Exception e, int code) {
+        public void onFailure(Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
+            e.printStackTrace();
             Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
         }
 

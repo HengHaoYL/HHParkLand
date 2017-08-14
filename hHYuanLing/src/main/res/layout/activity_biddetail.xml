@@ -34,7 +34,7 @@
             android:padding="@dimen/padding_normal">
 
             <TextView
-                android:id="@+id/tv_contacts"
+                android:id="@+id/tv_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/padding_normal"
@@ -43,11 +43,20 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/tv_dates"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/padding_normal"
                 android:text="2017-03-15"
+                android:textColor="@color/text_color_b"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/padding_normal"
+                android:text="17:38"
                 android:textColor="@color/text_color_b"
                 android:textSize="12sp" />
 

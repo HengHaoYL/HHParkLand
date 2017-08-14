@@ -16,13 +16,12 @@ import android.widget.Toast;
 import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.views.DateChooseWheelViewDialog;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +33,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 /**
  * 项目管理 -- 变更管理提交
@@ -141,12 +141,11 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
         int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
         String times = tvTimes.getText().toString().trim();//变更时间
         submitCall = Requester.changeManageSubmit(getLoginUid(), String.valueOf(PID), confirmingParty, times, mFileList, new DefaultCallback() {
-
             @Override
-            public void onFailure(Request request, Exception e, int code) {
-                Log.e(TAG, "onFailure: " + e.getMessage());
+            public void onFailure(Exception e, int code) {
+                if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
                 e.printStackTrace();
-                msg("网络请求错误！");
+                Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
             }
 
             @Override

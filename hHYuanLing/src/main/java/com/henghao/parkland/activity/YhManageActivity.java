@@ -25,8 +25,6 @@ import com.henghao.parkland.model.entity.YhBean;
 import com.henghao.parkland.utils.Requester;
 import com.henghao.parkland.views.dialog.DialogList;
 import com.henghao.parkland.views.dialog.DialogYanghu;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Request;
 import com.zbar.lib.zxing.CaptureActivity;
 
 import org.json.JSONArray;
@@ -41,6 +39,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import okhttp3.Call;
 
 
 /**
@@ -106,7 +105,7 @@ public class YhManageActivity extends ActivityFragmentSupport {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 YhBean bean = dataList.get(position);
-                Intent intent = new Intent(YhManageActivity.this, GuanhuActivity.class);
+                Intent intent = new Intent(YhManageActivity.this, GuanhuSubmitActivity.class);
                 intent.putExtra("yid", bean.getId());//养护信息ID
                 intent.putExtra("treeId", bean.getTreeId());//植物二维码
                 intent.putExtra("yhSite", bean.getYhStatussite());//养护地点
@@ -123,9 +122,11 @@ public class YhManageActivity extends ActivityFragmentSupport {
 
     private DefaultCallback listCallback = new DefaultCallback() {
         @Override
-        public void onFailure(Request request, Exception e, int code) {
+        public void onFailure(Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
+            e.printStackTrace();
             mActivityFragmentView.viewMainGone();
-            Toast.makeText(YhManageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -374,9 +375,10 @@ public class YhManageActivity extends ActivityFragmentSupport {
     private String content;
     private DefaultCallback idCallback = new DefaultCallback() {
         @Override
-        public void onFailure(Request request, Exception e, int code) {
-            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure", e);
-            Toast.makeText(YhManageActivity.this, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        public void onFailure(Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
+            e.printStackTrace();
+            Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
         }
 
         @Override

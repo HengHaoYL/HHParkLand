@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.benefit.buy.library.phoneview.MultiImageSelectorActivity;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.R;
 import com.henghao.parkland.fragment.XiangmuFragment;
 import com.henghao.parkland.utils.FileUtils;
@@ -21,8 +22,6 @@ import com.henghao.parkland.views.DateChooseWheelViewDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +29,8 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * 项目管理 -- 进度申报
@@ -43,6 +44,7 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
     @ViewInject(R.id.tv_photo)
     private TextView tv_photo;
 
+    private static final String TAG = "ProjectDeclareSubmitAct";
 
     private ArrayList<String> mSelectPath;
 
@@ -141,9 +143,10 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
         int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
         submitCall = Requester.declareSubmit(mData, getLoginUid(), String.valueOf(PID), mFileList, new DefaultCallback() {
             @Override
-            public void onFailure(Request request, Exception e, int code) {
+            public void onFailure(Exception e, int code) {
+                if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
                 e.printStackTrace();
-                msg("网络请求错误！");
+                Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
             }
 
             @Override

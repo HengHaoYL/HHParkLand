@@ -146,17 +146,14 @@ public class CompactManageSubmitActivity extends ActivityFragmentSupport {
     private void setURL() {
         String mType = tvGenre.getText().toString().trim();
         switch (mType) {
-            case "园林绿化":
+            case "商务合同":
                 URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEGARDENCOMPACT;
                 break;
-            case "施工建设":
+            case "劳务合同":
                 URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEBUILDCOMPACT;
                 break;
-            case "园林工程":
+            case "授权合同":
                 URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVEENGINEERINGCOMPACT;
-                break;
-            case "景观风景":
-                URL = ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.COMPACT_SAVELANDSCAPECOMPACT;
                 break;
         }
     }

@@ -60,7 +60,7 @@ public class ProjectSecProtocol extends BaseModel {
     }
 
     /**
-     * 查询园林类合同
+     * 查询商务合同
      *
      * @param uid
      */
@@ -77,7 +77,7 @@ public class ProjectSecProtocol extends BaseModel {
     }
 
     /**
-     * 查询建设类合同
+     * 查询劳务合同
      *
      * @param uid
      */
@@ -94,30 +94,13 @@ public class ProjectSecProtocol extends BaseModel {
     }
 
     /**
-     * 查询园林工程类合同
+     * 查询园林授权合同
      *
      * @param uid
      */
     public void queryEngineeringCompact(String uid) {
         try {
             String url = ProtocolUrl.COMPACT_QUERYENGINEERINGCOMPACT;
-            Map<String, Object> params = new HashMap<String, Object>();
-            params.put("uid", uid);
-            this.mBeeCallback.url(url).type(String.class).params(params);
-            this.aq.ajax(this.mBeeCallback);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 查询景观类合同
-     *
-     * @param uid
-     */
-    public void queryLandscapeCompact(String uid) {
-        try {
-            String url = ProtocolUrl.COMPACT_QUERYLANDSCAPECOMPACT;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
             this.mBeeCallback.url(url).type(String.class).params(params);
@@ -200,9 +183,8 @@ public class ProjectSecProtocol extends BaseModel {
                 }
                 if (url.endsWith(ProtocolUrl.COMPACT_QUERYGARDENCOMPACT) ||
                         url.endsWith(ProtocolUrl.COMPACT_QUERYBUILDCOMPACT) ||
-                        url.endsWith(ProtocolUrl.COMPACT_QUERYENGINEERINGCOMPACT) ||
-                        url.endsWith(ProtocolUrl.COMPACT_QUERYLANDSCAPECOMPACT)) {
-                    // 园林类合同、建设类合同、园林工程类合同、景观类合同
+                        url.endsWith(ProtocolUrl.COMPACT_QUERYENGINEERINGCOMPACT)) {
+                    // 商务合同, 劳务合同, 授权合同
                     ProjectSecProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
 

@@ -50,7 +50,7 @@
             android:padding="5dp">
 
             <TextView
-                android:id="@+id/tv_contacts"
+                android:id="@+id/tv_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/tel_shape"
@@ -73,7 +73,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/tv_dates"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

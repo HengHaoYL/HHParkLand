@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
@@ -55,12 +56,25 @@ public class RecruitAdapter extends ArrayAdapter<RecruitEntity> {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tvPosition.setText(getItem(position).getPosition());
-        holder.tvWorkingAdress.setText(getItem(position).getWorkingAdress());
-        holder.tvDates.setText(getItem(position).getDates());
-        holder.tvTel.setText(getItem(position).getTel());
-        holder.tvContact.setText(getItem(position).getContact());
-        holder.tvCompanyName.setText(getItem(position).getCompanyName());
+        RecruitEntity entity = getItem(position);
+        if (!ToolsKit.isEmpty(entity.getPositions()) && ToolsKit.isEmpty(entity.getCompanyName())) {
+            entity.setType("应聘");
+            holder.tvType.setText("应聘");
+            holder.tvCompanyName.setVisibility(View.GONE);
+            holder.tvWorkAdress.setVisibility(View.GONE);
+        } else {
+            entity.setType("招聘");
+            holder.tvType.setText("招聘");
+            holder.tvCompanyName.setVisibility(View.VISIBLE);
+            holder.tvWorkAdress.setVisibility(View.VISIBLE);
+        }
+        holder.tvPositions.setText(entity.getPositions());
+        holder.tvWorkAdress.setText(entity.getWorkAdress());
+        holder.tvDate.setText(entity.getDate());
+        holder.tvTel.setText(entity.getTel());
+        holder.tvContact.setText(entity.getContact());
+        holder.tvCompanyName.setText(entity.getCompanyName());
+        holder.tvMoney.setText(entity.getMoney() + "");
         viewClick(holder, convertView, position);
         return convertView;
     }
@@ -80,19 +94,24 @@ public class RecruitAdapter extends ArrayAdapter<RecruitEntity> {
         });
     }
 
+
     static class ViewHolder {
-        @InjectView(R.id.tv_position)
-        TextView tvPosition;
+        @InjectView(R.id.tv_type)
+        TextView tvType;
+        @InjectView(R.id.tv_positions)
+        TextView tvPositions;
         @InjectView(R.id.tv_companyName)
         TextView tvCompanyName;
-        @InjectView(R.id.tv_workingAdress)
-        TextView tvWorkingAdress;
+        @InjectView(R.id.tv_workAdress)
+        TextView tvWorkAdress;
         @InjectView(R.id.tv_contact)
         TextView tvContact;
         @InjectView(R.id.tv_tel)
         TextView tvTel;
-        @InjectView(R.id.tv_dates)
-        TextView tvDates;
+        @InjectView(R.id.tv_date)
+        TextView tvDate;
+        @InjectView(R.id.tv_money)
+        TextView tvMoney;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

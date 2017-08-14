@@ -26,20 +26,22 @@ public class SeedlingDetailActivity extends ActivityFragmentSupport {
     CommonGridViewAdapter mAdapter;
     @InjectView(R.id.tv_titleName)
     TextView tvTitleName;
-    @InjectView(R.id.tv_contacts)
-    TextView tvContacts;
-    @InjectView(R.id.tv_dates)
-    TextView tvDates;
+    @InjectView(R.id.tv_contact)
+    TextView tvContact;
+    @InjectView(R.id.tv_date)
+    TextView tvDate;
+    @InjectView(R.id.tv_time)
+    TextView tvTime;
     @InjectView(R.id.tv_tel)
     TextView tvTel;
     @InjectView(R.id.tv_supplier)
     TextView tvSupplier;
     @InjectView(R.id.tv_address)
     TextView tvAddress;
-    @InjectView(R.id.tv_type)
-    TextView tvType;
-    @InjectView(R.id.tv_subclass)
-    TextView tvSubclass;
+    @InjectView(R.id.tv_breed)
+    TextView tvBreed;
+    @InjectView(R.id.tv_sub)
+    TextView tvSub;
     @InjectView(R.id.tv_content)
     TextView tvContent;
     @InjectView(R.id.gridView)
@@ -72,24 +74,20 @@ public class SeedlingDetailActivity extends ActivityFragmentSupport {
         super.initData();
         Bundle bundle = getIntent().getBundleExtra("bundle");
         SeedlingEntity mEntity = (SeedlingEntity) bundle.getSerializable(Constant.INTNET_DATA);
-        /**
-         * 拼接图片URL地址
-         */
-        ArrayList<String> data = new ArrayList<>();
-        ArrayList<String> urls = mEntity.getUrl();
-        for (String url : urls) {
-            data.add(mEntity.getFilesId() + url);
+        ArrayList<String> urls = mEntity.getPicture();
+        mAdapter = new CommonGridViewAdapter(this, urls);
+        if (urls != null) {
+            gridView.setAdapter(mAdapter);
         }
-        mAdapter = new CommonGridViewAdapter(this, data);
-        gridView.setAdapter(mAdapter);
         tvAddress.setText(mEntity.getAddress());
-        tvContacts.setText(mEntity.getContacts());
+        tvContact.setText(mEntity.getContact());
         tvContent.setText(mEntity.getContent());
-        tvDates.setText(mEntity.getDates());
-        tvSubclass.setText(mEntity.getSubclass());
+        tvDate.setText(mEntity.getDate());
+        tvTime.setText(mEntity.getTime());
+        tvSub.setText(mEntity.getSub());
         tvTel.setText(mEntity.getTel());
         tvSupplier.setText(mEntity.getSupplier());
         tvTitleName.setText(mEntity.getTitleName());
-        tvType.setText(mEntity.getType());
+        tvBreed.setText(mEntity.getBreed());
     }
 }

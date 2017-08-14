@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -17,6 +18,7 @@ import com.benefit.buy.library.views.xlistview.XListView;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.ActivityFragmentSupport;
+import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.adapter.ProjectBGManageAdapter;
@@ -27,8 +29,6 @@ import com.henghao.parkland.model.entity.DeleteEntity;
 import com.henghao.parkland.model.entity.ProjectBGManageEntity;
 import com.henghao.parkland.model.protocol.ProjectProtocol;
 import com.henghao.parkland.utils.Requester;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Request;
 
 import org.json.JSONException;
 
@@ -39,6 +39,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 /**
  * 项目管理 -- 变更管理
@@ -49,6 +50,8 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
     XListView listView;
     @InjectView(R.id.layout_bottom)
     LinearLayout layoutBottom;
+
+    private static final String TAG = "ProjectBGManageActivity";
 
     private CheckBox checkBox;//全选/多选
     private TextView tvEdit;//编辑
@@ -84,7 +87,7 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
         mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getLoginUser() == null) {
+                if (getLoginUserName() == null) {
                     msg("请先登录！");
                     return;
                 }
@@ -247,7 +250,8 @@ public class ProjectBGManageActivity extends ActivityFragmentSupport implements 
     private void deleteInfo(List<DeleteEntity> entity) {
         deleteCall = Requester.changeManageDeleteInfo(entity, new DefaultCallback() {
             @Override
-            public void onFailure(Request request, Exception e, int code) {
+            public void onFailure(Exception e, int code) {
+                if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
                 e.printStackTrace();
                 Toast.makeText(context, "网络访问错误！", Toast.LENGTH_SHORT).show();
             }
