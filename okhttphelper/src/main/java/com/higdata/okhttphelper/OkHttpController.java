@@ -9,6 +9,7 @@ import com.higdata.okhttphelper.callback.BaseCallback;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.Call;
@@ -57,7 +58,7 @@ public class OkHttpController {
      * @param files  上传文件
      * @return 请求体
      */
-    public static RequestBody buildBody(Map<String, Object> params, Map<String, File> files) {
+    public static RequestBody buildBody(Map<String, Object> params, List<File> files) {
         MultipartBody.Builder builder = new MultipartBody.Builder();
         if (params != null) {
             for (String key : params.keySet()) {
@@ -65,9 +66,8 @@ public class OkHttpController {
             }
         }
         if (files != null) {
-            for (String key : files.keySet()) {
-                File file = files.get(key);
-                builder.addFormDataPart(key, file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+            for (File file : files) {
+                builder.addFormDataPart("files", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
             }
         }
         return builder.build();
@@ -200,7 +200,7 @@ public class OkHttpController {
      * @param callback 请求回调
      * @return {@link Call}
      */
-    public static Call doRequest(String url, Map<String, Object> params, Map<String, File> files, Map<String, String> headers, BaseCallback callback) {
+    public static Call doRequest(String url, Map<String, Object> params, List<File> files, Map<String, String> headers, BaseCallback callback) {
         if (params != null) {
             Log.i("OkHttpController", "doRequest: url = " + url + " params = " + params.toString());
         }

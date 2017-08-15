@@ -186,4 +186,11 @@ public interface IActivitySupport {
      */
     UserLoginEntity getLoginUser();
 
+    /**
+     * 取得用户Session
+     *
+     * @return
+     */
+    String getUserSession();
+
 }

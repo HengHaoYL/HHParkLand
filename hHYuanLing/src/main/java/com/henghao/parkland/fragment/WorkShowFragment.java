@@ -12,9 +12,9 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.utils.tools.ToolsKit;
 import com.benefit.buy.library.views.xlistview.XListView;
-import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.BuildConfig;
@@ -306,10 +306,9 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
         public void onSuccess(String response) {
             if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ");
             try {
-                Gson gson = new Gson();
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();
-                BaseEntity baseEntity = gson.fromJson(response, baseType);
+                BaseEntity baseEntity = ToolsJson.parseObjecta(response, baseType);
                 int errorCode = baseEntity.getErrorCode();
                 if (errorCode > 0) {//无数据
                     if (initSeedlingEntities.size() == 0) {
@@ -319,13 +318,13 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
                     listview_xuqiu.setPullLoadEnable(false);
                     return;
                 }
-                String jsonStr = gson.toJson(baseEntity.getData());
+                String jsonStr = ToolsJson.toJson(baseEntity.getData());
                 Type seedlingType = new TypeToken<ArrayList<SeedlingEntity>>() {
                 }.getType();
                 //查询结果有数据，做数据展示
                 mActivityFragmentView.viewEmptyGone();
                 seedlingEntities.clear();
-                seedlingEntities = gson.fromJson(jsonStr, seedlingType);
+                seedlingEntities = ToolsJson.parseObjecta(jsonStr, seedlingType);
                 for (int i = 0; i < seedlingEntities.size(); i++) {
                     SeedlingEntity entity = seedlingEntities.get(i);
                     initSeedlingEntities.add(entity);
@@ -353,10 +352,9 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
         public void onSuccess(String response) {
             if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ");
             try {
-                Gson gson = new Gson();
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();
-                BaseEntity baseEntity = gson.fromJson(response, baseType);
+                BaseEntity baseEntity = ToolsJson.parseObjecta(response, baseType);
                 int errorCode = baseEntity.getErrorCode();
                 if (errorCode > 0) {//无数据
                     if (initEquipmentEntities.size() == 0) {
@@ -366,13 +364,13 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
                     listview_xuqiu.setPullLoadEnable(false);
                     return;
                 }
-                String jsonStr = gson.toJson(baseEntity.getData());
+                String jsonStr = ToolsJson.toJson(baseEntity.getData());
                 Type equipmentType = new TypeToken<ArrayList<EquipmentEntity>>() {
                 }.getType();
                 //查询结果有数据，做数据展示
                 mActivityFragmentView.viewEmptyGone();
                 equipmentEntities.clear();
-                equipmentEntities = gson.fromJson(jsonStr, equipmentType);
+                equipmentEntities = ToolsJson.parseObjecta(jsonStr, equipmentType);
                 for (int i = 0; i < equipmentEntities.size(); i++) {
                     EquipmentEntity entity = equipmentEntities.get(i);
                     initEquipmentEntities.add(entity);
@@ -400,10 +398,9 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
         public void onSuccess(String response) {
             if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ");
             try {
-                Gson gson = new Gson();
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();
-                BaseEntity baseEntity = gson.fromJson(response, baseType);
+                BaseEntity baseEntity = ToolsJson.parseObjecta(response, baseType);
                 int errorCode = baseEntity.getErrorCode();
                 if (errorCode > 0) {//无数据
                     if (initRecruitEntities.size() == 0) {
@@ -413,13 +410,13 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
                     listview_xuqiu.setPullLoadEnable(false);
                     return;
                 }
-                String jsonStr = gson.toJson(baseEntity.getData());
+                String jsonStr = ToolsJson.toJson(baseEntity.getData());
                 Type recruitType = new TypeToken<ArrayList<RecruitEntity>>() {
                 }.getType();
                 //查询结果有数据，做数据展示
                 mActivityFragmentView.viewEmptyGone();
                 recruitEntities.clear();
-                recruitEntities = gson.fromJson(jsonStr, recruitType);
+                recruitEntities = ToolsJson.parseObjecta(jsonStr, recruitType);
                 for (int i = 0; i < recruitEntities.size(); i++) {
                     RecruitEntity entity = recruitEntities.get(i);
                     initRecruitEntities.add(entity);
@@ -447,10 +444,9 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
         public void onSuccess(String response) {
             if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ");
             try {
-                Gson gson = new Gson();
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();
-                BaseEntity baseEntity = gson.fromJson(response, baseType);
+                BaseEntity baseEntity = ToolsJson.parseObjecta(response, baseType);
                 int errorCode = baseEntity.getErrorCode();
                 if (errorCode > 0) {//无数据
                     if (initBidEntities.size() == 0) {
@@ -460,13 +456,13 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
                     listview_xuqiu.setPullLoadEnable(false);
                     return;
                 }
-                String jsonStr = gson.toJson(baseEntity.getData());
+                String jsonStr = ToolsJson.toJson(baseEntity.getData());
                 Type bidType = new TypeToken<ArrayList<BidEntity>>() {
                 }.getType();
                 //查询结果有数据，做数据展示
                 mActivityFragmentView.viewEmptyGone();
                 bidEntities.clear();
-                bidEntities = gson.fromJson(jsonStr, bidType);
+                bidEntities = ToolsJson.parseObjecta(jsonStr, bidType);
                 for (int i = 0; i < bidEntities.size(); i++) {
                     BidEntity entity = bidEntities.get(i);
                     initBidEntities.add(entity);

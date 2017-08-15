@@ -7,6 +7,7 @@ import com.higdata.okhttphelper.OkHttpController;
 import com.higdata.okhttphelper.callback.BaseCallback;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,29 +49,31 @@ public class Requester {
     /**
      * 注册
      *
-     * @param userName          用户名
-     * @param password          密码
-     * @param tel               手机号
-     * @param contact           姓名
-     * @param legalPersonIDcard 身份证
-     * @param email             邮箱
-     * @param images            身份证正反面
-     * @param callback          回调
+     * @param userName    用户名
+     * @param passWord    密码
+     * @param name        姓名
+     * @param tel         手机号
+     * @param email       邮箱
+     * @param sex         性别（0：男 1：女）
+     * @param idCard      身份证号
+     * @param companyName 企业名称
+     * @param files       身份证正反照
+     * @param userCode    验证码
+     * @param callback    回调
      * @return {@link Call}
      */
-    public static Call register(String userName, String password, String tel, String contact, String legalPersonIDcard, String email, List<File> images, BaseCallback callback) {
+    public static Call register(String userName, String passWord, String name, String tel, String email, int sex, String idCard, String companyName, List<File> files, String userCode, Map<String, String> headers, BaseCallback callback) {
         Map<String, Object> params = new HashMap<>();
-        params.put("username", userName);
-        params.put("password", password);
+        params.put("userName", userName);
+        params.put("passWord", passWord);
+        params.put("name", name);
         params.put("tel", tel);
-        params.put("contact", contact);
-        params.put("legalPersonIDcard", legalPersonIDcard);//身份证
-        params.put("email", email);//邮箱
-        Map<String, File> files = new HashMap<>();
-        for (File file : images) {
-            files.put(file.getName(), file);
-        }
-        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_REG), params, files, null, callback);
+        params.put("email", email);
+        params.put("sex", sex);
+        params.put("idCard", idCard);
+        params.put("companyName", companyName);
+        params.put("userCode", userCode);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_REG), params, files, headers, callback);
     }
 
     /**
@@ -180,9 +183,9 @@ public class Requester {
         params.put("yhClean", yhClean);
         params.put("treeGrowup", treeGrowup);
         params.put("yhComment", yhComment);
-        Map<String, File> files = new HashMap<>();
-        files.put("file1", fileBefore);
-        files.put("file2", fileAfter);
+        List<File> files = new ArrayList<>();
+        files.add(fileBefore);
+        files.add(fileAfter);
         return OkHttpController.doRequest(getRequestURL(ProtocolUrl.SAVEGHMANAGEMSG), params, files, null, callback);
     }
 
@@ -298,11 +301,7 @@ public class Requester {
         params.put("pid", pid);
         params.put("confirmingParty", confirmingParty);
         params.put("times", times);
-        Map<String, File> fileMap = new HashMap<>();
-        for (File file : files) {
-            fileMap.put(file.getName(), file);
-        }
-        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.PROJECT_SAVEALTERATIONMSG), params, fileMap, null, callback);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.PROJECT_SAVEALTERATIONMSG), params, files, null, callback);
     }
 
     /**
@@ -332,10 +331,6 @@ public class Requester {
         params.put("dates", dates);
         params.put("uid", uid);
         params.put("pid", pid);
-        Map<String, File> fileMap = new HashMap<>();
-        for (File file : files) {
-            fileMap.put(file.getName(), file);
-        }
-        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.PROJECT_SAVEJDSB), params, fileMap, null, callback);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.PROJECT_SAVEJDSB), params, files, null, callback);
     }
 }

@@ -1,42 +1,48 @@
 package com.henghao.parkland.activity.user;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.R;
+import com.henghao.parkland.adapter.FragmentTabAdapter;
+import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.fragment.user.LoginFragment;
 import com.henghao.parkland.fragment.user.RegisterFragment;
-import com.lidroid.xutils.view.annotation.ViewInject;
+import com.henghao.parkland.model.entity.HCMenuEntity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 
-public class LoginAndRegActivity extends ActivityFragmentSupport implements OnCheckedChangeListener {
+public class LoginAndRegActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.tabs_rg)
-    private RadioGroup mTabs;
+    @InjectView(R.id.tabs_rg)
+    RadioGroup mTabs;
 
-    private LoginFragment loginFragment;
-
-    private RegisterFragment registerFragment;
-
+    public List<FragmentSupport> fragments = new ArrayList<FragmentSupport>();
+    private List<HCMenuEntity> menuLists;
+    private FragmentTabAdapter tabAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (this.tabAdapter != null) {
+            this.tabAdapter.remove();
+        }
         mActivityFragmentView.viewMain(R.layout.activity_loginandreg);
         mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         mActivityFragmentView.viewEmptyGone();
         mActivityFragmentView.viewLoading(View.GONE);
         mActivityFragmentView.clipToPadding(true);
         setContentView(mActivityFragmentView);
-        com.lidroid.xutils.ViewUtils.inject(this);
+        ButterKnife.inject(this);
         initWidget();
         initData();
     }
@@ -44,11 +50,6 @@ public class LoginAndRegActivity extends ActivityFragmentSupport implements OnCh
     @Override
     public void initWidget() {
         initWithContent();
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        loginFragment = (LoginFragment) LoginFragment.newInstance(0);
-        registerFragment = (RegisterFragment) RegisterFragment.newInstance(1);
-        ft.replace(R.id.fragment_content, loginFragment).commit();
     }
 
     private void initWithContent() {
@@ -65,39 +66,49 @@ public class LoginAndRegActivity extends ActivityFragmentSupport implements OnCh
 
     @Override
     public void initData() {
-        mTabs.setOnCheckedChangeListener(this);
+        menuList();
+        try {
+            // 动态加载tab
+            // 动态设置tab item
+            for (int i = 0; i < this.menuLists.size(); i++) {
+                HCMenuEntity menu = this.menuLists.get(i);
+                if (menu.getStatus() == -1) {
+                    @SuppressWarnings("unchecked")
+                    Class<FragmentSupport> clazz = (Class<FragmentSupport>) Class.forName(menu.getClazz());
+                    FragmentSupport fragmentSuper = clazz.newInstance();
+                    fragmentSuper.fragmentId = menu.getmId();
+                    this.fragments.add(fragmentSuper);
+                }
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        this.tabAdapter = new FragmentTabAdapter(this, this.fragments, R.id.fragment_content, this.mTabs);
+        this.tabAdapter.setOnRgsExtraCheckedChangedListener(new FragmentTabAdapter.OnRgsExtraCheckedChangedListener() {
+
+            @Override
+            public void OnRgsExtraCheckedChanged(RadioGroup radioGroup, int checkedId, int index) {
+                System.out.println("Extra---- " + index + " checked!!! ");
+            }
+        });
+    }
+
+    /**
+     * 牵扯到的tab items
+     */
+    public void menuList() {
+        this.menuLists = new ArrayList<HCMenuEntity>();
+        HCMenuEntity mMenuLogin = new HCMenuEntity(1, getResources().getString(R.string.login),
+                R.drawable.selectorgreen_malldetails, LoginFragment.class.getName(), -1);// 登录
+        this.menuLists.add(mMenuLogin);
+        HCMenuEntity mMenuRegister = new HCMenuEntity(2, getResources().getString(R.string.register_finish),
+                R.drawable.selectorgreen_malldetails, RegisterFragment.class.getName(), -1);// 注册
+        this.menuLists.add(mMenuRegister);
     }
 
     public void setLoginFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        loginFragment = (LoginFragment) LoginFragment.newInstance(0);
-        ft.replace(R.id.fragment_content, loginFragment).commit();
-        ((RadioButton) mTabs.getChildAt(0)).setChecked(true);
-    }
-
-    @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-        // mRadioGroup.check(checkedId);
-        // llHeader.check(checkedId);
-        for (int i = 0; i < group.getChildCount(); i++) {
-            RadioButton radioButton = (RadioButton) group.getChildAt(i);
-            if (radioButton.isChecked()) {
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                switch (i) {
-                    case 0:
-                        loginFragment = (LoginFragment) LoginFragment.newInstance(0);
-                        ft.replace(R.id.fragment_content, loginFragment).commit();
-                        break;
-                    case 1:
-                        registerFragment = (RegisterFragment) RegisterFragment.newInstance(1);
-                        ft.replace(R.id.fragment_content, registerFragment).commit();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+        tabAdapter.showTab(0);
+        LoginFragment loginFragment = (LoginFragment) fragments.get(0);
+        loginFragment.getAuthCode();
     }
 }

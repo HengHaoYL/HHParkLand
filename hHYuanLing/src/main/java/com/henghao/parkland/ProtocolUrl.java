@@ -49,9 +49,9 @@ public class ProtocolUrl {
     /**
      * 用户注册
      */
-    public static String APP_REG = "register";
+    public static String APP_REG = "yldsj/register";
     /**
-     * 用户注册
+     * 验证码
      */
     public static String AUTHCODE = "yldsj/authCode";
 

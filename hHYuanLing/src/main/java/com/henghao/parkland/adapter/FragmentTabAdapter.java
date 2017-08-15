@@ -3,6 +3,7 @@ package com.henghao.parkland.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.henghao.parkland.R;
@@ -97,7 +98,8 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener {
      *
      * @param idx
      */
-    private void showTab(int idx) {
+    public void showTab(int idx) {
+        ((RadioButton) rgs.getChildAt(idx)).setChecked(true);
         for (int i = 0; i < fragments.size(); i++) {
             Fragment fragment = fragments.get(i);
             FragmentTransaction ft = obtainFragmentTransaction(idx);

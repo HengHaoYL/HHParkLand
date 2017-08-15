@@ -7,7 +7,7 @@ import okhttp3.Response;
 /**
  * 请求基类 {@link BaseCallback} 的抽象实现
  */
-public abstract class InputStreamCallback extends BaseCallback<byte[]> {
+public abstract class BytesCallback extends BaseCallback<byte[]> {
 
     /**
      * 将响应结果解析为输入流数据

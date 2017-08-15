@@ -216,7 +216,7 @@ public class ProjectMoneyActivity extends ActivityFragmentSupport implements XLi
             }
             params.put("types", type);
             params.put("comment", etComment.getText().toString().trim());
-            call = OkHttpController.doRequest(ProtocolUrl.ROOT_URL + ProtocolUrl.WALLETE_SUBMIT, params, submitCallback);
+            call = OkHttpController.doRequest(ProtocolUrl.ROOT_URL + ProtocolUrl.WALLETE_SUBMIT, params, null, submitCallback);
         }
     }
 

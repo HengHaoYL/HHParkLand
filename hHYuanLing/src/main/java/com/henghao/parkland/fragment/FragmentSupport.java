@@ -26,7 +26,7 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.R;
 import com.henghao.parkland.model.ascyn.BusinessResponse;
 import com.henghao.parkland.views.ActivityFragmentView;
-import com.higdata.okhttphelper.callback.InputStreamCallback;
+import com.higdata.okhttphelper.callback.BytesCallback;
 import com.higdata.okhttphelper.callback.StringCallback;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -209,7 +209,7 @@ public class FragmentSupport extends Fragment implements BusinessResponse {
         }
     }
 
-    public abstract class InputStreamDefaultCallback extends InputStreamCallback {
+    public abstract class BytesDefaultCallback extends BytesCallback {
         @Override
         public void onStart() {
             mActivityFragmentView.viewLoading(View.VISIBLE);

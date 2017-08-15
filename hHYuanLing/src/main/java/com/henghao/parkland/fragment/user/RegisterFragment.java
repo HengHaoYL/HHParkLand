@@ -2,6 +2,8 @@ package com.henghao.parkland.fragment.user;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,22 +25,33 @@ import com.benefit.buy.library.utils.tools.ToolsRegex;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.BuildConfig;
+import com.henghao.parkland.Constant;
+import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.fragment.FragmentSupport;
 import com.henghao.parkland.model.entity.BaseEntity;
 import com.henghao.parkland.utils.FileUtils;
 import com.henghao.parkland.utils.Requester;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
-import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.henghao.parkland.views.FlowRadioGroup;
+import com.higdata.okhttphelper.callback.BytesCallback;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * 我的注册〈一句话功能简述〉 〈功能详细描述〉
@@ -48,54 +63,46 @@ import okhttp3.Call;
  */
 public class RegisterFragment extends FragmentSupport {
 
-    /**
-     * 用户名
-     */
-    @ViewInject(R.id.login_user)
-    private EditText login_user;
-    /**
-     * 手机号
-     */
-    @ViewInject(R.id.login_phone)
-    private EditText login_phone;
-    /**
-     * 联系人姓名
-     */
-    @ViewInject(R.id.login_contact)
-    private EditText login_contact;
-    /**
-     * 身份证号
-     */
-    @ViewInject(R.id.login_IDCard)
-    private EditText login_IDCard;
-    /**
-     * 邮箱
-     */
-    @ViewInject(R.id.login_email)
-    private EditText login_email;
-    /**
-     * 密码
-     */
-    @ViewInject(R.id.login_pass)
-    private EditText login_pass;
-    /**
-     * 确认密码
-     */
-    @ViewInject(R.id.login_passagain)
-    private EditText login_passagain;
-    /**
-     * 确认密码
-     */
-    @ViewInject(R.id.tv_pic)
-    private TextView tv_pic;
+    @InjectView(R.id.et_userName_register)
+    EditText etUserName;
+    @InjectView(R.id.et_tel_register)
+    EditText etTel;
+    @InjectView(R.id.et_name_register)
+    EditText etName;
+    @InjectView(R.id.et_idCard_register)
+    EditText etIdCard;
+    @InjectView(R.id.et_email_register)
+    EditText etEmail;
+    @InjectView(R.id.et_passWord_register)
+    EditText etPassWord;
+    @InjectView(R.id.et_passWord_confirm_register)
+    EditText etPassWordConfirm;
+    @InjectView(R.id.tv_picture_register)
+    TextView tvPicture;
+    @InjectView(R.id.rb_male_register)
+    RadioButton rbMale;
+    @InjectView(R.id.rb_female_register)
+    RadioButton rbFemale;
+    @InjectView(R.id.rg_sex_register)
+    FlowRadioGroup rgSex;
+    @InjectView(R.id.et_companyName_register)
+    EditText etCompanyName;
+    @InjectView(R.id.et_userCode_register)
+    EditText etUserCode;
+    @InjectView(R.id.iv_authCode_register)
+    ImageView ivAuthCode;
 
     private static final int REQUEST_IMAGE = 0x00;
+
+    private int sex;//性别（0：男 1：女）
+    private OkHttpClient okHttpClient;
     private ArrayList<String> mSelectPath;//图片地址
     private List<File> mFileList;//图片文件
-    private Call registerCall;
+    private Call registerCall;//注册请求
+    private Call authCodeCall;//验证码请求
+    private Map<String, String> session;//用户Session请求头
 
     private static final String TAG = "RegisterFragment";
-
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -122,12 +129,12 @@ public class RegisterFragment extends FragmentSupport {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        this.mActivityFragmentView.viewMain(R.layout.activity_reg);
+        this.mActivityFragmentView.viewMain(R.layout.activity_register);
         this.mActivityFragmentView.viewEmpty(R.layout.activity_empty);
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
         mActivityFragmentView.getNavitionBarView().setVisibility(View.GONE);
-        ViewUtils.inject(this, this.mActivityFragmentView);
+        ButterKnife.inject(this, this.mActivityFragmentView);
         initWidget();
         initData();
         return this.mActivityFragmentView;
@@ -138,19 +145,78 @@ public class RegisterFragment extends FragmentSupport {
         mLeftImageView.setImageDrawable(getResources().getDrawable(R.drawable.btn_back));
         mCenterTextView = (TextView) getActivity().findViewById(R.id.bar_center_title);
         mCenterTextView.setText("注册");
-    }
+        //设置性别选择监听器
+        ((RadioButton) rgSex.getChildAt(0)).setChecked(true);
+        rgSex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_male_register://男
+                        sex = 0;
+                        break;
+                    case R.id.rb_female_register://女
+                        sex = 1;
+                        break;
+                }
+            }
+        });
+        //请求网络，获取验证码，并保存SessionID
+        okHttpClient = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(Requester.getRequestURL(ProtocolUrl.AUTHCODE))
+                .build();
+        authCodeCall = okHttpClient.newCall(request);  //请求服务器获取验证码
+        authCodeCall.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                mActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (BuildConfig.DEBUG) Log.e(TAG, "onFailure:" + e);
+                        e.printStackTrace();
+                        Toast.makeText(mActivity, "网络访问错误！", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
 
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String header = response.header("Set-Cookie");
+                if (header != null) {
+                    String cookieStr = header.split(";")[0];
+                    mActivity.getLoginUserSharedPre().edit()
+                            .putString(Constant.USERSESSION, cookieStr)//保存用户Session
+                            .apply();
+                    session = new HashMap<>();
+                    session.put(Constant.USERSESSION, cookieStr);
+                }
+                final Bitmap bitmap = BitmapFactory.decodeStream(response.body().byteStream());
+                mActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ivAuthCode.setImageBitmap(bitmap);
+                    }
+                });
+            }
+        });
+    }
 
     public void initWidget() {
         mFileList = new ArrayList<>();
     }
 
-
-    @OnClick({R.id.tv_pic, R.id.btn_layout})
-    public void viewOnClick(View v) {
+    @OnClick({R.id.tv_picture_register, R.id.iv_authCode_register, R.id.btn_layout})
+    public void onViewClicked(View v) {
         switch (v.getId()) {
-            case R.id.tv_pic:
+            case R.id.tv_picture_register:
                 addPic();
+                break;
+            case R.id.iv_authCode_register:
+                if (session != null) {
+                    session.clear();
+                    session.put(Constant.USERSESSION, mActivity.getUserSession());
+                }
+                authCodeCall = Requester.authCode(session, authCodeCallBack);//请求服务器更换验证码
                 break;
             case R.id.btn_layout:
                 //注册
@@ -163,17 +229,39 @@ public class RegisterFragment extends FragmentSupport {
     }
 
     private void request() {
-        String userName = login_user.getText().toString().trim();//用户名
-        String phone = login_phone.getText().toString().trim();//手机号
-        final String contact = login_contact.getText().toString().trim();//姓名
-        String IDCard = login_IDCard.getText().toString().trim();//身份证
-        String email = login_email.getText().toString().trim();//邮箱
-        String pwd = login_pass.getText().toString().trim();//密码
-
+        String userName = etUserName.getText().toString().trim();//用户名
+        String passWord = etPassWord.getText().toString().trim();//密码
+        String name = etName.getText().toString().trim();//姓名
+        String tel = etTel.getText().toString().trim();//手机号
+        String email = etEmail.getText().toString().trim();//邮箱
+        String idCard = etIdCard.getText().toString().trim();//身份证号
+        String companyName = etCompanyName.getText().toString().trim();//企业名称
+        if (ToolsKit.isEmpty(companyName)) {
+            companyName = "无权限";
+        }
+        String userCode = etUserCode.getText().toString().trim();//验证码
+        if (session != null) {
+            session.clear();
+            session.put(Constant.USERSESSION, mActivity.getUserSession());
+        }
         //提交请求
-        registerCall = Requester.register(userName, pwd, phone, contact, IDCard, email, mFileList, registerCallback);
+        registerCall = Requester.register(userName, passWord, name, tel, email, sex, idCard, companyName, mFileList, userCode, session, registerCallback);
     }
 
+    private BytesCallback authCodeCallBack = new BytesDefaultCallback() {//验证码回调
+        @Override
+        public void onFailure(Exception e, int code) {
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: ", e);
+            Toast.makeText(mActivity, "网络访问错误！", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(byte[] response) {
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ========================验证码");
+            Bitmap bitmap = BitmapFactory.decodeByteArray(response, 0, response.length);
+            ivAuthCode.setImageBitmap(bitmap);
+        }
+    };
     //请求回调
     private DefaultCallback registerCallback = new DefaultCallback() {
         @Override
@@ -190,11 +278,14 @@ public class RegisterFragment extends FragmentSupport {
             try {
                 Type type = new TypeToken<BaseEntity>() {
                 }.getType();
-                final BaseEntity mEntity = ToolsJson.parseObjecta(content, type);
-                final int status = mEntity.getStatus();
-                mActivity.msg(mEntity.getMsg());
-                //注册成功
-                if (status == 0) {
+                BaseEntity mEntity = ToolsJson.parseObjecta(content, type);
+                int errorCode = mEntity.getErrorCode();
+                if (errorCode > 0) {
+                    mActivity.msg(mEntity.getMsg());
+                    return;
+                } else if (errorCode == 0) {
+                    mActivity.msg(mEntity.getMsg());
+                    //注册成功
                     clearData();
                     LoginAndRegActivity loginAndRegActivity = (LoginAndRegActivity) getActivity();
                     loginAndRegActivity.setLoginFragment();
@@ -208,56 +299,60 @@ public class RegisterFragment extends FragmentSupport {
     };
 
     private boolean checkData() {
-        if (ToolsKit.isEmpty(login_user.getText().toString().trim())) {
+        if (ToolsKit.isEmpty(etUserName.getText().toString().trim())) {
             mActivity.msg("用户名不能为空");
-            login_user.requestFocus();
+            etUserName.requestFocus();
             return false;
-        } else if (ToolsKit.isEmpty(login_phone.getText().toString().trim())) {
-            mActivity.msg("手机号码不能为空");
-            login_phone.requestFocus();
-            return false;
-        } else if (!ToolsRegex.isMobileNumber(login_phone.getText().toString().trim())) {
-            mActivity.msg("手机号码格式不正确");
-            login_phone.requestFocus();
-            return false;
-        } else if (ToolsKit.isEmpty(login_contact.getText().toString().trim())) {
-            mActivity.msg("姓名不能为空");
-            login_contact.requestFocus();
-            return false;
-        } else if (ToolsKit.isEmpty(login_IDCard.getText().toString().trim())) {
-            mActivity.msg("身份证号不能为空");
-            login_IDCard.requestFocus();
-            return false;
-        } else if (!ToolsRegex.isIDCode(login_IDCard.getText().toString().trim())) {
-            mActivity.msg("身份证号码格式不正确");
-            login_IDCard.requestFocus();
-            return false;
-        } else if (ToolsKit.isEmpty(login_email.getText().toString().trim())) {
-            mActivity.msg("邮箱不能为空");
-            login_email.requestFocus();
-            return false;
-        } else if (!ToolsRegex.isEmail(login_email.getText().toString().trim())) {
-            mActivity.msg("邮箱格式不正确");
-            login_email.requestFocus();
-            return false;
-        } else if (ToolsKit.isEmpty(login_pass.getText().toString().trim())) {
+        } else if (ToolsKit.isEmpty(etPassWord.getText().toString().trim())) {
             mActivity.msg("密码不能为空");
-            login_pass.requestFocus();
+            etPassWord.requestFocus();
             return false;
-        } else if (ToolsKit.isEmpty(login_passagain.getText().toString().trim())) {
-            mActivity.msg("密码确认不能为空");
-            login_passagain.requestFocus();
+        } else if (ToolsKit.isEmpty(etPassWordConfirm.getText().toString().trim())) {
+            mActivity.msg("确认密码不能为空");
+            etPassWordConfirm.requestFocus();
             return false;
-        } else if (!login_passagain.getText().toString().trim().equals(login_pass.getText().toString().trim())) {
+        } else if (!etPassWord.getText().toString().trim().equals(etPassWordConfirm.getText().toString().trim())) {
             mActivity.msg("两次输入密码不相同");
-            login_pass.requestFocus();
+            etPassWord.requestFocus();
             return false;
-        } else if (login_pass.getText().toString().trim().length() < 6 || login_pass.getText().toString().trim().length() > 16) {
+        } else if (etPassWord.getText().toString().trim().length() < 6 || etPassWord.getText().toString().trim().length() > 16) {
             mActivity.msg("密码格式不正确，最短不能低于6位，最长不能高于16位");
-            login_pass.requestFocus();
+            etPassWord.requestFocus();
             return false;
-        } else if (ToolsKit.isEmpty(tv_pic.getText().toString().trim())) {
+        } else if (ToolsKit.isEmpty(etName.getText().toString().trim())) {
+            mActivity.msg("姓名不能为空");
+            etName.requestFocus();
+            return false;
+        } else if (ToolsKit.isEmpty(etTel.getText().toString().trim())) {
+            mActivity.msg("手机号码不能为空");
+            etTel.requestFocus();
+            return false;
+        } else if (!ToolsRegex.isMobileNumber(etTel.getText().toString().trim())) {
+            mActivity.msg("手机号码格式不正确");
+            etTel.requestFocus();
+            return false;
+        } else if (ToolsKit.isEmpty(etEmail.getText().toString().trim())) {
+            mActivity.msg("邮箱不能为空");
+            etEmail.requestFocus();
+            return false;
+        } else if (!ToolsRegex.isEmail(etEmail.getText().toString().trim())) {
+            mActivity.msg("邮箱格式不正确");
+            etEmail.requestFocus();
+            return false;
+        } else if (ToolsKit.isEmpty(etIdCard.getText().toString().trim())) {
+            mActivity.msg("身份证号不能为空");
+            etIdCard.requestFocus();
+            return false;
+        } else if (!ToolsRegex.isIDCode(etIdCard.getText().toString().trim())) {
+            mActivity.msg("身份证号码格式不正确");
+            etIdCard.requestFocus();
+            return false;
+        } else if (ToolsKit.isEmpty(tvPicture.getText().toString().trim())) {
             mActivity.msg("请上传身份证照片");
+            return false;
+        } else if (ToolsKit.isEmpty(etUserCode.getText().toString().trim())) {
+            mActivity.msg("请输入验证码");
+            etUserCode.requestFocus();
             return false;
         }
         return true;
@@ -267,10 +362,19 @@ public class RegisterFragment extends FragmentSupport {
      * 清空数据
      */
     private void clearData() {
-        login_user.setText("");
-        login_phone.setText("");
-        login_pass.setText("");
-        login_passagain.setText("");
+        etUserName.setText("");
+        etPassWord.setText("");
+        etPassWordConfirm.setText("");
+        etName.setText("");
+        etTel.setText("");
+        etEmail.setText("");
+        etIdCard.setText("");
+        etCompanyName.setText("");
+        etUserCode.setText("");
+        mSelectPath = null;
+        mFileList.clear();
+        tvPicture.setText("");
+        tvPicture.setHint("请上传身份证正反照");
     }
 
     /**
@@ -280,7 +384,7 @@ public class RegisterFragment extends FragmentSupport {
         // 查看session是否过期
 //        int selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
         int selectedMode = MultiImageSelectorActivity.MODE_MULTI;
-        int maxNum = 9;
+        int maxNum = 2;
         Intent picIntent = new Intent(getContext(), MultiImageSelectorActivity.class);
         // 是否显示拍摄图片
         picIntent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
@@ -310,13 +414,24 @@ public class RegisterFragment extends FragmentSupport {
                             mFileList.add(file);
                         }
                         Log.i("mFileList", String.valueOf(mFileList.size()));
-                        tv_pic.setText("已选择");
+                        tvPicture.setText("已选择");
                     } else {//如果未选择图片，则清空数据
-                        tv_pic.setText("");
-                        tv_pic.setHint("请上传身份证正反照");
+                        tvPicture.setText("");
+                        tvPicture.setHint("请上传身份证正反照");
                     }
                 }
             }
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (session != null) {
+            session.clear();
+            session.put(Constant.USERSESSION, mActivity.getUserSession());
+            //刷新验证码，以防失效
+            authCodeCall = Requester.authCode(session, authCodeCallBack);//请求服务器更换验证码
         }
     }
 
@@ -326,5 +441,9 @@ public class RegisterFragment extends FragmentSupport {
         if (registerCall != null && !registerCall.isCanceled()) {
             registerCall.cancel();
         }
+        if (authCodeCall != null && !authCodeCall.isCanceled()) {
+            authCodeCall.cancel();
+        }
+        ButterKnife.reset(this);
     }
 }

@@ -41,8 +41,8 @@ import android.widget.TextView;
 
 import com.benefit.buy.library.http.query.callback.AjaxStatus;
 import com.benefit.buy.library.utils.tools.ToolsFile;
+import com.benefit.buy.library.utils.tools.ToolsJson;
 import com.benefit.buy.library.views.dialog.FlippingLoadingDialog;
-import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.model.ascyn.BusinessResponse;
@@ -518,16 +518,20 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
         String jsonStr = this.mSharedPreferences.getString(Constant.USER, null);
         if (jsonStr != null) {
             try {
-                Gson gson = new Gson();
                 Type type = new TypeToken<UserLoginEntity>() {
                 }.getType();
-                UserLoginEntity entity = gson.fromJson(jsonStr, type);
+                UserLoginEntity entity = ToolsJson.parseObjecta(jsonStr, type);
                 return entity;
             } catch (JsonSyntaxException e) {
                 e.printStackTrace();
             }
         }
         return null;
+    }
+
+    @Override
+    public String getUserSession() {
+        return this.mSharedPreferences.getString(Constant.USERSESSION, null);
     }
 
     @Override

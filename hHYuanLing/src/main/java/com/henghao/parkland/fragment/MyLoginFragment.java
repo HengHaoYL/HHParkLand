@@ -206,12 +206,14 @@ public class MyLoginFragment extends FragmentSupport {
         public void onClick(DialogInterface dialog, int which) {
             SharedPreferences.Editor editor = mActivity.getLoginUserSharedPre().edit();
             // 退出清空用户信息
-            editor.remove(Constant.USERNAME).remove(Constant.USERID)
-                    .remove(Constant.USERIMG).remove(Constant.USERPHONE);
-            editor.putString(Constant.USERID, null);
+            editor.remove(Constant.USER)
+                    .remove(Constant.USERNAME)
+                    .remove(Constant.USERID)
+                    .remove(Constant.USERPHONE);
+            editor.putString(Constant.USER, null);
             editor.putString(Constant.USERNAME, null);
+            editor.putString(Constant.USERID, null);
             editor.putString(Constant.USERPHONE, null);
-            editor.putString(Constant.USERIMG, null);
             editor.commit();
             dialog.dismiss();
 
