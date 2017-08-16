@@ -35,6 +35,7 @@
     <!-- <color name="text_color_c">#00c0c0</color> -->
     <color name="text_color_c">#a0a0a0</color>
     <color name="text_color_d">#c0c0c0</color>
+    <color name="text_color_e">#303030</color>
     <color name="text_color_green">#26bd9f</color>
     <color name="line">#e5e5e5</color>
     <color name="hc_hint_color">#4e4e4e</color>

@@ -150,12 +150,22 @@
             android:theme="@style/Activity.Theme" />
         <!-- 签到页面 -->
         <activity
-            android:name=".activity.QiandaoActivity"
+            android:name=".activity.user.QiandaoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
         <!-- 签到提交页面 -->
         <activity
-            android:name=".activity.QiandaoSubmitActivity"
+            android:name=".activity.user.QiandaoSubmitActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme" />
+        <!-- 签到情况页面 -->
+        <activity
+            android:name=".activity.user.QiandaoInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme" />
+        <!-- 签到详情页面 -->
+        <activity
+            android:name=".activity.user.QiandaoDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme" />
         <!-- 测试View -->

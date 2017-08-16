@@ -197,6 +197,9 @@ public class FragmentSupport extends Fragment implements BusinessResponse {
         return this.object;
     }
 
+    /**
+     * 实现了加载提示的默认回调
+     */
     public abstract class DefaultCallback extends StringCallback {
         @Override
         public void onStart() {
@@ -209,6 +212,9 @@ public class FragmentSupport extends Fragment implements BusinessResponse {
         }
     }
 
+    /**
+     * 实现了加载提示的默认回调
+     */
     public abstract class BytesDefaultCallback extends BytesCallback {
         @Override
         public void onStart() {

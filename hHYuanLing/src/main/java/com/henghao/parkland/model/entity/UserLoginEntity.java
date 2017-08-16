@@ -6,46 +6,58 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Created by ASUS on 2017/8/13.
+ * 用户信息实体
+ * uid :        用户编号
+ * name :       姓名
+ * userName :   用户名
+ * tel :        联系方式
+ * email :      邮箱
+ * sex :        性别（0：男 1：女）
+ * date :       注册时间
+ * idCard :     身份证号
+ * picture :    身份证图片
+ * deptId :     部门编号
+ */
 public class UserLoginEntity implements Serializable {
-    /**
-     * uid : 用户编号
-     * name : 姓名
-     * userName : 用户名
-     * tel : 联系方式
-     * email : e邮箱
-     * sex : 性别（0：男 1：女）
-     * date : 注册时间
-     * idCard : 身份证号
-     * picture : 身份证图片
-     * deptId : 部门编号
-     */
+    // 用户编号
     @Expose
     @SerializedName("uid")
     private String uid;
+    // 姓名
     @Expose
     @SerializedName("name")
     private String name;
+    // 用户名
     @Expose
     @SerializedName("userName")
     private String userName;
+    // 联系方式
     @Expose
     @SerializedName("tel")
     private String tel;
+    // 邮箱
     @Expose
     @SerializedName("email")
     private String email;
+    // 性别（0：男 1：女）
     @Expose
     @SerializedName("sex")
     private int sex;
+    // 注册时间
     @Expose
     @SerializedName("date")
     private String date;
+    // 身份证号
     @Expose
     @SerializedName("idCard")
     private String idCard;
+    // 部门编号
     @Expose
     @SerializedName("deptId")
     private String deptId;
+    // 身份证图片
     @Expose
     @SerializedName("picture")
     private List<String> picture;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dl_content_bg"
@@ -42,7 +42,7 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="@string/login_user"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <EditText
@@ -79,7 +79,7 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="@string/login_pass_hint"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <EditText
@@ -117,7 +117,7 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="@string/register_confirm_pass"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <EditText
@@ -155,7 +155,7 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="@string/login_contact"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <EditText
@@ -192,7 +192,7 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="@string/login_phone"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <EditText
@@ -230,7 +230,7 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="@string/login_email"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <EditText
@@ -266,7 +266,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/register_sex"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <com.henghao.parkland.views.FlowRadioGroup
@@ -309,7 +309,7 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="@string/login_IDCard"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <EditText
@@ -348,7 +348,7 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="@string/register_company_name"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <EditText
@@ -385,7 +385,7 @@
                 android:layout_marginLeft="@dimen/padding_normal"
                 android:layout_weight="1"
                 android:text="@string/register_confirm_pic"
-                android:textColor="#303030"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/info_name_size" />
 
             <TextView
@@ -467,6 +467,6 @@
             android:paddingTop="@dimen/padding_big"
             android:text="@string/register_finish"
             android:textColor="@color/white"
-            android:textSize="@dimen/gj_d" />
+            android:textSize="@dimen/info_enterprise_size" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

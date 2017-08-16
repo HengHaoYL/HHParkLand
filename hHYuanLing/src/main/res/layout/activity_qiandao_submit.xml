@@ -28,7 +28,8 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/padding_big"
                 android:text="签到时间"
-                android:textSize="@dimen/gj_d" />
+                android:textColor="@color/text_color_e"
+                android:textSize="@dimen/info_enterprise_size" />
 
             <TextView
                 android:id="@+id/tv_time_qiandaosubmit"
@@ -37,8 +38,8 @@
                 android:background="@null"
                 android:padding="@dimen/padding_big"
                 android:text="14:00"
-                android:textColor="@color/text_color_c"
-                android:textSize="@dimen/gj_d" />
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/info_enterprise_size" />
 
         </LinearLayout>
 
@@ -58,6 +59,7 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/padding_big"
                 android:text="当前企业"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/gj_d" />
 
             <TextView
@@ -67,7 +69,7 @@
                 android:background="@null"
                 android:padding="@dimen/padding_big"
                 android:text="贵州恒昊软件科技有限公司"
-                android:textColor="@color/text_color_c"
+                android:textColor="@color/text_color"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -88,6 +90,7 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/padding_big"
                 android:text="签到地址"
+                android:textColor="@color/text_color_e"
                 android:textSize="@dimen/gj_d" />
 
             <TextView
@@ -97,7 +100,7 @@
                 android:background="@null"
                 android:padding="@dimen/padding_big"
                 android:text="当前地址"
-                android:textColor="@color/text_color_c"
+                android:textColor="@color/text_color"
                 android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
@@ -109,7 +112,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_layouttwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
@@ -117,7 +119,7 @@
         android:padding="10dp">
 
         <EditText
-            android:id="@+id/et_note_qiandao"
+            android:id="@+id/et_comments_qiandaosubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_comment"
@@ -125,8 +127,9 @@
             android:hint="备注"
             android:minHeight="140dp"
             android:padding="@dimen/padding_normal"
-            android:textColorHint="@color/text_color_c"
-            android:textSize="16sp" />
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/info_name_size" />
 
         <ImageView
             android:id="@+id/img_camera_qiandaosubmit"
@@ -139,7 +142,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/btn_submit_qiandaosubmit"
+        android:id="@+id/tv_submit_qiandaosubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/padding_big"
@@ -148,6 +151,6 @@
         android:padding="@dimen/padding_big"
         android:text="签到"
         android:textColor="@color/white"
-        android:textSize="@dimen/gj_d" />
+        android:textSize="@dimen/info_enterprise_size" />
 
 </LinearLayout>

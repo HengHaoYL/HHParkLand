@@ -476,8 +476,8 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
     };
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         if (seedlingCall != null && !seedlingCall.isCanceled()) {
             seedlingCall.cancel();
         }

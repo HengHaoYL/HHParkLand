@@ -20,7 +20,7 @@ import com.henghao.parkland.BuildConfig;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.DebugSettingActivity;
-import com.henghao.parkland.activity.QiandaoActivity;
+import com.henghao.parkland.activity.user.QiandaoActivity;
 import com.henghao.parkland.activity.projectmanage.ProjectInfoActivity;
 import com.henghao.parkland.activity.user.CompactManageActivity;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;

@@ -162,10 +162,8 @@ public class LoginFragment extends FragmentSupport {
                 }
                 break;
             case R.id.iv_authCode_login:
-                if (session != null) {
-                    session.clear();
-                    session.put(Constant.USERSESSION, mActivity.getUserSession());
-                }
+                session = new HashMap<>();
+                session.put(Constant.USERSESSION, mActivity.getUserSession());
                 authCodeCall = Requester.authCode(session, authCodeCallBack);//请求服务器更换验证码
                 break;
             case R.id.login_reset_password:
@@ -174,10 +172,8 @@ public class LoginFragment extends FragmentSupport {
             case R.id.tv_login:
                 //登录
                 if (checkData()) {
-                    if (session != null) {
-                        session.clear();
-                        session.put(Constant.USERSESSION, mActivity.getUserSession());
-                    }
+                    session = new HashMap<>();
+                    session.put(Constant.USERSESSION, mActivity.getUserSession());
                     loginCall = Requester.login(etUserName.getText().toString().trim(), etPassword.getText().toString().trim(), etUserCode.getText().toString().trim(), session, loginCallback);
                 }
                 break;
@@ -206,7 +202,8 @@ public class LoginFragment extends FragmentSupport {
     private BytesCallback authCodeCallBack = new BytesDefaultCallback() {//验证码回调
         @Override
         public void onFailure(Exception e, int code) {
-            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: ", e);
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
+            e.printStackTrace();
             Toast.makeText(mActivity, "网络访问错误！", Toast.LENGTH_SHORT).show();
         }
 
@@ -221,7 +218,8 @@ public class LoginFragment extends FragmentSupport {
     private DefaultCallback loginCallback = new DefaultCallback() {//登录回调
         @Override
         public void onFailure(Exception e, int code) {
-            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure", e);
+            if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);
+            e.printStackTrace();
             Toast.makeText(mActivity, "网络访问错误！", Toast.LENGTH_SHORT).show();
         }
 
@@ -262,12 +260,10 @@ public class LoginFragment extends FragmentSupport {
     @Override
     public void onResume() {
         super.onResume();
-        if (session != null) {
-            session.clear();
-            session.put(Constant.USERSESSION, mActivity.getUserSession());
-            //刷新验证码，以防失效
-            authCodeCall = Requester.authCode(session, authCodeCallBack);//请求服务器更换验证码
-        }
+        session = new HashMap<>();
+        session.put(Constant.USERSESSION, mActivity.getUserSession());
+        //刷新验证码，以防失效
+        authCodeCall = Requester.authCode(session, authCodeCallBack);//请求服务器更换验证码
     }
 
     @Override

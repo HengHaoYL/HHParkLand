@@ -96,6 +96,52 @@ public class Requester {
     /************************ 用户登录相关end **************************/
 
     /************************
+     * 签到相关
+     **************************/
+    /**
+     * 查询当天签到次数
+     *
+     * @param uid      uid
+     * @param callback 回调
+     * @return {@link Call}
+     */
+    public static Call qiandaoQuery(String uid, BaseCallback callback) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("uid", uid);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_NUMBEROFQIANDAO), params, null, callback);
+    }
+
+    /**
+     * 查询所有签到情况
+     *
+     * @param page     页数
+     * @param uid      用户ID
+     * @param deptId   部门编号
+     * @param callback 回调
+     * @return {@link Call}
+     */
+    public static Call findSignIn(int page, String uid, String deptId, BaseCallback callback) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("page", page);
+        params.put("uid", uid);
+        params.put("deptId", deptId);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.FIND_SIGNIN), params, null, callback);
+    }
+
+    public static Call signIn(String address, String comments, String compId, String uid, double latitude, double longitude, String company, BaseCallback callback) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("address", address);
+        params.put("comments", comments);
+        params.put("compId", compId);
+        params.put("uid", uid);
+        params.put("latitude", latitude);
+        params.put("longitude", longitude);
+        params.put("company", company);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.SIGNIN), params, null, callback);
+    }
+    /************************ 签到相关end **************************/
+
+    /************************
      * 工作台展示
      **************************/
     /**
@@ -208,19 +254,6 @@ public class Requester {
         params.put("yhStatussite", yhStatussite);
         params.put("uid", uid);
         return OkHttpController.doRequest(getRequestURL(ProtocolUrl.SAVESTATUSMSG), params, null, callback);
-    }
-
-    /**
-     * 查询当天签到次数
-     *
-     * @param uid      uid
-     * @param callback 回调
-     * @return {@link Call}
-     */
-    public static Call qiandaoQuery(String uid, BaseCallback callback) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("uid", uid);
-        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_NUMBEROFQIANDAO), params, null, callback);
     }
 
     /**

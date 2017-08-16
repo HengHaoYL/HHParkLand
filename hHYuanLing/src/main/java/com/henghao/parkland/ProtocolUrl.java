@@ -78,20 +78,25 @@ public class ProtocolUrl {
     public static final String APP_SYS_UPDATE = SYSTEM + "appUserUpdate";
     /************************ app系统 end **************************/
     /************************
-     * 签到
+     * 签到相关
      **************************/
 
     /**
      * 签到
      */
-    public static final String APP_QIANDAO = "report";
+    public static final String SIGNIN = "yldsj/signIn";
 
     /**
      * 查询签到次数
      */
     public static final String APP_NUMBEROFQIANDAO = "/report/message";
 
-    /************************ 签到 end **************************/
+    /**
+     * 查询签到情况
+     */
+    public static final String FIND_SIGNIN = "yldsj/find/signIn";
+
+    /************************ 签到相关 end **************************/
     /************************
      * 养护管理
      **************************/

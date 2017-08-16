@@ -39,30 +39,6 @@ public class QianDaoProtocol extends BaseModel {
     }
 
     /**
-     * 登陆
-     *
-     * @param site     地址
-     * @param comments 备注
-     * @see [类、类#方法、类#成员]
-     * @since [产品/模块版本]
-     */
-    public void qiandao(String uid, String site, double latitude, double longitude, String comments) {
-        try {
-            String url = ProtocolUrl.APP_QIANDAO;
-            Map<String, Object> params = new HashMap<String, Object>();
-            params.put("uid", uid);
-            params.put("site", site);
-            params.put("comments", comments);
-            params.put("latitude", latitude);
-            params.put("longitude", longitude);
-            this.mBeeCallback.url(url).type(String.class).params(params);
-            this.aq.ajax(this.mBeeCallback);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * 查询签到次数
      *
      * @param uid
@@ -100,10 +76,6 @@ public class QianDaoProtocol extends BaseModel {
                     return;
                 }
                 /**** end ****/
-                if (url.endsWith(ProtocolUrl.APP_QIANDAO)) {
-                    // 签到
-                    QianDaoProtocol.this.OnMessageResponse(url, mBaseEntity, status);
-                }
                 if (url.endsWith(ProtocolUrl.APP_NUMBEROFQIANDAO)) {
                     // 签到
                     QianDaoProtocol.this.OnMessageResponse(url, mBaseEntity, status);

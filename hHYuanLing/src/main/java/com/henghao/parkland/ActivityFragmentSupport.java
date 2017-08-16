@@ -49,6 +49,7 @@ import com.henghao.parkland.model.ascyn.BusinessResponse;
 import com.henghao.parkland.model.entity.UserLoginEntity;
 import com.henghao.parkland.service.ReConnectService;
 import com.henghao.parkland.views.ActivityFragmentView;
+import com.higdata.okhttphelper.callback.BytesCallback;
 import com.higdata.okhttphelper.callback.StringCallback;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -700,6 +701,21 @@ public class ActivityFragmentSupport extends FragmentActivity implements IActivi
      * 实现了加载提示的默认回调
      */
     public abstract class DefaultCallback extends StringCallback {
+        @Override
+        public void onStart() {
+            mActivityFragmentView.viewLoading(View.VISIBLE);
+        }
+
+        @Override
+        public void onFinish() {
+            mActivityFragmentView.viewLoading(View.GONE);
+        }
+    }
+
+    /**
+     * 实现了加载提示的默认回调
+     */
+    public abstract class BytesDefaultCallback extends BytesCallback {
         @Override
         public void onStart() {
             mActivityFragmentView.viewLoading(View.VISIBLE);
