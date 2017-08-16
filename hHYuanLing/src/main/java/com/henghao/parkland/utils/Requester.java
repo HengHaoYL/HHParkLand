@@ -38,12 +38,11 @@ public class Requester {
     /**
      * 获取验证码
      *
-     * @param headers  请求头
      * @param callback 回调
      * @return
      */
-    public static Call authCode(Map<String, String> headers, BaseCallback callback) {
-        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.AUTHCODE), headers, callback);
+    public static Call authCode(BaseCallback callback) {
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.AUTHCODE), null, callback);
     }
 
     /**
@@ -62,7 +61,7 @@ public class Requester {
      * @param callback    回调
      * @return {@link Call}
      */
-    public static Call register(String userName, String passWord, String name, String tel, String email, int sex, String idCard, String companyName, List<File> files, String userCode, Map<String, String> headers, BaseCallback callback) {
+    public static Call register(String userName, String passWord, String name, String tel, String email, int sex, String idCard, String companyName, List<File> files, String userCode, BaseCallback callback) {
         Map<String, Object> params = new HashMap<>();
         params.put("userName", userName);
         params.put("passWord", passWord);
@@ -73,7 +72,7 @@ public class Requester {
         params.put("idCard", idCard);
         params.put("companyName", companyName);
         params.put("userCode", userCode);
-        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_REG), params, files, headers, callback);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_REG), params, files, null, callback);
     }
 
     /**
@@ -82,16 +81,15 @@ public class Requester {
      * @param userName 用户名
      * @param passWord 密码
      * @param userCode 验证码
-     * @param headers  请求头
      * @param callback 回调
      * @return {@link Call}
      */
-    public static Call login(String userName, String passWord, String userCode, Map<String, String> headers, BaseCallback callback) {
+    public static Call login(String userName, String passWord, String userCode, BaseCallback callback) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("userName", userName);
         params.put("passWord", passWord);
         params.put("userCode", userCode);
-        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_LOGIN), params, headers, callback);
+        return OkHttpController.doRequest(getRequestURL(ProtocolUrl.APP_LOGIN), params, null, callback);
     }
     /************************ 用户登录相关end **************************/
 

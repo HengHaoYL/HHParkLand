@@ -108,7 +108,5 @@ public class LoginAndRegActivity extends ActivityFragmentSupport {
 
     public void setLoginFragment() {
         tabAdapter.showTab(0);
-        LoginFragment loginFragment = (LoginFragment) fragments.get(0);
-        loginFragment.getAuthCode();
     }
 }

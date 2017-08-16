@@ -25,8 +25,6 @@ import com.benefit.buy.library.utils.tools.ToolsRegex;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.henghao.parkland.BuildConfig;
-import com.henghao.parkland.Constant;
-import com.henghao.parkland.ProtocolUrl;
 import com.henghao.parkland.R;
 import com.henghao.parkland.activity.user.LoginAndRegActivity;
 import com.henghao.parkland.fragment.FragmentSupport;
@@ -37,21 +35,14 @@ import com.henghao.parkland.views.FlowRadioGroup;
 import com.higdata.okhttphelper.callback.BytesCallback;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 /**
  * 我的注册〈一句话功能简述〉 〈功能详细描述〉
@@ -95,12 +86,10 @@ public class RegisterFragment extends FragmentSupport {
     private static final int REQUEST_IMAGE = 0x00;
 
     private int sex;//性别（0：男 1：女）
-    private OkHttpClient okHttpClient;
     private ArrayList<String> mSelectPath;//图片地址
     private List<File> mFileList;//图片文件
     private Call registerCall;//注册请求
     private Call authCodeCall;//验证码请求
-    private Map<String, String> session;//用户Session请求头
 
     private static final String TAG = "RegisterFragment";
     private Handler handler = new Handler() {
@@ -160,45 +149,8 @@ public class RegisterFragment extends FragmentSupport {
                 }
             }
         });
-        //请求网络，获取验证码，并保存SessionID
-        okHttpClient = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(Requester.getRequestURL(ProtocolUrl.AUTHCODE))
-                .build();
-        authCodeCall = okHttpClient.newCall(request);  //请求服务器获取验证码
-        authCodeCall.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, final IOException e) {
-                mActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (BuildConfig.DEBUG) Log.e(TAG, "onFailure:" + e);
-                        e.printStackTrace();
-                        Toast.makeText(mActivity, "网络访问错误！", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String header = response.header("Set-Cookie");
-                if (header != null) {
-                    String cookieStr = header.split(";")[0];
-                    mActivity.getLoginUserSharedPre().edit()
-                            .putString(Constant.USERSESSION, cookieStr)//保存用户Session
-                            .apply();
-                    session = new HashMap<>();
-                    session.put(Constant.USERSESSION, cookieStr);
-                }
-                final Bitmap bitmap = BitmapFactory.decodeStream(response.body().byteStream());
-                mActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ivAuthCode.setImageBitmap(bitmap);
-                    }
-                });
-            }
-        });
+        //请求网络，获取验证码
+        authCodeCall = Requester.authCode(authCodeCallBack);
     }
 
     public void initWidget() {
@@ -212,11 +164,7 @@ public class RegisterFragment extends FragmentSupport {
                 addPic();
                 break;
             case R.id.iv_authCode_register:
-                if (session != null) {
-                    session.clear();
-                    session.put(Constant.USERSESSION, mActivity.getUserSession());
-                }
-                authCodeCall = Requester.authCode(session, authCodeCallBack);//请求服务器更换验证码
+                authCodeCall = Requester.authCode(authCodeCallBack);//请求服务器更换验证码
                 break;
             case R.id.btn_layout:
                 //注册
@@ -240,12 +188,8 @@ public class RegisterFragment extends FragmentSupport {
             companyName = "无权限";
         }
         String userCode = etUserCode.getText().toString().trim();//验证码
-        if (session != null) {
-            session.clear();
-            session.put(Constant.USERSESSION, mActivity.getUserSession());
-        }
         //提交请求
-        registerCall = Requester.register(userName, passWord, name, tel, email, sex, idCard, companyName, mFileList, userCode, session, registerCallback);
+        registerCall = Requester.register(userName, passWord, name, tel, email, sex, idCard, companyName, mFileList, userCode, registerCallback);
     }
 
     private BytesCallback authCodeCallBack = new BytesDefaultCallback() {//验证码回调
@@ -427,12 +371,8 @@ public class RegisterFragment extends FragmentSupport {
     @Override
     public void onResume() {
         super.onResume();
-        if (session != null) {
-            session.clear();
-            session.put(Constant.USERSESSION, mActivity.getUserSession());
-            //刷新验证码，以防失效
-            authCodeCall = Requester.authCode(session, authCodeCallBack);//请求服务器更换验证码
-        }
+        //刷新验证码，以防失效
+        authCodeCall = Requester.authCode(authCodeCallBack);//请求服务器更换验证码
     }
 
     @Override
