@@ -49,12 +49,20 @@ public class XiangmuFragment extends FragmentSupport {
 
     @ViewInject(R.id.gridview)
     private GridView gridview;
+
     private ProjectSecondAdapter mMyAdapter;
     private ProjectFirstAdapter mProAdapter;
+
     public static ProjectInfoEntity mInfoEntity;//通用的项目信息
+    public static int index;//项目名称索引
+
     private List<ProjectInfoEntity> mList;//项目信息集合
     private String[] projectNames;//项目名称列表
-    public static int index;//项目名称索引
+
+    private List<ProjectInfoEntity> projectInfoEntities;//项目信息数据
+    private List<ProjectInfoEntity> initProjectInfoEntities;//初始加载项目信息数据
+    private int page = 0;//默认查询页数为0
+    private Call findXmxxCall;//查询项目信息请求
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
