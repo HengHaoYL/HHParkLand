@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/padding_normal"
         android:textColor="@color/white"
-        android:textSize="@dimen/info_enterprise_size"
+        android:textSize="@dimen/gj_d"
         android:textStyle="bold" />
 
 </merge>

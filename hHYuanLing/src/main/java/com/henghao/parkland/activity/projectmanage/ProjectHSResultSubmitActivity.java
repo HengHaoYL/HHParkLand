@@ -96,8 +96,8 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setVisibility(View.VISIBLE);
         mFileList = new ArrayList<>();
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
-        tvName.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
+        tvName.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -124,11 +124,11 @@ public class ProjectHSResultSubmitActivity extends ActivityFragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         String hsDeparment = etHsDeparment.getText().toString().trim();
-        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        String  PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
         MultipartBuilder multipartBuilder = new MultipartBuilder();
         multipartBuilder.type(MultipartBuilder.FORM)//
                 .addFormDataPart("uid", getLoginUid())//用户ID
-                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
+                .addFormDataPart("pid", PID)//项目信息ID
                 .addFormDataPart("hsDeparment", hsDeparment);//会审单位
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//会审图片

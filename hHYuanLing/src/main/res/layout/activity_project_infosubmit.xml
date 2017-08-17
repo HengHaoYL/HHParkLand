@@ -25,11 +25,11 @@
                 android:textSize="@dimen/gj_d" />
 
             <EditText
-                android:id="@+id/et_xmName"
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
+                android:hint="请输入项目名称"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
@@ -38,7 +38,130 @@
         </LinearLayout>
 
         <View
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="项目负责人"
+                android:textSize="@dimen/gj_d" />
+
+            <EditText
+                android:id="@+id/et_principal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入项目负责人"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="联系方式"
+                android:textSize="@dimen/gj_d" />
+
+            <EditText
+                android:id="@+id/et_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:maxLength="11"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="项目人数"
+                android:textSize="@dimen/gj_d" />
+
+            <EditText
+                android:id="@+id/et_personNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入项目人数"
+                android:inputType="number"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_big"
+                android:text="项目地点"
+                android:textSize="@dimen/gj_d" />
+
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入项目地点"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/text_color_c"
+                android:textColorHint="@color/line"
+                android:textSize="@dimen/gj_d" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
             android:layout_height="1dip"
             android:background="@color/line" />
 
@@ -55,11 +178,11 @@
                 android:textSize="@dimen/gj_d" />
 
             <EditText
-                android:id="@+id/et_constructionUnit"
+                android:id="@+id/et_company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入文字"
+                android:hint="请输入施工单位"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
@@ -68,9 +191,10 @@
         </LinearLayout>
 
         <View
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="1dip"
             android:background="@color/line" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,10 +212,8 @@
                 android:id="@+id/tv_startTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:drawablePadding="@dimen/padding_normal"
                 android:drawableRight="@drawable/icon_add"
-                android:hint="请选择时间"
+                android:hint="请选择开工时间"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
@@ -100,7 +222,7 @@
         </LinearLayout>
 
         <View
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="1dip"
             android:background="@color/line" />
 
@@ -113,17 +235,15 @@
                 android:layout_width="120dip"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_big"
-                android:text="合同竣工时间"
+                android:text="竣工时间"
                 android:textSize="@dimen/gj_d" />
 
             <TextView
-                android:id="@+id/tv_completionTime"
+                android:id="@+id/tv_endTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:drawablePadding="@dimen/padding_normal"
                 android:drawableRight="@drawable/icon_add"
-                android:hint="请选择时间"
+                android:hint="请选择竣工时间"
                 android:padding="@dimen/padding_big"
                 android:textColor="@color/text_color_c"
                 android:textColorHint="@color/line"
@@ -131,136 +251,13 @@
 
         </LinearLayout>
 
-
         <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="负责人"
-                android:textSize="@dimen/gj_d" />
-
-            <EditText
-                android:id="@+id/et_xmPerson"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入文字"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
-                android:textSize="@dimen/gj_d" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="联系方式"
-                android:textSize="@dimen/gj_d" />
-
-            <EditText
-                android:id="@+id/et_xmContact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入手机号"
-                android:inputType="number"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
-                android:textSize="@dimen/gj_d" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="项目人数"
-                android:textSize="@dimen/gj_d" />
-
-            <EditText
-                android:id="@+id/et_xmPersonNum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入数字"
-                android:inputType="number"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
-                android:textSize="@dimen/gj_d" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dip"
-            android:background="@color/line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dip"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_big"
-                android:text="项目地址"
-                android:textSize="@dimen/gj_d" />
-
-            <EditText
-                android:id="@+id/et_xmAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入文字"
-                android:padding="@dimen/padding_big"
-                android:textColor="@color/text_color_c"
-                android:textColorHint="@color/line"
-                android:textSize="@dimen/gj_d" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
             android:layout_height="1dip"
             android:background="@color/line" />
 
         <TextView
-            android:id="@+id/btn_submit_projectinfo"
+            android:id="@+id/tv_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_big"

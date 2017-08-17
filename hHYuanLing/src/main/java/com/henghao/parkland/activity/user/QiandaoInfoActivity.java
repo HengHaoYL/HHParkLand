@@ -112,11 +112,11 @@ public class QiandaoInfoActivity extends ActivityFragmentSupport implements XLis
 
     @Override
     public void initData() {
-        listView.setPullLoadEnable(true);//设置可上拉加载
+        listView.setPullLoadEnable(true);//设置可上滑加载更多
         qiandaoInfoEntities = new ArrayList<>();
         initQiandaoInfoEntities = new ArrayList<>();
         mAdapter = new QiandaoInfoAdapter(this, initQiandaoInfoEntities);
-        //请求网络查询签到情况，默认查询个人信息
+        //请求网络，查询签到情况，默认查询个人信息
         findSignInCall = Requester.findSignIn(page, getLoginUid(), "", findSignInCallBaclk);
         listView.setAdapter(mAdapter);
     }
@@ -132,7 +132,7 @@ public class QiandaoInfoActivity extends ActivityFragmentSupport implements XLis
 
         @Override
         public void onSuccess(String response) {
-            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ");
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: " + response);
             try {
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();

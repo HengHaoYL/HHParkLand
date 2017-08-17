@@ -8,37 +8,31 @@ import com.henghao.parkland.ActivityFragmentSupport;
 import com.henghao.parkland.Constant;
 import com.henghao.parkland.R;
 import com.henghao.parkland.model.entity.ProjectInfoEntity;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * 项目管理 -- 项目信息详细信息
  */
 public class ProjectInfoDesActivity extends ActivityFragmentSupport {
 
-    @ViewInject(R.id.et_xmName)
-    TextView etXmName;
-
-    @ViewInject(R.id.et_constructionUnit)
-    TextView etConstructionUnit;
-
-    @ViewInject(R.id.tv_startTime)
+    @InjectView(R.id.tv_name)
+    TextView tvName;
+    @InjectView(R.id.tv_principal)
+    TextView tvPrincipal;
+    @InjectView(R.id.tv_tel)
+    TextView tvTel;
+    @InjectView(R.id.tv_personNum)
+    TextView tvPersonNum;
+    @InjectView(R.id.tv_address)
+    TextView tvAddress;
+    @InjectView(R.id.tv_company)
+    TextView tvCompany;
+    @InjectView(R.id.tv_startTime)
     TextView tvStartTime;
-
-    @ViewInject(R.id.tv_completionTime)
-    TextView tvCompletionTime;
-
-    @ViewInject(R.id.et_xmPerson)
-    TextView etXmPerson;
-
-    @ViewInject(R.id.et_xmContact)
-    TextView etXmContact;
-
-    @ViewInject(R.id.et_xmPersonNum)
-    TextView etXmPersonNum;
-
-    @ViewInject(R.id.et_xmAdd)
-    TextView etXmAdd;
+    @InjectView(R.id.tv_endTime)
+    TextView tvEndTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +42,8 @@ public class ProjectInfoDesActivity extends ActivityFragmentSupport {
         this.mActivityFragmentView.viewEmptyGone();
         this.mActivityFragmentView.viewLoading(View.GONE);
         this.mActivityFragmentView.getNavitionBarView().setVisibility(View.VISIBLE);
-        ViewUtils.inject(this, this.mActivityFragmentView);
         setContentView(this.mActivityFragmentView);
+        ButterKnife.inject(this);
         initWidget();
         initData();
     }
@@ -58,6 +52,8 @@ public class ProjectInfoDesActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
+        mLeftTextView.setVisibility(View.VISIBLE);
+        mLeftTextView.setText("返回");
         initWithCenterBar();
         mCenterTextView.setText("项目信息");
     }
@@ -68,12 +64,12 @@ public class ProjectInfoDesActivity extends ActivityFragmentSupport {
         Bundle bundle = getIntent().getBundleExtra("bundle");
         ProjectInfoEntity mEntity = (ProjectInfoEntity) bundle.getSerializable(Constant.INTNET_DATA);
         tvStartTime.setText(mEntity.getStartTime());
-        tvCompletionTime.setText(mEntity.getCompletionTime());
-        etXmName.setText(mEntity.getXmName());
-        etXmAdd.setText(mEntity.getXmAdd());
-        etXmContact.setText(mEntity.getXmContact());
-        etXmPerson.setText(mEntity.getXmPerson());
-        etXmPersonNum.setText(mEntity.getXmPersonNum() + "");
-        etConstructionUnit.setText(mEntity.getConstructionUnit());
+        tvEndTime.setText(mEntity.getEndTime());
+        tvName.setText(mEntity.getName());
+        tvAddress.setText(mEntity.getAddress());
+        tvCompany.setText(mEntity.getCompany());
+        tvPersonNum.setText(mEntity.getPersonNum() + "");
+        tvPrincipal.setText(mEntity.getPrincipal() + "");
+        tvTel.setText(mEntity.getTel());
     }
 }

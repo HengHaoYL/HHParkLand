@@ -1,35 +1,44 @@
 package com.henghao.parkland.model.entity;
 
 import com.google.gson.annotations.Expose;
-import com.henghao.parkland.model.IdEntity;
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by 晏琦云 on 2017/2/26.
+ * 项目管理 -- 会审结果实体
+ * name :           项目名称
+ * company :        会审单位
+ * picture :        会审文件图片
+ * id :             表主键
+ * pid :            项目信息表主键
  */
 
-public class ProjectHSResultEntity extends IdEntity {
-    /**
-     * hsDeparment:"xx",会审单位
-     * hid:"xx",表主键
-     * hsImgId:null,会审图片路径
-     * name:"xx"    项目名称
-     * "url":[
-     * "/construct/Img/Picture_01_Lake.jpg"
-     * ],
-     */
+public class ProjectHSResultEntity implements Serializable {
+
     private boolean isChecked;//是否被选中
+    // 项目名称
     @Expose
-    private int hid;//表主键
+    @SerializedName("name")
+    private String name;
+    // 会审单位
     @Expose
-    private String hsDeparment;//会审单位
+    @SerializedName("company")
+    private String company;
+    // 表主键
     @Expose
-    private String hsImgId;//会审图片路径
+    @SerializedName("id")
+    private String id;
+    // 项目信息表主键
     @Expose
-    private String name;//项目名称
+    @SerializedName("pid")
+    private String pid;
+    // 会审文件图片
     @Expose
-    private ArrayList<String> url;
+    @SerializedName("picture")
+    private ArrayList<String> picture;
 
     public boolean isChecked() {
         return isChecked;
@@ -37,14 +46,6 @@ public class ProjectHSResultEntity extends IdEntity {
 
     public void setChecked(boolean checked) {
         isChecked = checked;
-    }
-
-    public int getHid() {
-        return hid;
-    }
-
-    public void setHid(int hid) {
-        this.hid = hid;
     }
 
     public String getName() {
@@ -55,27 +56,35 @@ public class ProjectHSResultEntity extends IdEntity {
         this.name = name;
     }
 
-    public String getHsDeparment() {
-        return hsDeparment;
+    public String getCompany() {
+        return company;
     }
 
-    public void setHsDeparment(String hsDeparment) {
-        this.hsDeparment = hsDeparment;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
-    public String getHsImgId() {
-        return hsImgId;
+    public String getId() {
+        return id;
     }
 
-    public void setHsImgId(String hsImgId) {
-        this.hsImgId = hsImgId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public ArrayList<String> getUrl() {
-        return url;
+    public String getPid() {
+        return pid;
     }
 
-    public void setUrl(ArrayList<String> url) {
-        this.url = url;
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public ArrayList<String> getPicture() {
+        return picture;
+    }
+
+    public void setPicture(ArrayList<String> picture) {
+        this.picture = picture;
     }
 }

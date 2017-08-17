@@ -302,7 +302,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
 
         @Override
         public void onSuccess(String response) {
-            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ");
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: " + response);
             try {
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();
@@ -348,7 +348,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
 
         @Override
         public void onSuccess(String response) {
-            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ");
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: " + response);
             try {
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();
@@ -394,7 +394,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
 
         @Override
         public void onSuccess(String response) {
-            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ");
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: " + response);
             try {
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();
@@ -440,7 +440,7 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
 
         @Override
         public void onSuccess(String response) {
-            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: ");
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: " + response);
             try {
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();

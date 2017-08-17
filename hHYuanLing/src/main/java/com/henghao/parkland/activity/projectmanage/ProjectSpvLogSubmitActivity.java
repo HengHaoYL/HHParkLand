@@ -66,9 +66,9 @@ public class ProjectSpvLogSubmitActivity extends ActivityFragmentSupport {
     public void initWidget() {
         super.initWidget();
         initWithBar();
-        tvName.setText(XiangmuFragment.mInfoEntity.getXmName());
+        tvName.setText(XiangmuFragment.mInfoEntity.getName());
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -93,7 +93,7 @@ public class ProjectSpvLogSubmitActivity extends ActivityFragmentSupport {
                     String other = etOther.getText().toString().trim();//其他有关事项
                     String noteTaker = etNoteTaker.getText().toString().trim();//记录人
                     String engineer = etEngineer.getText().toString().trim();//总监理工工程师
-                    int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+                    String PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
                     /**
                      * 访问网络
                      */

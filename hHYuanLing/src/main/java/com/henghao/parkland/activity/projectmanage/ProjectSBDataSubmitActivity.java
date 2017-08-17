@@ -65,7 +65,7 @@ public class ProjectSBDataSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setVisibility(View.VISIBLE);
         ((RadioButton) rgSbSource.getChildAt(0)).setChecked(true);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -93,7 +93,7 @@ public class ProjectSBDataSubmitActivity extends ActivityFragmentSupport {
             String sbSpec = etSbSpec.getText().toString().trim();
             int sbNum = new Integer(etSbNum.getText().toString().trim()).intValue();
             String sbPurpose = etSbPurpose.getText().toString().trim();
-            int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+            String  PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
             /**
              * 访问网络
              */

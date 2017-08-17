@@ -104,7 +104,7 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -172,14 +172,14 @@ public class ProjectXckcSubmitActivity extends ActivityFragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         SharedPreferences preferences = getLoginUserSharedPre();
-        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        String PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
         MultipartBuilder multipartBuilder = new MultipartBuilder();
         multipartBuilder.type(MultipartBuilder.FORM)//
                 .addFormDataPart("xcTime", mData)
                 .addFormDataPart("xcAdd", address)
                 .addFormDataPart("xcPerson", name)
                 .addFormDataPart("uid", getLoginUid())//用户ID
-                .addFormDataPart("pid", String.valueOf(PID));//项目信息ID
+                .addFormDataPart("pid", PID);//项目信息ID
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//现场情况图片
         }

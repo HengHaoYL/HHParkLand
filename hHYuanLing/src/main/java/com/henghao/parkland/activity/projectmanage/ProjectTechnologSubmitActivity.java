@@ -99,7 +99,7 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @OnClick({R.id.tv_submit, R.id.tv_dates, R.id.tv_photo})
@@ -160,7 +160,7 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
         Request.Builder builder = new Request.Builder();
         SharedPreferences preferences = getLoginUserSharedPre();
         String UID = preferences.getString(Constant.USERID, "");//用户ID
-        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        String PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
         String dates = tv_dates.getText().toString().trim();//日期
         String sites = et_sites.getText().toString().trim();//地点
         String content = et_content.getText().toString().trim();//内容
@@ -170,7 +170,7 @@ public class ProjectTechnologSubmitActivity extends ActivityFragmentSupport {
                 .addFormDataPart("sites", sites)//地点
                 .addFormDataPart("content", content)//内容
                 .addFormDataPart("uid", UID)//用户ID
-                .addFormDataPart("pid", String.valueOf(PID));//项目信息ID
+                .addFormDataPart("pid", PID);//项目信息ID
         for (File file : mFileList) {
             multipartBuilder.addFormDataPart(file.getName(), file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));//图片
         }

@@ -27,7 +27,7 @@
             android:padding="@dimen/padding_normal"
             android:text="@string/login_toservice"
             android:textColor="@color/blue"
-            android:textSize="@dimen/info_name_size" />
+            android:textSize="@dimen/gj_f" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                 android:singleLine="true"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/info_name_size" />
+                android:textSize="@dimen/gj_f" />
         </LinearLayout>
 
         <View
@@ -95,7 +95,7 @@
                 android:singleLine="true"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/info_name_size" />
+                android:textSize="@dimen/gj_f" />
 
             <ImageView
                 android:id="@+id/iv_eye_login"
@@ -131,7 +131,7 @@
                 android:singleLine="true"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/info_name_size" />
+                android:textSize="@dimen/gj_f" />
 
             <ImageView
                 android:id="@+id/iv_authCode_login"
@@ -179,6 +179,6 @@
             android:paddingTop="@dimen/padding_big"
             android:text="@string/login"
             android:textColor="@color/white"
-            android:textSize="@dimen/info_enterprise_size" />
+            android:textSize="@dimen/gj_d" />
     </LinearLayout>
 </RelativeLayout>

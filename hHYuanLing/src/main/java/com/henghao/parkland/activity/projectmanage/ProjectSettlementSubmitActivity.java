@@ -38,7 +38,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import id.zelory.compressor.FileUtil;
 
 /**
  * 项目管理 -- 项目结算提交
@@ -93,7 +92,7 @@ public class ProjectSettlementSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -123,10 +122,10 @@ public class ProjectSettlementSubmitActivity extends ActivityFragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         MultipartBuilder multipartBuilder = new MultipartBuilder();
-        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息IDx
+        String PID = XiangmuFragment.mInfoEntity.getId();//项目信息IDx
         String dates = tvDates.getText().toString().trim();//结算日期
         multipartBuilder.type(MultipartBuilder.FORM)//
-                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
+                .addFormDataPart("pid", PID)//项目信息ID
                 .addFormDataPart("uid", getLoginUid())//用户ID
                 .addFormDataPart("dates", dates);//结算日期
         for (File file : mFileList) {

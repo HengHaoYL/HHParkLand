@@ -43,7 +43,7 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
 
     private MyCallBack callBack;
 
-    public ProjectHSResultAdapter(ActivityFragmentSupport activityFragment, List<ProjectHSResultEntity> mList, MyCallBack callBack) {
+    public ProjectHSResultAdapter(ActivityFragmentSupport activityFragment, List<ProjectHSResultEntity> mList/*, MyCallBack callBack*/) {
         super(activityFragment, R.layout.list_item_hsresult, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
@@ -87,19 +87,21 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
             holder.checkBox.setVisibility(View.GONE);
         }
         holder.checkBox.setChecked(entity.isChecked());
-        holder.tvDates.setText(getItem(position).getHsDeparment());
-        holder.tvName.setText(getItem(position).getName());
-        mBitmapUtils.display(holder.ivImg, entity.getHsImgId() + entity.getUrl().get(0));
+        holder.tvDates.setText(entity.getCompany());
+        holder.tvName.setText(entity.getName());
+        if (entity.getPicture() != null) {
+            mBitmapUtils.display(holder.ivImg, entity.getPicture().get(0));
+        }
         viewClick(holder, convertView, position);
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (entity.isChecked()) {
                     entity.setChecked(false);
-                    callBack.removeId(entity.getHid());
+                    callBack.removeId(Integer.parseInt(entity.getId()));
                 } else {
                     entity.setChecked(true);
-                    callBack.addId(entity.getHid());
+                    callBack.addId(Integer.parseInt(entity.getId()));
                 }
                 callBack.setChecked();
                 notifyDataSetChanged();
@@ -119,10 +121,10 @@ public class ProjectHSResultAdapter extends ArrayAdapter<ProjectHSResultEntity> 
                      */
                     if (entity.isChecked()) {
                         entity.setChecked(false);
-                        callBack.removeId(entity.getHid());
+                        callBack.removeId(Integer.parseInt(entity.getId()));
                     } else {
                         entity.setChecked(true);
-                        callBack.addId(entity.getHid());
+                        callBack.addId(Integer.parseInt(entity.getId()));
                     }
                     callBack.setChecked();
                     notifyDataSetChanged();

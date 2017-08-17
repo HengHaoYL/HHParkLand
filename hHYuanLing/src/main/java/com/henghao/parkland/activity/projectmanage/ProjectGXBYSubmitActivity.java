@@ -110,8 +110,8 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
-        tvGxName.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
+        tvGxName.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -209,11 +209,11 @@ public class ProjectGXBYSubmitActivity extends ActivityFragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         String UID = getLoginUid();
-        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        String  PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
         MultipartBuilder multipartBuilder = new MultipartBuilder();
         multipartBuilder.type(MultipartBuilder.FORM)//
                 .addFormDataPart("uid", UID)//用户ID
-                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
+                .addFormDataPart("pid", PID)//项目信息ID
                 .addFormDataPart("gxName", gxName)
                 .addFormDataPart("gxProcedure", gxProcedure)
                 .addFormDataPart("personnelType", personnelType)

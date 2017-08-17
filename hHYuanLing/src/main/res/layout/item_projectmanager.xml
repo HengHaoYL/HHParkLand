@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="项目名称"
                 android:textColor="@color/text_color_b"
-                android:textSize="@dimen/info_name_size" />
+                android:textSize="@dimen/gj_f" />
 
             <TextView
                 android:id="@+id/tv_title"
@@ -45,9 +45,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_normal"
                 android:maxLines="2"
-                android:text="信息"
+                android:text="项目地点"
                 android:textColor="@color/text_color_b"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
         </LinearLayout>
 
         <TextView

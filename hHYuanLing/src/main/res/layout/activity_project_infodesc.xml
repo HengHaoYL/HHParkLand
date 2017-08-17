@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="1dip"
                 android:background="@color/line" />
 
@@ -37,10 +37,9 @@
                     android:textSize="@dimen/gj_d" />
 
                 <TextView
-                    android:id="@+id/et_xmName"
+                    android:id="@+id/tv_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
                     android:padding="@dimen/padding_big"
                     android:textColor="@color/text_color_c"
                     android:textSize="@dimen/gj_d" />
@@ -48,7 +47,115 @@
             </LinearLayout>
 
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="项目负责人"
+                    android:textSize="@dimen/gj_d" />
+
+                <TextView
+                    android:id="@+id/tv_principal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="联系方式"
+                    android:textSize="@dimen/gj_d" />
+
+                <TextView
+                    android:id="@+id/tv_tel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="项目人数"
+                    android:textSize="@dimen/gj_d" />
+
+                <TextView
+                    android:id="@+id/tv_personNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:text="项目地点"
+                    android:textSize="@dimen/gj_d" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:textColor="@color/text_color_c"
+                    android:textSize="@dimen/gj_d" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
                 android:layout_height="1dip"
                 android:background="@color/line" />
 
@@ -65,10 +172,9 @@
                     android:textSize="@dimen/gj_d" />
 
                 <TextView
-                    android:id="@+id/et_constructionUnit"
+                    android:id="@+id/tv_company"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
                     android:padding="@dimen/padding_big"
                     android:textColor="@color/text_color_c"
                     android:textSize="@dimen/gj_d" />
@@ -76,7 +182,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="1dip"
                 android:background="@color/line" />
 
@@ -96,7 +202,6 @@
                     android:id="@+id/tv_startTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
                     android:padding="@dimen/padding_big"
                     android:textColor="@color/text_color_c"
                     android:textSize="@dimen/gj_d" />
@@ -104,7 +209,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="1dip"
                 android:background="@color/line" />
 
@@ -117,14 +222,13 @@
                     android:layout_width="120dip"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_big"
-                    android:text="合同竣工时间"
+                    android:text="竣工时间"
                     android:textSize="@dimen/gj_d" />
 
                 <TextView
-                    android:id="@+id/tv_completionTime"
+                    android:id="@+id/tv_endTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
                     android:padding="@dimen/padding_big"
                     android:textColor="@color/text_color_c"
                     android:textSize="@dimen/gj_d" />
@@ -136,117 +240,6 @@
                 android:layout_height="1dip"
                 android:background="@color/line" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="120dip"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_big"
-                    android:text="负责人"
-                    android:textSize="@dimen/gj_d" />
-
-                <TextView
-                    android:id="@+id/et_xmPerson"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="@dimen/padding_big"
-                    android:textColor="@color/text_color_c"
-                    android:textSize="@dimen/gj_d" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dip"
-                android:background="@color/line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="120dip"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_big"
-                    android:text="联系方式"
-                    android:textSize="@dimen/gj_d" />
-
-                <TextView
-                    android:id="@+id/et_xmContact"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="@dimen/padding_big"
-                    android:textColor="@color/text_color_c"
-                    android:textSize="@dimen/gj_d" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dip"
-                android:background="@color/line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="120dip"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_big"
-                    android:text="项目人数"
-                    android:textSize="@dimen/gj_d" />
-
-                <TextView
-                    android:id="@+id/et_xmPersonNum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="@dimen/padding_big"
-                    android:textColor="@color/text_color_c"
-                    android:textSize="@dimen/gj_d" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dip"
-                android:background="@color/line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="120dip"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_big"
-                    android:text="项目地址"
-                    android:textSize="@dimen/gj_d" />
-
-                <TextView
-                    android:id="@+id/et_xmAdd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="@dimen/padding_big"
-                    android:textColor="@color/text_color_c"
-                    android:textSize="@dimen/gj_d" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dip"
-                android:background="@color/line" />
         </LinearLayout>
 
 

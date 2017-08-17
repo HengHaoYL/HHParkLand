@@ -1,44 +1,63 @@
 package com.henghao.parkland.model.entity;
 
 import com.google.gson.annotations.Expose;
-import com.henghao.parkland.model.IdEntity;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 /**
  * Created by 晏琦云 on 2017/2/26.
+ * 项目管理 -- 项目信息实体
+ * name :           项目名称
+ * principal :      项目负责人
+ * tel :            联系方式
+ * personNum :      项目人数
+ * address :        项目地点
+ * company :        施工单位
+ * startTime :      开工时间
+ * endTime :        竣工时间
+ * id :             表主键
  */
 
-public class ProjectInfoEntity extends IdEntity {
-    /**
-     * xmAdd:"xx",项目地址
-     * constructionUnit:"xx",施工单位
-     * startTime:"xx",开工时间
-     * completionTime:"xx",竣工时间
-     * xmContact:"xx",联系方式
-     * xmName:"xx",项目名称
-     * xmPerson:"xx",项目负责人
-     * xmPersonNum:10 项目人数
-     * pid:xx 项目信息ID
-     */
-    private boolean checked;//多选框选中状态
+public class ProjectInfoEntity implements Serializable {
 
+    private boolean checked;//多选框选中状态
+    // 项目名称
     @Expose
-    private String xmAdd;
+    @SerializedName("name")
+    private String name;
+    // 项目负责人
     @Expose
-    private String constructionUnit;
+    @SerializedName("principal")
+    private String principal;
+    // 联系方式
     @Expose
+    @SerializedName("tel")
+    private String tel;
+    // 项目人数
+    @Expose
+    @SerializedName("personNum")
+    private int personNum;
+    // 项目地点
+    @Expose
+    @SerializedName("address")
+    private String address;
+    // 施工单位
+    @Expose
+    @SerializedName("company")
+    private String company;
+    // 开工时间
+    @Expose
+    @SerializedName("startTime")
     private String startTime;
+    // 竣工时间
     @Expose
-    private String completionTime;
+    @SerializedName("endTime")
+    private String endTime;
+    // 表主键
     @Expose
-    private int pid;
-    @Expose
-    private String xmContact;
-    @Expose
-    private String xmName;
-    @Expose
-    private String xmPerson;
-    @Expose
-    private int xmPersonNum;
+    @SerializedName("id")
+    private String id;
 
     public boolean isChecked() {
         return checked;
@@ -46,6 +65,54 @@ public class ProjectInfoEntity extends IdEntity {
 
     public void setChecked(boolean checked) {
         this.checked = checked;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(String principal) {
+        this.principal = principal;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public int getPersonNum() {
+        return personNum;
+    }
+
+    public void setPersonNum(int personNum) {
+        this.personNum = personNum;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getStartTime() {
@@ -56,67 +123,19 @@ public class ProjectInfoEntity extends IdEntity {
         this.startTime = startTime;
     }
 
-    public String getCompletionTime() {
-        return completionTime;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setCompletionTime(String completionTime) {
-        this.completionTime = completionTime;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
-    public int getPid() {
-        return pid;
+    public String getId() {
+        return id;
     }
 
-    public void setPid(int pid) {
-        this.pid = pid;
-    }
-
-    public String getXmAdd() {
-        return xmAdd;
-    }
-
-    public void setXmAdd(String xmAdd) {
-        this.xmAdd = xmAdd;
-    }
-
-    public String getXmContact() {
-        return xmContact;
-    }
-
-    public void setXmContact(String xmContact) {
-        this.xmContact = xmContact;
-    }
-
-    public String getXmName() {
-        return xmName;
-    }
-
-    public String getConstructionUnit() {
-        return constructionUnit;
-    }
-
-    public void setConstructionUnit(String constructionUnit) {
-        this.constructionUnit = constructionUnit;
-    }
-
-    public void setXmName(String xmName) {
-        this.xmName = xmName;
-    }
-
-    public String getXmPerson() {
-        return xmPerson;
-    }
-
-    public void setXmPerson(String xmPerson) {
-        this.xmPerson = xmPerson;
-    }
-
-    public int getXmPersonNum() {
-        return xmPersonNum;
-    }
-
-    public void setXmPersonNum(int xmPersonNum) {
-        this.xmPersonNum = xmPersonNum;
+    public void setId(String id) {
+        this.id = id;
     }
 }

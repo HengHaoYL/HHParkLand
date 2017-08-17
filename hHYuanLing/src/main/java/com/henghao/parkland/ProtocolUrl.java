@@ -128,8 +128,22 @@ public class ProtocolUrl {
 
     /************************ 养护管理 end **************************/
     /************************
-     * 项目管理
+     * 项目管理相关
      **************************/
+    /**
+     * 项目信息查询
+     */
+    public static final String FIND_XMXX = "yldsj/project/find/xmxx";
+
+    /**
+     * 项目信息提交
+     */
+    public static final String ADD_XMXX = "yldsj/project/add/xmxx";
+
+    /**
+     * 会审结果查询
+     */
+    public static final String FIND_HSJG = "yldsj/project/find/hsjg";
 
     /**
      * 项目信息删除
@@ -297,11 +311,6 @@ public class ProtocolUrl {
     public static final String PROJECT_SGINFO = "http://172.16.13.101:8080/YL_BigData/" + "projectManage/saveBiuldDataMsg";
 
     /**
-     * 项目信息查询
-     */
-    public static final String PROJECT_QUERYPROJECTMSG = "projectManage/queryProjectMsg";
-
-    /**
      * 施工日志查询
      */
     public static final String PROJECT_QUERYCONSTRUCTIONLOGMSG = "projectManage/queryConstructionLogMsg";
@@ -397,11 +406,6 @@ public class ProtocolUrl {
     public static final String PROJECT_SAVESETTLEMENT = "projectManage/saveSettlementMsg";
 
     /**
-     * 会审结果查询
-     */
-    public static final String PROJECT_QUERYHSRESULTMSG = "projectManage/queryHsResultMsg";
-
-    /**
      * 工序报验查询
      */
     public static final String PROJECT_QUERYCHECKOUTMSG = "projectManage/queryCheckoutMsg";
@@ -436,7 +440,7 @@ public class ProtocolUrl {
      */
     public static final String PROJECT_QUERY_MYLOCUSMSG = "projectManage/queryMylocusMsg";
 
-    /************************ 项目管理 end **************************/
+    /************************ 项目管理相关 end **************************/
 
     /************************
      * 工作台

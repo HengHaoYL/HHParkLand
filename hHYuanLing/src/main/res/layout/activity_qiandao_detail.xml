@@ -29,7 +29,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="姓名"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_name_qiandao_detail"
@@ -38,7 +38,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="姓名"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 
@@ -59,7 +59,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="签到时间"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_time_qiandao_detail"
@@ -68,7 +68,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="14:00"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 
@@ -89,7 +89,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="当前企业"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_company_qiandao_detail"
@@ -98,7 +98,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="贵州恒昊软件科技有限公司"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 
@@ -119,7 +119,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="签到地址"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_address_qiandao_detail"
@@ -128,7 +128,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="当前地址"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 
@@ -149,7 +149,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="纬度"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_latitude_qiandao_detail"
@@ -158,7 +158,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="20.34782"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 
@@ -179,7 +179,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="经度"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_longitude_qiandao_detail"
@@ -188,7 +188,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="106.662392"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 
@@ -209,7 +209,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="备注"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_comments_qiandao_detail"
@@ -218,7 +218,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="备注"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 

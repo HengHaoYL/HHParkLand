@@ -32,7 +32,7 @@
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="项目信息"
+                android:text="项目名称"
                 android:textColor="@color/text_color_b"
                 android:textSize="@dimen/gj_d" />
 
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_normal"
-                android:text="时间"
+                android:text="会审单位"
                 android:textColor="@color/text_color_b"
                 android:textSize="@dimen/gj_d" />
         </LinearLayout>

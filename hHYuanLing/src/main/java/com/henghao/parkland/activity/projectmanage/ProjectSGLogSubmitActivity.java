@@ -2,7 +2,6 @@ package com.henghao.parkland.activity.projectmanage;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -63,7 +62,7 @@ public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -79,7 +78,7 @@ public class ProjectSGLogSubmitActivity extends ActivityFragmentSupport {
                 break;
             case R.id.btn_sub:
                 if (checkData()) {
-                    int PID = XiangmuFragment.mInfoEntity.getPid();
+                    String PID = XiangmuFragment.mInfoEntity.getId();
                     String dates = tvDates.getText().toString().trim();
                     String proactContent = etProactContent.getText().toString().trim();
                     String technicalIndex = etTechnicalIndex.getText().toString().trim();

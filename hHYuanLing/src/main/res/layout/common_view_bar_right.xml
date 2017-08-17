@@ -14,6 +14,6 @@
         android:layout_marginLeft="@dimen/padding_small"
         android:layout_marginRight="@dimen/padding_normal"
         android:textColor="@color/white"
-        android:textSize="@dimen/info_enterprise_size" />
+        android:textSize="@dimen/gj_d" />
 
 </merge>

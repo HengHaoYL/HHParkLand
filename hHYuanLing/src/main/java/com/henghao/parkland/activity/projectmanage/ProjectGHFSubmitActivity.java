@@ -105,7 +105,7 @@ public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -141,14 +141,14 @@ public class ProjectGHFSubmitActivity extends ActivityFragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         MultipartBuilder multipartBuilder = new MultipartBuilder();
-        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        String PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
         String epName = etEpName.getText().toString().trim();//企业名称
         String epAdd = etEpAdd.getText().toString().trim();//企业地址
         String epDate = tvEpDate.getText().toString().trim();//供货日期
         String epTel = etEpTel.getText().toString().trim();//联系方式
         multipartBuilder.type(MultipartBuilder.FORM)//
                 .addFormDataPart("uid", getLoginUid())//用户ID
-                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
+                .addFormDataPart("pid", PID)//项目信息ID
                 .addFormDataPart("epName", epName)//企业名称
                 .addFormDataPart("epAdd", epAdd)//企业地址
                 .addFormDataPart("epDate", epDate)//供货日期

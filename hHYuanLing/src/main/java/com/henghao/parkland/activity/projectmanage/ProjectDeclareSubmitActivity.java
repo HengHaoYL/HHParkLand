@@ -91,7 +91,7 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @OnClick({R.id.tv_submit, R.id.et_time, R.id.tv_photo})
@@ -140,8 +140,8 @@ public class ProjectDeclareSubmitActivity extends ActivityFragmentSupport {
     }
 
     private void submit() {
-        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
-        submitCall = Requester.declareSubmit(mData, getLoginUid(), String.valueOf(PID), mFileList, new DefaultCallback() {
+        String PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
+        submitCall = Requester.declareSubmit(mData, getLoginUid(), PID, mFileList, new DefaultCallback() {
             @Override
             public void onFailure(Exception e, int code) {
                 if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);

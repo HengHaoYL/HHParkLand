@@ -90,7 +90,7 @@ public class XiangmuFragment extends FragmentSupport {
                             //记录当前项目信息
                             index = which;
                             mInfoEntity = mList.get(index);
-                            mCenterTextView.setText(mInfoEntity.getXmName());
+                            mCenterTextView.setText(mInfoEntity.getName());
                             dialog.dismiss();
                         }
                     });
@@ -192,16 +192,6 @@ public class XiangmuFragment extends FragmentSupport {
         mEntity.setImageId(R.drawable.icon_projectsgbw);
         mEntity.setName("监理日志");
         mList.add(mEntity);
-//        //第二个
-//        AppGridEntity mEntity2 = new AppGridEntity();
-//        mEntity2.setImageId(R.drawable.icon_projectsgjh);
-//        mEntity2.setName("施工备忘");
-//        mList.add(mEntity2);
-        //第二个
-//        AppGridEntity mEntity2 = new AppGridEntity();
-//        mEntity2.setImageId(R.drawable.icon_projecsgzl);
-//        mEntity2.setName("施工资料");
-//        mList.add(mEntity2);
         //第二个
         AppGridEntity mEntity2 = new AppGridEntity();
         mEntity2.setImageId(R.drawable.icon_projectrzbw);
@@ -225,7 +215,6 @@ public class XiangmuFragment extends FragmentSupport {
         initWithCenterBar();
         this.mCenterTextView.setVisibility(View.VISIBLE);
         mCenterTextView.setText("项目管理");
-//        requestInternet();
         initWithBar();
         this.mLeftImageView.setVisibility(View.VISIBLE);
         this.mLeftImageView.setImageResource(R.drawable.home_liebiao);
@@ -251,7 +240,7 @@ public class XiangmuFragment extends FragmentSupport {
         String UID = mActivity.getLoginUid();
         if (UID != null) requestBodyBuilder.add("uid", UID);
         RequestBody requestBody = requestBodyBuilder.build();
-        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.PROJECT_QUERYPROJECTMSG).build();
+        Request request = builder.post(requestBody).url(ProtocolUrl.ROOT_URL + "/" + ProtocolUrl.FIND_XMXX).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -278,41 +267,43 @@ public class XiangmuFragment extends FragmentSupport {
                 try {
                     //解析Json
                     final BaseEntity baseEntity = ToolsJson.parseObjecta(result_str, baseEntityTye);
-                    String data = ToolsJson.toJson(baseEntity.getData());
-                    if (ToolsKit.isEmpty(data)) {//如果返回数据为空
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                mCenterTextView.setText(baseEntity.getMsg());
-                                mActivityFragmentView.viewLoading(View.GONE);
-                                //还原初始化数据
-                                if (mList != null) {
-                                    mInfoEntity = null;
-                                    index = 0;
-                                    mList.clear();
-                                    projectNames = null;
-                                }
-                            }
-                        });
-                    } else {
-                        Type type = new TypeToken<List<ProjectInfoEntity>>() {
-                        }.getType();
-                        mList = ToolsJson.parseObjecta(data, type);
-                        //取得返回的项目信息集合名称列表
-                        if (mList != null) {
-                            projectNames = new String[mList.size()];
-                            for (int i = 0; i < mList.size(); i++) {
-                                projectNames[i] = mList.get(i).getXmName();
-                            }
+                    if (baseEntity != null) {
+                        String data = ToolsJson.toJson(baseEntity.getData());
+                        if (ToolsKit.isEmpty(data)) {//如果返回数据为空
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    mCenterTextView.setText(baseEntity.getMsg());
                                     mActivityFragmentView.viewLoading(View.GONE);
-                                    //默认显示第一个项目信息的名称，如果已选则其他，则显示其他项目信息名称
-                                    mCenterTextView.setText(mList.get(index).getXmName());
-                                    mInfoEntity = mList.get(index);
+                                    //还原初始化数据
+                                    if (mList != null) {
+                                        mInfoEntity = null;
+                                        index = 0;
+                                        mList.clear();
+                                        projectNames = null;
+                                    }
                                 }
                             });
+                        } else {
+                            Type type = new TypeToken<List<ProjectInfoEntity>>() {
+                            }.getType();
+                            mList = ToolsJson.parseObjecta(data, type);
+                            //取得返回的项目信息集合名称列表
+                            if (mList != null) {
+                                projectNames = new String[mList.size()];
+                                for (int i = 0; i < mList.size(); i++) {
+                                    projectNames[i] = mList.get(i).getName();
+                                }
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mActivityFragmentView.viewLoading(View.GONE);
+                                        //默认显示第一个项目信息的名称，如果已选则其他，则显示其他项目信息名称
+                                        mCenterTextView.setText(mList.get(index).getName());
+                                        mInfoEntity = mList.get(index);
+                                    }
+                                });
+                            }
                         }
                     }
                 } catch (JsonSyntaxException e) {

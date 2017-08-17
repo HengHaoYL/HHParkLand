@@ -216,7 +216,7 @@ public class RegisterFragment extends FragmentSupport {
         @Override
         public void onSuccess(String response) {
             String content = response;
-            if (BuildConfig.DEBUG) Log.d(TAG, "result: " + content);
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: " + response);
             try {
                 Type type = new TypeToken<BaseEntity>() {
                 }.getType();

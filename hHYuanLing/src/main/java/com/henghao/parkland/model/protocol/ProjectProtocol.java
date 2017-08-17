@@ -152,7 +152,7 @@ public class ProjectProtocol extends BaseModel {
      */
     public void queryProjectMsg(String uid) {
         try {
-            String url = ProtocolUrl.PROJECT_QUERYPROJECTMSG;
+            String url = ProtocolUrl.FIND_XMXX;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
             this.mBeeCallback.url(url).type(String.class).params(params);
@@ -305,7 +305,7 @@ public class ProjectProtocol extends BaseModel {
      */
     public void queryHsResultMsg(String uid) {
         try {
-            String url = ProtocolUrl.PROJECT_QUERYHSRESULTMSG;
+            String url = ProtocolUrl.FIND_HSJG;
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("uid", uid);
             this.mBeeCallback.url(url).type(String.class).params(params);
@@ -445,7 +445,7 @@ public class ProjectProtocol extends BaseModel {
      * @param principal
      * @param workingCondition
      */
-    public void saveConstructionLogMsg(int pid, String uid, String dates, String proactContent, String technicalIndex, String builder, String principal, String workingCondition) {
+    public void saveConstructionLogMsg(String pid, String uid, String dates, String proactContent, String technicalIndex, String builder, String principal, String workingCondition) {
         try {
             String url = ProtocolUrl.PROJECT_SAVECONSTRUCTIONLOGMSG;
             Map<String, Object> params = new HashMap<String, Object>();
@@ -476,7 +476,7 @@ public class ProjectProtocol extends BaseModel {
      * @param safetyProblems
      * @param fillPeople
      */
-    public void saveSummaryLogMsg(int pid, String uid, String dates, String constructionSite,
+    public void saveSummaryLogMsg(String pid, String uid, String dates, String constructionSite,
                                   String constructionDynamic, String safetySituation, String safetyProblems, String fillPeople) {
         try {
             String url = ProtocolUrl.PROJECT_SAVESUMMARYLOGMSG;
@@ -510,7 +510,7 @@ public class ProjectProtocol extends BaseModel {
      * @param noteTaker
      * @param engineer
      */
-    public void saveSupervisionlogMsg(int pid, String uid, String projectName, String supervisionPosition, String progressSituation,
+    public void saveSupervisionlogMsg(String pid, String uid, String projectName, String supervisionPosition, String progressSituation,
                                       String workingSitustion, String question, String other, String dates, String noteTaker, String engineer) {
         try {
             String url = ProtocolUrl.PROJECT_SAVESUPERVISIONLOGMSG;
@@ -543,7 +543,7 @@ public class ProjectProtocol extends BaseModel {
      * @param psTel
      * @param uid
      */
-    public void saveSgPersonnelMsg(int PID, String personnelType, String workPost, String psIdcard, String psName, String psTel, String uid) {
+    public void saveSgPersonnelMsg(String PID, String personnelType, String workPost, String psIdcard, String psName, String psTel, String uid) {
         try {
             String url = ProtocolUrl.PROJECT_SAVESGPERSONNELMSG;
             Map<String, Object> params = new HashMap<String, Object>();
@@ -571,7 +571,7 @@ public class ProjectProtocol extends BaseModel {
      * @param sbSource
      * @param uid
      */
-    public void saveEquipmentMsg(String sbName, String sbSpec, int sbNum, String sbPurpose, String sbSource, String uid, int PID) {
+    public void saveEquipmentMsg(String sbName, String sbSpec, int sbNum, String sbPurpose, String sbSource, String uid, String PID) {
         try {
             String url = ProtocolUrl.PROJECT_SAVEEQUIPMENTMSG;
             Map<String, Object> params = new HashMap<String, Object>();
@@ -621,14 +621,14 @@ public class ProjectProtocol extends BaseModel {
                     // 查询施工资料
                     ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }
-                if (url.endsWith(ProtocolUrl.PROJECT_QUERYPROJECTMSG)) {
+                if (url.endsWith(ProtocolUrl.FIND_XMXX)) {
                     // 查询项目信息
                     Type type = new TypeToken<List<ProjectInfoEntity>>() {
                     }.getType();
                     List<ProjectInfoEntity> homeData = ToolsJson.parseObjecta(data, type);
                     ProjectProtocol.this.OnMessageResponse(url, homeData, status);
                 }
-                if (url.endsWith(ProtocolUrl.PROJECT_QUERYHSRESULTMSG)) {
+                if (url.endsWith(ProtocolUrl.FIND_HSJG)) {
                     // 查询会审结果
                     ProjectProtocol.this.OnMessageResponse(url, mBaseEntity, status);
                 }

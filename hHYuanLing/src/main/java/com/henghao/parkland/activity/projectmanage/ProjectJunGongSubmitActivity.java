@@ -2,7 +2,6 @@ package com.henghao.parkland.activity.projectmanage;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -41,7 +40,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import id.zelory.compressor.Compressor;
 
 /**
  * 项目管理 -- 竣工验收
@@ -111,8 +109,8 @@ public class ProjectJunGongSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
-        tvProjectName.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
+        tvProjectName.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -152,12 +150,12 @@ public class ProjectJunGongSubmitActivity extends ActivityFragmentSupport {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
         MultipartBuilder multipartBuilder = new MultipartBuilder();
-        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        String  PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
         String projectName = tvProjectName.getText().toString().trim();//工程名称
         String dates = tvDates.getText().toString().trim();//竣工时间
         String inspectionPersonnel = etInspectionPersonnel.getText().toString().trim();//验收人员
         multipartBuilder.type(MultipartBuilder.FORM)//
-                .addFormDataPart("pid", String.valueOf(PID))//项目信息ID
+                .addFormDataPart("pid", PID)//项目信息ID
                 .addFormDataPart("uid", getLoginUid())//用户ID
                 .addFormDataPart("projectName", projectName)//工程名称
                 .addFormDataPart("dates", dates)//竣工时间

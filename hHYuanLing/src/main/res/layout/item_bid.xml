@@ -27,7 +27,7 @@
                 android:singleLine="true"
                 android:text="江苏约93万招投标信息"
                 android:textColor="#2C4000"
-                android:textSize="16sp" />
+                android:textSize="@dimen/gj_f" />
 
             <TextView
                 android:id="@+id/tv_content"
@@ -39,7 +39,7 @@
                 android:maxEms="14"
                 android:text="江苏约93万招投标信息"
                 android:textColor="@color/text_color_b"
-                android:textSize="12sp" />
+                android:textSize="@dimen/gj_c" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,7 +59,7 @@
                 android:singleLine="true"
                 android:text="联系人"
                 android:textColor="#CD2626"
-                android:textSize="12sp" />
+                android:textSize="@dimen/gj_c" />
 
             <TextView
                 android:id="@+id/tv_tel"
@@ -70,7 +70,7 @@
                 android:singleLine="true"
                 android:text="联系电话"
                 android:textColor="@color/text_color_b"
-                android:textSize="12sp" />
+                android:textSize="@dimen/gj_c" />
 
             <TextView
                 android:id="@+id/tv_date"
@@ -81,7 +81,7 @@
                 android:singleLine="true"
                 android:text="2017-03-15 10:20"
                 android:textColor="@color/text_color_b"
-                android:textSize="12sp" />
+                android:textSize="@dimen/gj_c" />
 
         </LinearLayout>
     </LinearLayout>

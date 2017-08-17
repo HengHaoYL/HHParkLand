@@ -93,7 +93,7 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
         ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spConfirmingParty.setAdapter(mAdapter);
@@ -138,9 +138,9 @@ public class ProjectBGManageSubmitActivity extends ActivityFragmentSupport {
      * 提交信息
      */
     private void submit() {
-        int PID = XiangmuFragment.mInfoEntity.getPid();//项目信息ID
+        String PID = XiangmuFragment.mInfoEntity.getId();//项目信息ID
         String times = tvTimes.getText().toString().trim();//变更时间
-        submitCall = Requester.changeManageSubmit(getLoginUid(), String.valueOf(PID), confirmingParty, times, mFileList, new DefaultCallback() {
+        submitCall = Requester.changeManageSubmit(getLoginUid(), PID, confirmingParty, times, mFileList, new DefaultCallback() {
             @Override
             public void onFailure(Exception e, int code) {
                 if (BuildConfig.DEBUG) Log.e(TAG, "onFailure: code = " + code, e);

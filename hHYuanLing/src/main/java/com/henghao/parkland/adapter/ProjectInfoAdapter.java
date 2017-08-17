@@ -42,7 +42,7 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
 
     private MyCallBack callBack;
 
-    public ProjectInfoAdapter(ActivityFragmentSupport activityFragment, List<ProjectInfoEntity> mList, MyCallBack callBack) {
+    public ProjectInfoAdapter(ActivityFragmentSupport activityFragment, List<ProjectInfoEntity> mList/*, MyCallBack callBack*/) {
         super(activityFragment, R.layout.item_projectmanager, mList);
         this.mActivityFragmentSupport = activityFragment;
         this.inflater = LayoutInflater.from(activityFragment);
@@ -86,18 +86,19 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
             holder.checkBox.setVisibility(View.GONE);
         }
         holder.checkBox.setChecked(entity.isChecked());
-        holder.tvName.setText(entity.getXmName());
-        holder.tvTime.setText(entity.getXmPerson());
+        holder.tvName.setText(entity.getName());
+        holder.tvTime.setText(entity.getPrincipal());
+        holder.tvTitle.setText(entity.getAddress());
         viewClick(holder, convertView, position);
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (entity.isChecked()) {
                     entity.setChecked(false);
-                    callBack.removeId(entity.getPid());
+                    callBack.removeId(Integer.parseInt(entity.getId()));
                 } else {
                     entity.setChecked(true);
-                    callBack.addId(entity.getPid());
+                    callBack.addId(Integer.parseInt(entity.getId()));
                 }
                 callBack.setChecked();
                 notifyDataSetChanged();
@@ -117,10 +118,10 @@ public class ProjectInfoAdapter extends ArrayAdapter<ProjectInfoEntity> {
                      */
                     if (entity.isChecked()) {
                         entity.setChecked(false);
-                        callBack.removeId(entity.getPid());
+                        callBack.removeId(Integer.parseInt(entity.getId()));
                     } else {
                         entity.setChecked(true);
-                        callBack.addId(entity.getPid());
+                        callBack.addId(Integer.parseInt(entity.getId()));
                     }
                     callBack.setChecked();
                     notifyDataSetChanged();

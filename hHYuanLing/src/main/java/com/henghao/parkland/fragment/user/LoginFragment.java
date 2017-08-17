@@ -166,7 +166,7 @@ public class LoginFragment extends FragmentSupport {
 
         @Override
         public void onSuccess(String response) {
-            if (BuildConfig.DEBUG) Log.d("LoginFragment", response);
+            if (BuildConfig.DEBUG) Log.d(TAG, "onSuccess: " + response);
             try {
                 Type baseType = new TypeToken<BaseEntity>() {
                 }.getType();

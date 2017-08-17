@@ -61,7 +61,7 @@ public class ProjectTeamSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
         /**
          * 获取人员类型
          */
@@ -83,7 +83,7 @@ public class ProjectTeamSubmitActivity extends ActivityFragmentSupport {
             String psTel = etPsTel.getText().toString().trim();
             String workPost = etWorkPost.getText().toString().trim();
             String personnelType = tvPersonnelType.getText().toString();
-            int PID = XiangmuFragment.mInfoEntity.getPid();
+            String PID = XiangmuFragment.mInfoEntity.getId();
             /**
              * 访问网络
              */

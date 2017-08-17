@@ -63,7 +63,7 @@ public class ProjectSGSafeLogSubmitActivity extends ActivityFragmentSupport {
         mLeftTextView.setText("");
         mLeftTextView.setVisibility(View.VISIBLE);
         initWithCenterBar();
-        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getXmName());
+        mCenterTextView.setText(XiangmuFragment.mInfoEntity.getName());
     }
 
     @Override
@@ -79,7 +79,7 @@ public class ProjectSGSafeLogSubmitActivity extends ActivityFragmentSupport {
                 break;
             case R.id.btn_submit:
                 if (checkData()) {
-                    int PID = XiangmuFragment.mInfoEntity.getPid();
+                    String PID = XiangmuFragment.mInfoEntity.getId();
                     String dates = tvDates.getText().toString().trim();//日期
                     String constructionSite = etConstructionSite.getText().toString().trim();// 施工部位
                     String constructionDynamic = etConstructionDynamic.getText().toString().trim();// 施工工序动态

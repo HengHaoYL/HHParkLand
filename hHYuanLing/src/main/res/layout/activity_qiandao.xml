@@ -28,7 +28,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="今日日期"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_time_qiandao"
@@ -59,7 +59,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="当前企业"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <EditText
                 android:id="@+id/et_company_qiandao"
@@ -72,7 +72,7 @@
                 android:singleLine="true"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 
@@ -93,7 +93,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="签到地址"
                 android:textColor="@color/text_color_e"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
             <TextView
                 android:id="@+id/tv_address_qiandao"
@@ -103,7 +103,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="正在获取定位......"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/info_enterprise_size" />
+                android:textSize="@dimen/gj_d" />
 
         </LinearLayout>
 
@@ -178,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="今日你还未签到"
-                android:textSize="@dimen/info_name_size" />
+                android:textSize="@dimen/gj_f" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -61,13 +61,10 @@ public class ProjectHSResultDesActivity extends ActivityFragmentSupport {
          * 拼接图片URL地址
          */
         ArrayList<String> data = new ArrayList<>();
-        ArrayList<String> urls = mEntity.getUrl();
-        for (String url : urls) {
-            data.add(mEntity.getHsImgId() + url);
-        }
+        ArrayList<String> urls = mEntity.getPicture();
         mAdapter = new CommonGridViewAdapter(this, data);
         gridView.setAdapter(mAdapter);
         tvName.setText(mEntity.getName());
-        tvHsDeparment.setText(mEntity.getHsDeparment());
+        tvHsDeparment.setText(mEntity.getCompany());
     }
 }

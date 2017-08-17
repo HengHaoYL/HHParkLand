@@ -29,8 +29,6 @@ public class BidSubmitActivity extends ActivityFragmentSupport {
     EditText etTel;
     @InjectView(R.id.tv_dates)
     TextView tvDates;
-    @InjectView(R.id.et_xmAdd)
-    EditText etXmAdd;
     @InjectView(R.id.btn_submit_projectinfo)
     TextView btnSubmitProjectinfo;
 
