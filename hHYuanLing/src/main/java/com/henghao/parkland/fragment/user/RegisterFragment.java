@@ -149,8 +149,6 @@ public class RegisterFragment extends FragmentSupport {
                 }
             }
         });
-        //请求网络，获取验证码
-        authCodeCall = Requester.authCode(authCodeCallBack);
     }
 
     public void initWidget() {

@@ -112,6 +112,7 @@ public class QiandaoActivity extends ActivityFragmentSupport {
                     Toast.makeText(QiandaoActivity.this, "当前没有登录，请先登录！！", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                String name = getLoginUser().getName();//姓名
                 String time = this.tvHourminute.getText().toString();// 签到时间
                 String address = this.tvAddress.getText().toString(); // 签到地址
                 String company = this.etCompany.getText().toString();// 当前企业
@@ -125,6 +126,7 @@ public class QiandaoActivity extends ActivityFragmentSupport {
                     return;
                 }
                 Intent intent = new Intent(QiandaoActivity.this, QiandaoSubmitActivity.class);
+                intent.putExtra("name", name);
                 intent.putExtra("time", time);
                 intent.putExtra("address", address);
                 intent.putExtra("longitude", longitude);

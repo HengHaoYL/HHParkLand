@@ -89,8 +89,6 @@ public class LoginFragment extends FragmentSupport {
         mLeftImageView.setImageDrawable(getResources().getDrawable(R.drawable.btn_back));
         mCenterTextView = (TextView) getActivity().findViewById(R.id.bar_center_title);
         mCenterTextView.setText("登录");
-        //请求网络，获取验证码
-        authCodeCall = Requester.authCode(authCodeCallBack);
     }
 
     @OnClick({iv_eye_login, R.id.iv_authCode_login, R.id.login_reset_password, R.id.tv_login})

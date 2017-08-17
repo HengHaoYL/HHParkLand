@@ -1,7 +1,9 @@
 package com.henghao.parkland.activity.user;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -43,6 +45,9 @@ public class QiandaoInfoActivity extends ActivityFragmentSupport implements XLis
     private int page = 0;//默认查询页数为0
     private Call findSignInCall;//查询签到情况请求
 
+    private int indexOfSelect = 0;//选中的板块 0个人信息 1企业信息
+    private String[] names = {"个人信息", "企业信息"};//对话框选项
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +72,42 @@ public class QiandaoInfoActivity extends ActivityFragmentSupport implements XLis
         initWithCenterBar();
         this.mCenterTextView.setVisibility(View.VISIBLE);
         this.mCenterTextView.setText("签到情况");
+        initWithRightBar();
+        this.mRightTextView.setVisibility(View.VISIBLE);
+        this.mRightTextView.setText("更多");
+        this.mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setIcon(R.drawable.icon_select);
+                builder.setTitle("请选择");
+                builder.setItems(names, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        page = 0;//重置页数
+                        switch (which) {
+                            case 0://个人信息
+                                initQiandaoInfoEntities.clear();//清空缓存
+                                findSignInCall = Requester.findSignIn(page, getLoginUid(), "", findSignInCallBaclk);
+                                listView.setAdapter(mAdapter);
+                                listView.setPullLoadEnable(true);//设置可上滑加载更多
+                                indexOfSelect = 0;
+                                break;
+                            case 1://企业信息
+                                initQiandaoInfoEntities.clear();//清空缓存
+                                findSignInCall = Requester.findSignIn(page, "", getLoginUser().getDeptId(), findSignInCallBaclk);
+                                listView.setAdapter(mAdapter);
+                                listView.setPullLoadEnable(true);//设置可上滑加载更多
+                                indexOfSelect = 0;
+                                break;
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
     }
 
     @Override
@@ -75,8 +116,8 @@ public class QiandaoInfoActivity extends ActivityFragmentSupport implements XLis
         qiandaoInfoEntities = new ArrayList<>();
         initQiandaoInfoEntities = new ArrayList<>();
         mAdapter = new QiandaoInfoAdapter(this, initQiandaoInfoEntities);
-        //请求网络查询签到情况
-        findSignInCall = Requester.findSignIn(page, getLoginUid(), getLoginUser().getDeptId(), findSignInCallBaclk);
+        //请求网络查询签到情况，默认查询个人信息
+        findSignInCall = Requester.findSignIn(page, getLoginUid(), "", findSignInCallBaclk);
         listView.setAdapter(mAdapter);
     }
 
@@ -114,7 +155,6 @@ public class QiandaoInfoActivity extends ActivityFragmentSupport implements XLis
                 qiandaoInfoEntities = ToolsJson.parseObjecta(jsonStr, infoType);
                 for (int i = 0; i < qiandaoInfoEntities.size(); i++) {
                     QiandaoInfoEntity entity = qiandaoInfoEntities.get(i);
-                    entity.setName(getLoginUser().getName());
                     initQiandaoInfoEntities.add(entity);
                 }
                 mAdapter.notifyDataSetChanged();
@@ -136,21 +176,44 @@ public class QiandaoInfoActivity extends ActivityFragmentSupport implements XLis
     @Override
     public void onRefresh() {
         page = 0;//重置页数
-        initQiandaoInfoEntities.clear();//清空缓存
-        findSignInCall = Requester.findSignIn(page, getLoginUid(), getLoginUser().getDeptId(), findSignInCallBaclk);
-        listView.setPullLoadEnable(true);//设置可上滑加载更多
-        listView.setAdapter(mAdapter);
+        switch (indexOfSelect) {
+            case 0://个人信息
+                initQiandaoInfoEntities.clear();//清空缓存
+                findSignInCall = Requester.findSignIn(page, getLoginUid(), "", findSignInCallBaclk);
+                listView.setPullLoadEnable(true);//设置可上滑加载更多
+                listView.setAdapter(mAdapter);
+                break;
+            case 1://企业信息
+                initQiandaoInfoEntities.clear();//清空缓存
+                findSignInCall = Requester.findSignIn(page, "", getLoginUser().getDeptId(), findSignInCallBaclk);
+                listView.setPullLoadEnable(true);//设置可上滑加载更多
+                listView.setAdapter(mAdapter);
+                break;
+        }
     }
 
     @Override
     public void onLoadMore() {
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                page++;//页数加1
-                findSignInCall = Requester.findSignIn(page, getLoginUid(), getLoginUser().getDeptId(), findSignInCallBaclk);
-            }
-        }, 1000);
+        switch (indexOfSelect) {
+            case 0://个人信息
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        page++;//页数加1
+                        findSignInCall = Requester.findSignIn(page, getLoginUid(), "", findSignInCallBaclk);
+                    }
+                }, 1000);
+                break;
+            case 1://企业信息
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        page++;//页数加1
+                        findSignInCall = Requester.findSignIn(page, "", getLoginUser().getDeptId(), findSignInCallBaclk);
+                    }
+                }, 1000);
+                break;
+        }
     }
 }

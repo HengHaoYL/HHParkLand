@@ -54,8 +54,6 @@ public class WorkShowFragment extends FragmentSupport implements XListView.IXLis
     private XListView listview_xuqiu;
     private static final String TAG = "WorkShowFragment";
 
-    // 设置一个最大的数据条数，超过即不再加载
-    private int MaxDateNum;
     private int indexOfSelect = 2;//选中的板块 1设备租赁 2苗木信息 3招标信息 4人员招聘
 
     private TextView tv_title;//标题

@@ -126,12 +126,13 @@ public class Requester {
         return OkHttpController.doRequest(getRequestURL(ProtocolUrl.FIND_SIGNIN), params, null, callback);
     }
 
-    public static Call signIn(String address, String comments, String compId, String uid, double latitude, double longitude, String company, BaseCallback callback) {
+    public static Call signIn(String address, String comments, String compId, String uid, String name, double latitude, double longitude, String company, BaseCallback callback) {
         Map<String, Object> params = new HashMap<>();
         params.put("address", address);
         params.put("comments", comments);
         params.put("compId", compId);
         params.put("uid", uid);
+        params.put("name", name);
         params.put("latitude", latitude);
         params.put("longitude", longitude);
         params.put("company", company);

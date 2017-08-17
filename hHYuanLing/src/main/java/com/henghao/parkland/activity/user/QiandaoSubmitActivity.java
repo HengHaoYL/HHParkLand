@@ -58,6 +58,7 @@ public class QiandaoSubmitActivity extends ActivityFragmentSupport {
 
     private static final String TAG = "QiandaoSubmitActivity";
 
+    private String name;//姓名
     private String address;//签到地址
     private double latitude;//纬度
     private double longitude;//经度
@@ -93,6 +94,7 @@ public class QiandaoSubmitActivity extends ActivityFragmentSupport {
     public void initData() {
         Intent intent = getIntent();
         String time = intent.getStringExtra("time");
+        name = intent.getStringExtra("name");
         address = intent.getStringExtra("address");
         latitude = intent.getDoubleExtra("latitude", 0);
         longitude = intent.getDoubleExtra("longitude", 0);
@@ -110,7 +112,7 @@ public class QiandaoSubmitActivity extends ActivityFragmentSupport {
                 String compId = getLoginUser().getDeptId();
                 String uid = getLoginUid();
                 // 提交
-                qiandaoCall = Requester.signIn(address, comments, compId, uid, latitude, longitude, company, qiandaoCallBack);
+                qiandaoCall = Requester.signIn(address, comments, compId, uid, name, latitude, longitude, company, qiandaoCallBack);
                 break;
         }
     }

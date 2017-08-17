@@ -169,6 +169,8 @@ public class FragmentSupport extends Fragment implements BusinessResponse {
     public View initWithRightBar() {
         View viewRight = this.mActivity.getLayoutInflater().inflate(R.layout.common_view_bar_right,
                 this.mRightLinearLayout);
+        viewRight.setPadding(getResources().getDimensionPixelSize(R.dimen.padding_normal), 0, getResources()
+                .getDimensionPixelSize(R.dimen.padding_normal), 0);
         this.mRightImageView = (ImageView) viewRight.findViewById(R.id.bar_right_img);
         this.mRightTextView = (TextView) viewRight.findViewById(R.id.bar_right_title);
         this.mRightTextView.setText("back");

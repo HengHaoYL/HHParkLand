@@ -74,12 +74,10 @@ public class XiangmuFragment extends FragmentSupport {
      * 标题点击事件
      */
     private void initClick() {
-        mRightTextView.setOnClickListener(new View.OnClickListener() {
+        mRightLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /**
-                 * 如果还未添加项目信息，则提示用户，否则弹出选项对话框
-                 */
+                //如果还未添加项目信息，则提示用户，否则弹出选项对话框
                 if (projectNames == null) {
                     Toast.makeText(getActivity(), mCenterTextView.getText() + "！", Toast.LENGTH_SHORT).show();
                 } else {
@@ -89,9 +87,7 @@ public class XiangmuFragment extends FragmentSupport {
                     builder.setItems(projectNames, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            /**
-                             * 记录当前项目信息
-                             */
+                            //记录当前项目信息
                             index = which;
                             mInfoEntity = mList.get(index);
                             mCenterTextView.setText(mInfoEntity.getXmName());
@@ -280,9 +276,7 @@ public class XiangmuFragment extends FragmentSupport {
                 Type baseEntityTye = new TypeToken<BaseEntity>() {
                 }.getType();
                 try {
-                    /**
-                     * 解析Json
-                     */
+                    //解析Json
                     final BaseEntity baseEntity = ToolsJson.parseObjecta(result_str, baseEntityTye);
                     String data = ToolsJson.toJson(baseEntity.getData());
                     if (ToolsKit.isEmpty(data)) {//如果返回数据为空
@@ -291,9 +285,7 @@ public class XiangmuFragment extends FragmentSupport {
                             public void run() {
                                 mCenterTextView.setText(baseEntity.getMsg());
                                 mActivityFragmentView.viewLoading(View.GONE);
-                                /**
-                                 * 还原初始化数据
-                                 */
+                                //还原初始化数据
                                 if (mList != null) {
                                     mInfoEntity = null;
                                     index = 0;
@@ -306,9 +298,7 @@ public class XiangmuFragment extends FragmentSupport {
                         Type type = new TypeToken<List<ProjectInfoEntity>>() {
                         }.getType();
                         mList = ToolsJson.parseObjecta(data, type);
-                        /**
-                         * 取得返回的项目信息集合名称列表
-                         */
+                        //取得返回的项目信息集合名称列表
                         if (mList != null) {
                             projectNames = new String[mList.size()];
                             for (int i = 0; i < mList.size(); i++) {
@@ -318,9 +308,7 @@ public class XiangmuFragment extends FragmentSupport {
                                 @Override
                                 public void run() {
                                     mActivityFragmentView.viewLoading(View.GONE);
-                                    /**
-                                     * 默认显示第一个项目信息的名称，如果已选则其他，则显示其他项目信息名称
-                                     */
+                                    //默认显示第一个项目信息的名称，如果已选则其他，则显示其他项目信息名称
                                     mCenterTextView.setText(mList.get(index).getXmName());
                                     mInfoEntity = mList.get(index);
                                 }

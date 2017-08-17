@@ -44,6 +44,8 @@ public class QiandaoInfoEntity implements Serializable {
     @SerializedName("comments")
     private String comments;
     // 姓名
+    @Expose
+    @SerializedName("name")
     private String name;
 
     public String getAddress() {
